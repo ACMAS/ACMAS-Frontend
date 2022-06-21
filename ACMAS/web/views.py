@@ -1,5 +1,10 @@
 from django.shortcuts import render
-def views.search_index(request):
-	html = open('statics/graceful_sticky_jellyfish-html/index.html')
-	return httpresponse(html)
+from django.http import HttpResponse
+
 # Create your views here.
+def index(request):
+	html = open('web/index.html')
+	return HttpResponse(html)
+def search(request):
+	
+	return HttpResponse(open('web/static/graceful_sticky_jellyfish-html/index.html'))
