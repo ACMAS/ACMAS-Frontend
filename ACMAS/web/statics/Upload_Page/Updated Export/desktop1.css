@@ -2,8 +2,8 @@
   min-height: 100vh;
 }
 .desktop1-desktop1 {
-  width: 1440px;
-  height: 900px;
+  width: auto;
+  height: auto;
   display: flex;
   position: relative;
   max-width: 1440px;
@@ -148,10 +148,11 @@
   border-radius: 10px;
 }
 .desktop1-rectangle1 {
-  top: 0px;
-  left: 7.105427357601002e-15px;
+  top: -1px;
+  right: -66px;
   width: 677px;
   height: 68px;
+  margin: auto;
   position: absolute;
   box-sizing: content-box;
   object-fit: cover;
@@ -161,11 +162,12 @@
   border-radius: 10px;
 }
 .desktop1-text06 {
-  top: var(--dl-space-space-unit);
-  left: 9px;
+  top: 15px;
   color: rgba(0, 0, 0, 1);
+  right: -58px;
   width: 668px;
   height: auto;
+  margin: auto;
   position: absolute;
   font-size: 20px;
   align-self: auto;
@@ -178,8 +180,8 @@
   text-decoration: none;
 }
 .desktop1-a-c-m-a-s-logo2 {
-  top: 0px;
-  left: -149px;
+  top: -1px;
+  left: -86px;
   width: 109px;
   height: 68px;
   position: absolute;
@@ -201,8 +203,8 @@
   border-radius: 10px;
 }
 .desktop1-rectangle11 {
-  top: 0px;
-  left: 7.105427357601002e-15px;
+  top: -1px;
+  right: -66px;
   width: 677px;
   height: 68px;
   position: absolute;
@@ -214,10 +216,10 @@
   border-radius: 10px;
 }
 .desktop1-text07 {
-  top: var(--dl-space-space-unit);
-  left: 9px;
   color: rgba(0, 0, 0, 1);
+  right: -62px;
   width: 668px;
+  bottom: 2px;
   height: auto;
   position: absolute;
   font-size: 20px;
@@ -231,8 +233,8 @@
   text-decoration: none;
 }
 .desktop1-a-c-m-a-s-logo3 {
-  top: 0px;
-  left: -149px;
+  top: -1px;
+  left: -86px;
   width: 109px;
   height: 68px;
   position: absolute;
@@ -243,15 +245,18 @@
 .desktop1-frame7 {
   width: 100px;
   height: 65px;
-  margin: 0 0 48px 0;
   display: flex;
   padding: 15px;
   position: relative;
   box-sizing: border-box;
+  margin-top: 0 0 48px 0;
   align-items: flex-start;
   flex-shrink: 1;
+  margin-left: 0 0 48px 0;
   border-color: transparent;
+  margin-right: 0 0 48px 0;
   border-radius: 10px;
+  margin-bottom: var(--dl-space-space-twounits);
 }
 .desktop1-rectangle12 {
   top: 0px;
@@ -297,7 +302,7 @@
   margin-left: 0 0 48px 0;
   font-stretch: normal;
   margin-right: 0 0 48px 0;
-  margin-bottom: var(--dl-space-space-unit);
+  margin-bottom: var(--dl-space-space-oneandhalfunits);
   text-decoration: none;
 }
 .desktop1-frame10 {
@@ -314,8 +319,8 @@
   border-radius: 10px;
 }
 .desktop1-rectangle13 {
-  top: 0px;
-  left: 7.105427357601002e-15px;
+  top: -1px;
+  right: -66px;
   width: 677px;
   height: 68px;
   position: absolute;
@@ -327,11 +332,10 @@
   border-radius: 10px;
 }
 .desktop1-text10 {
-  top: var(--dl-space-space-unit);
-  left: 9px;
+  top: 15px;
   color: rgba(0, 0, 0, 1);
+  right: -62px;
   width: 668px;
-  bottom: var(--dl-space-space-unit);
   height: auto;
   position: absolute;
   font-size: 20px;
@@ -345,8 +349,8 @@
   text-decoration: none;
 }
 .desktop1-a-c-m-a-s-logo5 {
-  top: -8px;
-  left: -149px;
+  top: -9px;
+  left: -86px;
   width: 109px;
   height: 68px;
   position: absolute;
