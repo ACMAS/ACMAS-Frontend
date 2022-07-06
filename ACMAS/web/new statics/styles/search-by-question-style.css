@@ -179,7 +179,8 @@
 }
 
 .home-image {
-	width: 100px;
+	width: 50%;
+	align-self: center;
 	object-fit: cover;
 }
 

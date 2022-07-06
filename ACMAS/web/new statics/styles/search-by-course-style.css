@@ -123,7 +123,7 @@
 }
 
 .home-image {
-	width: 10%;
+	/*width: 10%;*/
 	align-self: center;
 	object-fit: cover;
 	margin-left: 3%;
@@ -295,7 +295,7 @@
 }
 
 .home-image {
-	width: 10%;
+	width: 50%;
 	align-self: center;
 	object-fit: cover;
 	margin-left: 3%;
