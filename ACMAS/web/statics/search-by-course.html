@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+   <title>ACMAS Search</title>
+   <meta content="ACMAS Search" property="og:title"/>
+   <meta content="summary_large_image" property="twitter:card"/>
+   <meta charset="utf-8"/>
+   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+   <meta charset="utf-8"/>
+   <meta content="summary_large_image" property="twitter:card"/>
+   <style data-tag="reset-style-sheet">
+		html {
+			line-height: 1.15;
+		}
+
+		body {
+			margin: 0;
+		}
+
+		* {
+			box-sizing: border-box;
+			border-width: 0;
+			border-style: solid;
+		}
+
+		p, li, ul, pre, div, h1, h2, h3, h4, h5, h6 {
+			margin: 0;
+			padding: 0;
+		}
+
+		button, input, optgroup, select, textarea {
+			font-family: inherit;
+			font-size: 100%;
+			line-height: 1.15;
+			margin: 0;
+		}
+
+		button, select {
+			text-transform: none;
+		}
+
+		button, [type="button"], [type="reset"], [type="submit"] {
+			-webkit-appearance: button;
+		}
+
+		button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-moz-focus-inner, [type="submit"]::-moz-focus-inner {
+			border-style: none;
+			padding: 0;
+		}
+
+		/*button:-moz-focus, [type="button"]:-moz-focus, [type="reset"]:-moz-focus, [type="submit"]:-moz-focus {*/
+		/*	outline: 1px dotted ButtonText;*/
+		/*}*/
+
+		a {
+			color: inherit;
+			text-decoration: inherit;
+		}
+
+		input {
+			padding: 2px 4px;
+		}
+
+		img {
+			display: block;
+		}
+
+		html {
+			scroll-behavior: smooth
+		}
+   </style>
+   <style data-tag="default-style-sheet">
+		html {
+			font-family: Inter, serif;
+			font-size: 16px;
+		}
+
+		body {
+			font-weight: 400;
+			font-style: normal;
+			text-decoration: none;
+			text-transform: none;
+			letter-spacing: normal;
+			line-height: 1.15;
+			color: var(--dl-color-gray-black);
+			background-color: var(--dl-color-gray-white);
+
+		}
+   </style>
+   <link
+         data-tag="font"
+         href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+         rel="stylesheet"
+   />
+   <link href="styles/search-by-course-style.css" rel="stylesheet"/>
+</head>
+<body>
+<div>
+   <link href="styles/search-by-course-style.css" rel="stylesheet"/>
+
+   <div class="home-container">
+      <div class="home-container1">
+         <a href="home.html">
+            <img
+                  alt="image"
+                  class="home-image"
+                  src="img/acmas-logo.png"
+            />
+         </a>
+      </div>
+      <h1 class="home-s-as-d">ACMAS Search</h1>
+      <div class="home-universitycontainer">
+         <img
+               alt="image"
+               class="home-logoimg"
+               src="img/acmas-hexagons.png"
+         />
+         <textarea
+               class="home-textarea textarea"
+               placeholder="Enter your university"
+               rows="1"
+         ></textarea>
+      </div>
+      <div class="home-coursecontainer">
+         <img
+               alt="image"
+               class="home-logoimg1"
+               src="img/acmas-hexagons.png"
+         />
+         <textarea
+               class="home-textarea1 textarea"
+               placeholder="Enter your course"
+               rows="1"
+         ></textarea>
+      </div>
+      <div class="home-assignmentcontainer">
+         <span class="home-selecttext">Select your assignment |</span>
+         <select autocomplete="on" class="home-assignmentdropdown">
+            <option selected value="Assignment">Assignment</option>
+            <option value="Exam">Exam</option>
+            <option value="Practice">Practice</option>
+         </select>
+      </div>
+      <button class="home-searchbtn button">Search!</button>
+   </div>
+</div>
+</body>
+</html>
