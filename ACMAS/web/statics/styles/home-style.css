@@ -152,7 +152,7 @@
 	justify-content: center;
 }
 
-.home-text {
+.search-title {
 	font-size: 30px;
 	font-style: normal;
 	font-family: Arial, serif;
@@ -218,8 +218,11 @@
 	object-fit: cover;
 }
 
-.home-burger-menu {
-	display: none;
+.home-text {
+	font-size: 30px;
+	font-style: normal;
+	font-family: Arial, serif;
+	font-weight: 400;
 }
 
 .home-icon {
@@ -236,12 +239,6 @@
 
 	.home-nav {
 		display: none;
-	}
-
-	.home-burger-menu {
-		display: flex;
-		align-items: center;
-		justify-content: center;
 	}
 }
 
