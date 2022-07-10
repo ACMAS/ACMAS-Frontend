@@ -135,7 +135,7 @@
 	border-radius: var(--dl-radius-radius-radius4);
 }
 
-.home-s-by-question {
+.home-search-by-question {
 	top: var(--dl-space-space-halfunit);
 	left: 0;
 	right: 0;
@@ -177,7 +177,7 @@
 	justify-content: center;
 }
 
-.home-text3 {
+.upload-button-text {
 	color: #2f617c;
 	font-size: 38px;
 	font-style: normal;
@@ -186,7 +186,7 @@
 	line-height: 1.75;
 }
 
-.home-s-by-course {
+.home-search-by-course {
 	top: 386px;
 	left: 214px;
 	width: 383px;
@@ -199,14 +199,6 @@
 	border-width: 2px;
 	text-transform: capitalize;
 	justify-content: center;
-}
-
-.home-text4 {
-	color: #000000;
-	font-size: 30px;
-	font-style: normal;
-	font-family: Arial, serif;
-	font-weight: 400;
 }
 
 .home-header {
