@@ -110,7 +110,7 @@
 	justify-content: center;
 }
 
-.home-container1 {
+.large-logo-container {
 	flex: 0;
 	width: 100%;
 	height: 100px;
@@ -122,59 +122,7 @@
 	justify-content: flex-start;
 }
 
-.home-image {
-	/*width: 10%;*/
-	align-self: center;
-	object-fit: cover;
-	margin-left: 3%;
-}
-
-.home-button {
-	align-self: center;
-	font-style: normal;
-	font-weight: 500;
-	margin-left: 20%;
-	border-width: 0;
-	margin-right: 1%;
-}
-
-.home-button1 {
-	align-self: center;
-	font-style: normal;
-	font-weight: 500;
-	margin-left: 1%;
-	border-width: 0;
-	margin-right: 1%;
-}
-
-.home-button2 {
-	align-self: center;
-	font-style: normal;
-	font-weight: 500;
-	margin-left: 1%;
-	border-width: 0;
-	margin-right: 1%;
-}
-
-.home-button3 {
-	align-self: center;
-	font-style: normal;
-	font-weight: 500;
-	margin-left: 1%;
-	border-width: 0;
-	margin-right: 1%;
-}
-
-.home-button4 {
-	align-self: center;
-	font-style: normal;
-	font-weight: 500;
-	margin-left: 1%;
-	border-width: 0;
-	margin-right: 1%;
-}
-
-.home-s-as-d {
+.acmas-search-header {
 	font-size: 64px;
 	align-self: center;
 	font-style: normal;
@@ -183,7 +131,7 @@
 	margin-bottom: 6%;
 }
 
-.home-universitycontainer {
+.university-container {
 	flex: 0 0 auto;
 	width: 70%;
 	height: 100px;
@@ -193,7 +141,7 @@
 	justify-content: flex-start;
 }
 
-.home-logoimg {
+.hexagon-img {
 	flex: 0;
 	width: 100px;
 	object-fit: cover;
@@ -208,7 +156,7 @@
 	margin-right: 5%;
 }
 
-.home-coursecontainer {
+.home-course-container {
 	flex: 0 0 auto;
 	width: 70%;
 	height: 100px;
@@ -220,21 +168,7 @@
 	justify-content: flex-start;
 }
 
-.home-logoimg1 {
-	width: 100px;
-	object-fit: cover;
-}
-
-.home-textarea1 {
-	flex: 1;
-	font-size: 24px;
-	text-align: left;
-	margin-left: 5%;
-	border-color: var(--dl-color-gray-black);
-	margin-right: 5%;
-}
-
-.home-assignmentcontainer {
+.home-assignment-container {
 	flex: 0 0 auto;
 	width: 100%;
 	height: 64px;
@@ -245,87 +179,29 @@
 	justify-content: center;
 }
 
-.home-selecttext {
+.home-select-text {
 	font-size: 24px;
 	font-style: normal;
 	font-weight: 500;
 }
 
-.home-assignmentdropdown {
+.home-assignment-dropdown {
 	height: var(--dl-size-size-small);
 	margin-left: 5%;
 }
 
-.home-searchbtn {
+.home-search-button {
 	font-size: 24px;
 	margin-bottom: 10%;
 }
 
-@media (max-width: 991px) {
-	.home-container1 {
-		height: auto;
-	}
-
-	.home-universitycontainer {
-		height: 50px;
-	}
-}
-
-/*   */
-.home-container {
-	width: 100%;
-	display: flex;
-	overflow: auto;
-	min-height: 100vh;
-	align-items: center;
-	flex-direction: column;
-	justify-content: center;
-}
-
-.home-container1 {
-	flex: 0;
-	width: 100%;
-	height: 100px;
-	display: flex;
-	align-self: center;
-	margin-top: 0;
-	align-items: flex-start;
-	flex-direction: row;
-	justify-content: flex-start;
-}
-
-.home-image {
+.hexagon-image {
 	width: 50%;
 	align-self: center;
 	object-fit: cover;
 	margin-left: 3%;
 }
 
-.home-s-as-d {
-	font-size: 64px;
-	align-self: center;
-	font-style: normal;
-	margin-top: 6%;
-	font-weight: 700;
-	margin-bottom: 6%;
-}
-
-.home-universitycontainer {
-	flex: 0 0 auto;
-	width: 70%;
-	height: 100px;
-	display: flex;
-	align-items: center;
-	margin-bottom: 1%;
-	justify-content: flex-start;
-}
-
-.home-logoimg {
-	flex: 0;
-	width: 100px;
-	object-fit: cover;
-}
-
 .home-textarea {
 	flex: 1;
 	font-size: 24px;
@@ -335,7 +211,7 @@
 	margin-right: 5%;
 }
 
-.home-coursecontainer {
+.home-course-container {
 	flex: 0 0 auto;
 	width: 70%;
 	height: 100px;
@@ -347,11 +223,6 @@
 	justify-content: flex-start;
 }
 
-.home-logoimg1 {
-	width: 100px;
-	object-fit: cover;
-}
-
 .home-textarea1 {
 	flex: 1;
 	font-size: 24px;
@@ -361,39 +232,12 @@
 	margin-right: 5%;
 }
 
-.home-assignmentcontainer {
-	flex: 0 0 auto;
-	width: 100%;
-	height: 64px;
-	display: flex;
-	align-self: center;
-	align-items: center;
-	margin-bottom: 2%;
-	justify-content: center;
-}
-
-.home-selecttext {
-	font-size: 24px;
-	font-style: normal;
-	font-weight: 500;
-}
-
-.home-assignmentdropdown {
-	height: var(--dl-size-size-small);
-	margin-left: 5%;
-}
-
-.home-searchbtn {
-	font-size: 24px;
-	margin-bottom: 10%;
-}
-
 @media (max-width: 991px) {
-	.home-container1 {
+	.large-logo-container {
 		height: auto;
 	}
 
-	.home-universitycontainer {
+	.university-container {
 		height: 50px;
 	}
 }
