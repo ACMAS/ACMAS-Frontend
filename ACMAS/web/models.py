@@ -30,6 +30,6 @@ class Course(models.Model):
 	years = models.TextField()
 	test_type = models.CharField(max_length=20)
 	def __str__(self):
-		return name
+		return self.name
 
 ###DEFINE ALL MODELS HERE WITH SPECS
