@@ -26,7 +26,7 @@ class Course(models.Model):
 	code = models.CharField(max_length=20)
 	university = models.ForeignKey(University, on_delete=models.CASCADE)
 	semster = models.CharField(max_length=30)
-	years = models.ArrayField(models.CharField(max_length=8),size=100)
+	years = models.TextField()
 	test_type = models.CharField(max_length=20)
 	def __str__(self):
 		return name
