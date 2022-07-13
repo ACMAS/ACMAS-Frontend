@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 urlpatterns = [
 	path('', views.index, name='index'),
 	path('search/', views.search, name='search_index'),
+	path('result/<path>',views.result,name='result_dp),
     
 	
    
