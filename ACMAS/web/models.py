@@ -15,6 +15,7 @@ class UploadedFile(models.Model):
 class Question(models.Model):
     question = models.TextField()
     Answers = models.TextField()
+    Hash = models.TextField()
 
 
     def __str__(self):
