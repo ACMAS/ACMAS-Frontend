@@ -112,14 +112,36 @@
 
 .home-header {
 	width: 100%;
-	display: flex;
+	display: block;
 	max-width: var(--dl-size-size-maxwidth);
-	align-items: center;
-	padding-top: var(--dl-space-space-twounits);
-	padding-left: var(--dl-space-space-threeunits);
-	padding-right: var(--dl-space-space-threeunits);
-	padding-bottom: var(--dl-space-space-twounits);
+	/*align-items: center;*/
+	padding: var(--dl-space-space-twounits) var(--dl-space-space-threeunits);
 	justify-content: space-between;
+	/*flex: 0;*/
+	/*width: 100%;*/
+	height: 10%;
+	/*display: flex;*/
+	align-self: center;
+	margin-top: 0;
+	/*align-items: flex-start;*/
+	/*flex-direction: row;*/
+	/*justify-content: flex-start;*/
+}
+
+.logo-image {
+	/*top: 0;*/
+	/*left: 0;*/
+	/*right: 0;*/
+	/*width: 816px;*/
+	/*bottom: 0;*/
+	/*height: 633px;*/
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	/*position: center;*/
+	/*align-self: center;*/
+	/*align-items: flex-start;*/
+	/*flex-direction: column;*/
 }
 
 .action-container {
