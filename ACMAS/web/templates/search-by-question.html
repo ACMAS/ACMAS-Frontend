@@ -111,7 +111,7 @@
             <h1 class="search-title">ACMAS Search</h1>
             <span class="enter-question-text">Enter your questions below...</span>
 
-            <form method="post" enctype="multipart/form-data" action="getQuestionInput">
+            <form method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
                 <label>
                     <input class="input" placeholder="Enter your question..." type="text" name="question"/>
                 </label>

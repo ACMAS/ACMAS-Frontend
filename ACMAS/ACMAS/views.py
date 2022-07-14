@@ -1,13 +1,16 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import render
+from django.views.decorators.csrf import csrf_protect
 
 
 def index(request):
-    # return redirect('/web/static/index.html')
     return render(request, 'index.html')
 
 
+@csrf_protect
 def searchByQuestion(request):
-    # return redirect('web/static/search-by-question.html')
+    question = request.POST.get('question')
+    if question is not None and len(question) > 0:
+        print(question)
     return render(request, 'search-by-question.html')
 
 

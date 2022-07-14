@@ -10,8 +10,11 @@ def index(request):
     return render(request, 'index.html')
 
 
-@csrf_exempt
+@csrf_protect
 def searchByQuestion(request):
+    question = request.POST.get('question')
+    if question is not None and len(question) > 0:
+        print(question)
     return render(request, 'search-by-question.html')
 
 
