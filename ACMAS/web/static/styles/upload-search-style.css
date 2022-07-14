@@ -35,16 +35,6 @@
 	--dl-space-space-oneandhalfunits: 24px;
 }
 
-.button {
-	color: var(--dl-color-gray-black);
-	display: inline-block;
-	padding: 0.5rem 1rem;
-	border-color: var(--dl-color-gray-black);
-	border-width: 1px;
-	border-radius: 4px;
-	background-color: var(--dl-color-gray-white);
-}
-
 .input {
 	color: var(--dl-color-gray-black);
 	cursor: auto;
@@ -102,11 +92,10 @@
 
 .content-container {
 	min-height: 100vh;
-	width: auto;
-	height: auto;
+	width: 100%;
+	height: 100%;
 	display: flex;
 	position: relative;
-	/*max-width: auto;*/
 	box-sizing: border-box;
 	align-items: center;
 	border-color: transparent;
@@ -195,15 +184,19 @@
 	display: flex;
 	position: relative;
 	box-sizing: border-box;
-	/*margin-top: 48px; !* resolving this error causes component overlap *!*/
 	align-items: flex-start;
 	flex-shrink: 1;
-	/*margin-left: 48px;*/
 	border-color: transparent;
-	/*margin-right: 48px;*/
 	border-radius: 10px;
 	margin-bottom: var(--dl-space-space-twounits);
 	padding: var(--dl-space-space-twounits) 15px 15px;
+}
+
+#school-course-input {
+	align-self: center;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
 }
 
 .course-input {
@@ -217,34 +210,37 @@
 }
 
 .upload-button-container {
-	width: 100px;
-	height: 65px;
 	display: flex;
 	padding: 15px;
 	position: relative;
 	align-self: center;
-	box-sizing: border-box;
-	align-items: flex-start;
-	flex-shrink: 1;
+	align-items: center;
+	justify-content: center;
 	border-color: transparent;
 	border-radius: 10px;
-	margin: 0 0 48px 0 0 0 48px 0 var(--dl-space-space-twounits);
+	text-align: center;
+	margin-bottom: var(--dl-space-space-threeunits);
+}
+
+.button {
+	color: var(--dl-color-gray-black);
+	display: inline-block;
+	padding: 0.5rem 1rem;
+	border-color: var(--dl-color-gray-black);
+	border-width: 1px;
+	border-radius: 4px;
+	background-color: var(--dl-color-gray-white);
 }
 
 .upload-button {
 	top: -3px;
-	flex: 1;
-	left: 0;
-	padding: var(--dl-space-space-oneandhalfunits);
 	position: absolute;
 	align-self: center;
 	margin-top: var(--dl-space-space-halfunit);
-	padding-top: var(--dl-space-space-halfunit);
 	border-width: 2px;
-	padding-left: var(--dl-space-space-halfunit);
+	align-content: center;
 	margin-bottom: var(--dl-space-space-halfunit);
-	padding-right: var(--dl-space-space-halfunit);
-	padding-bottom: var(--dl-space-space-halfunit);
+	padding: var(--dl-space-space-halfunit);
 }
 
 .or-text {
@@ -265,16 +261,16 @@
 
 .manual-entry-container {
 	width: 678px;
-	height: 51px;
-	margin: 0 0 48px 0;
+	height: 41px;
 	display: flex;
+	align-self: center;
 	padding: 15px;
 	position: relative;
 	box-sizing: border-box;
-	align-items: flex-start;
-	flex-shrink: 1;
+	align-items: center;
 	border-color: transparent;
 	border-radius: 10px;
+	margin-bottom: var(--dl-space-space-twounits);
 }
 
 .manual-input {

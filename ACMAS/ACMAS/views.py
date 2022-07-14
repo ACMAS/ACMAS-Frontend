@@ -10,7 +10,7 @@ def index(request):
 def searchByQuestion(request):
     question = request.POST.get('question')
     if question is not None and len(question) > 0:
-        print(question)
+        print("Manual question: ", question)
     return render(request, 'search-by-question.html')
 
 
@@ -18,13 +18,13 @@ def searchByCourse(request):
     return render(request, 'search-by-course.html')
 
 
+@csrf_protect
 def uploadSearch(request):
+    question = request.POST.get('question')
+    if question is not None and len(question) > 0:
+        print("Manual question: ", question)
+    school = request.POST.get('school')
+    course = request.POST.get('course')
+    if school is not None and course is not None and len(school) > 0 and len(course) > 0:
+        print("School: ", school, "\nCourse: ", course)
     return render(request, 'upload-search.html')
-
-
-def getQuestionInput(request):
-    question = request.GET.get('question')
-    if len(question) == 0:
-        print("No question input")
-    else:
-        print(question)

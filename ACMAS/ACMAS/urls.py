@@ -22,8 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('web/', include('web.urls')),
     path('', views.index, name='index'),
-    # url(r'^search-by-question/', TemplateView.as_view(template_name='search-by-question.html'),
-    #   name='searchByQuestion'),
     path('search-by-question', views.searchByQuestion, name='searchByQuestion'),
     path('search-by-course', views.searchByCourse, name='searchByCourse'),
     path('upload-search', views.uploadSearch, name='uploadSearch'),
