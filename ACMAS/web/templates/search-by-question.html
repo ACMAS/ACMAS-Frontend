@@ -2,7 +2,8 @@
 
 <html lang="en">
 <head>
-   <title>exported project</title>
+   <title>ACMAS Search</title>
+   <meta content="ACMAS Search" property="og:title"/>
    <meta content="summary_large_image" property="twitter:card"/>
    <meta charset="utf-8"/>
    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -90,65 +91,36 @@
          href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
          rel="stylesheet"
    />
-   <link href="styles/upload-search-style.css" rel="stylesheet"/>
+   <link href="../static/styles/search-by-question-style.css" rel="stylesheet"/>
 </head>
 <body>
 <div>
-   <link href="styles/upload-search-style.css" rel="stylesheet"/>
+   <link href="../static/styles/search-by-question-style.css" rel="stylesheet"/>
 
-   <div class="content-container">
-      <div class="logo-container">
-         <a href="home.html">
+   <div class="home-container">
+      <header class="home-header" data-role="Header">
+         <a href="{% url 'index' %}">
             <img
-                  alt="ACMAS Logo"
-                  class="acmas-logo"
-                  src="img/acmas-logo.png"
+                  alt="image"
+                  class="logo-image"
+                  src="../static/img/acmas-logo.png"
             />
          </a>
-      </div>
-      <span class="upload-title-text">ACMAS Upload</span>
-      <div class="school-input-container">
-         <img
-               alt="ACMAS Hexagons"
-               class="hexagon-logo"
-               src="img/acmas-hexagons.png"
-         />
-         <input
-               class="school-input input"
-               placeholder="Enter your school"
-               type="text"
-         />
-      </div>
-      <div class="course-input-container">
-         <img
-               alt="ACMAS Hexagons"
-               class="hexagon-logo"
-               src="img/acmas-hexagons.png"
-         />
-         <input
-               class="course-input input"
-               placeholder="Enter your course"
-               type="text"
-         />
-      </div>
-      <div class="upload-button-container">
-         <button class="upload-button button">Upload</button>
-      </div>
-      <span class="or-text">OR</span>
-      <div class="manual-entry-container">
-         <img
-               alt="ACMAS Hexagons"
-               class="hexagon-logo"
-               src="img/acmas-hexagons.png"
-         />
-         <input
-               class="manual-input input"
-               placeholder="Enter your assignment or question"
-               type="text"
-         />
-      </div>
-      <div class="upload-button-container">
-         <button class="upload-button button">Upload</button>
+      </header>
+      <div class="action-container">
+         <h1 class="search-title">ACMAS Search</h1>
+         <span class="enter-question-text">Enter your questions below...</span>
+
+         <form method="post" enctype="multipart/form-data" action="getQuestionInput">
+            <label>
+               <input class="input" placeholder="Enter your question..." type="text" name="question"/>
+            </label>
+            <!--         <button class="button">Search</button>-->
+            <input type="submit" class="button" value="Search">
+         </form>
+
+         <span>Or upload an image below</span>
+         <button class="button">Upload</button>
       </div>
    </div>
 </div>

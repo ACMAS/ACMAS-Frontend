@@ -91,19 +91,19 @@
          href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
          rel="stylesheet"
    />
-   <link href="styles/search-by-course-style.css" rel="stylesheet"/>
+   <link href="../static/styles/search-by-course-style.css" rel="stylesheet"/>
 </head>
 <body>
 <div>
-   <link href="styles/search-by-course-style.css" rel="stylesheet"/>
+   <link href="../static/styles/search-by-course-style.css" rel="stylesheet"/>
 
    <div class="home-container">
       <div class="logo-container">
-         <a href="home.html">
+         <a href="{% url 'index' %}">
             <img
                   alt="image"
                   class="home-image"
-                  src="img/acmas-logo.png"
+                  src="../static/img/acmas-logo.png"
             />
          </a>
       </div>
@@ -112,7 +112,7 @@
          <img
                alt="image"
                class="hexagon-img"
-               src="img/acmas-hexagons.png"
+               src="../static/img/acmas-hexagons.png"
          />
          <textarea
                class="home-textarea textarea"
@@ -124,7 +124,7 @@
          <img
                alt="image"
                class="hexagon-img"
-               src="img/acmas-hexagons.png"
+               src="../static/img/acmas-hexagons.png"
          />
          <textarea
                class="home-textarea textarea"
