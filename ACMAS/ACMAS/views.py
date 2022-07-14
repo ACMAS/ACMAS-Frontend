@@ -14,7 +14,13 @@ def searchByQuestion(request):
     return render(request, 'search-by-question.html')
 
 
+@csrf_protect
 def searchByCourse(request):
+    school = request.POST.get('school')
+    course = request.POST.get('course')
+    assignmentType = request.POST.get('type')
+    if school is not None and course is not None and len(school) > 0 and len(course) > 0:
+        print("School: ", school, "\nCourse: ", course, "\nAssignment type: ", assignmentType)
     return render(request, 'search-by-course.html')
 
 
