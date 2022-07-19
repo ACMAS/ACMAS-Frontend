@@ -20,8 +20,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-                  path('', views.index, name='index'),
-                  path('', views.searchByQuestion, name='searchByQuestion'),
-                  path('', views.searchByCourse, name='searchByCourse'),
-                  path('', views.uploadSearch, name='uploadSearch'),
-              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path("", views.index, name="index"),
+    path("", views.searchByQuestion, name="searchByQuestion"),
+    path("", views.searchByCourse, name="searchByCourse"),
+    path("", views.uploadSearch, name="uploadSearch"),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

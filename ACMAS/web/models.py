@@ -7,7 +7,6 @@ class UploadedFile(models.Model):
     date_uploaded = models.CharField(max_length=50)
     flags = models.TextField()  # parse as json object text.
 
-
     def __str__(self):
         return self.filename
 
@@ -16,14 +15,12 @@ class Question(models.Model):
     question = models.TextField()
     Answers = models.TextField()
 
-
     def __str__(self):
         return self.question
 
 
 class University(models.Model):
     name = models.CharField(max_length=50)
-
 
     def __str__(self):
         return self.name
@@ -36,7 +33,6 @@ class Course(models.Model):
     semster = models.CharField(max_length=30)
     years = models.TextField()
     test_type = models.CharField(max_length=20)
-    
 
     def __str__(self):
         return self.name
