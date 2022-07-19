@@ -114,7 +114,7 @@ USE_TZ = True
 STATIC_URL = "static/"
 PROJECT_ROOT = "C:/Users/jaw12/OneDrive/Programming/SDD/ACMAS-Frontend/ACMAS"
 STATIC_ROOT = os.path.join(
-    PROJECT_ROOT, "web/static"
+    BASE_DIR, "web/static"
 )  # PROJECT_ROOT is the file of the outer ACMAS folder in the repo starting from your disk name
   # Example project root: "C:\Users\jaw12\OneDrive\Programming\SDD\ACMAS-Frontend\ACMAS"
 STATICFILES_DIRS = [
