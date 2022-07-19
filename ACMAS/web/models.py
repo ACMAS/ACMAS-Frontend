@@ -11,7 +11,6 @@ class UploadedFile(models.Model):
     years = models.TextField()
     test_type = models.CharField(max_length=20).
 
-
     def __str__(self):
         return self.filename
 
@@ -21,14 +20,12 @@ class Question(models.Model):
     Answers = models.TextField()
     Hash = models.TextField()
 
-
     def __str__(self):
         return self.question
 
 
 class University(models.Model):
     name = models.CharField(max_length=50)
-
 
     def __str__(self):
         return self.name
@@ -41,7 +38,6 @@ class Course(models.Model):
     semster = models.CharField(max_length=30)
     years = models.TextField()
     test_type = models.CharField(max_length=20)
-    
 
     def __str__(self):
         return self.name
