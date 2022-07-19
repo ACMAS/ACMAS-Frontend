@@ -5,7 +5,7 @@ class UploadedFile(models.Model):
     filename = models.CharField(max_length=60)
     file_dir = models.TextField()
     date_uploaded = models.CharField(max_length=50)
-    flag - models.CharField(max_length=80)
+    flag = models.CharField(max_length=80)
 
     def __str__(self):
         return self.filename
