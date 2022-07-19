@@ -1,2 +1,5 @@
 .idea/
 __pycache__/
+node_modules/
+ACMAS/package-lock.json
+ACMAS/package.json
