@@ -5,11 +5,7 @@ class UploadedFile(models.Model):
     filename = models.CharField(max_length=60)
     file_dir = models.TextField()
     date_uploaded = models.CharField(max_length=50)
-    code = models.CharField(max_length=20)
-    university = models.ForeignKey(University, on_delete=models.CASCADE)
-    semster = models.CharField(max_length=30)
-    years = models.TextField()
-    test_type = models.CharField(max_length=20).
+    flag - models.CharField(max_length=80)
 
     def __str__(self):
         return self.filename
