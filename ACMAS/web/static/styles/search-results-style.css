@@ -1,0 +1,209 @@
+.button {
+  color: var(--dl-color-gray-black);
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  border-radius: 4px;
+  background-color: var(--dl-color-gray-white);
+}
+.input {
+  color: var(--dl-color-gray-black);
+  cursor: auto;
+  padding: 0.5rem 1rem;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  border-radius: 4px;
+  background-color: var(--dl-color-gray-white);
+}
+.textarea {
+  color: var(--dl-color-gray-black);
+  cursor: auto;
+  padding: 0.5rem;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  border-radius: 4px;
+  background-color: var(--dl-color-gray-white);
+}
+.list {
+  width: 100%;
+  margin: 1em 0px 1em 0px;
+  display: block;
+  padding: 0px 0px 0px 1.5rem;
+  list-style-type: none;
+  list-style-position: outside;
+}
+.list-item {
+  width: 100%;
+  display: list-item;
+}
+.teleport-show {
+  display: flex !important;
+}
+.heading {
+  font-size: 32px;
+  font-family: Inter;
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: none;
+  text-decoration: none;
+}
+.content {
+  font-size: 16px;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: 1.15;
+  text-transform: none;
+  text-decoration: none;
+}
+
+.search-results-page-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.search-results-page-header {
+  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+}
+.search-results-page-logo {
+  width: var(--dl-size-size-xxlarge);
+  object-fit: cover;
+}
+.search-results-page-title {
+  align-self: center;
+}
+.search-results-page-results-frame {
+  width: 498px;
+  height: 380px;
+  display: flex;
+  align-self: center;
+  margin-top: var(--dl-space-space-twounits);
+  align-items: flex-start;
+  border-color: var(--dl-color-gray-black);
+  border-width: 2px;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.search-results-page-symbols-frame {
+  flex: 0 0 auto;
+  width: 27px;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.search-results-page-opened-folder {
+  width: 27px;
+  height: 35px;
+}
+.search-results-page-dropdown-arrow {
+  width: 24px;
+  height: 27px;
+  margin-left: var(--dl-space-space-unit);
+}
+.search-results-page-file {
+  width: 27px;
+  height: 40px;
+  margin-left: var(--dl-space-space-twounits);
+}
+.search-results-page-file1 {
+  width: 27px;
+  height: 40px;
+  margin-left: var(--dl-space-space-twounits);
+}
+.search-results-page-dropdown-arrow1 {
+  width: 24px;
+  height: 27px;
+  margin-left: var(--dl-space-space-unit);
+}
+.search-results-page-file2 {
+  width: 27px;
+  height: 40px;
+  margin-left: var(--dl-space-space-twounits);
+}
+.search-results-page-closed-folder {
+  width: 27px;
+  height: 31px;
+}
+.search-results-page-container1 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.search-results-page-title-frame {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.search-results-page-course-school {
+  font-size: 20px;
+  margin-top: var(--dl-space-space-halfunit);
+  margin-left: 0px;
+}
+.search-results-page-exam-1 {
+  font-size: 20px;
+  margin-top: var(--dl-space-space-halfunit);
+  margin-left: var(--dl-space-space-unit);
+  padding-top: 0px;
+}
+.search-results-page-sample-file-button {
+  display: flex;
+  font-size: 20px;
+  margin-top: var(--dl-space-space-unit);
+  margin-left: var(--dl-space-space-twounits);
+  padding-top: 0px;
+  border-width: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  flex-direction: row;
+  padding-bottom: 0px;
+}
+.search-results-page-file-1-sample-file {
+  border-radius: var(--dl-radius-radius-radius4);
+}
+.search-results-page-text1 {
+  text-align: left;
+}
+.search-results-page-file-2 {
+  font-size: 20px;
+  margin-top: var(--dl-space-space-unit);
+  margin-left: var(--dl-space-space-twounits);
+  padding-top: 0px;
+}
+.search-results-page-exam-2 {
+  font-size: 20px;
+  margin-top: var(--dl-space-space-halfunit);
+  margin-left: var(--dl-space-space-unit);
+  padding-top: 0px;
+}
+.search-results-page-file-1 {
+  font-size: 20px;
+  margin-top: var(--dl-space-space-unit);
+  margin-left: var(--dl-space-space-twounits);
+  padding-top: 0px;
+}
+.search-results-page-course-school-2 {
+  font-size: 20px;
+  margin-top: var(--dl-space-space-halfunit);
+  margin-left: 0px;
+}
+.search-results-page-new-search-button {
+  align-self: center;
+  margin-top: var(--dl-space-space-fiveunits);
+  border-width: 3px;
+  border-radius: 16px;
+}

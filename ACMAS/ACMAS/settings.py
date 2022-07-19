@@ -108,18 +108,26 @@ USE_I18N = True
 
 USE_TZ = True
 
+
+# Media files (png, pdf, jpeg)
+
+MEDIA_URL = "/files/"
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
+# Static URL is the path displayed on screen
 
 STATIC_URL = "static/"
-PROJECT_ROOT = "C:/Users/jaw12/OneDrive/Programming/SDD/ACMAS-Frontend/ACMAS"
+PROJECT_ROOT = os.path.join(BASE_DIR, "")
 STATIC_ROOT = os.path.join(
     BASE_DIR, "web/static"
 )  # PROJECT_ROOT is the file of the outer ACMAS folder in the repo starting from your disk name
   # Example project root: "C:\Users\jaw12\OneDrive\Programming\SDD\ACMAS-Frontend\ACMAS"
+"""
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, STATIC_URL),
+    os.path.join(BASE_DIR, STATIC_ROOT),
 ]
+"""
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

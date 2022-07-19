@@ -20,9 +20,8 @@ from . import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("web/", include("web.urls")),
-    path("", views.index, name="index"),
-    path("search-by-question", views.searchByQuestion, name="searchByQuestion"),
-    path("search-by-course", views.searchByCourse, name="searchByCourse"),
-    path("upload-search", views.uploadSearch, name="uploadSearch"),
+    path("", include("web.urls")),
+    #path("search-by-question", views.searchByQuestion, name="searchByQuestion"),
+    #path("search-by-course", views.searchByCourse, name="searchByCourse"),
+    #path("upload-search", views.uploadSearch, name="uploadSearch"),
 ]
