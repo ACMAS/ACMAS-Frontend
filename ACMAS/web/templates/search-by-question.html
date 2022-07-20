@@ -3,7 +3,6 @@
 <html lang="en">
 <head>
     <title>ACMAS Search</title>
-    <meta content="ACMAS Search" property="og:title"/>
     <meta content="summary_large_image" property="twitter:card"/>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -92,38 +91,50 @@
             rel="stylesheet"
     />
     <link href="../static/styles/commons.css" rel="stylesheet"/>
-    <link href="../static/styles/search-by-question-style.css" rel="stylesheet"/>
+    <link href="../static/styles/upload-search-style.css" rel="stylesheet"/>
 </head>
 <body>
 <div>
     <link href="../static/styles/commons.css" rel="stylesheet"/>
-    <link href="../static/styles/search-by-question-style.css" rel="stylesheet"/>
-
-    <div class="home-container">
-        <header class="home-header" data-role="Header">
+    <link href="../static/styles/upload-search-style.css" rel="stylesheet"/>
+    <div class="content-container">
+        <div class="logo-container">
             <a href="{% url 'index' %}">
                 <img
-                        alt="image"
-                        class="logo-image"
+                        alt="ACMAS Logo"
+                        class="acmas-logo"
                         src="../static/img/acmas-logo.png"
                 />
             </a>
-        </header>
-        <div class="action-container">
-            <h1 class="search-title">ACMAS Search</h1>
-            <span class="enter-question-text">Enter your questions below...</span>
-
-            <form method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
-                <label>
-                    <input class="input" placeholder="Enter your question..." type="text" name="question"/>
-                </label>
-                <!--         <button class="button">Search</button>-->
-                <input type="submit" class="button" value="Search">
-            </form>
-
-            <span>Or upload an image below</span>
-            <button class="button">Upload</button>
         </div>
+        <span class="upload-title-text">ACMAS Upload</span>
+        <form id="manual-entry-form" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
+            <div class="manual-entry-container" style="margin-top: 10%;">
+                <img
+                        alt="ACMAS Hexagons"
+                        class="hexagon-logo"
+                        src="../static/img/acmas-hexagons.png"
+                />
+                <input
+                        class="manual-input input"
+                        placeholder="Enter your question"
+                        type="text"
+                        name="question"
+                />
+            </div>
+            <div class="upload-button-container">
+                <input type="submit" class="upload-button button" value="Search"/>
+            </div>
+        </form>
+        <span class="or-text">OR</span>
+        <form id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
+            <div class="upload-button-container">
+                <input type="file" name="fileUpload" class="upload-button button">
+            </div>
+            <div class="upload-button-container">
+                <input type="submit" class="upload-button button" value="Search by upload"/>
+            </div>
+        </form>
     </div>
 </div>
 </body>

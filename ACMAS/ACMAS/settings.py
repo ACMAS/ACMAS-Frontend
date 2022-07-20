@@ -112,14 +112,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = "static/"
-PROJECT_ROOT = "C:/Users/jaw12/OneDrive/Programming/SDD/ACMAS-Frontend/ACMAS"
-STATIC_ROOT = os.path.join(
-    BASE_DIR, "web/static"
-)  # PROJECT_ROOT is the file of the outer ACMAS folder in the repo starting from your disk name
-  # Example project root: "C:\Users\jaw12\OneDrive\Programming\SDD\ACMAS-Frontend\ACMAS"
+PROJECT_ROOT = "YOUR_ROOT"
+STATIC_ROOT = os.path.join(BASE_DIR, "web/static")
+# PROJECT_ROOT is the path of the outer ACMAS folder in the repo starting from your disk name
+# Example project root: "C:\Users\jaw12\OneDrive\Programming\SDD\ACMAS-Frontend\ACMAS"
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, STATIC_URL),
 ]
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
