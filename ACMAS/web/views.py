@@ -53,20 +53,20 @@ def uploadSearch(request):
     question = request.POST.get("question")
     if question is not None and len(question) > 0:
         print("Manual question: ", question)
-        return render(request, "upload-search.html")
-    school = request.POST.get("school")
-    course = request.POST.get("course")
-    file = request.FILES["fileUpload"]
-    if (
-        school is not None
-        and course is not None
-        and file is not None
-        and len(school) > 0
-        and len(course) > 0
-    ):
-        print("School: ", school, "\nCourse: ", course)
-        fs = FileSystemStorage()
-        filename = fs.save(file.name, file)
-        file_url = fs.url(filename)
-        print(f'FILE "{filename}" uploaded to "{file_url}"\n')
+    elif len(request.FILES) != 0:
+        school = request.POST.get("school")
+        course = request.POST.get("course")
+        file = request.FILES["fileUpload"]
+        if (
+            school is not None
+            and course is not None
+            and file is not None
+            and len(school) > 0
+            and len(course) > 0
+        ):
+            print("School: ", school, "\nCourse: ", course)
+            fs = FileSystemStorage()
+            filename = fs.save(file.name, file)
+            file_url = fs.url(filename)
+            print(f'FILE "{filename}" uploaded to "{file_url}"\n')
     return render(request, "upload-search.html")
