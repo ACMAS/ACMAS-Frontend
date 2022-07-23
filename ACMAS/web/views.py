@@ -1,4 +1,5 @@
 from datetime import date
+
 from django.core.files.storage import FileSystemStorage
 from django.db.models.query import EmptyQuerySet
 from django.shortcuts import redirect, render
@@ -9,7 +10,6 @@ from .models import Question, UploadedFile
 # from django.shortcuts import redirect
 # from django.http import HttpResponse
 # from django.views.decorators.clickjacking import xframe_options_sameorigin
-
 
 
 # Create your views here.
@@ -97,7 +97,8 @@ def uploadSearch(request):
                 filename=filename,
                 file_dir=file_url,
                 date_uploaded=date.today(),
-                flag=(school + "|" + course))
+                flag=(school + "|" + course)
+            )
             db_file.save()
             print(f'FILE "{filename}" uploaded to "{file_url}"\n')
     return render(request, "upload-search.html")
