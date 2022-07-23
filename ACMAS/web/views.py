@@ -3,12 +3,13 @@ from django.core.files.storage import FileSystemStorage
 from django.db.models.query import EmptyQuerySet
 from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
-from django.views.decorators.clickjacking import xframe_options_sameorigin
 
-from .models import UploadedFile, Question
+from .models import Question, UploadedFile
 
 # from django.shortcuts import redirect
 # from django.http import HttpResponse
+# from django.views.decorators.clickjacking import xframe_options_sameorigin
+
 
 
 # Create your views here.
@@ -48,14 +49,14 @@ def searchResults(request):
         and len(school) > 0
         and len(course) > 0
     ):
+        print("Assignment Type:", assignmentType)
         files = UploadedFile.objects.filter(flag=(school + "|" + course))
         if files.exists():
-            return render(request, "search-results.html", {"files":files})
+            return render(request, "search-results.html", {"files": files})
     return render(request, "search-results.html")
 
 
 @csrf_protect
-#@xframe_options_sameorigin
 def pdfReader(request):
     url = request.GET.get("url")
     url = "media/" + url
@@ -91,8 +92,12 @@ def uploadSearch(request):
             fs = FileSystemStorage()
             filename = fs.save(file.name, file)
             file_url = fs.url(filename)
-            print(filename, file_url, date.today(), (school+"|"+course))
-            db_file = UploadedFile(filename=filename, file_dir=file_url, date_uploaded=date.today(), flag=(school+"|"+course))
+            print(filename, file_url, date.today(), (school + "|" + course))
+            db_file = UploadedFile(
+                filename=filename,
+                file_dir=file_url,
+                date_uploaded=date.today(),
+                flag=(school + "|" + course))
             db_file.save()
             print(f'FILE "{filename}" uploaded to "{file_url}"\n')
     return render(request, "upload-search.html")

@@ -28,5 +28,3 @@ urlpatterns = [
     path("pdfReader", views.pdfReader, name="pdfReader"),
     path("uploadSearch", views.uploadSearch, name="uploadSearch"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
-urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
