@@ -189,12 +189,9 @@
   font-size: 20px;
   margin-top: var(--dl-space-space-unit);
   margin-left: var(--dl-space-space-twounits);
-  padding-top: 0;
   border-width: 0;
-  padding-left: 0;
-  padding-right: 0;
-  flex-direction: row;
   padding: 0;
+  flex-direction: row;
 }
 
 .search-results-page-file-1-sample-file {

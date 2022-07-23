@@ -97,7 +97,7 @@ def uploadSearch(request):
                 filename=filename,
                 file_dir=file_url,
                 date_uploaded=date.today(),
-                flag=(school + "|" + course)
+                flag=(school + "|" + course),
             )
             db_file.save()
             print(f'FILE "{filename}" uploaded to "{file_url}"\n')
