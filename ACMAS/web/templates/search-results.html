@@ -71,7 +71,7 @@
         <span class="search-results-page-title heading">Search Results</span>
         <div class="search-results-page-results-frame">
           <ul class="list">
-          	  
+              
               {% for file in files %}
               <form method="GET" action="{% url 'pdfReader' %}">
                 <li class="list-item" ><button type="submit" > <input type="text" name="url" value="{{file.filename}}" readonly> </button></li>
@@ -83,7 +83,7 @@
           
           <div class="search-results-page-symbols-frame">
             
-          	<!--
+            <!--
             <img
               alt="pastedImage"
               src="public/playground_assets/pastedimage-ed29-200w.png"
@@ -147,7 +147,6 @@
               <span class="search-results-page-course-school-2">
                 Course name + (School name) 2
               </span>
-
             </div>
             -->
           </div>

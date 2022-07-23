@@ -21,7 +21,7 @@ from . import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("web.urls")),
-    #path("search-by-question", views.searchByQuestion, name="searchByQuestion"),
-    #path("search-by-course", views.searchByCourse, name="searchByCourse"),
-    #path("upload-search", views.uploadSearch, name="uploadSearch"),
+    # path("search-by-question", views.searchByQuestion, name="searchByQuestion"),
+    # path("search-by-course", views.searchByCourse, name="searchByCourse"),
+    # path("upload-search", views.uploadSearch, name="uploadSearch"),
 ]

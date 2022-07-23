@@ -2,7 +2,7 @@
 
 <html lang="en">
 <head>
-    <title>exported project</title>
+    <title>ACMAS Upload</title>
     <meta content="summary_large_image" property="twitter:card"/>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -136,6 +136,9 @@
                 />
             </div>
             <div class="upload-button-container">
+                <input type="file" name="fileUpload" class="upload-button button">
+            </div>
+            <div class="upload-button-container">
                 <input type="submit" class="upload-button button" value="Upload"/>
             </div>
         </form>
@@ -149,9 +152,22 @@
                 />
                 <input
                         class="manual-input input"
-                        placeholder="Enter your assignment or question"
+                        placeholder="Enter your question"
                         type="text"
                         name="question"
+                />
+            </div>
+            <div class="manual-entry-container" style="margin-top: 10%;">
+                <img
+                        alt="ACMAS Hexagons"
+                        class="hexagon-logo"
+                        src="../static/img/acmas-hexagons.png"
+                />
+                <input
+                        class="manual-input input"
+                        placeholder="Enter your answer"
+                        type="text"
+                        name="answer"
                 />
             </div>
             <div class="upload-button-container">

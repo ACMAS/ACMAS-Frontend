@@ -25,6 +25,8 @@ urlpatterns = [
     path("searchByQuestion", views.searchByQuestion, name="searchByQuestion"),
     path("searchByCourse", views.searchByCourse, name="searchByCourse"),
     path("searchResults", views.searchResults, name="searchResults"),
-    path("pdfReader", views.pdfReader, name = "pdfReader"),
+    path("pdfReader", views.pdfReader, name="pdfReader"),
     path("uploadSearch", views.uploadSearch, name="uploadSearch"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
