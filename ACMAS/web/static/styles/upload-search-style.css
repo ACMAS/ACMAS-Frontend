@@ -141,7 +141,7 @@
   padding: var(--dl-space-space-oneandhalfunits) var(--dl-space-space-halfunit);
 }
 
-.course-input-container {
+.input-container {
   width: 678px;
   height: 41px;
   display: flex;
@@ -160,6 +160,10 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+.main-form {
+  margin-top: 5%;
 }
 
 .course-input {

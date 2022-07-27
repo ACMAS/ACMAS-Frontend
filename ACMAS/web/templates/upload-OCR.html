@@ -2,12 +2,11 @@
 
 <html lang="en">
 <head>
-    <title>ACMAS Homepage</title>
-    <meta content="ACMAS Homepage" property="og:title"/>
+    <title>ACMAS Upload</title>
     <link rel="icon" type="image/x-icon" href="../static/img/acmas-hexagons.png">
     <meta content="summary_large_image" property="twitter:card"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <style data-tag="reset-style-sheet">
         html {
             line-height: 1.15;
@@ -47,10 +46,6 @@
             border-style: none;
             padding: 0;
         }
-
-        /*button:-moz-focus, [type="button"]:-moz-focus, [type="reset"]:-moz-focus, [type="submit"]:-moz-focus {*/
-        /*	outline: 1px dotted ButtonText;*/
-        /*}*/
 
         a {
             color: inherit;
@@ -93,46 +88,57 @@
             rel="stylesheet"
     />
     <link href="../static/styles/commons.css" rel="stylesheet"/>
-    <link href="../static/styles/home-style.css" rel="stylesheet"/>
+    <link href="../static/styles/upload-search-style.css" rel="stylesheet"/>
 </head>
 <body>
 <div>
     <link href="../static/styles/commons.css" rel="stylesheet"/>
-    <link href="../static/styles/home-style.css" rel="stylesheet"/>
-
-    <div class="home-container">
-        <div class="large-logo-container">
+    <link href="../static/styles/upload-search-style.css" rel="stylesheet"/>
+    <div class="content-container">
+        <div class="logo-container">
             <a href="{% url 'index' %}">
                 <img
-                        alt="ACMAS logo"
-                        class="home-logo"
+                        alt="ACMAS Logo"
+                        class="acmas-logo"
                         src="../static/img/acmas-logo.png"
                 />
             </a>
-            <a href="{% url 'searchByQuestion' %}">
-            <span class="home-text home-search-by-question button">
-              <span>Search By Question</span>
-              <span></span>
-            </span>
-            </a>
-            <a href="{% url 'uploadOptions' %}">
-                <span class="upload-button-text button home-upload">Upload</span>
-            </a>
-            <a href="{% url 'searchByCourse' %}">
-            <span class="home-text home-search-by-course button">
-              <span>Search By Course</span>
-            </span>
-            </a>
         </div>
-        <header class="home-header" data-role="Header">
-            <a href="{% url 'index' %}">
+        <span class="upload-title-text">ACMAS Upload</span>
+        <form id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'uploadOCR' %}"> {% csrf_token %}
+            <div class="school-input-container">
                 <img
-                        alt="image"
-                        class="hexagon-image"
+                        alt="ACMAS Hexagons"
+                        class="hexagon-logo"
                         src="../static/img/acmas-hexagons.png"
                 />
-            </a>
-        </header>
+                <input
+                        class="school-input input"
+                        placeholder="Enter your school"
+                        type="text"
+                        name="school"
+                />
+            </div>
+            <div class="input-container">
+                <img
+                        alt="ACMAS Hexagons"
+                        class="hexagon-logo"
+                        src="../static/img/acmas-hexagons.png"
+                />
+                <input
+                        class="course-input input"
+                        placeholder="Enter your course"
+                        type="text"
+                        name="course"
+                />
+            </div>
+            <div class="upload-button-container">
+                <input type="file" name="fileUpload" class="upload-button button">
+            </div>
+            <div class="upload-button-container">
+                <input type="submit" class="upload-button button" value="Upload"/>
+            </div>
+        </form>
     </div>
 </div>
 </body>

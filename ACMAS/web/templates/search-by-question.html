@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <title>ACMAS Search</title>
+    <link rel="icon" type="image/x-icon" href="../static/img/acmas-hexagons.png">
     <meta content="summary_large_image" property="twitter:card"/>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -107,7 +108,7 @@
                 />
             </a>
         </div>
-        <span class="upload-title-text">ACMAS Upload</span>
+        <span class="upload-title-text">ACMAS Search</span>
         <form id="manual-entry-form" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
             <div class="manual-entry-container" style="margin-top: 10%;">
                 <img

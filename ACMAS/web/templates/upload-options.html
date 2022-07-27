@@ -2,9 +2,8 @@
 
 <html lang="en">
 <head>
-    <title>ACMAS Search</title>
+    <title>ACMAS Upload</title>
     <link rel="icon" type="image/x-icon" href="../static/img/acmas-hexagons.png">
-    <meta content="ACMAS Search" property="og:title"/>
     <meta content="summary_large_image" property="twitter:card"/>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -93,64 +92,34 @@
             rel="stylesheet"
     />
     <link href="../static/styles/commons.css" rel="stylesheet"/>
-    <link href="../static/styles/search-by-course-style.css" rel="stylesheet"/>
+    <link href="../static/styles/upload-search-style.css" rel="stylesheet"/>
+    <link href="../static/styles/upload-options.css" rel="stylesheet"/>
 </head>
 <body>
 <div>
     <link href="../static/styles/commons.css" rel="stylesheet"/>
-    <link href="../static/styles/search-by-course-style.css" rel="stylesheet"/>
-
-    <div class="home-container">
+    <link href="../static/styles/upload-search-style.css" rel="stylesheet"/>
+    <link href="../static/styles/upload-options.css" rel="stylesheet"/>
+    <div class="content-container">
         <div class="logo-container">
             <a href="{% url 'index' %}">
                 <img
-                        alt="image"
-                        class="home-image"
+                        alt="ACMAS Logo"
+                        class="acmas-logo"
                         src="../static/img/acmas-logo.png"
                 />
             </a>
         </div>
-        <h1 class="acmas-search-header">ACMAS Search</h1>
-        <div class="action-container">
-            <form class="action-container" method="POST" enctype="multipart/form-data" action="{% url 'searchByCourse' %}"> {% csrf_token %}
-                <div class="university-container">
-                    <img
-                            alt="image"
-                            class="hexagon-img"
-                            src="../static/img/acmas-hexagons.png"
-                    />
-                    <textarea
-                            class="home-textarea textarea"
-                            placeholder="Enter your university"
-                            rows="1"
-                            name="school"
-                    ></textarea>
-                </div>
-                <div class="home-course-container">
-                    <img
-                            alt="image"
-                            class="hexagon-img"
-                            src="../static/img/acmas-hexagons.png"
-                    />
-                    <textarea
-                            class="home-textarea textarea"
-                            placeholder="Enter your course"
-                            rows="1"
-                            name="course"
-                    ></textarea>
-                </div>
-                <div class="home-assignment-container">
-                    <span class="home-select-text">Select your assignment |</span>
-                    <select autocomplete="on" class="button home-assignment-dropdown" name="type">
-                        <option selected value="All">All</option>
-                        <option value="Assignment">Assignment</option>
-                        <option value="Exam">Exam</option>
-                        <option value="Practice">Practice</option>
-                    </select>
-                </div>
-                {#        <button class="home-search-button button">Search!</button>#}
-                <input type="submit" class="home-search-button button" value="Search"/>
-            </form>
+        <span class="upload-title-text">ACMAS Upload</span>
+        <br><br>
+        <p>Please select your preferred upload option:</p>
+        <div class="upload-options-buttons">
+            <a href="{% url 'uploadOCR' %}">
+                <span class="button" id="upload-option">Upload with a file</span>
+            </a>
+            <a href="{% url 'uploadManually' %}">
+                <span class="button" id="upload-option">Manual entry</span>
+            </a>
         </div>
     </div>
 </div>
