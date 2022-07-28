@@ -17,7 +17,7 @@ class DBTest(TestCase):
             years="2022",
             test_type="Final",
         )
- 
+
     def test_verifier(self):
         course = Course.objects.get(name="FOCS")
         self.assertEqual(course.code, "2200")
