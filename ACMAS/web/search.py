@@ -6,6 +6,7 @@ class searchFacade:
         self.courseFiles = None
         self.courseSearch = None
         self.questionSearch = None
+        self.questionFiles = None
 
     def getQuery(self):
         return self.courseFiles
@@ -30,8 +31,6 @@ class searchFacade:
         return self.courseFiles
 
     def searchQuestion(self, question):
-        self.questionSearch = self.questionSearch
-        self.questionFiles = self.questionFiles
         if self.questionSearch is None:
             self.questionSearch = questionSearchHandler(question)
         elif self.questionSearch.question == question:
