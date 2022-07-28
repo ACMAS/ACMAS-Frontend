@@ -2,7 +2,6 @@ from .models import Course, Question, University, UploadedFile
 
 
 class searchFacade:
-
     def __init__(self):
         self.courseFiles = None
         self.courseSearch = None
@@ -31,6 +30,8 @@ class searchFacade:
         return self.courseFiles
 
     def searchQuestion(self, question):
+        self.questionSearch = self.questionSearch
+        self.questionFiles = self.questionFiles
         if self.questionSearch is None:
             self.questionSearch = questionSearchHandler(question)
         elif self.questionSearch.question == question:
@@ -46,7 +47,6 @@ class searchFacade:
 
 
 class courseSearchHandler:
-
     def __init__(self, uni, course, fType):
         self.uni = uni
         self.course = course
@@ -65,7 +65,7 @@ class courseSearchHandler:
         self.course = course
         self.fType = fType
 
-        if(self.fileSearch is None):
+        if self.fileSearch is None:
             self.fileSearch = fileSearchHandler()
 
         courses = self.getCourses(uni)
@@ -76,14 +76,13 @@ class courseSearchHandler:
         elif courses:
             files = self.fileSearch.getFiles(courses[0], fType)
             for c in courses[1:]:
-                files.union(self.fileSearch.getFiles(c, fType)).order_by('name')
+                files.union(self.fileSearch.getFiles(c, fType)).order_by("name")
             return files
         else:
             return courses
 
 
 class questionSearchHandler:
-
     def __init__(self, question):
         self.question = question
 
@@ -100,5 +99,3 @@ class fileSearchHandler:
 
     def getPath(self, name):
         return UploadedFile.objects.get(name=name).file_dir
-
-

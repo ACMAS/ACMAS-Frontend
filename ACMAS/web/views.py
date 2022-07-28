@@ -63,14 +63,14 @@ def searchResults(request):
         sessionID = request.session._get_or_create_session_key()
         request.session.modified = True
         facade = cache.get(sessionID)
-        if facade == None:
+        if facade is None:
             cache.set(sessionID, searchFacade(), 1200)
             facade = cache.get(sessionID)
 
         files = facade.search(school, course, assignmentType)
         cache.set(sessionID, facade, 1200)
 
-        if files != None:
+        if files is not None:
             return render(request, "search-results.html", {"files": files})
     return render(request, "search-results.html")
 
@@ -81,7 +81,7 @@ def returnQuery(request):
     sessionID = request.session._get_or_create_session_key()
     facade = cache.get(sessionID)
 
-    if facade == None:
+    if facade is None:
         return render(request, "search-by-course.html")
     return render(request, "search-results.html", {"files": facade.getQuery()})
 
@@ -93,7 +93,7 @@ def pdfReader(request):
     sessionID = request.session._get_or_create_session_key()
     facade = cache.get(sessionID)
 
-    if facade == None or facade.getQuery() == None:
+    if facade is None or facade.getQuery() is None:
         file = UploadedFile.objects.get(filename=name)
         return render(request, "pdf-reader.html", {"directory": file.file_dir})
 
