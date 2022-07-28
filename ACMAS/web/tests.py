@@ -7,7 +7,7 @@ from web.models import Course
 class DBTest(TestCase):
   def setUp(self):
       Course.objects.create(name="FOCS",code="2200",university="RPI",semster="Fall",years="2022",test_type="Final")
-  def verifier(self):
+  def test_verifier(self):
       course = Course.objects.get(name="FOCS")
       self.assertEqual(course.code,"2200")
       self.assertEqual(course.university,"RPI")
