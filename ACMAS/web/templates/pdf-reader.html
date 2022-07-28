@@ -70,13 +70,15 @@
         </div>
         <h1 class="home-acmas-read-header heading">ACMAS Reader</h1>
         <div class="home-pdf-reader-container">
-          <embed src="{{url}}" type="application/pdf" width="100%" height="100%" />
+          <embed src="{{directory}}" type="application/pdf" width="100%" height="100%" />
         </div>
         <div class="home-nav-button-container">
           <button class="home-return-homepage-btn button content" onclick="window.location.href='/';">
             Return to Homepage
           </button>
-          <button class="home-button button content">Return to Query</button>
+          <form id="return-to-query" action="{% url 'returnQuery' %}">
+            <input type="submit" class="home-button button content" value="Return to Query">
+          </form>
         </div>
       </div>
     </div>

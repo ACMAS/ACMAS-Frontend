@@ -39,6 +39,11 @@ INSTALLED_APPS = [
     "web",
 ]
 
+
+# Allow self-embed
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -76,6 +81,16 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
+    }
+}
+
+# Cache
+# https://docs.djangoproject.com/en/4.0/topics/cache/
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-session',
     }
 }
 
