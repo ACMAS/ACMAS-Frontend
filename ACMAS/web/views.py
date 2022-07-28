@@ -7,7 +7,7 @@ from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
 from .models import Course, Question, University, UploadedFile
-from .python_classes.search import searchFacade
+from .search import searchFacade
 
 # from django.shortcuts import redirect
 # from django.http import HttpResponse
@@ -74,6 +74,7 @@ def searchResults(request):
             return render(request, "search-results.html", {"files": files})
     return render(request, "search-results.html")
 
+
 @csrf_exempt
 def returnQuery(request):
 
@@ -84,15 +85,13 @@ def returnQuery(request):
         return render(request, "search-by-course.html")
     return render(request, "search-results.html", {"files": facade.getQuery()})
 
+
 @csrf_protect
 def pdfReader(request):
 
     name = request.GET.get("url")
     sessionID = request.session._get_or_create_session_key()
     facade = cache.get(sessionID)
-
-    if(facade.getQuery() != None):
-            print("Reader: courseFiles exists")
 
     if facade == None or facade.getQuery() == None:
         file = UploadedFile.objects.get(filename=name)

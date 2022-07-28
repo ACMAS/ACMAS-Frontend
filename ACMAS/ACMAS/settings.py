@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 
 # Allow self-embed
 
-X_FRAME_OPTIONS = 'SAMEORIGIN'
+X_FRAME_OPTIONS = "SAMEORIGIN"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -88,9 +88,9 @@ DATABASES = {
 # https://docs.djangoproject.com/en/4.0/topics/cache/
 
 CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-        'LOCATION': 'unique-session',
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "unique-session",
     }
 }
 

@@ -20,12 +20,16 @@ from django.urls import path
 
 from . import views
 
-urlpatterns = [
-    path("", views.index, name="index"),
-    path("searchByQuestion", views.searchByQuestion, name="searchByQuestion"),
-    path("searchByCourse", views.searchByCourse, name="searchByCourse"),
-    path("searchResults", views.searchResults, name="searchResults"),
-    path("returnQuery", views.returnQuery, name="returnQuery"),
-    path("pdfReader", views.pdfReader, name="pdfReader"),
-    path("uploadSearch", views.uploadSearch, name="uploadSearch"),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns = (
+    [
+        path("", views.index, name="index"),
+        path("searchByQuestion", views.searchByQuestion, name="searchByQuestion"),
+        path("searchByCourse", views.searchByCourse, name="searchByCourse"),
+        path("searchResults", views.searchResults, name="searchResults"),
+        path("returnQuery", views.returnQuery, name="returnQuery"),
+        path("pdfReader", views.pdfReader, name="pdfReader"),
+        path("uploadSearch", views.uploadSearch, name="uploadSearch"),
+    ]
+    + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+) 
