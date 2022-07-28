@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <title>ACMAS Upload</title>
+    <link rel="icon" type="image/x-icon" href="../static/img/acmas-hexagons.png">
     <meta content="summary_large_image" property="twitter:card"/>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -45,10 +46,6 @@
             border-style: none;
             padding: 0;
         }
-
-        /*button:-moz-focus, [type="button"]:-moz-focus, [type="reset"]:-moz-focus, [type="submit"]:-moz-focus {*/
-        /*	outline: 1px dotted ButtonText;*/
-        /*}*/
 
         a {
             color: inherit;
@@ -108,7 +105,7 @@
             </a>
         </div>
         <span class="upload-title-text">ACMAS Upload</span>
-        <form id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'uploadSearch' %}"> {% csrf_token %}
+        <form id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'uploadOCR' %}"> {% csrf_token %}
             <div class="school-input-container">
                 <img
                         alt="ACMAS Hexagons"
@@ -122,7 +119,7 @@
                         name="school"
                 />
             </div>
-            <div class="course-input-container">
+            <div class="input-container">
                 <img
                         alt="ACMAS Hexagons"
                         class="hexagon-logo"
@@ -137,25 +134,6 @@
             </div>
             <div class="upload-button-container">
                 <input type="file" name="fileUpload" class="upload-button button">
-            </div>
-            <div class="upload-button-container">
-                <input type="submit" class="upload-button button" value="Upload"/>
-            </div>
-        </form>
-        <span class="or-text">OR</span>
-        <form id="manual-entry-form" method="POST" enctype="multipart/form-data" action="{% url 'uploadSearch' %}"> {% csrf_token %}
-            <div class="manual-entry-container">
-                <img
-                        alt="ACMAS Hexagons"
-                        class="hexagon-logo"
-                        src="../static/img/acmas-hexagons.png"
-                />
-                <input
-                        class="manual-input input"
-                        placeholder="Enter your assignment or question"
-                        type="text"
-                        name="question"
-                />
             </div>
             <div class="upload-button-container">
                 <input type="submit" class="upload-button button" value="Upload"/>

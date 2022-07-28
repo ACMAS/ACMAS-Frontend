@@ -2,9 +2,8 @@
 
 <html lang="en">
 <head>
-    <title>ACMAS Search</title>
+    <title>ACMAS Upload</title>
     <link rel="icon" type="image/x-icon" href="../static/img/acmas-hexagons.png">
-    <meta content="ACMAS Search" property="og:title"/>
     <meta content="summary_large_image" property="twitter:card"/>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -48,10 +47,6 @@
             padding: 0;
         }
 
-        /*button:-moz-focus, [type="button"]:-moz-focus, [type="reset"]:-moz-focus, [type="submit"]:-moz-focus {*/
-        /*	outline: 1px dotted ButtonText;*/
-        /*}*/
-
         a {
             color: inherit;
             text-decoration: inherit;
@@ -93,63 +88,80 @@
             rel="stylesheet"
     />
     <link href="../static/styles/commons.css" rel="stylesheet"/>
-    <link href="../static/styles/search-by-course-style.css" rel="stylesheet"/>
+    <link href="../static/styles/upload-search-style.css" rel="stylesheet"/>
 </head>
 <body>
 <div>
     <link href="../static/styles/commons.css" rel="stylesheet"/>
-    <link href="../static/styles/search-by-course-style.css" rel="stylesheet"/>
-
-    <div class="home-container">
+    <link href="../static/styles/upload-search-style.css" rel="stylesheet"/>
+    <div class="content-container">
         <div class="logo-container">
             <a href="{% url 'index' %}">
                 <img
-                        alt="image"
-                        class="home-image"
+                        alt="ACMAS Logo"
+                        class="acmas-logo"
                         src="../static/img/acmas-logo.png"
                 />
             </a>
         </div>
-        <h1 class="acmas-search-header">ACMAS Search</h1>
-        <div class="action-container">
-            <form class="action-container" method="POST" enctype="multipart/form-data" action="{% url 'searchByCourse' %}"> {% csrf_token %}
-                <div class="university-container">
+        <span class="upload-title-text">ACMAS Upload</span>
+        <div class="main-form">
+            <form id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'uploadManually' %}"> {% csrf_token %}
+                <div class="input-container">
                     <img
-                            alt="image"
-                            class="hexagon-img"
+                            alt="ACMAS Hexagons"
+                            class="hexagon-logo"
                             src="../static/img/acmas-hexagons.png"
                     />
-                    <textarea
-                            class="home-textarea textarea"
-                            placeholder="Enter your university"
-                            rows="1"
+                    <input
+                            class="school-input input"
+                            placeholder="Enter your school"
+                            type="text"
                             name="school"
-                    ></textarea>
+                    />
                 </div>
-                <div class="home-course-container">
+                <div class="input-container">
                     <img
-                            alt="image"
-                            class="hexagon-img"
+                            alt="ACMAS Hexagons"
+                            class="hexagon-logo"
                             src="../static/img/acmas-hexagons.png"
                     />
-                    <textarea
-                            class="home-textarea textarea"
+                    <input
+                            class="course-input input"
                             placeholder="Enter your course"
-                            rows="1"
+                            type="text"
                             name="course"
-                    ></textarea>
+                    />
                 </div>
-                <div class="home-assignment-container">
-                    <span class="home-select-text">Select your assignment |</span>
-                    <select autocomplete="on" class="button home-assignment-dropdown" name="type">
-                        <option selected value="All">All</option>
-                        <option value="Assignment">Assignment</option>
-                        <option value="Exam">Exam</option>
-                        <option value="Practice">Practice</option>
-                    </select>
+                <div class="input-container" style="margin-top: 10%;">
+                    <img
+                            alt="ACMAS Hexagons"
+                            class="hexagon-logo"
+                            src="../static/img/acmas-hexagons.png"
+                    />
+                    <input
+                            class="manual-input input"
+                            placeholder="Enter your question"
+                            type="text"
+                            name="question"
+                    />
                 </div>
-                {#        <button class="home-search-button button">Search!</button>#}
-                <input type="submit" class="home-search-button button" value="Search"/>
+                <div class="input-container">
+                    <img
+                            alt="ACMAS Hexagons"
+                            class="hexagon-logo"
+                            src="../static/img/acmas-hexagons.png"
+                    />
+                    <input
+                            class="manual-input input"
+                            placeholder="Enter your answer"
+                            type="text"
+                            name="answer"
+                    />
+                </div>
+                <div class="upload-button-container">
+                    <input type="submit" class="upload-button button" value="Upload"/>
+                </div>
             </form>
         </div>
     </div>
