@@ -2,7 +2,7 @@
 
 <html lang="en">
 <head>
-    <title>ACMAS Search</title>
+    <title>ACMAS Upload</title>
     <link rel="icon" type="image/x-icon" href="../static/img/acmas-hexagons.png">
     <meta content="summary_large_image" property="twitter:card"/>
     <meta charset="utf-8"/>
@@ -46,10 +46,6 @@
             border-style: none;
             padding: 0;
         }
-
-        /*button:-moz-focus, [type="button"]:-moz-focus, [type="reset"]:-moz-focus, [type="submit"]:-moz-focus {*/
-        /*	outline: 1px dotted ButtonText;*/
-        /*}*/
 
         a {
             color: inherit;
@@ -108,8 +104,37 @@
                 />
             </a>
         </div>
-        <span class="upload-title-text">ACMAS Search</span>
-        <form id="manual-entry-form" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
+        <span class="upload-title-text">ACMAS Upload</span>
+        <form id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'uploadOCR' %}"> {% csrf_token %}
+            <div class="school-input-container">
+                <img
+                        alt="ACMAS Hexagons"
+                        class="hexagon-logo"
+                        src="../static/img/acmas-hexagons.png"
+                />
+                <input
+                        class="school-input input"
+                        placeholder="Enter your school"
+                        type="text"
+                        name="school"
+                />
+            </div>
+            <div class="input-container">
+                <img
+                        alt="ACMAS Hexagons"
+                        class="hexagon-logo"
+                        src="../static/img/acmas-hexagons.png"
+                />
+                <input
+                        class="course-input input"
+                        placeholder="Enter your course"
+                        type="text"
+                        name="course"
+                />
+            </div>
+            <div class="upload-button-container">
+                <input type="file" name="fileUpload" class="upload-button button">
+            </div>
             <div class="manual-entry-container" style="margin-top: 10%;">
                 <img
                         alt="ACMAS Hexagons"
@@ -118,22 +143,13 @@
                 />
                 <input
                         class="manual-input input"
-                        placeholder="Enter your question"
+                        placeholder="Enter your answer"
                         type="text"
-                        name="question"
+                        name="answer"
                 />
             </div>
             <div class="upload-button-container">
-                <input type="submit" class="upload-button button" value="Search"/>
-            </div>
-        </form>
-        <span class="or-text">OR</span>
-        <form id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
-            <div class="upload-button-container">
-                <input type="file" name="fileUpload" class="upload-button button">
-            </div>
-            <div class="upload-button-container">
-                <input type="submit" class="upload-button button" value="Search by upload"/>
+                <input type="submit" class="upload-button button" value="Upload"/>
             </div>
         </form>
     </div>

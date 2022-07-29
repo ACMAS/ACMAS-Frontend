@@ -131,11 +131,9 @@ PROJECT_ROOT = os.path.join(BASE_DIR, "")
 STATIC_ROOT = os.path.join(BASE_DIR, "web/static")
 # PROJECT_ROOT is the path of the outer ACMAS folder in the repo starting from your disk name
 # Example project root: "C:\Users\jaw12\OneDrive\Programming\SDD\ACMAS-Frontend\ACMAS"
-"""
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, STATIC_URL),
 ]
-"""
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
@@ -145,5 +143,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# Allowing webpage Embed from localhost
-# X_FRAME_OPTIONS = "SAMEORIGIN"

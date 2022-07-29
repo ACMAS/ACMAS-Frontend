@@ -20,7 +20,7 @@ class University(models.Model):
 class Course(models.Model):
     name = models.TextField()
     code = models.CharField(max_length=20)
-    university = models.ForeignKey(University, on_delete=models.CASCADE)
+    university = models.TextField()
     semster = models.CharField(max_length=30)
     years = models.TextField()
     test_type = models.CharField(max_length=20)

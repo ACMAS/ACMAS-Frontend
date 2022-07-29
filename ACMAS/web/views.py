@@ -9,17 +9,14 @@ from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from .models import Course, Question, University, UploadedFile
 from .search import searchFacade
 
-# from django.shortcuts import redirect
-# from django.http import HttpResponse
-# from django.views.decorators.clickjacking import xframe_options_sameorigin
 
-
-# Create your views here.
+# ACMAS homepage
 @csrf_exempt
 def index(request):
     return redirect("static/index.html")
 
 
+# Search by question page
 @csrf_protect
 def searchByQuestion(request):
     question = request.POST.get("question")  # Check to see if a question was entered
@@ -101,54 +98,55 @@ def pdfReader(request):
     return render(request, "pdf-reader.html", {"directory": file.file_dir})
 
 
+def uploadOptions(request):
+    return render(request, "upload-options.html")
+
+
 @csrf_protect
-def uploadSearch(request):
-    question = request.POST.get("question")
-    answer = request.POST.get("answer")
+def uploadOCR(request):
+    school = request.POST.get("school")  # Check to see if a school was entered
+    course = request.POST.get(
+        "course"
+    )  # Check to see if a course name or course code was entered
+
+    if (
+        len(request.FILES) != 0
+        and school is not None
+        and len(school) > 0
+        and course is not None
+        and len(course) > 0
+    ):  # If a school and course were entered, and there is an uploaded file
+        file = request.FILES["fileUpload"]  # Get the uploaded file
+        print("School: ", school, "\nCourse: ", course)
+        fs = FileSystemStorage()
+        filename = fs.save(file.name, file)  # Retrieve the filename
+        file_url = fs.url(filename)  # Retrieve the file path
+        print(f'FILE "{filename}" uploaded to "{file_url}"\n')
+    return render(request, "upload-OCR.html")
+
+
+@csrf_protect
+def uploadManually(request):
+    school = request.POST.get("school")  # Check to see if a school was entered
+    course = request.POST.get(
+        "course"
+    )  # Check to see if a course name or course code was entered
+    question = request.POST.get("question")  # Check to see if a question was entered
+    answer = request.POST.get("answer")  # Check to see if an answer was entered
+
     if (
         question is not None
-        and answer is not None
         and len(question) > 0
+        and answer is not None
         and len(answer) > 0
-    ):
-        db_question = Question(question=question, Answers=answer, Hash="")
-        db_question.save()
-        print("Manual question:", question)
-        print("Manual answer:", answer)
-    elif len(request.FILES) != 0:
-        school = request.POST.get("school")
-        course = request.POST.get("course")
-        file = request.FILES["fileUpload"]
-        if (
-            school is not None
-            and course is not None
-            and file is not None
-            and len(school) > 0
-            and len(course) > 0
-        ):
-            print("School:", school, "\nCourse:", course)
-            fs = FileSystemStorage()
-            filename = fs.save(file.name, file)
-            file_url = fs.url(filename)
-            print(filename, file_url, date.today(), (school + "|" + course))
-            if not University.objects.filter(name=school).exists():
-                uni = University(name=school)
-                uni.save()
-                print("Created university:", school)
-            if not Course.objects.filter(name=course).exists():
-                new_course = Course(
-                    name=course,
-                    university=University.objects.get(name=school),
-                )
-                new_course.save()
-                print("Created course:", course)
-            db_file = UploadedFile(
-                filename=filename,
-                file_dir=file_url,
-                course=Course.objects.get(name=course),
-                date_uploaded=date.today(),
-                flag=("Assignment"),
-            )
-            db_file.save()
-            print(f'FILE "{filename}" uploaded to "{file_url}"\n')
-    return render(request, "upload-search.html")
+        and school is not None
+        and len(school) > 0
+        and course is not None
+        and len(course) > 0
+    ):  # If a school, course, question, and answer were entered
+        # Do manual question upload logic
+        print(
+            f"School: {school}\nCourse: {course}\nManual question: {question}\nManual answer: {answer}"
+        )
+    return render(request, "upload-manually.html")
+

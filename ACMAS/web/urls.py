@@ -28,8 +28,11 @@ urlpatterns = (
         path("searchResults", views.searchResults, name="searchResults"),
         path("returnQuery", views.returnQuery, name="returnQuery"),
         path("pdfReader", views.pdfReader, name="pdfReader"),
-        path("uploadSearch", views.uploadSearch, name="uploadSearch"),
+        path("upload-options", views.uploadOptions, name="uploadOptions"),
+        path("upload-OCR", views.uploadOCR, name="uploadOCR"),
+        path("upload-manually", views.uploadManually, name="uploadManually"),
     ]
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 )
+
