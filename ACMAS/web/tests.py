@@ -17,8 +17,6 @@ class Test_db(TestCase):
             years="2022",
             test_type="Final",
         )
-
-
         course.save()	
 
     def test_verifier(self):
