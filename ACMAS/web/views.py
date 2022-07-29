@@ -1,4 +1,4 @@
-from datetime import date
+# from datetime import date
 
 from django.core.cache import cache
 from django.core.files.storage import FileSystemStorage
@@ -6,7 +6,7 @@ from django.db.models.query import EmptyQuerySet
 from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
-from .models import Course, Question, University, UploadedFile
+from .models import UploadedFile
 from .search import searchFacade
 
 
@@ -149,4 +149,3 @@ def uploadManually(request):
             f"School: {school}\nCourse: {course}\nManual question: {question}\nManual answer: {answer}"
         )
     return render(request, "upload-manually.html")
-
