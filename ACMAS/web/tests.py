@@ -16,7 +16,8 @@ class Test_db(TestCase):
             semster="Fall",
             years="2022",
             test_type="Final",
-        )course.save()	
+        )
+        course.save()	
 
     def test_verifier(self):
         course = Course.objects.get(name="FOCS")
