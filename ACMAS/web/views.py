@@ -118,8 +118,12 @@ def uploadOCR(request):
         and course is not None
         and len(course) > 0
     ):  # If a school and course were entered, and there is an uploaded file
+        assignmentType = request.POST.get("type")
+        print(
+            f"School: {school}\nCourse: {course}\nAssignment type: {assignmentType}\n"
+        )
+
         file = request.FILES["fileUpload"]  # Get the uploaded file
-        print("School: ", school, "\nCourse: ", course)
         fs = FileSystemStorage()
         filename = fs.save(file.name, file)  # Retrieve the filename
         file_url = fs.url(filename)  # Retrieve the file path
