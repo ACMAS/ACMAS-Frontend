@@ -135,18 +135,13 @@
             <div class="upload-button-container">
                 <input type="file" name="fileUpload" class="upload-button button">
             </div>
-            <div class="manual-entry-container" style="margin-top: 10%;">
-                <img
-                        alt="ACMAS Hexagons"
-                        class="hexagon-logo"
-                        src="../static/img/acmas-hexagons.png"
-                />
-                <input
-                        class="manual-input input"
-                        placeholder="Enter your answer"
-                        type="text"
-                        name="answer"
-                />
+            <div class="dropdown-container">
+                    <span class="home-select-text">Select your assignment type |</span>
+                    <select autocomplete="on" class="button assignment-type-dropdown" name="type">
+                        <option selected value="Assignment">Assignment</option>
+                        <option value="Exam">Exam</option>
+                        <option value="Practice">Practice</option>
+                    </select>
             </div>
             <div class="upload-button-container">
                 <input type="submit" class="upload-button button" value="Upload"/>

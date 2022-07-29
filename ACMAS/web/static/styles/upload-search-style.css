@@ -131,6 +131,22 @@
   border-color: transparent;
 }
 
+.assignment-type-dropdown {
+  height: var(--dl-size-size-small);
+  margin-left: 5%;
+}
+
+.dropdown-container {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 64px;
+  display: flex;
+  align-self: center;
+  align-items: center;
+  margin-bottom: 2%;
+  justify-content: center;
+}
+
 .school-input {
   flex: 1;
   width: auto;
