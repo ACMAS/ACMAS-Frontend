@@ -147,18 +147,18 @@ def uploadManually(request):
         and len(course) > 0
     ):  # If a school, course, question, and answer were entered
         # Do manual question upload logic
-        schoolName = school.replace('.', '').split(' ')[0]
-        courseName = course.replace(' ', '_')
-        # hashString = hashlib.md5(question.encode("utf-8")).hexdigest()
-        hashString = str(zlib.crc32(bytes(question.encode('utf-8'))))
+        schoolName = school.replace(".", "").split(" ")[0]
+        courseName = course.replace(" ", "_")
+        hashString = str(zlib.crc32(bytes(question.encode("utf-8"))))
 
         path = os.path.dirname(__file__) + "\\.." + "\\media\\"
-        fileName = schoolName + '-' + courseName + '-' + hashString + '.txt'
+        fileName = schoolName + "-" + courseName + "-" + hashString + ".txt"
         path = os.path.join(path, fileName)
 
         f = open(path, "x")
         f.write(f"QUESTION:\n-----------------------\n{question}\n")
-        f.write(f"-----------------------\n\n\nANSWER:\n-----------------------\n{answer}\n")
+        f.write(f"-----------------------\n\n\nANSWER:\n")
+        f.write("-----------------------\n{answer}\n")
         f.write("-----------------------")
         f.close()
 
