@@ -1,5 +1,6 @@
 from django.test import TestCase
 from web.models import Course
+from web.search import *
 
 # Create your tests here.
 # 1 Check for model Representation Invariant
@@ -30,3 +31,12 @@ class Test_db(TestCase):
     def test_db_count(self):
         all_entries = Course.objects.all()
         self.assertEqual(all_entries.count(), 1)
+    def SearchEngineinit(self):
+         engine1 = searchFacade()
+         search_result = engine1.search("RPI","FOCS","All")
+         search_result2 = engine1.search("a_silly_university","FOCS","All")
+         assertEqual(search_result.count(),0)
+         assertEqual(search_result2,None)
+
+
+
