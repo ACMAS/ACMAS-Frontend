@@ -157,8 +157,8 @@ def uploadManually(request):
 
         f = open(path, "x")
         f.write(f"QUESTION:\n-----------------------\n{question}\n")
-        f.write(f"-----------------------\n\n\nANSWER:\n")
-        f.write("-----------------------\n{answer}\n")
+        f.write("-----------------------\n\n\nANSWER:\n")
+        f.write(f"-----------------------\n{answer}\n")
         f.write("-----------------------")
         f.close()
 
