@@ -17,7 +17,6 @@ class Test_db(TestCase):
             years="2022",
             test_type="Final",
         )
-
         course.save()	
 
     def test_verifier(self):
@@ -30,5 +29,4 @@ class Test_db(TestCase):
 
     def test_db_count(self):
         all_entries = Course.objects.all()
-
         self.assertEqual(all_entries.count(),1)
