@@ -40,7 +40,7 @@ class searchFacade:
         if question is None:
             raise ValueError("No question provided")
 
-        self.questionFiles = questionSearch.searchQuestion(question)
+        self.questionFiles = self.questionSearch.searchQuestion(question)
 
         return self.questionFiles
 
