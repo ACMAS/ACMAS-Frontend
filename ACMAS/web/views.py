@@ -1,12 +1,19 @@
+# from datetime import date
+
+from django.core.cache import cache
 from django.core.files.storage import FileSystemStorage
-from django.shortcuts import render
+from django.db.models.query import EmptyQuerySet
+from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
+
+from .models import UploadedFile
+from .search import searchFacade
 
 
 # ACMAS homepage
 @csrf_exempt
 def index(request):
-    return render(request, "index.html")
+    return redirect("static/index.html")
 
 
 # Search by question page
@@ -29,30 +36,66 @@ def searchByQuestion(request):
     return render(request, "search-by-question.html")
 
 
-# Search by course page
-@csrf_protect
+@csrf_exempt
 def searchByCourse(request):
-    school = request.POST.get("school")  # Check to see if a school was entered
-    course = request.POST.get(
-        "course"
-    )  # Check to see if a course name or course code was entered
-    assignmentType = request.POST.get("type")  # Get query type
+    return render(request, "search-by-course.html")
+
+
+@csrf_exempt
+def searchResults(request):
+
+    school = request.POST.get("school")
+    course = request.POST.get("course")
+    assignmentType = request.POST.get("type")
+    files = EmptyQuerySet
     if (
         school is not None
         and course is not None
         and len(school) > 0
         and len(course) > 0
-    ):  # Only do search logic if school and course were entered
-        # Do search logic here
-        print(
-            "School: ",
-            school,
-            "\nCourse: ",
-            course,
-            "\nAssignment type: ",
-            assignmentType,
-        )
-    return render(request, "search-by-course.html")
+    ):
+        print("University:", school)
+        print("Course:", course)
+        print("Assignment Type:", assignmentType)
+        sessionID = request.session._get_or_create_session_key()
+        request.session.modified = True
+        facade = cache.get(sessionID)
+        if facade is None:
+            cache.set(sessionID, searchFacade(), 1200)
+            facade = cache.get(sessionID)
+
+        files = facade.search(school, course, assignmentType)
+        cache.set(sessionID, facade, 1200)
+
+        if files is not None:
+            return render(request, "search-results.html", {"files": files})
+    return render(request, "search-results.html")
+
+
+@csrf_exempt
+def returnQuery(request):
+
+    sessionID = request.session._get_or_create_session_key()
+    facade = cache.get(sessionID)
+
+    if facade is None:
+        return render(request, "search-by-course.html")
+    return render(request, "search-results.html", {"files": facade.getQuery()})
+
+
+@csrf_protect
+def pdfReader(request):
+
+    name = request.GET.get("url")
+    sessionID = request.session._get_or_create_session_key()
+    facade = cache.get(sessionID)
+
+    if facade is None or facade.getQuery() is None:
+        file = UploadedFile.objects.get(filename=name)
+        return render(request, "pdf-reader.html", {"directory": file.file_dir})
+
+    file = facade.getQuery().get(filename=name)
+    return render(request, "pdf-reader.html", {"directory": file.file_dir})
 
 
 def uploadOptions(request):

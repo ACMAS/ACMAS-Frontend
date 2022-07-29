@@ -39,6 +39,11 @@ INSTALLED_APPS = [
     "web",
 ]
 
+
+# Allow self-embed
+
+X_FRAME_OPTIONS = "SAMEORIGIN"
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -79,6 +84,16 @@ DATABASES = {
     }
 }
 
+# Cache
+# https://docs.djangoproject.com/en/4.0/topics/cache/
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "unique-session",
+    }
+}
+
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -112,7 +127,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = "static/"
-PROJECT_ROOT = "YOUR_ROOT"
+PROJECT_ROOT = os.path.join(BASE_DIR, "")
 STATIC_ROOT = os.path.join(BASE_DIR, "web/static")
 # PROJECT_ROOT is the path of the outer ACMAS folder in the repo starting from your disk name
 # Example project root: "C:\Users\jaw12\OneDrive\Programming\SDD\ACMAS-Frontend\ACMAS"

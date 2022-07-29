@@ -1,16 +1,6 @@
 from django.db import models
 
 
-class UploadedFile(models.Model):
-    filename = models.CharField(max_length=60)
-    file_dir = models.TextField()
-    date_uploaded = models.CharField(max_length=50)
-    flag = models.CharField(max_length=80)
-
-    def __str__(self):
-        return self.filename
-
-
 class Question(models.Model):
     question = models.TextField()
     Answers = models.TextField()
@@ -37,6 +27,17 @@ class Course(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class UploadedFile(models.Model):
+    filename = models.CharField(max_length=60)
+    file_dir = models.TextField()
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    date_uploaded = models.CharField(max_length=50)
+    flag = models.CharField(max_length=80)
+
+    def __str__(self):
+        return self.filename
 
 
 # DEFINE ALL MODELS HERE WITH SPECS

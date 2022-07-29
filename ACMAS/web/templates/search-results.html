@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>Search Results</title>
+    <meta property="og:title" content="Search Results" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}
+      body {  margin: 0;}
+      * {  box-sizing: border-box;  border-width: 0;  border-style: solid;}
+      p,li,ul,pre,div,h1,h2,h3,h4,h5,h6 {  margin: 0;  padding: 0;}
+      button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}
+      button,select {  text-transform: none;}
+      button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}
+      button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}
+      button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}
+      a {  color: inherit;  text-decoration: inherit;}
+      input {  padding: 2px 4px;}
+      img {  display: block;}
+      html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      data-tag="font"
+    />
+    <link href="../static/styles/commons.css" rel="stylesheet"/>
+    <link href="../static/styles/search-results-style.css" rel="stylesheet"/>
+  </head>
+
+  <body>
+    <div>
+      <link href="../static/styles/commons.css" rel="stylesheet"/>
+      <link href="../static/styles/search-results-style.css" rel="stylesheet"/>
+
+      <div class="search-results-page-container">
+        <div class="search-results-page-header">
+          <a href="{% url 'index' %}">
+            <img
+              alt="image"
+              src="../static/img/acmas-logo.png"
+              class="search-results-page-logo"
+            />
+          </a>
+        </div>
+        <span class="search-results-page-title heading">Search Results</span>
+        <div class="search-results-page-results-frame">
+          <ul class="list">
+              
+              {% for file in files %}
+              <form method="GET" action="{% url 'pdfReader' %}">
+                <li class="list-item" ><button type="submit" > <input type="text" name="url" value="{{file.filename}}" readonly> </button></li>
+              </form>
+              {% endfor %}
+              
+            
+          </ul>
+          
+          <div class="search-results-page-symbols-frame">
+            
+            <!--
+            <img
+              alt="pastedImage"
+              src="public/playground_assets/pastedimage-ed29-200w.png"
+              class="search-results-page-opened-folder"
+            />
+            
+            <img
+              alt="pastedImage"
+              src="public/playground_assets/pastedimage-l0q-200w.png"
+              class="search-results-page-dropdown-arrow"
+            />
+            <img
+              alt="pastedImage"
+              src="public/playground_assets/pastedimage-l8y-200w.png"
+              class="search-results-page-file"
+            />
+            <img
+              alt="pastedImage"
+              src="public/playground_assets/pastedimage-l8y-200w.png"
+              class="search-results-page-file1"
+            />
+            <img
+              alt="pastedImage"
+              src="public/playground_assets/pastedimage-l0q-200w.png"
+              class="search-results-page-dropdown-arrow1"
+            />
+            <img
+              alt="pastedImage"
+              src="public/playground_assets/pastedimage-l8y-200w.png"
+              class="search-results-page-file2"
+            />
+            <img
+              alt="pastedImage"
+              src="public/playground_assets/pastedimage-a495-200w.png"
+              class="search-results-page-closed-folder"
+            />
+            
+          </div>
+          <div class="search-results-page-container1">
+            <div class="search-results-page-title-frame">
+           
+              <span class="search-results-page-course-school">
+                Course name + (School name)
+              </span>
+              <span class="search-results-page-exam-1">Exam 1</span>
+              <button class="search-results-page-sample-file-button button">
+                <span class="search-results-page-file-1-sample-file">
+                  <span>File 1 (sample file)</span>
+                  <span class="search-results-page-text1"></span>
+                </span>
+              </button>
+              <span class="search-results-page-file-2">
+                <span>File 2</span>
+                <span></span>
+              </span>
+              <span class="search-results-page-exam-2">Exam 2</span>
+              <span class="search-results-page-file-1">
+                <span>File 1</span>
+                <span></span>
+              </span>
+              <span class="search-results-page-course-school-2">
+                Course name + (School name) 2
+              </span>
+            </div>
+            -->
+          </div>
+        </div>
+        <button class="search-results-page-new-search-button button heading" onclick="window.location.href='searchByCourse';">
+          New Search
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
