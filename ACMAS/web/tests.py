@@ -7,9 +7,9 @@ from web.models import Course
 # 3 check if file exists after upload function.
 
 
-class DBTest(TestCase):
+class Test_db(TestCase):
     def setUp(self):
-        Course.objects.create(
+        course = Course.objects.create(
             name="FOCS",
             code="2200",
             university="RPI",
@@ -17,6 +17,7 @@ class DBTest(TestCase):
             years="2022",
             test_type="Final",
         )
+        course.save()
 
     def test_verifier(self):
         course = Course.objects.get(name="FOCS")
@@ -25,3 +26,7 @@ class DBTest(TestCase):
         self.assertEqual(course.semster, "Fall")
         self.assertEqual(course.years, "2022")
         self.assertEqual(course.test_type, "Final")
+
+    def test_db_count(self):
+        all_entries = Course.objects.all()
+        self.assertEqual(all_entries.count(), 1)
