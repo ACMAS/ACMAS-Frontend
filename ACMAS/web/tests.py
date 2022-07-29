@@ -31,12 +31,14 @@ class Test_db(TestCase):
     def test_db_count(self):
         all_entries = Course.objects.all()
         self.assertEqual(all_entries.count(), 1)
-    def SearchEngineinit(self):
+    def test_SearchEngineinit(self):
          engine1 = searchFacade()
+         uni = University.objects.create(name="RPI")
+         uni.save()
          search_result = engine1.search("RPI","FOCS","All")
          search_result2 = engine1.search("a_silly_university","FOCS","All")
-         assertEqual(search_result.count(),0)
-         assertEqual(search_result2,None)
+         self.assertEqual(search_result[0].id,0)
+         self.assertEqual(search_result2,None)
 
 
 
