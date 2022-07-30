@@ -1,6 +1,7 @@
 from django.test import TestCase
 from web.models import Course
 from web.search import *
+import time
 
 # Create your tests here.
 # 1 Check for model Representation Invariant
@@ -9,7 +10,7 @@ from web.search import *
 
 
 class Test_db(TestCase):
-    def setUp(self):
+    def test_verifier(self):
         course = Course.objects.create(
             name="FOCS",
             code="2200",
@@ -19,26 +20,35 @@ class Test_db(TestCase):
             test_type="Final",
         )
         course.save()
-
-    def test_verifier(self):
-        course = Course.objects.get(name="FOCS")
-        self.assertEqual(course.code, "2200")
-        self.assertEqual(course.university, "RPI")
-        self.assertEqual(course.semster, "Fall")
-        self.assertEqual(course.years, "2022")
-        self.assertEqual(course.test_type, "Final")
+        course = Course.objects.create(
+            name="FOCS2",
+            code="2200",
+            university="RPI",
+            semster="Fall",
+            years="2022",
+            test_type="Final",
+        )
+        course.save()
+        # print(len(Course.objects.all()))
+        self.assertEqual(len(Course.objects.all()), 2)
+        course1 = Course.objects.get(name="FOCS")
+        self.assertEqual(course1.code, "2200")
+        self.assertEqual(course1.university, "RPI")
+        self.assertEqual(course1.semster, "Fall")
+        self.assertEqual(course1.years, "2022")
+        self.assertEqual(course1.test_type, "Final")
+        # time.sleep(86400)
 
     def test_db_count(self):
         all_entries = Course.objects.all()
-        self.assertEqual(all_entries.count(), 1)
+        self.assertEqual(all_entries.count(), 0)
+
     def test_SearchEngineinit(self):
-         engine1 = searchFacade()
-         uni = University.objects.create(name="RPI")
-         uni.save()
-         search_result = engine1.search("RPI","FOCS","All")
-         search_result2 = engine1.search("a_silly_university","FOCS","All")
-         self.assertEqual(search_result[0].id,0)
-         self.assertEqual(search_result2,None)
+        engine1 = searchFacade()
+        uni = University.objects.create(name="RPI")
+        uni.save()
+        with self.assertRaises(Exception):
+            engine1.search("RPI", "FOCS", "Test")
+        search_result2 = engine1.search("a_silly_university", "FOCS", "Test")
 
-
-
+        self.assertEqual(search_result2, None)
