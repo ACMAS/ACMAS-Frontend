@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Question(models.Model):
+    filename = models.TextField()
     question = models.TextField()
     Answers = models.TextField()
     Hash = models.TextField()
@@ -18,7 +19,6 @@ class University(models.Model):
 
 
 class Course(models.Model):
-    unique_id = models.TextField()
     name = models.TextField()
     code = models.CharField(max_length=20)
     university = models.TextField()
