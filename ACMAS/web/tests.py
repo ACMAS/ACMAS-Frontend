@@ -1,6 +1,6 @@
 from django.test import TestCase
 from web.models import Course
-from web.search import *
+from web.search import searchFacade, University
 
 # Create your tests here.
 # 1 Check for model Representation Invariant
