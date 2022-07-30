@@ -1,7 +1,7 @@
 import os
 import zlib
-
 from datetime import date
+
 from django.core.files.storage import FileSystemStorage
 
 from .models import Course, Question, University, UploadedFile

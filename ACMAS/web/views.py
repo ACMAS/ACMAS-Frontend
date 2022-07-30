@@ -1,7 +1,3 @@
-# from datetime import date
-import os
-import zlib
-
 from django.core.cache import cache
 from django.core.files.storage import FileSystemStorage
 from django.db.models.query import EmptyQuerySet
@@ -80,14 +76,12 @@ def searchResults(request):
         print("Assignment Type:", assignmentType)
         # Instantiate and get session key
         sessionID = request.session._get_or_create_session_key()
-        # Prevent session from client from changing until 20 minutes
         request.session.modified = True
         # If session has no facade, create one
         facade = cache.get(sessionID)
         if facade is None:
             cache.set(sessionID, searchFacade(), 1200)
             facade = cache.get(sessionID)
-        # Search with Facade
         files = facade.search(school, course, assignmentType)
         # Save facade state
         cache.set(sessionID, facade, 1200)

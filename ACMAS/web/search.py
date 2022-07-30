@@ -1,5 +1,6 @@
 from .models import Course, Question, University, UploadedFile
 
+
 # Class handles external interaction with searching
 class searchFacade:
     def __init__(self):
