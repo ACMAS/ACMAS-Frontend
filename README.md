@@ -15,6 +15,6 @@ On the internet today, there are many services that allow students to help each 
   
 ## Features  
 
-  There are many features that ACMAS will contain to make accessing content and using the database as simple and straightforward as possible. First, ACMAS will be able to support uploading problems as photos/PDFs/scanned in documents. 
-In addition to this, there will also be the ability to search for problems by a specific school and course, or by specific question, or by image, which would all allow the user to then find the backtests and back work that they are looking for and use them for their own studying. 
+  There are many features that ACMAS will contain to make accessing content and using the database as simple and straightforward as possible. First, ACMAS will be able to support uploading problems as photos/PDFs/scanned in documents.
+In addition to this, there will also be the ability to search for problems by a specific school and course, or by specific question, or by image, which would all allow the user to then find the backtests and back work that they are looking for and use them for their own studying.
 There also will be links from questions on a backtests to alternative answers to the same question from other sources.
