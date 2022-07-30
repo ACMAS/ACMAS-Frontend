@@ -1,7 +1,7 @@
 # ACMAS-Frontend
 [![Lint Code Base](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/super-linter.yml/badge.svg)](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/super-linter.yml)  [![Django CI](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/django.yml/badge.svg)](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/django.yml)
 
-The website part for the project ACMAS.
+The web site part for the project ACMAS.
 # Usage
 
 start server with command python3 manage.py runserver 0:80
@@ -9,7 +9,7 @@ start server with command python3 manage.py runserver 0:80
 # Executive Summary 
 
 
-  ACMAS, or Automatic Course Material Archiving System is a free to use database website for anyone to both upload and view documents, materials, coursework, etc. for various courses and questions from any school/institute. 
+  ACMAS, or Automatic Course Material Archiving System is a free to use database web site for anyone to both upload and view documents, materials, coursework, etc. for various courses and questions from any school/institute. 
 On the internet today, there are many services that allow students to help each other with homework from various courses all over the world. However, those services are not free to access, which can make it difficult for everyone to use. ACMAS is a free to use database available for anyone to upload, and view backtests from their specific college’s courses, which can be very helpful for test preparation. 
   
 # Features  
