@@ -1,7 +1,3 @@
-# from datetime import date
-import os
-import zlib
-
 from django.core.cache import cache
 from django.core.files.storage import FileSystemStorage
 from django.db.models.query import EmptyQuerySet
@@ -10,6 +6,7 @@ from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
 from .models import UploadedFile
 from .search import searchFacade
+from .upload import createFacade
 
 
 # ACMAS homepage
@@ -27,6 +24,20 @@ def searchByQuestion(request):
     ):  # If a question was entered, ignore file input
         # Do manual question search logic here
         print("Manual question: ", question)
+        # Instantiate and get session key
+        sessionID = request.session._get_or_create_session_key()
+        # Prevent session from client from changing until 20 minutes
+        request.session.modified = True
+        # If session has no facade, create one
+        facade = cache.get(sessionID)
+        if facade is None:
+            cache.set(sessionID, searchFacade(), 1200)
+            facade = cache.get(sessionID)
+        # Search with Facade
+        files = facade.searchQuestion(question)
+        # Save facade state
+        cache.set(sessionID, facade, 1200)
+        return render(request, "search-results.html", {"files": files, "manual": True})
     elif len(request.FILES) != 0:  # Check if a file was uploaded
         file = request.FILES["fileUpload"]  # Get the uploaded file
         fs = FileSystemStorage()
@@ -43,13 +54,17 @@ def searchByCourse(request):
     return render(request, "search-by-course.html")
 
 
+# Utilizes search by course form
 @csrf_exempt
 def searchResults(request):
-
+    # Get input
     school = request.POST.get("school")
     course = request.POST.get("course")
     assignmentType = request.POST.get("type")
+
+    # In case of no results ensure working html
     files = EmptyQuerySet
+    # Check input
     if (
         school is not None
         and course is not None
@@ -59,43 +74,61 @@ def searchResults(request):
         print("University:", school)
         print("Course:", course)
         print("Assignment Type:", assignmentType)
+        # Instantiate and get session key
         sessionID = request.session._get_or_create_session_key()
         request.session.modified = True
+        # If session has no facade, create one
         facade = cache.get(sessionID)
         if facade is None:
             cache.set(sessionID, searchFacade(), 1200)
             facade = cache.get(sessionID)
-
         files = facade.search(school, course, assignmentType)
+        # Save facade state
         cache.set(sessionID, facade, 1200)
 
+        # If the search input was valid
         if files is not None:
-            return render(request, "search-results.html", {"files": files})
+            return render(
+                request, "search-results.html", {"files": files, "manual": False}
+            )
+    # If input was invalid
     return render(request, "search-results.html")
 
 
 @csrf_exempt
 def returnQuery(request):
-
+    # Returns to previous query results
+    # Getting current session facade
     sessionID = request.session._get_or_create_session_key()
     facade = cache.get(sessionID)
 
+    # If there is no facade default to homepage
     if facade is None:
-        return render(request, "search-by-course.html")
+        return render(request, "")
+    # Else return to previous query
     return render(request, "search-results.html", {"files": facade.getQuery()})
 
 
 @csrf_protect
 def pdfReader(request):
-
     name = request.GET.get("url")
+    # If the file is a .txt load by filename
+    if name[-4:] == ".txt":
+        return render(request, "pdf-reader.html", {"directory": "../media/" + name})
+    # Else obtain object from session Facade and display file
     sessionID = request.session._get_or_create_session_key()
     facade = cache.get(sessionID)
 
-    if facade is None or facade.getQuery() is None:
+    # If session expired, or no search by course was made, or recent search does not contain file
+    if (
+        facade is None
+        or facade.getQuery() is None
+        or not facade.getQuery().filter(filename=name).exists()
+    ):
+        # Get file directly
         file = UploadedFile.objects.get(filename=name)
         return render(request, "pdf-reader.html", {"directory": file.file_dir})
-
+    # Obtain pdf from last search and display
     file = facade.getQuery().get(filename=name)
     return render(request, "pdf-reader.html", {"directory": file.file_dir})
 
@@ -119,15 +152,9 @@ def uploadOCR(request):
         and len(course) > 0
     ):  # If a school and course were entered, and there is an uploaded file
         assignmentType = request.POST.get("type")
-        print(
-            f"School: {school}\nCourse: {course}\nAssignment type: {assignmentType}\n"
-        )
-
         file = request.FILES["fileUpload"]  # Get the uploaded file
-        fs = FileSystemStorage()
-        filename = fs.save(file.name, file)  # Retrieve the filename
-        file_url = fs.url(filename)  # Retrieve the file path
-        print(f'FILE "{filename}" uploaded to "{file_url}"\n')
+        createFacade().uploadPdf(school, course, assignmentType, file)
+        print("School: ", school, "\nCourse: ", course)
     return render(request, "upload-OCR.html")
 
 
@@ -151,23 +178,5 @@ def uploadManually(request):
         and len(course) > 0
     ):  # If a school, course, question, and answer were entered
         # Do manual question upload logic
-        schoolName = school.replace(".", "").split(" ")[0]
-        courseName = course.replace(" ", "_")
-        hashString = str(zlib.crc32(bytes(question.encode("utf-8"))))
-
-        path = os.path.dirname(__file__) + "\\.." + "\\media\\"
-        fileName = schoolName + "-" + courseName + "-" + hashString + ".txt"
-        path = os.path.join(path, fileName)
-
-        f = open(path, "x")
-        f.write(f"QUESTION:\n-----------------------\n{question}\n")
-        f.write("-----------------------\n\n\nANSWER:\n")
-        f.write(f"-----------------------\n{answer}\n")
-        f.write("-----------------------")
-        f.close()
-
-        print(
-            f"School: {school}\nCourse: {course}\nManual question: {question}\nManual answer: {answer}\n"
-            f"File name: {fileName}"
-        )
+        createFacade().uploadText(school, course, question, answer)
     return render(request, "upload-manually.html")
