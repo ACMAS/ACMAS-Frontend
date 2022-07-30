@@ -45,8 +45,6 @@ class Test_db(TestCase):
         engine1 = searchFacade()
         uni = University.objects.create(name="RPI")
         uni.save()
-        with self.assertRaises(Exception):
-            engine1.search("RPI", "FOCS", "Test")
         search_result2 = engine1.search("a_silly_university", "FOCS", "Test")
 
         self.assertEqual(search_result2, None)
