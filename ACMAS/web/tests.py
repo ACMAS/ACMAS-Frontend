@@ -1,7 +1,6 @@
 from django.test import TestCase
 from web.models import Course
 from web.search import *
-import time
 
 # Create your tests here.
 # 1 Check for model Representation Invariant
@@ -37,7 +36,6 @@ class Test_db(TestCase):
         self.assertEqual(course1.semster, "Fall")
         self.assertEqual(course1.years, "2022")
         self.assertEqual(course1.test_type, "Final")
-        # time.sleep(86400)
 
     def test_db_count(self):
         all_entries = Course.objects.all()
