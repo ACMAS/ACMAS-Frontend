@@ -2,11 +2,12 @@ from django.core.cache import cache
 from django.db.models.query import EmptyQuerySet
 from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
-# from django.core.files.storage import FileSystemStorage
 
 from .models import UploadedFile
 from .search import searchFacade
 from .upload import createFacade
+
+# from django.core.files.storage import FileSystemStorage
 
 
 # ACMAS homepage
