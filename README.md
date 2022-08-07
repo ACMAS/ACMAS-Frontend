@@ -6,7 +6,7 @@ The site part for the project ACMAS.
 
 ## Usage
 
-start server with command python3 manage.py runserver 0:80
+Start server with command python3 manage.py runserver 0.0.0.0:8000
 
 ## Executive Summary
 
