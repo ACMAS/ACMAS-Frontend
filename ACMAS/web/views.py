@@ -38,14 +38,14 @@ def searchByQuestion(request):
         # Save facade state
         cache.set(sessionID, facade, 1200)
         return render(request, "search-results.html", {"files": files, "manual": True})
-    elif len(request.FILES) != 0:  # Check if a file was uploaded
-        file = request.FILES["fileUpload"]  # Get the uploaded file
-        fs = FileSystemStorage()
-        filename = fs.save(file.name, file)  # Retrieve the filename
-        file_url = fs.url(filename)  # Retrieve the file path
+    # elif len(request.FILES) != 0:  # Check if a file was uploaded
+    #     file = request.FILES["fileUpload"]  # Get the uploaded file
+    #     fs = FileSystemStorage()
+    #     filename = fs.save(file.name, file)  # Retrieve the filename
+    #     file_url = fs.url(filename)  # Retrieve the file path
 
-        # Do question file upload logic here
-        print(f'FILE "{filename}" uploaded to "{file_url}"\n')
+        # # Do question file upload logic here
+        # print(f'FILE "{filename}" uploaded to "{file_url}"\n')
     return render(request, "search-by-question.html")
 
 

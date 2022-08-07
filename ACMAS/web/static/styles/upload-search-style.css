@@ -171,12 +171,12 @@
   padding: var(--dl-space-space-twounits) 15px 15px;
 }
 
-#school-course-input {
-  align-self: center;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
+/*#school-course-input {*/
+/*  align-self: center;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*  text-align: center;*/
+/*}*/
 
 .main-form {
   margin-top: 5%;
@@ -226,21 +226,21 @@
   padding: var(--dl-space-space-halfunit);
 }
 
-.or-text {
-  color: rgb(0 0 0 / 100%);
-  width: 216px;
-  height: auto;
-  font-size: 32px;
-  align-self: auto;
-  font-style: normal;
-  text-align: center;
-  font-family: Inter, serif;
-  font-weight: 400;
-  line-height: normal;
-  font-stretch: normal;
-  margin-bottom: var(--dl-space-space-twounits);
-  text-decoration: none;
-}
+/*.or-text {*/
+/*  color: rgb(0 0 0 / 100%);*/
+/*  width: 216px;*/
+/*  height: auto;*/
+/*  font-size: 32px;*/
+/*  align-self: auto;*/
+/*  font-style: normal;*/
+/*  text-align: center;*/
+/*  font-family: Inter, serif;*/
+/*  font-weight: 400;*/
+/*  line-height: normal;*/
+/*  font-stretch: normal;*/
+/*  margin-bottom: var(--dl-space-space-twounits);*/
+/*  text-decoration: none;*/
+/*}*/
 
 .manual-entry-container {
   width: 678px;
