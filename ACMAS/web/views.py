@@ -1,8 +1,8 @@
 from django.core.cache import cache
-from django.core.files.storage import FileSystemStorage
 from django.db.models.query import EmptyQuerySet
 from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
+# from django.core.files.storage import FileSystemStorage
 
 from .models import UploadedFile
 from .search import searchFacade
@@ -44,8 +44,8 @@ def searchByQuestion(request):
     #     filename = fs.save(file.name, file)  # Retrieve the filename
     #     file_url = fs.url(filename)  # Retrieve the file path
 
-        # # Do question file upload logic here
-        # print(f'FILE "{filename}" uploaded to "{file_url}"\n')
+    # # Do question file upload logic here
+    # print(f'FILE "{filename}" uploaded to "{file_url}"\n')
     return render(request, "search-by-question.html")
 
 
