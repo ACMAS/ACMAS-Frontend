@@ -127,15 +127,15 @@
                 <input type="submit" class="upload-button button" value="Search"/>
             </div>
         </form>
-        <span class="or-text">OR</span>
-        <form id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
-            <div class="upload-button-container">
-                <input type="file" name="fileUpload" class="upload-button button">
-            </div>
-            <div class="upload-button-container">
-                <input type="submit" class="upload-button button" value="Search by upload"/>
-            </div>
-        </form>
+{#        <span class="or-text">OR</span>#}
+{#        <form id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}#}
+{#            <div class="upload-button-container">#}
+{#                <input type="file" name="fileUpload" class="upload-button button">#}
+{#            </div>#}
+{#            <div class="upload-button-container">#}
+{#                <input type="submit" class="upload-button button" value="Search by upload"/>#}
+{#            </div>#}
+{#        </form>#}
     </div>
 </div>
 </body>

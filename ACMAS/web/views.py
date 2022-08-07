@@ -1,5 +1,4 @@
 from django.core.cache import cache
-from django.core.files.storage import FileSystemStorage
 from django.db.models.query import EmptyQuerySet
 from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
@@ -7,6 +6,8 @@ from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from .models import UploadedFile
 from .search import searchFacade
 from .upload import createFacade
+
+# from django.core.files.storage import FileSystemStorage
 
 
 # ACMAS homepage
@@ -38,14 +39,14 @@ def searchByQuestion(request):
         # Save facade state
         cache.set(sessionID, facade, 1200)
         return render(request, "search-results.html", {"files": files, "manual": True})
-    elif len(request.FILES) != 0:  # Check if a file was uploaded
-        file = request.FILES["fileUpload"]  # Get the uploaded file
-        fs = FileSystemStorage()
-        filename = fs.save(file.name, file)  # Retrieve the filename
-        file_url = fs.url(filename)  # Retrieve the file path
+    # elif len(request.FILES) != 0:  # Check if a file was uploaded
+    #     file = request.FILES["fileUpload"]  # Get the uploaded file
+    #     fs = FileSystemStorage()
+    #     filename = fs.save(file.name, file)  # Retrieve the filename
+    #     file_url = fs.url(filename)  # Retrieve the file path
 
-        # Do question file upload logic here
-        print(f'FILE "{filename}" uploaded to "{file_url}"\n')
+    # # Do question file upload logic here
+    # print(f'FILE "{filename}" uploaded to "{file_url}"\n')
     return render(request, "search-by-question.html")
 
 
