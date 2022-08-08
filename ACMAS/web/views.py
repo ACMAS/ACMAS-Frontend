@@ -105,9 +105,13 @@ def returnQuery(request):
 
     # If there is no facade default to homepage
     if facade is None:
-        return render(request, "")
+        return redirect("/")
     # Else return to previous query
-    return render(request, "search-results.html", {"files": facade.getQuery()})
+    search_type = [False]
+    resultsList = facade.getQuery(search_type)
+    return render(
+        request, "search-results.html", {"files": resultsList, "manual": search_type[0]}
+    )
 
 
 @csrf_protect

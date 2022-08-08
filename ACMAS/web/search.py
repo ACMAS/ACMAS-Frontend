@@ -10,9 +10,14 @@ class searchFacade:
         self.questionFiles = None
         self.recentSearch = None
 
-    def getQuery(self):
+    def getQuery(self, search_type=None):
         # Returns:  Last QuerySet results from any search
         #           If there have been no searches, return None
+        if search_type is not None:
+            if self.recentSearch == self.courseFiles:
+                search_type[0] = False
+            elif self.recentSearch == self.questionFiles:
+                search_type[0] = True
         return self.recentSearch
 
     def search(self, uni, course, fType):
@@ -33,6 +38,8 @@ class searchFacade:
             and self.courseSearch.fType == fType
         ):
             print("Returning cached files")
+            # Set recent query
+            self.recentSearch = self.courseFiles
             return self.courseFiles
         # If no university is designated Error (delete this?)
         if uni is None:
@@ -55,6 +62,8 @@ class searchFacade:
         # Else if previous search is same as current, return previous result
         elif self.questionSearch.question == question:
             print("Returning cached question")
+            # Set recent query
+            self.recentSearch = self.questionFiles
             return self.questionFiles
         # If no question designated Error (delete?)
         if question is None:
