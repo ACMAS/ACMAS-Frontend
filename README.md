@@ -5,7 +5,7 @@
 The site part for the project ACMAS.
 
 ## Usage
-
+Install all required dependencies using pip3 -r requirements.txt
 Start server with command python3 manage.py runserver 0.0.0.0:8000
 
 ## Executive Summary
