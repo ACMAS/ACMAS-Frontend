@@ -115,7 +115,17 @@ class questionEditHandler:
             Answers=answer,
             Hash=hashString,
         )
-        db_question.save()
+        db_question.save();
+
+         # Adding file to database
+        db_file = UploadedFile(
+            filename=fileName,
+            file_dir="/media/"+fileName,
+            course=Course.objects.get(name=course),
+            date_uploaded=date.today(),
+            flag=(),
+        )
+        db_file.save()
 
         print(
             f"School: {uni}\nCourse: {course}\nManual question: {question}\nManual answer: {answer}\n"
