@@ -58,7 +58,10 @@ def parse_ocr_results(ocr_output_files):
 
 
 def ocr_driver(pdf_name):
-    images = png_conversion(pdf_name)
+    if ending_type(pdf_name) == 'pdf':
+        images = png_conversion(pdf_name)
+    else:
+        images = pdf_name
     ocr_output = run_ocr(images)
     return ocr_output
 
