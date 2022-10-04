@@ -3,4 +3,7 @@ __pycache__/
 node_modules/
 ACMAS/package-lock.json
 ACMAS/package.json
+ACMAS/web/ocr_misc/*
+ACMAS/.DS_Store
+.DS_Store
 media/
