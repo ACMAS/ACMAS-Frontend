@@ -3,7 +3,7 @@
 [![Lint Code Base](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/super-linter.yml/badge.svg)](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/super-linter.yml)  [![Django CI](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/django.yml/badge.svg)](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/django.yml)
 
 ## Usage
-Install all required dependencies using `pip3 -r requirements.txt` or `pip -r requirements.txt`
+Install all required dependencies using `pip3 install -r requirements.txt` or `pip install -r requirements.txt`
 Start server with command `python3 manage.py runserver 0.0.0.0:8000` or `python manage.py runserver 0.0.0.0:8000`
 
 ## Developing with VSCode
