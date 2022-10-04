@@ -2,6 +2,9 @@ from multiprocessing import reduction
 import os,sys
 from pdf2image import convert_from_path
 
+''''This file needs to be cleaned up. I think there are prob stlistic issues and suboptimal design.
+ I tried to make it modular but I may not have done that properly.'''
+ 
 #Gets the ending types of files
 def endingtype(string):
     index = string.rfind('.')
@@ -21,7 +24,7 @@ def png_conversion(pdf_name):
     images_from_path = convert_from_path(pdf_name)
     for i in range(len(images_from_path)):
         # Save pages as images in the pdf
-        images_from_path[i].save('ocr_images/'+'page'+ str(i) +'.jpg', 'JPEG')
+        images_from_path[i].save('ocr_misc/ocr_images/'+'page'+ str(i) +'.jpg', 'JPEG')
         image_names.append('ocr_images/'+'page'+str(i)+'.jpg')
     return image_names
 
@@ -35,9 +38,9 @@ def run_ocr(image_names):
         print("RUNNING OCR FOR IMAGE {} OF {} NAMED {}".format(i,len(image_names), image_names[i]))
         #ocr_cmd = "tesseract {}  --l eng".format(image_names[i])
        
-        ocr_cmd = "tesseract {} {}".format(image_names[i],'ocr_results/page'+str(i))
+        ocr_cmd = "tesseract {} {}".format(image_names[i],'ocr_misc/ocr_results/page'+str(i))
         os.system(ocr_cmd)
-        ocr_output_files.append('ocr_results/page'+str(i))
+        ocr_output_files.append('ocr_misc/ocr_results/page'+str(i))
 
     return ocr_output_files
 
