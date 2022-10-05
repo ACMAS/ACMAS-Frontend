@@ -89,7 +89,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     - name: Start containers
-      run: docker-compose -f "docker-compose.prod.yml" up -d --build
+      run: docker-compose -f "ACMAS/docker-compose.prod.yml" up -d --build
 
     - name: Run Tests
       run: |
@@ -99,4 +99,4 @@ jobs:
 
     - name: Stop containers
       if: always()
-      run: docker-compose -f "docker-compose.prod.yml" down -v
+      run: docker-compose -f "ACMAS/docker-compose.prod.yml" down -v
