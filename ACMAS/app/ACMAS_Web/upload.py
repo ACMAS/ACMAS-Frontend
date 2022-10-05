@@ -3,7 +3,8 @@ from datetime import date
 
 from django.core.files.base import ContentFile
 from django.core.files.storage import FileSystemStorage
-from .models import *
+
+from .models import Course, Question, University, UploadedFile
 
 
 # Facade for uploading text questions/answers or a file
@@ -93,10 +94,12 @@ class questionEditHandler:
 
         # Creating file in filesystem
         fileName = schoolName + "-" + courseName + "-" + hashString + ".txt"
-        fileText = (f"QUESTION:\n-----------------------\n"
-                    f"{question}\n-----------------------\n\n\nANSWER:"
-                    f"\n-----------------------\n{answer}\n"
-                    f"-----------------------")
+        fileText = (
+            f"QUESTION:\n-----------------------\n"
+            f"{question}\n-----------------------\n\n\nANSWER:"
+            f"\n-----------------------\n{answer}\n"
+            f"-----------------------"
+        )
         fs = FileSystemStorage()
         # Returns a filename based on the name parameter that’s free and available for new content to be written to on
         # the target storage system
@@ -146,7 +149,6 @@ class coursesEditHandler:
             new_uni = University(name=uni)
             new_uni.save()
             print("Created university:", uni)
-
         # If the course does not exist, create it
         # if not Course.objects.filter(Name=course).exists():
         if not Course.objects.filter(name=course).exists():

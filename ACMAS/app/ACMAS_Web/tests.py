@@ -1,4 +1,5 @@
 from django.test import TestCase
+
 from .models import Course
 from .search import University, searchFacade
 

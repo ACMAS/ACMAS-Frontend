@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class AcmasWebConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'ACMAS_Web'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "ACMAS_Web"
