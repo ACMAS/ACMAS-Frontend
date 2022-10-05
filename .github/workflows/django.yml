@@ -27,6 +27,6 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        python ACMAS/app/manage.py test web --keepdb
+        python ACMAS/app/manage.py test ACMAS_Web --keepdb
       env:
         DJANGO_ALLOWED_HOSTS: ${{ secrets.DJANGO_ALLOWED_HOSTS }}
