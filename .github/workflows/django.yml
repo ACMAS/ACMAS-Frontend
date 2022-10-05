@@ -63,4 +63,4 @@ jobs:
         run: |
           python ACMAS/app/manage.py test ACMAS_Web --keepdb
         env:
-          DJANGO_ALLOWED_HOSTS: ${{ secrets.DJANGO_ALLOWED_HOSTS }}
+          DJANGO_ALLOWED_HOSTS: *
