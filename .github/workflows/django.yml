@@ -28,3 +28,5 @@ jobs:
     - name: Run Tests
       run: |
         python ACMAS/app/manage.py test web --keepdb
+      env:
+        DJANGO_ALLOWED_HOSTS: ${{ secrets.DJANGO_ALLOWED_HOSTS }}
