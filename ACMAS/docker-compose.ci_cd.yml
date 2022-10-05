@@ -14,14 +14,14 @@ services:
     expose:
       - 8000  # Port 8000 is only exposed internally
     environment:
-      DATABASE: ${{ secrets.DATABASE }}
-      DJANGO_ALLOWED_HOSTS: ${{ secrets.DJANGO_ALLOWED_HOSTS }}
-      SQL_DATABASE: ${{ secrets.SQL_DATABASE }}
-      SQL_ENGINE: ${{ secrets.SQL_ENGINE }}
-      SQL_HOST: ${{ secrets.SQL_HOST }}
-      SQL_PASSWORD: ${{ secrets.SQL_PASSWORD }}
-      SQL_PORT: ${{ secrets.SQL_PORT }}
-      SQL_USER: ${{ secrets.SQL_USER }}
+      DATABASE: postgres
+      DJANGO_ALLOWED_HOSTS: localhost 127.0.0.1 [::1]
+      SQL_DATABASE: acmas_db
+      SQL_ENGINE: django.db.backends.postgresql
+      SQL_HOST: db
+      SQL_PASSWORD: acmas_dev
+      SQL_PORT: 5432
+      SQL_USER: acmas_dev
     depends_on:
       - db
   db:
@@ -29,9 +29,9 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+      POSTGRES_DB: acmas_db
+      POSTGRES_PASSWORD: acmas_dev
+      POSTGRES_USER: acmas_dev
     ports:
       - "5432:5432"
   nginx:
