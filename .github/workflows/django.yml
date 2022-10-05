@@ -27,4 +27,4 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        python ACMAS/manage.py test web --keepdb
+        python ACMAS/app/manage.py test web --keepdb
