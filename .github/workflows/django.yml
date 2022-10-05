@@ -1,3 +1,71 @@
+#name: Django CI
+#
+#on:
+#  push:
+#    branches: [ '*' ]
+#  pull_request:
+#    branches: [ '*' ]
+#
+#jobs:
+#  build:
+#
+#    runs-on: ubuntu-latest
+#    strategy:
+#      max-parallel: 4
+#      matrix:
+#        python-version: [3.9]
+#
+#    services:
+#      postgres:
+#        image: postgres:latest
+#        env:
+#          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+#          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+#          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+#        ports:
+#          - 5432:5432
+#        # Set health checks to wait until postgres has started
+#        options:
+#          --health-cmd pg_isready
+#          --health-interval 10s
+#          --health-timeout 5s
+#          --health-retries 5
+#
+#    steps:
+#      - uses: actions/checkout@v3
+#      - name: Set up Python ${{ matrix.python-version }}
+#        uses: actions/setup-python@v3
+#        with:
+#          python-version: ${{ matrix.python-version }}
+#
+#      - name: Install Dependencies
+#        run: |
+#          python -m pip install --upgrade pip
+#          pip install -r requirements.txt
+#
+#      - name: Setup test database
+#        env:
+#          SQL_ENGINE: ${{ secrets.SQL_ENGINE }}
+#          SQL_DATABASE: ${{ secrets.SQL_DATABASE }}
+#          SQL_USER: ${{ secrets.SQL_USER }}
+#          SQL_PASSWORD: ${{ secrets.SQL_PASSWORD }}
+#          SQL_HOST: ${{ secrets.SQL_HOST }}
+#          SQL_PORT: ${{ secrets.SQL_PORT }}
+#          DATABASE: ${{ secrets.DATABASE }}
+#          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+#          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+#          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+#        run: |
+#          python ACMAS/app/manage.py makemigrations
+#          python ACMAS/app/manage.py migrate
+#
+#      - name: Run Tests
+#        run: |
+#          python ACMAS/app/manage.py test ACMAS_Web --keepdb
+#        env:
+#          DJANGO_ALLOWED_HOSTS: ${{ secrets.DJANGO_ALLOWED_HOSTS }}
+
+
 name: Django CI
 
 on:
@@ -7,60 +75,28 @@ on:
     branches: [ '*' ]
 
 jobs:
-  build:
-
+  docker:
+    timeout-minutes: 10
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 4
-      matrix:
-        python-version: [3.9]
-
-    services:
-      postgres:
-        image: postgres:latest
-        env:
-          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-        ports:
-          - 5432:5432
-        # Set health checks to wait until postgres has started
-        options:
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v3
-        with:
-          python-version: ${{ matrix.python-version }}
+    - name: Checkout
+      uses: actions/checkout@v3
 
-      - name: Install Dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
 
-      - name: Setup test database
-        env:
-          SQL_ENGINE: ${{ secrets.SQL_ENGINE }}
-          SQL_DATABASE: ${{ secrets.SQL_DATABASE }}
-          SQL_USER: ${{ secrets.SQL_USER }}
-          SQL_PASSWORD: ${{ secrets.SQL_PASSWORD }}
-          SQL_HOST: ${{ secrets.SQL_HOST }}
-          SQL_PORT: ${{ secrets.SQL_PORT }}
-          DATABASE: ${{ secrets.DATABASE }}
-          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-        run: |
-          python ACMAS/app/manage.py makemigrations
-          python ACMAS/app/manage.py migrate
+    - name: Start containers
+      run: docker-compose -f "docker-compose.prod.yml" up -d --build
 
-      - name: Run Tests
-        run: |
-          python ACMAS/app/manage.py test ACMAS_Web --keepdb
-        env:
-          DJANGO_ALLOWED_HOSTS: *
+    - name: Run Tests
+      run: |
+        python ACMAS/app/manage.py test ACMAS_Web --keepdb
+      env:
+        DJANGO_ALLOWED_HOSTS: ${{ secrets.DJANGO_ALLOWED_HOSTS }}
+
+    - name: Stop containers
+      if: always()
+      run: docker-compose -f "docker-compose.prod.yml" down -v
