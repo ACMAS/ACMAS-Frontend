@@ -1,0 +1,50 @@
+# Docker compose file for Django CI/CD GitHub Action
+
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: ./app
+      dockerfile: Dockerfile.prod
+    command: gunicorn ACMAS.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+      - media_volume:/home/app/web/mediafiles
+    expose:
+      - 8000  # Port 8000 is only exposed internally
+    environment:
+      DATABASE: ${{ secrets.DATABASE }}
+      DJANGO_ALLOWED_HOSTS: ${{ secrets.DJANGO_ALLOWED_HOSTS }}
+      SQL_DATABASE: ${{ secrets.SQL_DATABASE }}
+      SQL_ENGINE: ${{ secrets.SQL_ENGINE }}
+      SQL_HOST: ${{ secrets.SQL_HOST }}
+      SQL_PASSWORD: ${{ secrets.SQL_PASSWORD }}
+      SQL_PORT: ${{ secrets.SQL_PORT }}
+      SQL_USER: ${{ secrets.SQL_USER }}
+    depends_on:
+      - db
+  db:
+    image: postgres:13.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+    ports:
+      - "5432:5432"
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+      - media_volume:/home/app/web/mediafiles
+    ports:
+      - "1337:80"
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
