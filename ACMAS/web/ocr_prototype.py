@@ -68,5 +68,6 @@ def ocr_driver(pdf_name):
 
 if __name__ == '__main__':
     #This is just an example pdf to test the ocr. You can swap it with any pdf of your choosing
-    pdf = 'ocr_misc/ocr_input/Foam_Hw4.pdf'
+    pdf = 'ocr_misc/ocr_input/test.png'
     result = ocr_driver(pdf)
+    print(result)
