@@ -2,6 +2,7 @@
 
 <html lang="en">
 <head>
+    <title>Navbar</title>
     <link
             data-tag="font"
             href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
@@ -35,7 +36,7 @@
             aria-expanded="false"
             aria-label="Toggle navigation"
         >
-            <i class="fas fa-bars"></i>
+        <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbar-drop">
             <a class="navbar-brand" href="#">
@@ -45,7 +46,6 @@
                 <li class="nav-item {% if request.path == home_url %} active {% endif %}">
                     <a class="nav-link" aria-current="page" href="/static/index.html">Home</a>
                 </li>
-                <li> <a><a></li>
                 <li class="nav-item dropdown {% if request.path == search_url or request.path == search_url2 or request.path == search_url3 %} active {% endif %}" >
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Search
