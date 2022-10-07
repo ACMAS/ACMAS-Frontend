@@ -91,9 +91,12 @@
     <link href="../static/styles/upload-search-style.css" rel="stylesheet"/>
 </head>
 <body>
-<div>
+    {% extends 'navbar.html' %}
+
     <link href="../static/styles/commons.css" rel="stylesheet"/>
     <link href="../static/styles/upload-search-style.css" rel="stylesheet"/>
+
+    {% block content %}
     <div class="content-container">
         <div class="logo-container">
             <a href="{% url 'index' %}">
@@ -165,6 +168,6 @@
             </form>
         </div>
     </div>
-</div>
+    {% endblock %}
 </body>
 </html>
