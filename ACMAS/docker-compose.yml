@@ -1,3 +1,4 @@
+---
 version: '3.8'
 
 services:
@@ -15,7 +16,8 @@ services:
   db:
     image: postgres:13.0-alpine
     volumes:
-      - postgres_data:/var/lib/postgresql/data/  # To persist the data beyond the life of the container
+      # To persist the data beyond the life of the container
+      - postgres_data:/var/lib/postgresql/data/
     environment:  # Defines name for default db, User/PW
       - POSTGRES_USER=hello_acmas
       - POSTGRES_PASSWORD=hello_acmas

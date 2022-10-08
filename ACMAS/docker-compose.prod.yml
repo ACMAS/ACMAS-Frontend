@@ -1,5 +1,5 @@
 # Docker compose file for PRODUCTION deployment
-
+---
 version: '3.8'
 
 services:
