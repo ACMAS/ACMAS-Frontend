@@ -1,10 +1,10 @@
 # Deployment instructions for ACMAS @ RCOS v2 (Django, Docker, Postgres, Gunicorn, Nginx)
 
 ---
-_Note: [Docker](https://docs.docker.com/get-docker/) is a pre-requisite installation to run ACMAS in a development or 
-production environment.
-It is __highly__ recommended to use [Docker Desktop](https://www.docker.com/products/docker-desktop/) instead of 
-Docker CLI. If you do not have Docker installed, please do so before continuing to the remainder of the instructions._
+_Note: [Docker](https://docs.docker.com/get-docker/) is a pre-requisite installation to run ACMAS in a development or
+ production environment.
+It is __highly__ recommended to use [Docker Desktop](https://www.docker.com/products/docker-desktop/) instead of
+ Docker CLI. If you do not have Docker installed, please do so before continuing to the remainder of the instructions._
 
 ### Using the Docker containers
 Each time you make changes to the code you will need to turn off the Docker container and then turn it back on. 
