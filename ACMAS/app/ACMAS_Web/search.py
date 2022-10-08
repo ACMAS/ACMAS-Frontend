@@ -92,8 +92,7 @@ class courseSearchHandler:
         # university = University.objects.filter(Name=uni)
         university = University.objects.filter(name=uni)
         if university.exists():
-            # return Course.objects.filter(University=(university.get(Name=uni)))
-            return Course.objects.filter(university=(university.get(name=uni)))
+            return Course.objects.filter(University=(university.get(Name=uni)))
         return None
 
     def getFiles(self, uni, course, fType):
@@ -119,10 +118,8 @@ class courseSearchHandler:
         # If course is specified
         if course is not None:
             # If course is in University, return file QuerySet, otherwise return None
-            # if courses.filter(Name=course).exists():
-            #     return self.fileSearch.getFiles(courses.get(Name=course), fType)
-            if courses.filter(name=course).exists():
-                return self.fileSearch.getFiles(courses.get(name=course), fType)
+            if courses.filter(Name=course).exists():
+                return self.fileSearch.getFiles(courses.get(Name=course), fType)
             else:
                 return None
         # If course is not specified, and the University has courses, return all files of University
@@ -144,8 +141,7 @@ class questionSearchHandler:
         Parameters: String question - string containing the question
         Returns:    QuerySet of Question
         """
-        # return Question.objects.filter(Question=question)
-        return Question.objects.filter(question=question)
+        return Question.objects.filter(Question=question)
 
 
 class fileSearchHandler:
@@ -156,16 +152,13 @@ class fileSearchHandler:
         Returns:    QuerySet of Question
         """
         if fType == "All":
-            # return UploadedFile.objects.filter(Course=course)
-            return UploadedFile.objects.filter(course=course)
+            return UploadedFile.objects.filter(Course=course)
         else:
-            # return UploadedFile.objects.filter(Course=course, Flag=fType)
-            return UploadedFile.objects.filter(course=course, flag=fType)
+            return UploadedFile.objects.filter(Course=course, Flag=fType)
 
     def getPath(self, name):
         """
         Parameters: String name - name of file to get path of
         Returns:    String of file directory of file
         """
-        # return UploadedFile.objects.get(Name=name).file_dir
-        return UploadedFile.objects.get(name=name).file_dir
+        return UploadedFile.objects.get(Name=name).file_dir

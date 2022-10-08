@@ -12,31 +12,30 @@ from .search import University, searchFacade
 class Test_db(TestCase):
     def test_verifier(self):
         course = Course.objects.create(
-            name="FOCS",
-            code="2200",
-            university="RPI",
-            semster="Fall",
-            years="2022",
-            test_type="Final",
+            Name="FOCS",
+            Course_Code="2200",
+            University="RPI",
+            Semester="Fall",
+            Years="2022",
+            Test_Type="Final",
         )
         course.save()
         course = Course.objects.create(
-            name="FOCS2",
-            code="2200",
-            university="RPI",
-            semster="Fall",
-            years="2022",
-            test_type="Final",
+            Name="FOCS2",
+            Course_Code="2200",
+            University="RPI",
+            Semester="Fall",
+            Years="2022",
+            Test_Type="Final",
         )
         course.save()
-        # print(len(Course.objects.all()))
         self.assertEqual(len(Course.objects.all()), 2)
-        course1 = Course.objects.get(name="FOCS")
-        self.assertEqual(course1.code, "2200")
-        self.assertEqual(course1.university, "RPI")
-        self.assertEqual(course1.semster, "Fall")
-        self.assertEqual(course1.years, "2022")
-        self.assertEqual(course1.test_type, "Final")
+        course1 = Course.objects.get(Name="FOCS")
+        self.assertEqual(course1.Course_Code, "2200")
+        self.assertEqual(course1.University, "RPI")
+        self.assertEqual(course1.Semester, "Fall")
+        self.assertEqual(course1.Years, "2022")
+        self.assertEqual(course1.Test_Type, "Final")
 
     def test_db_count(self):
         all_entries = Course.objects.all()
@@ -44,7 +43,7 @@ class Test_db(TestCase):
 
     def test_SearchEngineinit(self):
         engine1 = searchFacade()
-        uni = University.objects.create(name="RPI")
+        uni = University.objects.create(Name="RPI")
         uni.save()
         search_result2 = engine1.search("a_silly_university", "FOCS", "Test")
 
