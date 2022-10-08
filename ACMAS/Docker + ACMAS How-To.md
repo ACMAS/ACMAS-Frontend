@@ -6,14 +6,15 @@ _Note: [Docker](https://docs.docker.com/get-docker/) is a pre-requisite installa
 It is __highly__ recommended to use [Docker Desktop](https://www.docker.com/products/docker-desktop/) instead of
  Docker CLI. If you do not have Docker installed, please do so before continuing to the remainder of the instructions._
 
+## Setup
 ### Using the Docker containers
-Each time you make changes to the code you will need to turn off the Docker container and then turn it back on. 
-Make sure to turn off the container when you are done working.
+Each time you make changes to the code you will need to turn off the Docker container and then turn it back on.
+ Make sure to turn off the container when you are done working.
 ### Start Docker
 In order to run Docker applications you must open __Docker Desktop__ or start the Docker service on your device.
 ### Navigate to "/ACMAS-Frontend/ACMAS"
-Open the repository directory `ACMAS-Frontend` and navigate to the `ACMAS` directory within. Open this `ACMAS` 
-directory in the command-line or terminal.
+Open the repository directory `ACMAS-Frontend` and navigate to the `ACMAS` directory within. Open this `ACMAS`
+ directory in the command-line or terminal.
 
 ---
 ## Production server
@@ -62,4 +63,3 @@ ___After turning on the Docker container follow these steps:___
 3) Discuss the issue with other ACMAS sub-teams
 4) Talk to the project co-leads Jacob @jaw12346 or Susan @susanh
 5) __Open an issue!__
-    
