@@ -29,7 +29,6 @@ class Test_db(TestCase):
             test_type="Final",
         )
         course.save()
-        # print(len(Course.objects.all()))
         self.assertEqual(len(Course.objects.all()), 2)
         course1 = Course.objects.get(name="FOCS")
         self.assertEqual(course1.code, "2200")

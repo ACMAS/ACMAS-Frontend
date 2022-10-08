@@ -60,16 +60,11 @@ class fileEditHandler:
 
         # Adding file to database
         db_file = UploadedFile(
-            # File_Name=savedFile,
-            # File_Dir=file_url,
-            # Course=Course.objects.get(Name=course),
-            # Date_Uploaded=date.today(),
-            # Flag=(fType),
             filename=savedFile,
             file_dir=file_url,
             course=Course.objects.get(name=course),
             date_uploaded=date.today(),
-            flag=(fType),
+            flag=fType,
         )
         db_file.save()
 
@@ -109,8 +104,6 @@ class questionEditHandler:
 
         # Insert entry to the database
         db_question = Question(
-            # File_Name=djangoFileName,
-            # Question=question,
             filename=djangoFileName,
             question=question,
             Answers=answer,
@@ -143,18 +136,13 @@ class coursesEditHandler:
                     String course       - string of course/class
         """
         # If the University does not exist, create it
-        # if not University.objects.filter(Name=uni).exists():
-        #     new_uni = University(Name=uni)
         if not University.objects.filter(name=uni).exists():
             new_uni = University(name=uni)
             new_uni.save()
             print("Created university:", uni)
         # If the course does not exist, create it
-        # if not Course.objects.filter(Name=course).exists():
         if not Course.objects.filter(name=course).exists():
             new_course = Course(
-                # Name=course,
-                # University=University.objects.get(Name=uni),
                 name=course,
                 university=University.objects.get(name=uni),
             )

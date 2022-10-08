@@ -110,15 +110,12 @@ def pdfReader(request):
     if (
         facade is None
         or facade.getQuery() is None
-        # or not facade.getQuery().filter(File_Name=name).exists()
         or not facade.getQuery().filter(filename=name).exists()
     ):
         # Get file directly
-        # file = UploadedFile.objects.get(File_Name=name)
         file = UploadedFile.objects.get(filename=name)
         return render(request, "pdf-reader.html", {"directory": file.file_dir})
     # Obtain pdf from last search and display
-    # file = facade.getQuery().get(File_Name=name)
     file = facade.getQuery().get(filename=name)
     return render(request, "pdf-reader.html", {"directory": file.file_dir})
 
