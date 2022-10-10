@@ -98,10 +98,12 @@ def returnQuery(request):
 
 def pdfReader(request):
     name = request.GET.get("url")
-    # If the file is a .txt load by filename
-    if name[-4:] == ".txt":
+    if "." in name:
+        file_extension = name.rsplit(".")[1]
+    else:
+        file_extension = ""
+    if file_extension == "txt":  # If the file is a .txt load by filename
         return render(request, "pdf-reader.html", {"directory": "../media/" + name})
-
     # Else obtain object from session Facade and display file
     sessionID = request.session._get_or_create_session_key()
     facade = cache.get(sessionID)
