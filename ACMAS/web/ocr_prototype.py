@@ -39,24 +39,6 @@ def run_ocr(image_names):
 
     return ocr_results
 
-
-def parse_ocr(file_name):
-    ocr_results_data = open(file_name, 'r')
-    parsed_data = ocr_results_data.read().strip().replace('\n', ' ').split('.')
-
-    return parsed_data
-
-
-def parse_ocr_results(ocr_output_files):
-    parsed_questions = []
-    for i in range(0, len(ocr_output_files)):
-        question = parse_ocr(ocr_output_files[i] + '.txt')
-        for parsed_question in question:
-            parsed_questions.append(parsed_question.strip())
-
-    return parsed_questions
-
-
 def ocr_driver(pdf_name):
     if ending_type(pdf_name) == 'pdf':
         images = png_conversion(pdf_name)
@@ -64,7 +46,6 @@ def ocr_driver(pdf_name):
         images = [pdf_name]
     ocr_output = run_ocr(images)
     return ocr_output
-
 
 if __name__ == '__main__':
     #This is just an example pdf to test the ocr. You can swap it with any pdf of your choosing
