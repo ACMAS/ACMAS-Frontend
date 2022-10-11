@@ -92,14 +92,57 @@
             href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
             rel="stylesheet"
     />
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
     <link href="../static/styles/commons.css" rel="stylesheet"/>
     <link href="../static/styles/home-style.css" rel="stylesheet"/>
 </head>
 <body>
-<div>
+    <link rel="stylesheet" href=" ../static/css/bootstrap.min.css">
     <link href="../static/styles/commons.css" rel="stylesheet"/>
     <link href="../static/styles/home-style.css" rel="stylesheet"/>
 
+        <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top lined">
+        <div class="container-fluid">
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-mdb-toggle="collapse"
+            data-mdb-target="#navbar-drop"
+            aria-controls="navbar-drop"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-drop">
+            <a class="navbar-brand" href="#">
+                <img src="../static/img/star.svg" width="40" height="40" alt="">
+            </a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
+                <li class="nav-item active">
+                    <a class="nav-link" aria-current="page" href="">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbar-drop-menu-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Search
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbar-drop-menu-link">
+                        <a class="dropdown-item" href="/searchByQuestion">by Question</a>
+                        <a class="dropdown-item" href="/searchByCourse">by Course</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/upload-options">Upload</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+        
     <div class="home-container">
         <div class="home-logo-title">
             <a href="/">
