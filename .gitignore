@@ -4,3 +4,13 @@ node_modules/
 ACMAS/package-lock.json
 ACMAS/package.json
 media/
+ACMAS/elasticsearch-8.4.3/bin
+ACMAS/elasticsearch-8.4.3/config
+ACMAS/elasticsearch-8.4.3/jdk.app
+ACMAS/elasticsearch-8.4.3/lib
+ACMAS/elasticsearch-8.4.3/logs
+ACMAS/elasticsearch-8.4.3/modules
+ACMAS/elasticsearch-8.4.3/plugins
+ACMAS/elasticsearch-8.4.3/LICENSE.txt
+ACMAS/elasticsearch-8.4.3/NOTICE.txt
+ACMAS/elasticsearch-8.4.3/README.asciidoc
