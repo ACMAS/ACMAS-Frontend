@@ -3,6 +3,8 @@ create table "ACMAS_Web_university"
     id bigserial
     primary key,
     name varchar(50) not null
+     -- TODO: Make this not null after making all items valid
+    uni_info_id bigserial
 );
 
 alter table "ACMAS_Web_university" owner to hello_acmas;
@@ -10,13 +12,17 @@ alter table "ACMAS_Web_university" owner to hello_acmas;
 create table "ACMAS_Web_course"
 (
     id bigserial
+    -- TODO: Make this not null after making all items valid
+    uni_info_id bigserial,
     primary key,
     name text not null,
     code varchar(20) not null,
     university text not null,
     semster varchar(30) not null,
     years text not null,
-    test_type varchar(20) not null
+    test_type varchar(20) not null,
+    -- TODO: Make this not null after making all items valid
+    question_ids bigserial[]
 );
 
 alter table "ACMAS_Web_course" owner to hello_acmas;

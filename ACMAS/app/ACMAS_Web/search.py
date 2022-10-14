@@ -1,5 +1,6 @@
 from .models import Course, Question, University, UploadedFile
-
+from ..ACMAS.settings import ELASTIC_ADDRESS, ELASTIC_PASSWORD, ELASTIC_USER
+from elasticsearch import Elasticsearch
 
 # Class handles external interaction with searching
 class searchFacade:
@@ -10,6 +11,11 @@ class searchFacade:
         self.questionFiles = None
         self.recentSearch = None
 
+    # TODO: Wait on input from User Interfaces team before this
+    # TODO: Get Universities
+    # TODO: Get Departments
+    # TODO: Get Courses
+    # TODO: Get Uploaded Files
     def getQuery(self, search_type=None):
         # Returns:  Last QuerySet results from any search
         #           If there have been no searches, return None
@@ -51,6 +57,7 @@ class searchFacade:
 
         return self.courseFiles
 
+    # TODO: modify searchQuestion to use Elastic Search
     def searchQuestion(self, question):
         """
         Parameters: String question - string containing the question
@@ -134,13 +141,28 @@ class courseSearchHandler:
 class questionSearchHandler:
     def __init__(self, question):
         self.question = question
+        self.es = Elasticsearch(
+            hosts=[ELASTIC_ADDRESS],
+            basic_auth=[ELASTIC_USER, ELASTIC_PASSWORD],
+            verify_certs=False
+        )
+        self.question_index_name = "question-index"
 
+    def addQuestionsToIndex(self, question_ids):
+        for question_id in question_ids:
+            question_object = Question.objects.get(pk=question_id)
+            self.es.index(index=self.question_index_name, id=question_id, document=question_object)
+            
     def searchQuestion(self, question):
         """
         Parameters: String question - string containing the question
         Returns:    QuerySet of Question
         """
-        return Question.objects.filter(question=question)
+        self.es.indices.refresh(index=self.question_index_name)
+        return self.es.search(
+            index=self.question_index_name,
+            query={"match_all": {}}
+        )
 
 
 class fileSearchHandler:

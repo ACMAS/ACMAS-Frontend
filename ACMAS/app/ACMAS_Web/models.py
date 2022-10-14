@@ -1,5 +1,5 @@
+from django.contrib.postgres.fields import ArrayField
 from django.db import models
-
 
 class Question(models.Model):
     filename = models.TextField()
@@ -13,6 +13,7 @@ class Question(models.Model):
 
 class University(models.Model):
     name = models.CharField(max_length=50)
+    uni_info_id = models.BigIntegerField()
 
     def __str__(self):
         return self.name
@@ -25,6 +26,7 @@ class Course(models.Model):
     semster = models.CharField(max_length=30)
     years = models.TextField()
     test_type = models.CharField(max_length=20)
+    question_ids = ArrayField(models.BigIntegerField())
 
     def __str__(self):
         return self.name
