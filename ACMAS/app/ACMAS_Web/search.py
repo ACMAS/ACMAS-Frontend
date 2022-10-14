@@ -159,9 +159,17 @@ class questionSearchHandler:
         Returns:    QuerySet of Question
         """
         self.es.indices.refresh(index=self.question_index_name)
+        query_for_question = {
+            "query": {
+                "match": {
+                    "question": question
+                }
+            }
+        }
+
         return self.es.search(
             index=self.question_index_name,
-            query={"match_all": {}}
+            query=query_for_question
         )
 
 
