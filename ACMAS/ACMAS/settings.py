@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "web",
     "users",
+    "oauth2_provider",
 ]
 
 
@@ -144,3 +145,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL='users.User'
+
+
+LOGIN_URL='/admin/login/'
