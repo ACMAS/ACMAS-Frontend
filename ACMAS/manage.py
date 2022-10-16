@@ -2,21 +2,6 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-import random
-import string
-import base64
-import hashlib
-
-
-#ID = tCOlKcXw0cRmLjH4MV34voHrmoliuTdl1E7EjJ4s
-#SECRET = N9OkuslGhOMZluXt2cMWQsTVYxXIJ0h3DUGtNbBP0cxFxhU8KOGAcztrmMQ50X2KGgrN5wl2yiYeqD7BXCSYV5oG1RdjhEjLksQy79fkqGcYsSzjjAd17vpCWrYQLvmw
-
-code_verifier = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(random.randint(43, 128)))
-code_verifier = base64.urlsafe_b64encode(code_verifier.encode('utf-8'))
-
-code_challenge = hashlib.sha256(code_verifier).digest()
-code_challenge = base64.urlsafe_b64encode(code_challenge).decode('utf-8').replace('=', '')
-
 
 
 def main():
