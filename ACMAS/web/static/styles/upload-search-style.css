@@ -54,16 +54,10 @@
 }
 
 .content-container {
-  min-height: 100vh;
   width: 100%;
-  height: 100%;
   display: flex;
-  position: relative;
-  box-sizing: border-box;
   align-items: center;
-  border-color: transparent;
   flex-direction: column;
-  background-color: rgb(255 255 255 / 100%);
 }
 
 .logo-container {
@@ -222,16 +216,9 @@
 }
 
 .manual-entry-container {
-  width: 678px;
-  height: 41px;
-  display: flex;
-  align-self: center;
+  width: 100%;  
   padding: 15px;
   position: relative;
-  box-sizing: border-box;
-  align-items: center;
-  border-color: transparent;
-  border-radius: 10px;
   margin-bottom: var(--dl-space-space-twounits);
 }
 
