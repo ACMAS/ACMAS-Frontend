@@ -1,32 +1,40 @@
-import os  # from native modules
-import fitz  # from PyMuPDF
-import pytesseract  # from pytesseract
-import cv2  # from Opencv
-import io  # from native modules
-from PIL import Image, ImageFile  # from Pillow
-from colorama import Fore  # from native modules
-import platform  # from native modules
-
-ImageFile.LOAD_TRUNCATED_IMAGES = True
-
-# Global variables
-strPDF, textScanned, textScanned, inputTeEx, dirName = "", "", "", "", [
-    "images", "output_txt"]
-
-def gInUs():
-    # Global var
-    global strPDF
-    global inputTeEx
-    if(platform.system() == "Windows"):
-        # Print input
-        print(Fore.YELLOW +
-              "[.] Add the tesseract.exe local path" + Fore.RESET)
-        inputTeEx = input()
-        # Print input
-        print(Fore.GREEN + "[!] Add the PDF file local path:" + Fore.RESET)
-        inputUser = input()
-    # Print an alert if input is not valid, if not, call to fun reDoc
-    if(inputUser == "" or len(inputUser.split("\\")) == 1):
-        print(Fore.RED + "[X] Please enter a valid PATH to a file" + Fore.RESET)
-    else:
-        extIm(inputUser)
+# We import the necessary packages
+#import the needed packages
+import cv2
+import os,argparse
+import pytesseract
+from PIL import Image
+  
+#We then Construct an Argument Parser
+ap=argparse.ArgumentParser()
+ap.add_argument("-i","--image",
+                required=True,
+                help="Path to the image folder")
+ap.add_argument("-p","--pre_processor",
+                default="thresh", 
+                help="the preprocessor usage")
+args=vars(ap.parse_args())
+  
+#We then read the image with text
+images=cv2.imread(args["image"])
+  
+#convert to grayscale image
+gray=cv2.cvtColor(images, cv2.COLOR_BGR2GRAY)
+  
+#checking whether thresh or blur
+if args["pre_processor"]=="thresh":
+    cv2.threshold(gray, 0,255,cv2.THRESH_BINARY| cv2.THRESH_OTSU)[1]
+if args["pre_processor"]=="blur":
+    cv2.medianBlur(gray, 3)
+      
+#memory usage with image i.e. adding image to memory
+filename = "{}.jpg".format(os.getpid())
+cv2.imwrite(filename, gray)
+text = pytesseract.image_to_string(Image.open(filename))
+os.remove(filename)
+print(text)
+  
+# show the output images
+cv2.imshow("Image Input", images)
+cv2.imshow("Output In Grayscale", gray)
+cv2.waitKey(0)
