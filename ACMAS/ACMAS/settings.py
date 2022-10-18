@@ -148,9 +148,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL="users.User"
 LOGIN_URL="/admin/login/"
 CORS_ORIGIN_ALLOW_ALL = True
-
-
-
 #=======
 
 AUTH_USER_MODEL = "users.User"
