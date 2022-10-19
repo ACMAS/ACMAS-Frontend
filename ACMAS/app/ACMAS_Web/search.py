@@ -1,4 +1,5 @@
 from .models import Course, Question, University, UploadedFile
+from elasticsearch import Elasticsearch
 
 
 # Class handles external interaction with searching
@@ -58,7 +59,7 @@ class searchFacade:
         """
         # If this class has yet to search, create search handler
         if self.questionSearch is None:
-            self.questionSearch = questionSearchHandler(question)
+            self.questionSearch = questionSearchHandler()
         # Else if previous search is same as current, return previous result
         elif self.questionSearch.question == question:
             print("Returning cached question")
@@ -132,16 +133,135 @@ class courseSearchHandler:
 
 
 class questionSearchHandler:
-    def __init__(self, question):
-        self.question = question
+    def __init__(self):
+        self.elastic_address = "http://localhost:9200"
+        self.question_index_name = "question-index"
+        self.es = Elasticsearch(
+            hosts=[self.elastic_address],
+            verify_certs=False
+        )
+        self.min_question_length_for_fuzzy = 3
 
+        # Only allow searching by question, the question will be preprocessed first
+        # The question field will be split and expanded using an ngram from size 2 to 9
+        self.mapping = {
+          "properties": {
+            "question": {
+                "type": "text",
+                "analyzer": "ngram_token_analyzer",
+                "search_analyzer": "search_term_analyzer"
+            }
+          }
+        }
+
+        # The query is lowercased, tokenized, stop words are removed, and ascii folding is performed
+        # to convert non-ascii characters to their ascii equivalent
+        self.setting = {
+          "index": {
+            "max_ngram_diff": 7,
+            "analysis": {
+                "analyzer": {
+                    "search_term_analyzer": {
+                        "type": "custom",
+                        "stopwords": "_none_",
+                        "filter": [
+                            "lowercase",
+                            "asciifolding",
+                            "no_stop"
+                        ],
+                        "tokenizer": "standard"
+                    },
+                    "ngram_token_analyzer": {
+                        "type": "custom",
+                        "stopwords": "_none_",
+                        "filter": [
+                            "lowercase",
+                            "asciifolding",
+                            "no_stop",
+                            "ngram_filter"
+                        ],
+                        "tokenizer": "standard"
+                    }
+                },
+                "filter": {
+                    "no_stop": {
+                        "type": "stop",
+                        "stopwords": "_none_"
+                    },
+                    "ngram_filter": {
+                        "type": "ngram",
+                        "min_gram": "2",
+                        "max_gram": "9"
+                    }
+                }
+            }
+          }
+        }
+
+        # Only create the questions index if it doesn't already exit
+        if not self.es.indices.exists(index=self.question_index_name):
+          self.es.indices.create(
+            index=self.question_index_name,
+            mappings=self.mapping,
+            settings=self.setting,
+            ignore=400 # ignore 400 already exists code
+          )
+
+
+    def addQuestionsToIndex(self, question_ids):
+        """
+        Parameters: A list of question ids (strings)
+        Returns: None
+        """
+        for question_id in question_ids:
+            question_object = Question.objects.get(pk=question_id)
+            self.es.index(index=self.question_index_name, id=question_id, document=question_object)
+            
     def searchQuestion(self, question):
         """
         Parameters: String question - string containing the question
         Returns:    QuerySet of Question
         """
-        return Question.objects.filter(question=question)
+        self.es.indices.refresh(index=self.question_index_name)
+        query_for_question = {
+          "bool": {
+            "should": [
+              {
+                # Exact phrase matches should be prioritized and ranked higher, +10 score
+                "multi_match": {
+                    "query": question,
+                    "type": "phrase",
+                    "fields": [
+                        "question"
+                    ],
+                    "boost": 10
+                }
+              },
+              {
+                # Uses Levenshtein to allow for typos within a certain edit distance automatically found
+                # The query is compared against the n-grams generated for each question in the index
+                "multi_match": {
+                    "query": question,
+                    "type": "most_fields",
+                    "fields": [
+                        "question"
+                    ],
+                    "fuzziness":"AUTO"
+                }
+              }
+            ]
+          }
+        }
 
+        # Small queries will not use fuzzy search to avoid too many search results
+        if question and len(question) < self.min_question_length_for_fuzzy:
+          query_for_question['bool']['should'][1]['fuzziness'] = 0
+
+        # Returns an object detailing the reseults of the search ranked by score
+        return self.es.search(
+            index=self.question_index_name,
+            query=query_for_question
+        )
 
 class fileSearchHandler:
     def getFiles(self, course, fType):
