@@ -2,6 +2,27 @@
 version: '3.8'
 
 services:
+  elasticsearch:
+    container_name: es-container
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.4.3
+    environment:
+      - xpack.security.enabled=false
+      - "discovery.type=single-node"
+    networks:
+      - es-net
+    ports:
+      - 9200:9200
+  kibana:
+    container_name: kb-container
+    image: docker.elastic.co/kibana/kibana:8.4.3
+    environment:
+      - ELASTICSEARCH_HOSTS=http://es-container:9200
+    networks:
+      - es-net
+    depends_on:
+      - elasticsearch
+    ports:
+      - 5601:5601
   web:
     build: ./app
     command: python manage.py runserver 0.0.0.0:8000
@@ -22,6 +43,8 @@ services:
       - POSTGRES_USER=hello_acmas
       - POSTGRES_PASSWORD=hello_acmas
       - POSTGRES_DB=hello_acmas_dev
-
+networks:
+  es-net:
+    driver: bridge
 volumes:
   postgres_data:
