@@ -216,7 +216,7 @@
 }
 
 .manual-entry-container {
-  width: 100%;  
+  width: 100%;
   padding: 15px;
   position: relative;
   margin-bottom: var(--dl-space-space-twounits);
@@ -224,8 +224,8 @@
 
 .manual-input {
   text-align: center;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    max-width: 648px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 648px;
 }
