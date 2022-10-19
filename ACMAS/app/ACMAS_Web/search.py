@@ -208,14 +208,13 @@ class questionSearchHandler:
           )
 
 
-    def addQuestionsToIndex(self, question_ids):
+    def addQuestionToIndex(self, question_id):
         """
-        Parameters: A list of question ids (strings)
+        Parameters: A question id (string)
         Returns: None
         """
-        for question_id in question_ids:
-            question_object = Question.objects.get(pk=question_id)
-            self.es.index(index=self.question_index_name, id=question_id, document=question_object)
+        question_object = Question.objects.get(pk=question_id)
+        self.es.index(index=self.question_index_name, id=question_id, document=question_object)
             
     def searchQuestion(self, question):
         """
