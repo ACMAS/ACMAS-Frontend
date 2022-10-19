@@ -195,5 +195,5 @@
     display: none;
     margin-top: 0;
   }
-	.navbar .nav-item:hover .dropdown-menu{ display: block; }
+  .navbar .nav-item:hover .dropdown-menu { display: block; }
 }
