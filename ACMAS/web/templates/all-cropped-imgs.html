@@ -1,0 +1,8 @@
+{% block content %}
+    {% for img in Cimages %}
+        <div>
+            {{ img.text }}
+            <a href="{% url 'delete-cropped-img' img.id %}">Delete</a>
+        </div>
+    {% endfor %}
+{% endblock %}

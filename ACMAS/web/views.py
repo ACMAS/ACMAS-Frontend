@@ -3,9 +3,13 @@ from django.db.models.query import EmptyQuerySet
 from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
-from .models import UploadedFile
+from .models import UploadedFile, CroppedImg
 from .search import searchFacade
 from .upload import createFacade
+from .form   import CroppedImgForm
+from django.http import JsonResponse
+from . import ocr_prototype
+
 
 # from django.core.files.storage import FileSystemStorage
 
@@ -158,10 +162,38 @@ def uploadOCR(request):
     ):  # If a school and course were entered, and there is an uploaded file
         assignmentType = request.POST.get("type")
         file = request.FILES["fileUpload"]  # Get the uploaded file
-        createFacade().uploadPdf(school, course, assignmentType, file)
+        uploaded_id = createFacade().uploadPdf(school, course, assignmentType, file)
         print("School: ", school, "\nCourse: ", course)
+        return redirect("crop-file",file_id = uploaded_id)
+
     return render(request, "upload-OCR.html")
 
+@csrf_protect
+def get_Cropped_Image(request):
+    form = CroppedImgForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+        return JsonResponse({'message': 'works'})
+    context = {"form":form}
+    return render(request,"cropped-img.html",context)
+@csrf_protect
+def crop_uploaded_file(request,file_id):
+    uploadedfile = UploadedFile.objects.get(id=file_id)
+    return render(request,'crop-uploaded-file.html',{"file":uploadedfile})
+
+def ocr_cropped_files(request):
+    cropped_imgs = CroppedImg.objects.all()
+    for img in cropped_imgs:
+        img.text = ocr_prototype.ocr_driver("media/{}".format(img.file))
+    context = {"Cimages":cropped_imgs}
+    return render(request,'all-cropped-imgs.html',context)
+
+def delete_Cropped_Text(request,pk):
+    cropped_img = CroppedImg.objects.get(id=pk)
+    if request.method == "POST":
+        cropped_img.delete()
+        return redirect('print-Cropped-Imgs')
+    return render(request,"delete.html")
 
 @csrf_protect
 def uploadManually(request):

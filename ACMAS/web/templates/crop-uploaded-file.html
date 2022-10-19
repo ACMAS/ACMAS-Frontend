@@ -1,0 +1,12 @@
+{% extends 'cropper.html' %}
+
+{% block content %}
+    {% csrf_token %}
+    <h1>Please Crop Questions:</h1>
+    <div id = "alert-box"></div>
+    <div id = "image-box">
+        <img src="{{ file.file_dir }}" id = "image" width="500px">
+    </div>
+    <button id ="confirm-button">Confirm</button>
+    <a href="{% url "print-Cropped-Imgs" %}">Finish Cropping</a>
+{% endblock %}

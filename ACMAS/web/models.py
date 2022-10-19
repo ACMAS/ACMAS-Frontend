@@ -40,5 +40,13 @@ class UploadedFile(models.Model):
     def __str__(self):
         return self.filename
 
+class CroppedImg(models.Model):
+    file = models.ImageField(upload_to='images')
+    text = models.TextField(null=True)
+    uploaded = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.file)
+
 
 # DEFINE ALL MODELS HERE WITH SPECS
