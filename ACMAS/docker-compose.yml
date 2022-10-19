@@ -6,7 +6,7 @@ services:
     container_name: es-container
     image: docker.elastic.co/elasticsearch/elasticsearch:8.4.3
     environment:
-      - xpack.security.enabled=false
+      - xpack.security.enabled=false # security is disabled on development
       - "discovery.type=single-node"
     networks:
       - es-net
