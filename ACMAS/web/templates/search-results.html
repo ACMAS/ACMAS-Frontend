@@ -55,44 +55,42 @@
 
   <body>
     {% extends 'navbar.html' %}
-    <div>
-      <link href="../static/styles/commons.css" rel="stylesheet"/>
-      <link href="../static/styles/search-results-style.css" rel="stylesheet"/>
-      {% block content %}
-      <div class="search-results-page-container">
-        <div class="search-results-page-header">
-          <a href="{% url 'index' %}">
-            <img
-              alt="image"
-              src="../static/img/acmas-logo.png"
-              class="search-results-page-logo"
-            />
-          </a>
-        </div>
-        <span class="search-results-page-title heading">Search Results</span>
-        <div class="search-results-page-results-frame">
-          <ul class="list">
-              
-              {% for file in files %}
-              <form method="GET" action="{% url 'pdfReader' %}">
-                <li class="list-item" ><button type="submit" > <input type="text" name="url" value="{{file.filename}}" readonly> </button></li>
-              </form>
-              {% endfor %}
-              
-            
-          </ul>
-        </div>
-        {% if manual == True %}
-        <button class="search-results-page-new-search-button button heading" onclick="window.location.href='searchByQuestion';">
-          New Search
-        </button>
-        {% else %}
-        <button class="search-results-page-new-search-button button heading" onclick="window.location.href='searchByCourse';">
-          New Search
-        </button>
-        {% endif %}
+    <link href="../static/styles/commons.css" rel="stylesheet"/>
+    <link href="../static/styles/search-results-style.css" rel="stylesheet"/>
+    {% block content %}
+    <div class="search-results-page-container">
+      <div class="search-results-page-header">
+        <a href="{% url 'index' %}">
+          <img
+            alt="image"
+            src="../static/img/acmas-logo.png"
+            class="search-results-page-logo"
+          />
+        </a>
       </div>
-      {% endblock %}
+      <span class="search-results-page-title heading">Search Results</span>
+      <div class="search-results-page-results-frame">
+        <ul class="list">
+            
+            {% for file in files %}
+            <form method="GET" action="{% url 'pdfReader' %}">
+              <li class="list-item" ><button type="submit" > <input type="text" name="url" value="{{file.filename}}" readonly> </button></li>
+            </form>
+            {% endfor %}
+            
+          
+        </ul>
+      </div>
+      {% if manual == True %}
+      <button class="search-results-page-new-search-button button heading" onclick="window.location.href='searchByQuestion';">
+        New Search
+      </button>
+      {% else %}
+      <button class="search-results-page-new-search-button button heading" onclick="window.location.href='searchByCourse';">
+        New Search
+      </button>
+      {% endif %}
     </div>
-  </body>
+    {% endblock %}
+</body>
 </html>
