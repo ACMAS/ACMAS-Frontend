@@ -54,10 +54,11 @@
   </head>
 
   <body>
+    {% extends 'navbar.html' %}
     <div>
       <link href="../static/styles/commons.css" rel="stylesheet"/>
       <link href="../static/styles/search-results-style.css" rel="stylesheet"/>
-
+      {% block content %}
       <div class="search-results-page-container">
         <div class="search-results-page-header">
           <a href="{% url 'index' %}">
@@ -91,6 +92,7 @@
         </button>
         {% endif %}
       </div>
+      {% endblock %}
     </div>
   </body>
 </html>
