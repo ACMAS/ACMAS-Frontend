@@ -2,7 +2,15 @@
     {% for img in Cimages %}
         <div>
             {{ img.text }}
-            <a href="{% url 'delete-cropped-img' img.id %}">Delete</a>
+            <a href="{% url 'edit-question' file img.id %}">Edit</a>
+            <a href="{% url 'delete-cropped-img' file img.id %}">Delete</a>
         </div>
     {% endfor %}
+    <div>
+        <a href="{% url 'crop-file' file %}">Go back to cropping</a>
+    </div>
+    <div>
+        <a href = "/">Submit Questions</a>
+    </div>
+
 {% endblock %}

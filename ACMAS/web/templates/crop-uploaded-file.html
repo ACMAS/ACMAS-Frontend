@@ -8,5 +8,5 @@
         <img src="{{ file.file_dir }}" id = "image" width="500px">
     </div>
     <button id ="confirm-button">Confirm</button>
-    <a href="{% url "print-Cropped-Imgs" %}">Finish Cropping</a>
+    <a href="{% url "print-Cropped-Imgs" file.id %}">Finish Cropping</a>
 {% endblock %}

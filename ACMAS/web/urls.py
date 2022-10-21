@@ -33,8 +33,9 @@ urlpatterns = (
         path("upload-manually", views.uploadManually, name="uploadManually"),
         path("crop-file/<file_id>/",views.crop_uploaded_file, name="crop-file"),
         path("crop-Img/",views.get_Cropped_Image, name="crop-Img"),
-        path("print-Cropped-Imgs/",views.ocr_cropped_files, name="print-Cropped-Imgs"),
-        path("delete-cropped-img/<str:pk>",views.delete_Cropped_Text, name ="delete-cropped-img")
+        path("print-Cropped-Imgs/<file_id2>/",views.ocr_cropped_files, name="print-Cropped-Imgs"),
+        path("delete-cropped-img/<str:pk>/<str:pk2>/",views.delete_Cropped_Text, name ="delete-cropped-img"),
+        path("edit-questin/<str:pk>/<str:pk2>/",views.edit_question, name = "edit-question")
     ]
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

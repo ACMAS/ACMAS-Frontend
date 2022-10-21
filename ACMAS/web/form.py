@@ -6,3 +6,8 @@ class CroppedImgForm(ModelForm):
     class Meta:
         model = CroppedImg
         fields = ("file",)
+
+class CroppedQuestionForm(ModelForm):
+    class Meta:
+        model = CroppedImg
+        fields = ("text",)

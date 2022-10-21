@@ -6,7 +6,7 @@ from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from .models import UploadedFile, CroppedImg
 from .search import searchFacade
 from .upload import createFacade
-from .form   import CroppedImgForm
+from .form   import CroppedImgForm, CroppedQuestionForm
 from django.http import JsonResponse
 from . import ocr_prototype
 
@@ -181,18 +181,30 @@ def crop_uploaded_file(request,file_id):
     uploadedfile = UploadedFile.objects.get(id=file_id)
     return render(request,'crop-uploaded-file.html',{"file":uploadedfile})
 
-def ocr_cropped_files(request):
+def ocr_cropped_files(request,file_id2):
     cropped_imgs = CroppedImg.objects.all()
     for img in cropped_imgs:
+        if img.text:
+            continue
         img.text = ocr_prototype.ocr_driver("media/{}".format(img.file))
-    context = {"Cimages":cropped_imgs}
+        img.save()
+    context = {"Cimages":cropped_imgs, "file":file_id2}
     return render(request,'all-cropped-imgs.html',context)
-
-def delete_Cropped_Text(request,pk):
-    cropped_img = CroppedImg.objects.get(id=pk)
+def edit_question(request,pk,pk2):
+    cropped_img = CroppedImg.objects.get(id=pk2)
+    form = CroppedQuestionForm(instance = cropped_img)
+    if request.method == "POST":
+        form = CroppedQuestionForm(request.POST, instance=cropped_img)
+        if form.is_valid():
+            form.save()
+            return redirect("print-Cropped-Imgs",pk)
+    context = {"form":form}
+    return render(request, 'edit-question.html',context)
+def delete_Cropped_Text(request,pk,pk2):
+    cropped_img = CroppedImg.objects.get(id=pk2)
     if request.method == "POST":
         cropped_img.delete()
-        return redirect('print-Cropped-Imgs')
+        return redirect('print-Cropped-Imgs',pk)
     return render(request,"delete.html")
 
 @csrf_protect
