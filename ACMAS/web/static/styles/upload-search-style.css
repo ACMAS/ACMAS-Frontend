@@ -223,7 +223,7 @@
 }
 
 .manual-input {
-  text-align: center;
+  text-align: left;
   display: flex;
   justify-content: center;
   width: 100%;
