@@ -60,17 +60,8 @@
 
     {% block content %}
     <div>
-      <div class="home-container">
-        <div class="home-home-container"> <!--logo needs to be removed-->
-          <a href="{% url 'index' %}">
-            <img
-              src="../static/img/acmas-logo.png"
-              alt="image"
-              class="home-home-img"
-            />
-          </a>
-        </div>
-        <h1 class="home-acmas-read-header heading">ACMAS Reader</h1>
+      <div class="home-container" style="margin-top: 6%;">
+        <h1 class="home-acmas-read-header">ACMAS Reader</h1>
         <div class="home-pdf-reader-container">
           <embed src="{{directory}}" type="application/pdf" width="100%" height="100%" />
         </div>

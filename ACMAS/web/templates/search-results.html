@@ -59,16 +59,7 @@
     <link href="../static/styles/commons.css" rel="stylesheet"/>
     <link href="../static/styles/search-results-style.css" rel="stylesheet"/>
     {% block content %}
-    <div class="search-results-page-container">
-      <div class="search-results-page-header">  <!--logo needs to be removed. doesn't show up on the page-->
-        <a href="{% url 'index' %}">
-          <img
-            alt="image"
-            src="../static/img/acmas-logo.png"
-            class="search-results-page-logo"
-          />
-        </a>
-      </div>
+    <div class="search-results-page-container" style="margin-top: 6%">
       <span class="search-results-page-title heading">Search Results</span>
       <div class="search-results-page-results-frame">
         <ul class="list">
