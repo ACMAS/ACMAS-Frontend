@@ -49,6 +49,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("o/", include("oauth2_provider.urls", namespace="oauth2_provider")),
     path("", include("web.urls")),
-    path('o/', include("oauth2_provider.urls", namespace="oauth2_provider")),
     path('api/hello', ApiEndpoint.as_view()),  # an example resource endpoint
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
