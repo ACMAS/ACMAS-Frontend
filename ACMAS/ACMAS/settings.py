@@ -153,3 +153,19 @@ CORS_ORIGIN_ALLOW_ALL = True
 AUTH_USER_MODEL = "users.User"
 LOGIN_URL = "/admin/login/"
 #>>>>>>> d1a89b72d91ab0ce1270c82a9f5d76604ae911bb
+
+# AUTHENTICATION_BACKENDS = [
+#     'oauth2_provider.backends.OAuth2Backend',
+#     # Uncomment following if you want to access the admin
+#     #'django.contrib.auth.backends.ModelBackend',
+#     '...',
+# ]
+
+# MIDDLEWARE = [
+#     '...',
+#     # If you use SessionAuthenticationMiddleware, be sure it appears before OAuth2TokenMiddleware.
+#     # SessionAuthenticationMiddleware is NOT required for using django-oauth-toolkit.
+#     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+#     'oauth2_provider.middleware.OAuth2TokenMiddleware',
+#     '...',
+# ]
