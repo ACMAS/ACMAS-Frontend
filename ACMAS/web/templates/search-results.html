@@ -2,7 +2,8 @@
 
 <html lang="en">
   <head>
-    <title>Search Results</title>
+    <title>ACMAS Search</title>
+    <link rel="icon" type="image/x-icon" href="../static/img/star.svg">
     <meta property="og:title" content="Search Results" />
     <meta property="twitter:card" content="summary_large_image" />
     <meta charset="utf-8" />
@@ -59,7 +60,7 @@
     <link href="../static/styles/search-results-style.css" rel="stylesheet"/>
     {% block content %}
     <div class="search-results-page-container">
-      <div class="search-results-page-header">
+      <div class="search-results-page-header">  <!--logo needs to be removed. doesn't show up on the page-->
         <a href="{% url 'index' %}">
           <img
             alt="image"
@@ -71,14 +72,11 @@
       <span class="search-results-page-title heading">Search Results</span>
       <div class="search-results-page-results-frame">
         <ul class="list">
-            
             {% for file in files %}
             <form method="GET" action="{% url 'pdfReader' %}">
               <li class="list-item" ><button type="submit" > <input type="text" name="url" value="{{file.filename}}" readonly> </button></li>
             </form>
             {% endfor %}
-            
-          
         </ul>
       </div>
       {% if manual == True %}

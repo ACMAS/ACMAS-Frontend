@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <title>ACMAS Search</title>
-    <link rel="icon" type="image/x-icon" href="../static/img/acmas-hexagons.png">
+    <link rel="icon" type="image/x-icon" href="../static/img/star.svg">
     <meta content="summary_large_image" property="twitter:card"/>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -102,21 +102,15 @@
     {% block content %}
     <div class="content-container">
         <div class="logo-container">
-            <a href="{% url 'index' %}">
-                <img
-                        alt="ACMAS Logo"
-                        class="acmas-logo"
-                        src="../static/img/acmas-logo.png"
-                />
-            </a>
+        <!--Keeping this div temporarily as a fix for absolute spacing after removing the old ACMAS logo-->
         </div>
         <span class="upload-title-text">ACMAS Search</span>
         <form id="manual-entry-form" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
             <div class="manual-entry-container" style="margin-top: 10%;">
                 <img
-                        alt="ACMAS Hexagons"
+                        alt="ACMAS Star"
                         class="hexagon-logo"
-                        src="../static/img/acmas-hexagons.png"
+                        src="../static/img/star.svg"
                 />
                 <input
                         class="manual-input input"

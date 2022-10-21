@@ -104,7 +104,7 @@
   justify-content: center;
   width: 100%;
   max-width: 350px;
-  border: 2px solid #2f617c;
+  border: 2px solid var(--acmas-blue);
 }
 
 .search-title {
@@ -121,11 +121,11 @@
   justify-content: center;
   width: 100%;
   max-width: 260px;
-  border: 2px solid #2f617c;
+  border: 2px solid var(--acmas-blue);
 }
 
 .upload-button-text {
-  color: #2f617c;
+  color: var(--acmas-blue);
   font-size: 38px;
   font-style: normal;
   font-family: Arial, serif;
@@ -139,7 +139,7 @@
   justify-content: center;
   width: 100%;
   max-width: 350px;
-  border: 2px solid #2f617c;
+  border: 2px solid var(--acmas-blue);
 }
 
 .home-header {
