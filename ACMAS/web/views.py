@@ -143,7 +143,7 @@ def uploadOptions(request):
 
 
 @csrf_protect
-def uploadOCR(request):
+def uploadFile(request):
     school = request.POST.get("school")  # Check to see if a school was entered
     course = request.POST.get(
         "course"
@@ -160,7 +160,7 @@ def uploadOCR(request):
         file = request.FILES["fileUpload"]  # Get the uploaded file
         createFacade().uploadPdf(school, course, assignmentType, file)
         print("School: ", school, "\nCourse: ", course)
-    return render(request, "upload-OCR.html")
+    return render(request, "upload-file.html")
 
 
 @csrf_protect

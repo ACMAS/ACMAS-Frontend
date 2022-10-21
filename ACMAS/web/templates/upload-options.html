@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <title>ACMAS Upload</title>
-    <link rel="icon" type="image/x-icon" href="../static/img/acmas-hexagons.png">
+    <link rel="icon" type="image/x-icon" href="../static/img/star.svg">
     <meta content="summary_large_image" property="twitter:card"/>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -96,25 +96,22 @@
     <link href="../static/styles/upload-options.css" rel="stylesheet"/>
 </head>
 <body>
-<div>
+    {% extends 'navbar.html' %}
+    {% block content%}
     <link href="../static/styles/commons.css" rel="stylesheet"/>
     <link href="../static/styles/upload-search-style.css" rel="stylesheet"/>
     <link href="../static/styles/upload-options.css" rel="stylesheet"/>
+
+
     <div class="content-container">
         <div class="logo-container">
-            <a href="{% url 'index' %}">
-                <img
-                        alt="ACMAS Logo"
-                        class="acmas-logo"
-                        src="../static/img/acmas-logo.png"
-                />
-            </a>
+            <!--temporary logo div. fixes spacing issue until css overhaul-->
         </div>
         <span class="upload-title-text">ACMAS Upload</span>
         <br><br>
         <p>Please select your preferred upload option:</p>
         <div class="upload-options-buttons">
-            <a href="{% url 'uploadOCR' %}">
+            <a href="{% url 'uploadFile' %}">
                 <span class="button upload-option">Upload with a file</span>
             </a>
             <a href="{% url 'uploadManually' %}">
@@ -122,6 +119,6 @@
             </a>
         </div>
     </div>
-</div>
+    {% endblock %}
 </body>
 </html>
