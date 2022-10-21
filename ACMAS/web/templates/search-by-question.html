@@ -105,7 +105,7 @@
         <!--Keeping this div temporarily as a fix for absolute spacing after removing the old ACMAS logo-->
         </div>
         <span class="upload-title-text">ACMAS Search</span>
-        <form id="manual-entry-form" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
+        <form class="manual-entry-form" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
             <div class="manual-entry-container" style="margin-top: 10%;">
                 <img
                         alt="ACMAS Star"
