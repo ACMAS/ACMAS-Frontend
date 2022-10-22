@@ -207,6 +207,11 @@ def delete_Cropped_Text(request,pk,pk2):
         return redirect('print-Cropped-Imgs',pk)
     return render(request,"delete.html")
 
+def submit_questions(request):
+    CroppedImg.objects.all().delete()
+
+    return redirect('index')
+
 @csrf_protect
 def uploadManually(request):
     school = request.POST.get("school")  # Check to see if a school was entered

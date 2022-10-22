@@ -1,16 +1,18 @@
+{% extends "cropper.html" %}
 {% block content %}
-    {% for img in Cimages %}
-        <div>
-            {{ img.text }}
-            <a href="{% url 'edit-question' file img.id %}">Edit</a>
-            <a href="{% url 'delete-cropped-img' file img.id %}">Delete</a>
-        </div>
-    {% endfor %}
-    <div>
+    <div class="cropped_questions">
+        <h1>Cropped Questions</h1>
+        {% for img in Cimages %}
+            <div class="cropped_question_container">
+                <div class="cropped_question">{{ img.text }}</div>
+                <div class="edit">
+                    <a href="{% url 'edit-question' file img.id %}">Edit</a>
+                </div>
+                <a href="{% url 'delete-cropped-img' file img.id %}">Delete</a>
+            </div>
+        {% endfor %}
         <a href="{% url 'crop-file' file %}">Go back to cropping</a>
-    </div>
-    <div>
-        <a href = "/">Submit Questions</a>
+        <a href = "{% url 'submit' %}">Submit Questions</a>
     </div>
 
 {% endblock %}

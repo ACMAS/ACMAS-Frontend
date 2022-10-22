@@ -1,7 +1,7 @@
 const confirmBttn = document.getElementById('confirm-button')
 const alertBox = document.getElementById('alert-box')
-const imageForm = document.getElementById('image-form')
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
+
 var $image = $('#image')
 $image.cropper({
     aspectRatio: 16 / 9,
@@ -18,25 +18,29 @@ $image.cropper({
 var cropper = $image.data('cropper');
 
 confirmBttn.addEventListener('click',()=>{
-    console.log("clicked")
     cropper.getCroppedCanvas().toBlob((blob) => {
-        console.log('confirmed')
         const formData = new FormData();
       // Pass the image file name as the third parameter if necessary
         formData.append('csrfmiddlewaretoken', csrf[0].value)
         formData.append('file', blob, 'my-image.png');
 
-
-
         $.ajax('/crop-Img/',{
             method: 'POST',
             enctype: 'multipart/form-data',
             data: formData,
-            success() {
-                console.log('Upload success');
+            success: function(response){
+                console.log('success', response)
+                alertBox.classList.remove("hide");
+                alertBox.classList.add("show");
+                setTimeout(function(){
+                    alertBox.classList.remove("show");
+                    alertBox.classList.add("hide")
+                },1000);
+
             },
-            error() {
-                console.log('Upload error');
+            error: function(error){
+                console.log('error', error)
+
             },
             cache: false,
             processData: false,

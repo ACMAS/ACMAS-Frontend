@@ -2,8 +2,10 @@
 
 {% block content %}
     {% csrf_token %}
-    <h1>Please Crop Questions:</h1>
-    <div id = "alert-box"></div>
+    <div class="crop-title">
+        <h1>Please Crop Questions:</h1>
+        <div id = "alert-box" class = "hide">Question has been successfully saved.</div>
+    </div>
     <div id = "image-box">
         <img src="{{ file.file_dir }}" id = "image" width="500px">
     </div>
