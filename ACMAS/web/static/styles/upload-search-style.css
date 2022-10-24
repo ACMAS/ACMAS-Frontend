@@ -74,6 +74,7 @@
 .manual-entry-form {
   width: 100%;
   max-width: 600px;
+  margin-top: -30px;
 }
 
 .acmas-logo {
@@ -92,9 +93,10 @@
 .upload-title-text {
   color: rgb(0 0 0 / 100%);
   display: block;
-  font-size: 50px;
+  font-size: 40px;
   font-family: Arial, serif;
   font-weight: 400;
+  padding-top: 30px;
 }
 
 .school-input-container {
