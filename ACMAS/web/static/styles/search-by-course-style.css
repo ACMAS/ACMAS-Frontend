@@ -66,8 +66,6 @@
 .home-container {
   width: 100%;
   display: flex;
-
-  /* overflow: auto; */
   min-height: 100vh;
   align-items: center;
   flex-direction: column;
@@ -91,7 +89,6 @@
   align-self: center;
   text-align: center;
   font-style: normal;
-  /* margin-top: 30px; */
   font-weight: 400;
   margin-bottom: 35px;
   padding-top: 30px;

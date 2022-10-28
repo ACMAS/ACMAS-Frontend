@@ -92,7 +92,10 @@
 }
 
 .search-results-page-results-frame {
-  width: 498px;
+  width: 100%;
+  max-width: 500px;
+  padding-left: 10px;
+  padding-right: 10px;
   height: 380px;
   display: flex;
   align-self: center;
