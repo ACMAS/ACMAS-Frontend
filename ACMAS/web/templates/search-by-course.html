@@ -17,17 +17,17 @@
 <body>
     {% extends 'navbar.html' %}
     {% block content %}
-    <div class="container" style="margin-top: 6%">
-    <h1 class="display-3" style="text-align: center;">Search by Course</h1>
+    <div class="container-fluid" style="margin-top: 5%; max-width: 970px">
+    <h1 class="display-3" style="text-align: center">Search by Course</h1>
     <form style="margin-top: 2%" class="row" method="POST" enctype="multipart/form-data" action="{% url 'searchResults' %}"> {% csrf_token %}
-        <div class="col-md-12 h-100 d-flex align-items-center justify-content-center">
-          <input type="text" class="form-control" style="width: 80%" id="input-uni" name="school" placeholder="Enter University">
+        <div class="col-md-12">
+          <input type="text" class="form-control" id="input-uni" name="school" placeholder="Enter University">
         </div>
-        <div class="col-md-6 h-100 d-flex align-items-end justify-content-end" style="margin-top: 2%">
-          <input type="text" class="form-control" style="width: 79.5%" id="input-course" name="course" placeholder="Enter Course">
+        <div class="col-md-6" style="margin-top: 2%">
+          <input type="text" class="form-control" id="input-course" name="course" placeholder="Enter Course">
         </div>
-        <div class="col-md-6 h-100 d-flex align-items-start justify-content-start" style="margin-top: 2%">
-            <select class="form-select" style="width: 79.5%" placeholder="Select your assignment" autocomplete="on" name="type">
+        <div class="col-md-6" style="margin-top: 2%">
+            <select class="form-select" placeholder="Select your assignment" autocomplete="on" name="type">
                 <option selected>Select your assignment</option>
                 <option value="All">All</option>
                 <option value="Assignment">Assignment</option>
