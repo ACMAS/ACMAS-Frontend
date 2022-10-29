@@ -11,4 +11,10 @@
     </div>
     <button id ="confirm-button">Confirm</button>
     <a href="{% url "print-Cropped-Imgs" file.id %}">Finish Cropping</a>
+    <p style="color:gray;">Instruction: <br>
+    Drag the box or scroll to change the OCR area. <br>
+    Clicking the "confirm" button will save the text in the image you are selecting. <br>
+    You may continuous cropping by repeating the process above. <br>
+    Click "Finish Cropping" buttom will let you edit or change the text you just select. </p>
 {% endblock %}
+
