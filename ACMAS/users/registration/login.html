@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login Page</title>
 
     <input type="hidden" name="next" value="{{ next }}" />
+
+    <form action="" method="get" class="form-example">
+        <div class="none">
+            <label for="username">Username: </label>
+            <input type="text" name="username" id="username" required>
+        </div>
+        <div class="none">
+            <label for="password">Password: </label>
+            <input type="password" name="password" id="password" required>
+        </div>
+        <div class="none">
+            <input type="submit" value="Enter">
+        </div>
+    </form>
+
 </head>
 <body>
 
