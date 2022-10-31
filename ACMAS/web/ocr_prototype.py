@@ -18,13 +18,13 @@ def png_conversion(pdf_name):
         return []
 
     print("CONVERTING PNG")
-    os.system("mkdir ocr_misc/ocr_images")
+    os.system("mkdir media/ocr_images")
     image_names = []
     images_from_path = convert_from_path(pdf_name)
     for i in range(len(images_from_path)):
         # Save pages as images in the pdf
-        images_from_path[i].save('ocr_misc/ocr_images/' + 'page' + str(i) + '.jpg', 'JPEG')
-        image_names.append('ocr_misc/ocr_images/' + 'page' + str(i) + '.jpg')
+        images_from_path[i].save('media/ocr_images/' + 'page' + str(i) + '.jpg', 'JPEG')
+        image_names.append('media/ocr_images/' + 'page' + str(i) + '.jpg')
     return image_names
 
 
@@ -49,6 +49,9 @@ def ocr_driver(pdf_name):
 
 if __name__ == '__main__':
     #This is just an example pdf to test the ocr. You can swap it with any pdf of your choosing
-    pdf = './ocr-tset/test.png'
+    pdf = './ocr-tset/eecs112_hw1.pdf'
     result = ocr_driver(pdf)
     print(result)
+
+
+

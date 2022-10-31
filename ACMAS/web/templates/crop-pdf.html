@@ -1,0 +1,14 @@
+{% extends 'cropper.html' %}
+
+{% block content %}
+    {% csrf_token %}
+    <div class="crop-title">
+        <h1>Please Crop Questions:</h1>
+        <div id = "alert-box" class = "hide">Question has been successfully saved.</div>
+    </div>
+    <div id = "image-box">
+        <img src="{{ file }}" id = "image" width="500px">
+    </div>
+    <button id ="confirm-button">Confirm</button>
+
+{% endblock %}

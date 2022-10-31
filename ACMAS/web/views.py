@@ -180,6 +180,10 @@ def get_Cropped_Image(request):
 @csrf_protect
 def crop_uploaded_file(request,file_id):
     uploadedfile = UploadedFile.objects.get(id=file_id)
+    if ocr_prototype.ending_type(uploadedfile.filename) == "pdf":
+        ocr_prototype.png_conversion("." + uploadedfile.file_dir)
+        uploadedfile.file_dir = "/media/ocr_images/page0.jpg"
+        uploadedfile.save()
     return render(request,'crop-uploaded-file.html',{"file":uploadedfile})
 
 def ocr_cropped_files(request,file_id2):
