@@ -3,7 +3,7 @@ from django.db.models.query import EmptyQuerySet
 from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
-from .models import UploadedFile, CroppedImg
+from .models import UploadedFile, CroppedImg, Question
 from .search import searchFacade
 from .upload import createFacade
 from .form   import CroppedImgForm, CroppedQuestionForm
@@ -164,6 +164,7 @@ def uploadOCR(request):
         file = request.FILES["fileUpload"]  # Get the uploaded file
         uploaded_id = createFacade().uploadPdf(school, course, assignmentType, file)
         print("School: ", school, "\nCourse: ", course)
+        CroppedImg.objects.all().delete() # delete all cropped images that may have not been deleted from previous use
         return redirect("crop-file",file_id = uploaded_id)
 
     return render(request, "upload-OCR.html")
@@ -208,8 +209,9 @@ def delete_Cropped_Text(request,pk,pk2):
     return render(request,"delete.html")
 
 def submit_questions(request):
+    for q in CroppedImg.objects.all():
+        Question.objects.create(question=q.text, Answers = "", Hash="", filename="")
     CroppedImg.objects.all().delete()
-
     return redirect('index')
 
 @csrf_protect
