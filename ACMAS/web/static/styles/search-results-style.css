@@ -96,6 +96,7 @@
   max-width: 500px;
   padding-left: 10px;
   padding-right: 10px;
+  margin-bottom: -20px;
   height: 380px;
   display: flex;
   align-self: center;
