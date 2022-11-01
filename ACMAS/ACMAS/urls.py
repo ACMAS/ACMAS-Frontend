@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include
 from django.conf import settings
 import oauth2_provider.views as oauth2_views
 from .views import ApiEndpoint
+from users.views import register
 
 # OAuth2 provider endpoints
 oauth2_endpoint_views = [
@@ -41,13 +42,13 @@ if settings.DEBUG:
     oauth2_endpoint_views += [
         path('authorized-tokens/', oauth2_views.AuthorizedTokensListView.as_view(), name="authorized-token-list"),
         path('authorized-tokens/<pk>/delete/', oauth2_views.AuthorizedTokenDeleteView.as_view(),
-            name="authorized-token-delete"),
+             name="authorized-token-delete"),
     ]
 
-
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("o/", include("oauth2_provider.urls", namespace="oauth2_provider")),
-    path("", include("web.urls")),
-    path('api/hello', ApiEndpoint.as_view()),  # an example resource endpoint
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+                  path("admin/", admin.site.urls),
+                  path("o/", include("oauth2_provider.urls", namespace="oauth2_provider")),
+                  path("", include("web.urls")),
+                  path('api/hello', ApiEndpoint.as_view()),  # an example resource endpoint
+                  path("register/", register, name='register')
+              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
