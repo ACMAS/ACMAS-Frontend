@@ -13,8 +13,23 @@
                 
             </div>
         {% endfor %}
+        
         <a href="{% url 'crop-file' file %}">Go back to cropping</a>
+        <button onclick="myFunction()">Submit Questions</button>
+        <script>
+            function myFunction() {
+              let text = "Thanks for your contribution!\nClick OK to back to main page\nClick cancel to upload more questions";
+              if (confirm(text) == true) {
+                location.href = "http://acmas.systems:8000/static/index.html";
+              } else {
+                location.href = "http://acmas.systems:8000/upload-options";
+              }
+              document.getElementById("demo").innerHTML = text;
+            }
+        </script>
+        <!---
         <a href = "{% url 'submit' %}">Submit Questions</a>
+        -->
     </div>
 
 {% endblock %}
