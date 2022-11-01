@@ -1,10 +1,7 @@
-from unittest.mock import MagicMock, patch
-import os
 from ..ocr_files import ocr_prototype as ocr
 import unittest
 
 import os.path
-from os import path
 
 absolute_path = os.path.dirname(__file__)
 relative_path1 = "../ocr_files"
@@ -41,11 +38,15 @@ class TestOcrMethods(unittest.TestCase):
     # def test_png_conversion_with_pdf(self):
     #   self.assertIsNotNone(ocr.png_conversion('test.pdf'))
 
-    # Tests the ocr run function and makes sure the output matches expected
+    # Tests the ocr run function on an individual image and makes sure the output matches expected
     def test_run_ocr(self):
-        calulated_result = ocr.run_ocr(['web/ocr_files/test_image.png'])
-        expected_result = ['This is a lot of 12 point text to test the\nocr code and see if it works on all types\nof file format.\n\nThe quick brown dog jumped over the\nlazy fox. The quick brown dog jumped\nover the lazy fox. The quick brown dog\njumped over the lazy fox. The quick\nbrown dog jumped over the lazy fox.\n']
-        self.assertEqual(calulated_result,expected_result)
+        calculated_result = ocr.run_ocr('web/ocr_files/ocr_resources/test_image.png')
+        expected_result = ['This is a lot of 12 point text to test the\nocr code and see if it works on all types\nof '
+                           'file format.\n\nThe quick brown dog jumped over the\nlazy fox. The quick brown dog '
+                           'jumped\nover the lazy fox. The quick brown dog\njumped over the lazy fox. The '
+                           'quick\nbrown dog jumped over the lazy fox.\n']
+        self.assertEqual(calculated_result, expected_result)
+
 
 if __name__ == '__main__':
     unittest.main()

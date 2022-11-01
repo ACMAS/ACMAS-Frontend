@@ -8,7 +8,7 @@ from .search import searchFacade
 from .upload import createFacade
 from .form   import CroppedImgForm, CroppedQuestionForm
 from django.http import JsonResponse
-from . import ocr_prototype
+from ocr_files import ocr_prototype
 
 
 # from django.core.files.storage import FileSystemStorage
