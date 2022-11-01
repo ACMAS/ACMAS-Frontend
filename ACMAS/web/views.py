@@ -165,7 +165,7 @@ def uploadOCR(request):
         uploaded_id = createFacade().uploadPdf(school, course, assignmentType, file)
         print("School: ", school, "\nCourse: ", course)
         CroppedImg.objects.all().delete() # delete all cropped images that may have not been deleted from previous use
-        return redirect("crop-file",file_id = uploaded_id)
+        return redirect("crop-file",file_id = uploaded_id,pgcount = 0)
 
     return render(request, "upload-OCR.html")
 
@@ -178,14 +178,17 @@ def get_Cropped_Image(request):
     context = {"form":form}
     return render(request,"cropped-img.html",context)
 @csrf_protect
-def crop_uploaded_file(request,file_id):
+def crop_uploaded_file(request,file_id,pgcount):
     uploadedfile = UploadedFile.objects.get(id=file_id)
     if ocr_prototype.ending_type(uploadedfile.filename) == "pdf":
-        ocr_prototype.png_conversion("." + uploadedfile.file_dir)
-        uploadedfile.file_dir = "/media/ocr_images/page0.jpg"
-        uploadedfile.save()
+        pages = ocr_prototype.png_conversion("." + uploadedfile.file_dir)
+        tcount = len(pages) - 1
+        return render(request, 'crop-pdf.html', {"file": uploadedfile, "count":pgcount, "total": tcount} )
     return render(request,'crop-uploaded-file.html',{"file":uploadedfile})
 
+def pdf_reader(request,file_id,pgcount,total):
+    uploadedfile = UploadedFile.objects.get(id=file_id)
+    return render(request, 'crop-pdf.html', {"file": uploadedfile, "count": pgcount, "total": total})
 def ocr_cropped_files(request,file_id2):
     cropped_imgs = CroppedImg.objects.all()
     for img in cropped_imgs:

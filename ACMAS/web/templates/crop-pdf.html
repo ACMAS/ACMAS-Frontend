@@ -7,8 +7,19 @@
         <div id = "alert-box" class = "hide">Question has been successfully saved.</div>
     </div>
     <div id = "image-box">
-        <img src="{{ file }}" id = "image" width="500px">
+        <img src="/media/ocr_images/page{{ count }}.jpg" id = "image" width="500px">
     </div>
-    <button id ="confirm-button">Confirm</button>
+    <div>
+        {% if count > 0 %}
+            <a href="{% url "pdf-reader" file.id count|add:"-1" total%}">Previous Page</a>
+        {% endif %}
+        {% if count < total %}
+            <a href="{% url "pdf-reader" file.id count|add:"1" total %}">Next page</a>
+        {% endif %}
 
+
+    </div>
+
+    <button id ="confirm-button">Confirm</button>
+    <a href="{% url "print-Cropped-Imgs" file.id %}">Finish Cropping</a>
 {% endblock %}

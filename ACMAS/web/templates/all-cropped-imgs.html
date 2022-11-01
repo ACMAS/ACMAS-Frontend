@@ -6,14 +6,12 @@
             <div class="cropped_question_container">
                 <div class="cropped_question">{{ img.text }}</div>
                 <div class="edit">
-                    <button onclick="location.href='{% url 'edit-question' file img.id %}'" type="botton">Edit</button>
-                    <br>
-                    <button onclick="location.href='{% url 'delete-cropped-img' file img.id %}'" type="button">Delete</button>
+                    <a href="{% url 'edit-question' file img.id %}">Edit</a>
                 </div>
-                
+                <a href="{% url 'delete-cropped-img' file img.id %}">Delete</a>
             </div>
         {% endfor %}
-        <a href="{% url 'crop-file' file %}">Go back to cropping</a>
+        <a href="{% url 'crop-file' file 0%}">Go back to cropping</a>
         <a href = "{% url 'submit' %}">Submit Questions</a>
     </div>
 
