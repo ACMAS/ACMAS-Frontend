@@ -25,7 +25,7 @@ jobs:
         uses: github/super-linter@v4
         env:
           DEFAULT_BRANCH: "main"
-          FILTER_REGEX_EXCLUDE: (.*./ACMAS/ACMAS_Web/migrations*|.*./ACMAS/app/ACMAS_Web/static/js*|.*./ACMAS/app/ACMAS_Web/static/bootstrap*)
+          FILTER_REGEX_EXCLUDE: (.*./ACMAS/ACMAS_Web/migrations*|.*./ACMAS/app/ACMAS_Web/static/js*|.*./ACMAS/app/ACMAS_Web/static/styles/bootstrap*)
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_ALL_CODEBASE: false
           VALIDATE_DOCKERFILE_HADOLINT: false  # Turns off Dockerfile linter.
