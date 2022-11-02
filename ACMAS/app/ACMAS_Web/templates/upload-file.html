@@ -102,11 +102,7 @@
         <!--temporary logo div. fixes spacing issue until css overhaul-->
         </div>
         <span class="upload-title-text">ACMAS Upload</span>
-<<<<<<<< HEAD:ACMAS/app/ACMAS_Web/templates/upload-OCR.html
-        <form id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'uploadOCR' %}">
-========
         <form id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'uploadFile' %}"> {% csrf_token %}
->>>>>>>> main:ACMAS/app/ACMAS_Web/templates/upload-file.html
             <div class="school-input-container">
                 <img
                         alt="ACMAS Hexagons"

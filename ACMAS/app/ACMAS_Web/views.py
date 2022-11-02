@@ -126,7 +126,6 @@ def uploadOptions(request):
     return render(request, "upload-options.html")
 
 
-@csrf_protect
 def uploadFile(request):
     school = request.POST.get("school")  # Check to see if a school was entered
     course = request.POST.get(
