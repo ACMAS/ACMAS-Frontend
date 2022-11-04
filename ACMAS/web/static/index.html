@@ -99,30 +99,28 @@
     <script src="../static/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-
-
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container-fluid">
+            <!-- Logo -->
             <a class="navbar-brand" href="/static/index.html">
                 <img src="../static/img/star.svg" width="40" height="40" alt="">
             </a>
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbar-coll"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
+
+            <!-- Collapse Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-coll" aria-expanded="false">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbar-coll">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
-                    <li class="nav-item active">
-                        <a class="nav-link" aria-current="page" href="/static/index.html">Home</a>
+
+                    <!-- Home -->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/static/index.html">Home</a>
                     </li>
-            
+
+                    <!-- Search -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Search
@@ -132,7 +130,8 @@
                             <li><a class="dropdown-item" href="/searchByCourse">by Course</a></li>
                         </ul>
                     </li>
-                    
+
+                    <!-- Upload -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Upload
@@ -142,7 +141,8 @@
                             <li><a class="dropdown-item" href="/upload-manually">Manually</a></li>
                         </ul>
                     </li>
-                    
+
+                    <!-- Github -->
                     <li class="nav-item">
                         <a class="nav-link" href="https://github.com/ACMAS/ACMAS-Frontend">GitHub Repository</a>
                     </li>
