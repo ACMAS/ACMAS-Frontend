@@ -15,6 +15,7 @@
     />
     <link href="../static/styles/commons.css" rel="stylesheet"/>
     <link href="../static/styles/search-by-course-style.css" rel="stylesheet"/>
+</head>
 <body>
     {% extends 'navbar.html' %}
     <link href="../static/styles/commons.css" rel="stylesheet"/>
@@ -30,43 +31,8 @@
         <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center">
             <button type="submit" class="btn btn-primary btn-lg" value="Search">Search</button>
         </div>
-
     </form>
     </div>
-
-    <!-- <div class="content-container">
-        <div class="logo-container">
-        Keeping this div temporarily as a fix for absolute spacing after removing the old ACMAS logo
-        </div>
-        <span class="upload-title-text">ACMAS Search</span>
-        <form id="manual-entry-form" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
-            <div class="manual-entry-container" style="margin-top: 10%;">
-                <img
-                        alt="ACMAS Star"
-                        class="hexagon-logo"
-                        src="../static/img/star.svg"
-                />
-                <input
-                        class="manual-input input"
-                        placeholder="Enter your question"
-                        type="text"
-                        name="question"
-                />
-            </div>
-            <div class="upload-button-container">
-                <input type="submit" class="upload-button button" value="Search"/>
-            </div>
-        </form>
-{#        <span class="or-text">OR</span>#}
-{#        <form id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}#}
-{#            <div class="upload-button-container">#}
-{#                <input type="file" name="fileUpload" class="upload-button button">#}
-{#            </div>#}
-{#            <div class="upload-button-container">#}
-{#                <input type="submit" class="upload-button button" value="Search by upload"/>#}
-{#            </div>#}
-{#        </form>#}
-    </div> -->
     {% endblock %}
 </body>
 </html>
