@@ -52,7 +52,38 @@ def searchByQuestion(request):
 
 @csrf_exempt
 def searchByCourse(request):
-    return render(request, "search-by-course.html")
+    sessionID = request.session._get_or_create_session_key()
+    # Prevent session from client from changing until 20 minutes
+    request.session.modified = True
+    # If session has no facade, create one
+    facade = cache.get(sessionID)
+    if facade is None:
+        cache.set(sessionID, searchFacade(), 1200)
+        facade = cache.get(sessionID)
+
+    # Save facade state
+    cache.set(sessionID, facade, 1200)
+
+    # Get the university names, it will be sent in all cases
+    university_names = facade.getUniversityNames()
+
+    school = request.POST.get("school")  # Check to see if a school was entered
+    if (
+        school is not None and len(school) > 0
+    ):
+        # Search with Facade
+        department_names = facade.getDepartmentNames(school)
+        course_names = facade.getCourseNames(school)
+
+        return render(request, "search-by-course.html", {
+            "university_names": university_names,
+            "department_names": department_names,
+            "course_names": course_names
+        })
+
+    return render(request, "search-by-course.html", {
+        "university_names": university_names
+    })
 
 
 # Utilizes search by course form

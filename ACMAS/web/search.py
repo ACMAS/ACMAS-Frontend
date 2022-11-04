@@ -10,6 +10,18 @@ class searchFacade:
         self.questionFiles = None
         self.recentSearch = None
 
+    def getUniversityNames(self):
+        return list(map(lambda university: university.name, University.objects.all()))
+
+    def getDepartmentNames(self, university):
+        return list(map(lambda course: course.code, Course.objects.all(university=university)))
+
+    def getCourseNames(self, university):
+        return list(map(lambda course: course.name, Course.objects.all(university=university)))
+
+    def getUploadedFileNames(self):
+        return list(map(lambda uploaded_file: uploaded_file.filename, UploadedFile.objects.all()))
+
     def getQuery(self, search_type=None):
         # Returns:  Last QuerySet results from any search
         #           If there have been no searches, return None
