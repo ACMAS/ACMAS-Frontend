@@ -1,11 +1,6 @@
 #!/bin/sh
 
 # This file is used to verify that Postgres is healthy before applying migrations and running Gunicorn deployment
-# PRODUCTION only -- Doesn't flush the db
-python manage.py makemigrations
-python manage.py migrate
-python manage.py collectstatic
-
 if [ "$DATABASE" = "postgres" ]
 then
     echo "Waiting for postgres..."
@@ -16,5 +11,11 @@ then
 
     echo "PostgreSQL started"
 fi
+
+# PRODUCTION only -- Doesn't flush the db
+# Build the database based on models.py
+python manage.py makemigrations
+python manage.py migrate
+python manage.py collectstatic
 
 exec "$@"
