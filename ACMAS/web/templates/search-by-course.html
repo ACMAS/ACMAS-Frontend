@@ -22,11 +22,17 @@
   <div class="container-fluid search-container">
   <h1 class="display-3" style="text-align: center">Search by Course</h1>
   <form class="row user-inpt" method="POST" enctype="multipart/form-data" action="{% url 'searchResults' %}"> {% csrf_token %}
-      <div class="col-md-12">
-        <input type="text" class="form-control form-control-lg" id="input-uni" name="school" placeholder="Enter University">
+      <div class="col-md-12 user-inpt">
+        <select class="form-select form-select-lg" id="input-uni" placeholder="Select University" name="school">
+            <option style="color: #D4D6D9;" value="">Select University</option>
+            <option value=""></option>
+        </select>
       </div>
       <div class="col-md-6 user-inpt">
-        <input type="text" class="form-control form-control-lg" id="input-course" name="course" placeholder="Enter Course">
+        <select class="form-select form-select-lg" id="input-course" placeholder="Select Course" name="course">
+            <option style="color: #D4D6D9;" value="">Select Course</option>
+            <option value=""></option>
+        </select>
       </div>
       <div class="col-md-6 user-inpt">
           <select class="form-select form-select-lg" placeholder="Select assignment type" autocomplete="on" name="type">
