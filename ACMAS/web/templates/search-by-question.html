@@ -9,29 +9,29 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <link
-            data-tag="font"
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-            rel="stylesheet"
+        data-tag="font"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
     />
-    <link href="../static/styles/commons.css" rel="stylesheet"/>
     <link href="../static/styles/search-by-course-style.css" rel="stylesheet"/>
 </head>
 <body>
     {% extends 'navbar.html' %}
-    <link href="../static/styles/commons.css" rel="stylesheet"/>
-    <link href="../static/styles/search-by-course-style.css" rel="stylesheet"/>
-
     {% block content %}
     <div class="container-fluid search-container">
-    <h1 class="display-3" style="text-align: center">Search by Question</h1>
-    <form class="row user-inpt" id="manual-entry-form" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
-        <div class="col-md-12">
-            <input type="text" class="form-control form-control-lg" name="question" placeholder="Enter your question">
-        </div>
-        <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center">
-            <button type="submit" class="btn btn-primary btn-lg" value="Search">Search</button>
-        </div>
-    </form>
+        <!-- Header -->
+        <h1 class="display-3" style="text-align: center">Search by Question</h1>
+
+        <form class="row user-inpt" id="manual-entry-form" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
+            <!-- Question -->
+            <div class="col-md-12">
+                <input type="text" class="form-control form-control-lg" name="question" placeholder="Enter your question">
+            </div>
+            <!-- Submit Button-->
+            <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center">
+                <button type="submit" class="btn btn-primary btn-lg" value="Search">Search</button>
+            </div>
+        </form>
     </div>
     {% endblock %}
 </body>
