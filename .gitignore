@@ -3,6 +3,4 @@ __pycache__/
 env
 ACMAS/package-lock.json
 ACMAS/package.json
-ACMAS/.env.prod
-ACMAS/.env.prod.db
 ACMAS/app/db.sqlite3
