@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic.base import TemplateView
 from django.conf import settings
 import oauth2_provider.views as oauth2_views
 from .views import ApiEndpoint
@@ -50,5 +51,6 @@ urlpatterns = [
                   path("o/", include("oauth2_provider.urls", namespace="oauth2_provider")),
                   path("", include("web.urls")),
                   path('api/hello', ApiEndpoint.as_view()),  # an example resource endpoint
-                  path("register/", register, name='register')
+                  path("register/", register, name='register'),
+                  path("accounts/", include("django.contrib.auth.urls")),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

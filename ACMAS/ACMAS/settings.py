@@ -61,7 +61,7 @@ ROOT_URLCONF = "ACMAS.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR/"templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -147,6 +147,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 #<<<<<<< HEAD
 AUTH_USER_MODEL="users.User"
 LOGIN_URL="/admin/login/"
+LOGIN_REDIRECT_URL = "/"
 CORS_ORIGIN_ALLOW_ALL = True
 #=======
 

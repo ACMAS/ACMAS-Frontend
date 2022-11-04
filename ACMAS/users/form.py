@@ -20,7 +20,7 @@ class User(UserCreationForm):
         username = self.cleaned_data["username"].lower()  # django build in function cleaned_data
         new = User.objects.filter(username=username)
         if new.count():
-            raise ValidationError("User Already Exist!")
+            raise ValidationError("User Al\ready Exist!")
         return username
 
     def email_check(self):
