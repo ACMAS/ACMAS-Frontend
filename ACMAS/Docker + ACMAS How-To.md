@@ -19,9 +19,9 @@ Open the repository directory `ACMAS-Frontend` and navigate to the `ACMAS` direc
 
 ---
 ### Turn on the Docker containers when you want to start working
-`docker-compose -f docker-compose.prod.yml up -d --build`
+`docker-compose -f docker-compose.yml up -d --build`
 ### Turn off the Docker containers when you are done working
-`docker-compose -f docker-compose.prod.yml down -v`
+`docker-compose -f docker-compose.yml down -v`
 
 ---
 ## Using ACMAS with Docker
