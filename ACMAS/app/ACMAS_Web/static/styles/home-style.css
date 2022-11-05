@@ -168,32 +168,3 @@
   height: var(--dl-size-size-xsmall);
   display: flex;
 }
-
-@media (max-width: 767px) {
-  .home-header {
-    padding-left: var(--dl-space-space-twounits);
-    padding-right: var(--dl-space-space-twounits);
-  }
-
-  .home-nav {
-    display: none;
-  }
-}
-
-@media (max-width: 479px) {
-  .home-header {
-    padding: var(--dl-space-space-unit);
-  }
-
-  .home-mobile-menu {
-    padding: 16px;
-  }
-}
-
-@media all and (min-width: 992px) {
-  .navbar .nav-item .dropdown-menu {
-    display: none;
-    margin-top: 0;
-  }
-  .navbar .nav-item:hover .dropdown-menu { display: block; }
-}

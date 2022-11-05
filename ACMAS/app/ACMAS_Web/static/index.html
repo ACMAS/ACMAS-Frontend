@@ -97,61 +97,65 @@
     <link href="../static/styles/home-style.css" rel="stylesheet"/>
 </head>
 <body>
-    <link rel="stylesheet" href=" ../static/styles/bootstrap/bootstrap.min.css">
-    <link href="../static/styles/commons.css" rel="stylesheet"/>
-    <link href="../static/styles/home-style.css" rel="stylesheet"/>
+    <!-- JS Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
 
-        <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top lined">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-mdb-toggle="collapse"
-            data-mdb-target="#navbar-drop"
-            aria-controls="navbar-drop"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-        >
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbar-drop">
-            <a class="navbar-brand" href="index.html">
+            <!-- Logo -->
+            <a class="navbar-brand" href="/static/index.html">
                 <img src="../static/img/star.svg" width="40" height="40" alt="">
             </a>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
-                <li class="nav-item active">
-                    <a class="nav-link" aria-current="page" href="">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbar-drop-menu-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Search
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbar-drop-menu-link">
-                        <a class="dropdown-item" href="/searchByQuestion">by Question</a>
-                        <a class="dropdown-item" href="/searchByCourse">by Course</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="/upload-options" id="navbar-drop-link4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Upload
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbar-drop-link4">
-                        <a class="dropdown-item" href="/upload-file">With a file</a>
-                        <a class="dropdown-item" href="/upload-manually">Manually</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/ACMAS/ACMAS-Frontend">GitHub Repository</a>
-                </li>
-            </ul>
-        </div>
+
+            <!-- Collapse Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-coll" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbar-coll">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
+
+                    <!-- Home -->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/static/index.html">Home</a>
+                    </li>
+
+                    <!-- Search -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Search
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/searchByQuestion">by Question</a></li>
+                            <li><a class="dropdown-item" href="/searchByCourse">by Course</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Upload -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Upload
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/upload-file">With a file</a></li>
+                            <li><a class="dropdown-item" href="/upload-manually">Manually</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Github -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/ACMAS/ACMAS-Frontend">GitHub Repository</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <div class="home-container">
+    <div class="home-container" style="width:500px; margin: auto;">
         <div class="home-logo-title">
-            <a href="/">
+            <a href="/" >
                 <img
                     alt="ACMAS logo"
                     class="home-logo"
@@ -161,15 +165,15 @@
         </div>
 
         <div class="home-buttons-container">
-            <a href="/searchByQuestion">
+            <a href="/searchByQuestion" style="width:350px;">
                   <span class="home-text home-search-by-question button">Search By Question</span>
             </a>
 
-            <a href="/searchByCourse">
+            <a href="/searchByCourse" style="width:350px;">
                 <span class="home-text home-search-by-course button">Search By Course</span>
             </a>
 
-            <a href="/upload-options">
+            <a href="/upload-options" style="width:260px;">
                 <span class="upload-button-text button home-upload">Upload</span>
             </a>
         </div>
