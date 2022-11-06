@@ -75,3 +75,4 @@ USER app
 
 # run entrypoint.sh
 ENTRYPOINT ["/home/app/web/entrypoint.sh"]
+RUN ["chmod", "+x", "/home/app/web/entrypoint.sh"]
