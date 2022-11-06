@@ -134,3 +134,5 @@ MEDIA_ROOT = BASE_DIR / "mediafiles"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # CSRF_TRUSTED_ORIGINS = ['http://localhost:1337']
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")  # Run the Django app behind an HTTPS proxy
