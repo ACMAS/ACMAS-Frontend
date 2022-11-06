@@ -1,5 +1,7 @@
 # Docker compose file for PRODUCTION deployment
 ---
+version: '3.7'
+
 services:
   web:
     build:
