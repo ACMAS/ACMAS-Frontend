@@ -19,21 +19,24 @@
   {% extends 'navbar.html' %}
   {% block content %}
   <div class="container-fluid search-container">
-    <!-- Header -->
     <h1 class="display-3" style="text-align: center">Search by Course</h1>
-
-    <form class="row user-inpt" method="POST" enctype="multipart/form-data" action="{% url 'searchResults' %}">
-      <!-- School -->
-      <div class="col-md-12">
-        <input type="text" class="form-control form-control-lg" id="input-uni" name="school" placeholder="Enter University">
-      </div>
-      <!-- Course -->
-      <div class="col-md-6 user-inpt">
-        <select class="form-select form-select-lg" id="input-course" placeholder="Select Course" name="course">
-            <option style="color: #D4D6D9;" value="">Select Course</option>
-            <option value=""></option>
-        </select>
-      </div>
+    <form class="row user-inpt" method="POST" enctype="multipart/form-data" action="{% url 'searchByCourse' %}">
+        <!-- University -->
+        <div class="col-md-12 user-inpt">
+          <select class="form-select form-select-lg" id="input-uni" placeholder="Select University" name="school">
+              <option style="color: #D4D6D9;" value="">Select University</option>
+              {% for university_name in university_names %}
+                <option value="{{university_name}}">{{university_name}}</option>
+              {% endfor %}
+          </select>
+        </div>
+        <!-- Course -->
+        <div class="col-md-6 user-inpt">
+          <select class="form-select form-select-lg" id="input-course" placeholder="Select Course" name="course">
+              <option style="color: #D4D6D9;" value="">Select Course</option>
+              <option value=""></option>
+          </select>
+        </div>
       <!-- Assignment Dropdown -->
       <div class="col-md-6 user-inpt">
         <select class="form-select form-select-lg" placeholder="Select assignment type" autocomplete="on" name="type">
