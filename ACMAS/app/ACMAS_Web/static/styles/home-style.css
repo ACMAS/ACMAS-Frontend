@@ -65,8 +65,6 @@
 
 /* parent container */
 .home-container {
-  width: 100%;
-  margin-top: 30px;
   justify-content: center;
   display: block;
 }
@@ -127,14 +125,11 @@
 .upload-button-text {
   color: var(--acmas-blue);
   font-size: 38px;
-  font-style: normal;
   font-family: Arial, serif;
-  font-weight: 400;
   line-height: 1.75;
 }
 
 .home-search-by-course {
-  text-align: center;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -158,9 +153,7 @@
 
 .home-text {
   font-size: 30px;
-  font-style: normal;
   font-family: Arial, serif;
-  font-weight: 400;
 }
 
 .home-icon {
