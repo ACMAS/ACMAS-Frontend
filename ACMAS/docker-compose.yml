@@ -1,4 +1,4 @@
-# Docker compose file for PRODUCTION deployment
+# Docker compose file for DEVELOPMENT deployment
 ---
 version: '3.8'
 
