@@ -149,6 +149,8 @@ AUTH_USER_MODEL="users.User"
 LOGIN_URL="/admin/login/"
 LOGIN_REDIRECT_URL = "/"
 CORS_ORIGIN_ALLOW_ALL = True
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
 #=======
 
 AUTH_USER_MODEL = "users.User"
