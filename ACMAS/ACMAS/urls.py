@@ -20,7 +20,6 @@ from django.views.generic.base import TemplateView
 from django.conf import settings
 import oauth2_provider.views as oauth2_views
 from .views import ApiEndpoint
-from users.views import register
 
 # OAuth2 provider endpoints
 oauth2_endpoint_views = [
@@ -51,6 +50,6 @@ urlpatterns = [
                   path("o/", include("oauth2_provider.urls", namespace="oauth2_provider")),
                   path("", include("web.urls")),
                   path('api/hello', ApiEndpoint.as_view()),  # an example resource endpoint
-                  path("register/", register, name='register'),
-                  path("accounts/", include("django.contrib.auth.urls")),
+                  path("users/", include("users.urls")),
+                  path("users/", include("django.contrib.auth.urls")),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
