@@ -8,74 +8,43 @@
     <meta property="twitter:card" content="summary_large_image" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
-    <style data-tag="reset-style-sheet">
-      html {  line-height: 1.15;}
-      body {  margin: 0;}
-      * {  box-sizing: border-box;  border-width: 0;  border-style: solid;}
-      p,li,ul,pre,div,h1,h2,h3,h4,h5,h6 {  margin: 0;  padding: 0;}
-      button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}
-      button,select {  text-transform: none;}
-      button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}
-      button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}
-      button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}
-      a {  color: inherit;  text-decoration: inherit;}
-      input {  padding: 2px 4px;}
-      img {  display: block;}
-      html { scroll-behavior: smooth  }
-    </style>
-    <style data-tag="default-style-sheet">
-      html {
-        font-family: Inter;
-        font-size: 16px;
-      }
-
-      body {
-        font-weight: 400;
-        font-style:normal;
-        text-decoration: none;
-        text-transform: none;
-        letter-spacing: normal;
-        line-height: 1.15;
-        color: var(--dl-color-gray-black);
-        background-color: var(--dl-color-gray-white);
-
-      }
-    </style>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
       data-tag="font"
     />
-    <link href="../static/styles/commons.css" rel="stylesheet"/>
+    <link href="../static/styles/search-by-course-style.css" rel="stylesheet"/>
     <link href="../static/styles/search-results-style.css" rel="stylesheet"/>
   </head>
 
   <body>
     {% extends 'navbar.html' %}
-    <link href="../static/styles/commons.css" rel="stylesheet"/>
-    <link href="../static/styles/search-results-style.css" rel="stylesheet"/>
     {% block content %}
-    <div class="search-results-page-container" style="margin-top: 6%">
-      <span class="search-results-page-title heading">Search Results</span>
+    <div class="container-fluid search-container">
+      <h1 class="display-3" style="text-align: center">Search Results</h1>
       <div class="search-results-page-results-frame">
-        <ul class="list">
+        <ul class="list list-group tab-group">
             {% for file in files %}
             <form method="GET" action="{% url 'pdfReader' %}">
-              <li class="list-item" ><button type="submit" > <input type="text" name="url" value="{{file.filename}}" readonly> </button></li>
+              <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">{{ file.filename }}</h5>
+                </div>
+                <p class="mb-1"></p>
+                <li class="list-item list-group-item tab-pane fade show" ><button type="submit" class="btn" > <input type="text" name="url" value="{{file.filename}}" readonly> </button></li>
+              </a>
+              
             </form>
             {% endfor %}
         </ul>
       </div>
       {% if manual == True %}
-      <button class="search-results-page-new-search-button button heading" onclick="window.location.href='searchByQuestion';">
+      <button class="btn btn-lg btn-primary" onclick="window.location.href='searchByQuestion';">
         New Search
       </button>
       {% else %}
-      <button class="search-results-page-new-search-button button heading" onclick="window.location.href='searchByCourse';">
+      <button class="btn btn-lg btn-primary" onclick="window.location.href='searchByCourse';">
         New Search
       </button>
       {% endif %}
