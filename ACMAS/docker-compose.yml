@@ -1,3 +1,4 @@
+# Docker compose file for PRODUCTION deployment
 ---
 version: '3.8'
 
@@ -24,27 +25,39 @@ services:
     ports:
       - 5601:5601
   web:
-    build: ./app
-    command: python manage.py runserver 0.0.0.0:8000
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    command: gunicorn ACMAS.wsgi:application --bind 0.0.0.0:8000
     volumes:
-      - ./app/:/usr/src/app/
-    ports:
-      - "8000:8000"
+      - static_volume:/home/app/web/staticfiles
+      - media_volume:/home/app/web/mediafiles
+    expose:
+      - 8000  # Port 8000 is only exposed internally
     env_file:
-      - ./.env.dev
+      - .env
     depends_on:
       - db
   db:
     image: postgres:13.0-alpine
     volumes:
-      # To persist the data beyond the life of the container
       - postgres_data:/var/lib/postgresql/data/
-    environment:  # Defines name for default db, User/PW
-      - POSTGRES_USER=hello_acmas
-      - POSTGRES_PASSWORD=hello_acmas
-      - POSTGRES_DB=hello_acmas_dev
-networks:
-  es-net:
-    driver: bridge
+    env_file:
+      - ./.env.db
+    ports:
+      - "5432:5432"
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+      - media_volume:/home/app/web/mediafiles
+    ports:
+      - "1337:80"
+    depends_on:
+      - web
+      - db
+
 volumes:
   postgres_data:
+  static_volume:
+  media_volume:

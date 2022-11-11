@@ -63,56 +63,48 @@
   text-decoration: none;
 }
 
+/* parent container */
 .home-container {
   width: 100%;
-  display: flex;
-  overflow: auto;
-  box-shadow: 5px 5px 10px 0 #d4d4d4;
-  min-height: 100vh;
-  align-items: center;
-  border-color: var(--dl-color-gray-black);
-  border-width: 1px;
-  flex-direction: column;
+  margin-top: 30px;
+  justify-content: center;
+  display: block;
 }
 
-.large-logo-container {
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 816px;
-  bottom: 0;
-  height: 633px;
-  margin: auto;
-  display: flex;
-  position: absolute;
-  align-self: center;
-  align-items: flex-start;
-  flex-direction: column;
+.home-buttons-container {
+  width: 100%;
+  display: block;
+  justify-content: center;
+  margin-top: 70px;
 }
 
+.home-buttons-container > a {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ACMAS image */
 .home-logo {
   width: 100%;
-  height: 205px;
+  max-width: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   align-self: center;
-  object-fit: cover;
+  padding-top: 40px;
   border-radius: var(--dl-radius-radius-radius4);
 }
 
 .home-search-by-question {
-  top: var(--dl-space-space-halfunit);
-  left: 0;
-  right: 0;
-  width: 383px;
-  bottom: 0;
-  height: 51px;
-  margin: auto;
+  text-align: center;
   display: flex;
-  position: absolute;
-  align-self: center;
-  border-color: #2f617c;
-  border-width: 2px;
-  text-transform: capitalize;
   justify-content: center;
+  width: 100%;
+  max-width: 350px;
+  border: 2px solid var(--acmas-blue);
 }
 
 .search-title {
@@ -123,25 +115,17 @@
 }
 
 .home-upload {
-  left: 0;
-  right: 0;
-  width: 268px;
-  bottom: 56px;
-  height: 86px;
-  margin: auto;
-  display: flex;
-  position: absolute;
-  align-self: center;
-  border-color: #2f617c;
-  border-width: 2px;
   border-radius: var(--dl-radius-radius-round);
-  flex-direction: row;
-  text-transform: capitalize;
+  text-align: center;
+  display: flex;
   justify-content: center;
+  width: 100%;
+  max-width: 260px;
+  border: 2px solid var(--acmas-blue);
 }
 
 .upload-button-text {
-  color: #2f617c;
+  color: var(--acmas-blue);
   font-size: 38px;
   font-style: normal;
   font-family: Arial, serif;
@@ -150,18 +134,12 @@
 }
 
 .home-search-by-course {
-  top: 386px;
-  left: 214px;
-  width: 383px;
-  height: 51px;
-  margin: auto;
+  text-align: center;
   display: flex;
-  position: absolute;
-  align-self: center;
-  border-color: #2f617c;
-  border-width: 2px;
-  text-transform: capitalize;
   justify-content: center;
+  width: 100%;
+  max-width: 350px;
+  border: 2px solid var(--acmas-blue);
 }
 
 .home-header {
@@ -189,25 +167,4 @@
   width: var(--dl-size-size-xsmall);
   height: var(--dl-size-size-xsmall);
   display: flex;
-}
-
-@media (max-width: 767px) {
-  .home-header {
-    padding-left: var(--dl-space-space-twounits);
-    padding-right: var(--dl-space-space-twounits);
-  }
-
-  .home-nav {
-    display: none;
-  }
-}
-
-@media (max-width: 479px) {
-  .home-header {
-    padding: var(--dl-space-space-unit);
-  }
-
-  .home-mobile-menu {
-    padding: 16px;
-  }
 }

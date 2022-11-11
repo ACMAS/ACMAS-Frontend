@@ -4,7 +4,7 @@
 <head>
     <title>ACMAS Homepage</title>
     <meta content="ACMAS Homepage" property="og:title"/>
-    <link rel="icon" type="image/x-icon" href="../static/img/acmas-hexagons.png">
+    <link rel="icon" type="image/x-icon" href="../static/img/star.svg">
     <meta content="summary_large_image" property="twitter:card"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta charset="utf-8"/>
@@ -92,48 +92,91 @@
             href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
             rel="stylesheet"
     />
+    <link rel="stylesheet" href="../static/styles/bootstrap/bootstrap.min.css">
     <link href="../static/styles/commons.css" rel="stylesheet"/>
     <link href="../static/styles/home-style.css" rel="stylesheet"/>
 </head>
 <body>
-<div>
-    <link href="../static/styles/commons.css" rel="stylesheet"/>
-    <link href="../static/styles/home-style.css" rel="stylesheet"/>
+    <!-- JS Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
 
-    <div class="home-container">
-        <div class="large-logo-container">
-            <a href="/">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand" href="/static/index.html">
+                <img src="../static/img/star.svg" width="40" height="40" alt="">
+            </a>
+
+            <!-- Collapse Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-coll" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbar-coll">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
+
+                    <!-- Home -->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/static/index.html">Home</a>
+                    </li>
+
+                    <!-- Search -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Search
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/searchByQuestion">by Question</a></li>
+                            <li><a class="dropdown-item" href="/searchByCourse">by Course</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Upload -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Upload
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/upload-file">With a file</a></li>
+                            <li><a class="dropdown-item" href="/upload-manually">Manually</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Github -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/ACMAS/ACMAS-Frontend">GitHub Repository</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="home-container" style="width:500px; margin: auto;">
+        <div class="home-logo-title">
+            <a href="/" >
                 <img
-                        alt="ACMAS logo"
-                        class="home-logo"
-                        src="../static/img/acmas-logo.png"
+                    alt="ACMAS logo"
+                    class="home-logo"
+                    src="../static/img/logo.v1.svg"
                 />
-            </a>
-            <a href="/searchByQuestion">
-            <span class="home-text home-search-by-question button">
-              <span>Search By Question</span>
-              <span></span>
-            </span>
-            </a>
-            <a href="/upload-options">
-                <span class="upload-button-text button home-upload">Upload</span>
-            </a>
-            <a href="/searchByCourse">
-            <span class="home-text home-search-by-course button">
-              <span>Search By Course</span>
-            </span>
             </a>
         </div>
-        <header class="home-header" data-role="Header">
-            <a href="/">
-                <img
-                        alt="image"
-                        class="hexagon-image"
-                        src="../static/img/acmas-hexagons.png"
-                />
+
+        <div class="home-buttons-container">
+            <a href="/searchByQuestion" style="width:350px;">
+                  <span class="home-text home-search-by-question button">Search By Question</span>
             </a>
-        </header>
+
+            <a href="/searchByCourse" style="width:350px;">
+                <span class="home-text home-search-by-course button">Search By Course</span>
+            </a>
+
+            <a href="/upload-options" style="width:260px;">
+                <span class="upload-button-text button home-upload">Upload</span>
+            </a>
+        </div>
     </div>
-</div>
 </body>
 </html>
