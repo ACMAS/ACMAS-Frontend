@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <title>ACMAS Search</title>
-    <link rel="icon" type="image/x-icon" href="../static/img/star.svg">
-    <meta property="og:title" content="Search Results" />
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="twitter:card" content="summary_large_image" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      data-tag="font"
-    />
-    <link href="../static/styles/search-by-course-style.css" rel="stylesheet"/>
-  </head>
+<head>
+  <title>ACMAS Search</title>
+  <link rel="icon" type="image/x-icon" href="../static/img/star.svg">
+  <meta property="og:title" content="Search Results" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    data-tag="font"
+  />
+  <link href="../static/styles/search-by-course-style.css" rel="stylesheet"/>
+</head>
 
-  <body>
+<body>
   {% extends 'navbar.html' %}
   {% block content %}
   <div class="container-fluid search-container">
+    <!-- Header -->
     <h1 class="display-3" style="text-align: center">Search Results</h1>
+
     <ul class="list-group">
+      <!-- Looping Search Results -->
       {% for file in files %}
       <form method="GET" action="{% url 'pdfReader' %}">
         <a class="list-group-item list-group-item-action">
@@ -34,16 +36,14 @@
       {% endfor %}
     </ul>
 
+    <!-- New Search Button -->
     <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center">
       {% if manual == True %}
-      <button class="btn btn-lg btn-primary" onclick="window.location.href='searchByQuestion';">
-        New Search
-      </button>
+      <button class="btn btn-lg btn-primary" onclick="window.location.href='searchByQuestion';">New Search</button>
       {% else %}
-      <button class="btn btn-lg btn-primary" onclick="window.location.href='searchByCourse';">
-        New Search
-      </button>
+      <button class="btn btn-lg btn-primary" onclick="window.location.href='searchByCourse';">New Search</button>
       {% endif %}
+
     </div>
   </div>
   {% endblock %}
