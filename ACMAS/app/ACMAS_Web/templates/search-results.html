@@ -15,30 +15,26 @@
       data-tag="font"
     />
     <link href="../static/styles/search-by-course-style.css" rel="stylesheet"/>
-    <link href="../static/styles/search-results-style.css" rel="stylesheet"/>
   </head>
 
   <body>
-    {% extends 'navbar.html' %}
-    {% block content %}
-    <div class="container-fluid search-container">
-      <h1 class="display-3" style="text-align: center">Search Results</h1>
-      <div class="search-results-page-results-frame">
-        <ul class="list list-group tab-group">
-            {% for file in files %}
-            <form method="GET" action="{% url 'pdfReader' %}">
-              <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">{{ file.filename }}</h5>
-                </div>
-                <p class="mb-1"></p>
-                <li class="list-item list-group-item tab-pane fade show" ><button type="submit" class="btn" > <input type="text" name="url" value="{{file.filename}}" readonly> </button></li>
-              </a>
-              
-            </form>
-            {% endfor %}
-        </ul>
-      </div>
+  {% extends 'navbar.html' %}
+  {% block content %}
+  <div class="container-fluid search-container">
+    <h1 class="display-3" style="text-align: center">Search Results</h1>
+    <ul class="list-group">
+      {% for file in files %}
+      <form method="GET" action="{% url 'pdfReader' %}">
+        <a class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <button type="submit" class="btn btn-link"><input type="submit" class="btn btn-link" name="url" value="{{file.filename}}" readonly></button>
+          </div>
+        </a>
+      </form>
+      {% endfor %}
+    </ul>
+
+    <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center">
       {% if manual == True %}
       <button class="btn btn-lg btn-primary" onclick="window.location.href='searchByQuestion';">
         New Search
@@ -49,6 +45,7 @@
       </button>
       {% endif %}
     </div>
-    {% endblock %}
+  </div>
+  {% endblock %}
 </body>
 </html>
