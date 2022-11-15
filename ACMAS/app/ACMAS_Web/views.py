@@ -152,7 +152,6 @@ def uploadFile(request):
     return render(request, "upload-file.html")
 
 
-@csrf_protect
 def get_Cropped_Image(request):
     form = CroppedImgForm(request.POST or None, request.FILES or None)
     if form.is_valid():
@@ -160,7 +159,8 @@ def get_Cropped_Image(request):
         return JsonResponse({'message': 'works'})
     context = {"form":form}
     return render(request,"cropped-img.html",context)
-@csrf_protect
+
+
 def crop_uploaded_file(request,file_id,pgcount):
     uploadedfile = UploadedFile.objects.get(id=file_id)
     if ocr_prototype.ending_type(uploadedfile.filename) == "pdf":

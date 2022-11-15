@@ -1,5 +1,6 @@
 Django==4.0.8
 django-dbbackup
-
+pdf2image
+pytesseract
 psycopg2-binary==2.9.1
 gunicorn==20.1.0
