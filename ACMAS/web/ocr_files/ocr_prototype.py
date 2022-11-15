@@ -25,7 +25,6 @@ def png_conversion(pdf_name):
 
     image_names = []
     images_from_path = convert_from_path(pdf_name)
-    print(images_from_path)
     for i in range(len(images_from_path)):
         # Save pages as images in the pdf
         images_from_path[i].save('media/ocr_images/' + 'page' + str(i) + '.jpg', 'JPEG')
