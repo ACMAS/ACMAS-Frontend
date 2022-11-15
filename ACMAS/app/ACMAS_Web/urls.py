@@ -31,6 +31,8 @@ urlpatterns = (
         path("upload-options", views.uploadOptions, name="uploadOptions"),
         path("upload-file", views.uploadFile, name="uploadFile"),
         path("upload-manually", views.uploadManually, name="uploadManually"),
+        path("loginPage", views.loginPage, name="loginPage"),
+
     ]
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
