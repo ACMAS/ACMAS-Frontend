@@ -181,7 +181,7 @@ def get_Cropped_Image(request):
 def crop_uploaded_file(request,file_id,pgcount):
     uploadedfile = UploadedFile.objects.get(id=file_id)
     if ocr_prototype.ending_type(uploadedfile.filename) == "pdf":
-        pages = ocr_prototype.png_conversion("." + uploadedfile.file_dir)
+        pages = ocr_prototype.png_conversion("." + "/media/" + uploadedfile.filename)
         tcount = len(pages) - 1
         return render(request, 'crop-pdf.html', {"file": uploadedfile, "count":pgcount, "total": tcount} )
     return render(request,'crop-uploaded-file.html',{"file":uploadedfile})
