@@ -21,7 +21,7 @@
   {% block content %}
   <div class="container-fluid search-container">
     <!-- Header -->
-    <h1 class="display-3" style="text-align: center">Search by Question</h1>
+    <h1 class="display-3 text-center">Search by Question</h1>
 
     <form class="row user-inpt" id="manual-entry-form" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
       <!-- Question -->

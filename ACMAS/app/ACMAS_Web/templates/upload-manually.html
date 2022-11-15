@@ -21,7 +21,7 @@
   {% block content %}
   <div class="container-fluid search-container">
     <!-- Header -->
-    <h1 class="display-3" style="text-align: center">ACMAS Upload</h1>
+    <h1 class="display-3 text-center">ACMAS Upload</h1>
 
     <form class="row user-inpt" id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'uploadManually' %}"> {% csrf_token %}
       <!-- School -->
