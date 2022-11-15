@@ -1,0 +1,26 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: chenr16@rpi.edu
+Date: Tue, 15 Nov 2022 19:24:53 -0000
+Message-ID: 
+ <166854029383.1652.1194570743631787235@LAPTOP-7A2BRAFS.localdomain>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/users/reset/MQ/bey39h-1c71d40fbbd408444eb6db5d90bd4de4/
+
+Your username, in case you’ve forgotten: chenr16@rpi.edu
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------
