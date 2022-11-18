@@ -25,6 +25,9 @@ Open the repository directory `ACMAS-Frontend` and navigate to the `ACMAS` direc
 #### Turn on the Docker containers when you want to start working
 `docker-compose -f docker-compose.yml up -d --build`
 #### Turn off the Docker containers when you are done working
+##### If you want to shut down normally
+`docker-compose -f docker-compose.yml down`
+##### If you want to flush your database and project files
 `docker-compose -f docker-compose.yml down -v`
 
 ---
@@ -33,6 +36,7 @@ ___After turning on the Docker container follow these steps:___
 #### Ensure that the Docker application was successfully built and is running
 - Successful builds will return no errors (red)
 - One of the following messages will appear in your command prompt
+- __Note:__ If you do not flush, only the affected containers will appear
 
   ```shell
   Running 3/3
@@ -40,10 +44,10 @@ ___After turning on the Docker container follow these steps:___
   - Container acmas-web-1     Started
   - Container acmas-nginx-1   Started
   ```
-  
+
 - Ensure that the application's containers in Docker Desktop all appear as __green__
-- Navigate to `localhost:1337` in any web browser
-  - If this does not work, default to using `127.0.0.1:1337`
+- Navigate to `localhost` in any web browser
+  - If this does not work, default to using `127.0.0.1`
 ---
 
 ### Resolving issues with Docker and/or ACMAS
