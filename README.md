@@ -45,8 +45,8 @@ ___After turning on the Docker container follow these steps:___
   ```
 
 - Ensure that the application's containers in Docker Desktop all appear as __green__
-- Navigate to `localhost` in any web browser
-  - If this does not work, default to using `127.0.0.1`
+- Navigate to `localhost:80` in any web browser
+  - If this does not work, default to using `127.0.0.1:80`
 ---
 
 ### Resolving issues with Docker and/or ACMAS
