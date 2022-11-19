@@ -1,9 +1,6 @@
 .idea/
 __pycache__/
-node_modules/
+env
 ACMAS/package-lock.json
 ACMAS/package.json
-ACMAS/web/ocr_misc/*
-ACMAS/.DS_Store
-.DS_Store
-ACMAS/media
+ACMAS/app/db.sqlite3
