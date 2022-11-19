@@ -14,7 +14,7 @@ fi
 
 # PRODUCTION only -- Doesn't flush the db
 # Build the database based on models.py
-python manage.py makemigrations
+python manage.py makemigrations ACMAS_Web
 python manage.py migrate
 python manage.py collectstatic
 
