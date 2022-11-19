@@ -22,7 +22,7 @@
     <!-- Header -->
     <h1 class="display-3" style="text-align: center">Search by Course</h1>
 
-    <form class="row user-inpt" method="POST" enctype="multipart/form-data" action="{% url 'searchResults' %}"> {% csrf_token %}
+    <form class="row user-inpt" method="POST" enctype="multipart/form-data" action="{% url 'searchResults' %}">
       <!-- School -->
       <div class="col-md-12">
         <input type="text" class="form-control form-control-lg" id="input-uni" name="school" placeholder="Enter University">

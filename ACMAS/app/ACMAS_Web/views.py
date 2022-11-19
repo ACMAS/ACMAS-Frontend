@@ -151,7 +151,7 @@ def uploadFile(request):
         return redirect("crop-file",file_id = uploaded_id,pgcount = 0)
     return render(request, "upload-file.html")
 
-@csrf_protect
+
 def get_Cropped_Image(request):
     form = CroppedImgForm(request.POST or None, request.FILES or None)
     if form.is_valid():
@@ -159,7 +159,8 @@ def get_Cropped_Image(request):
         return JsonResponse({'message': 'works'})
     context = {"form":form}
     return render(request,"cropped-img.html",context)
-@csrf_protect
+
+
 def crop_uploaded_file(request,file_id,pgcount):
     uploadedfile = UploadedFile.objects.get(id=file_id)
     if ocr_prototype.ending_type(uploadedfile.filename) == "pdf":
@@ -168,9 +169,12 @@ def crop_uploaded_file(request,file_id,pgcount):
         return render(request, 'crop-pdf.html', {"file": uploadedfile, "count":pgcount, "total": tcount} )
     return render(request,'crop-uploaded-file.html',{"file":uploadedfile})
 
+
 def pdf_reader(request,file_id,pgcount,total):
     uploadedfile = UploadedFile.objects.get(id=file_id)
     return render(request, 'crop-pdf.html', {"file": uploadedfile, "count": pgcount, "total": total})
+
+
 def ocr_cropped_files(request,file_id2):
     cropped_imgs = CroppedImg.objects.all()
     for img in cropped_imgs:
@@ -180,6 +184,8 @@ def ocr_cropped_files(request,file_id2):
         img.save()
     context = {"Cimages":cropped_imgs, "file":file_id2}
     return render(request,'all-cropped-imgs.html',context)
+
+
 def edit_question(request,pk,pk2):
     cropped_img = CroppedImg.objects.get(id=pk2)
     form = CroppedQuestionForm(instance = cropped_img)
@@ -190,6 +196,8 @@ def edit_question(request,pk,pk2):
             return redirect("print-Cropped-Imgs",pk)
     context = {"form":form}
     return render(request, 'edit-question.html',context)
+
+
 def delete_Cropped_Text(request,pk,pk2):
     cropped_img = CroppedImg.objects.get(id=pk2)
     if request.method == "POST":
@@ -197,11 +205,13 @@ def delete_Cropped_Text(request,pk,pk2):
         return redirect('print-Cropped-Imgs',pk)
     return render(request,"delete.html")
 
+
 def submit_questions(request):
     for q in CroppedImg.objects.all():
         Question.objects.create(question=q.text, Answers = "", Hash="", filename="")
     CroppedImg.objects.all().delete()
     return redirect('index')
+
 
 def uploadManually(request):
     school = request.POST.get("school")  # Check to see if a school was entered

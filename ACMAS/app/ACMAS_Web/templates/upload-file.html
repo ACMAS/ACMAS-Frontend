@@ -21,7 +21,7 @@
         <!-- Header -->
         <h1 class="display-3" style="text-align: center">ACMAS Upload</h1>
 
-        <form class="row user-inpt" id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'uploadFile' %}"> {% csrf_token %}
+        <form class="row user-inpt" id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'uploadFile' %}">
             <!-- School -->
             <div class="col-md-12">
                 <input class="form-control form-control-lg" placeholder="Enter your school" type="text" name="school"/>
