@@ -32,6 +32,7 @@ urlpatterns = (
         path("upload-file", views.uploadFile, name="uploadFile"),
         path("upload-manually", views.uploadManually, name="uploadManually"),
         path("loginPage", views.loginPage, name="loginPage"),
+        path("register", views.register, name="register"),
 
     ]
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

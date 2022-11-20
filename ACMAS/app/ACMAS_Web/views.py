@@ -42,6 +42,9 @@ def searchByCourse(request):
 def loginPage(request):
     return render(request, "login-page.html")
 
+def register(request):
+    return render(request, "register-page.html")
+
 # Utilizes search by course form
 def searchResults(request):
     # Get input
