@@ -40,7 +40,7 @@
 
 }
 
-.edit{
+.edit-delete{
     margin-right: 10px;
 }
 
@@ -153,5 +153,31 @@
     border: solid 10px cornflowerblue;
 }
 
+.bottomright {
+    font-family: Lato;
+    background-color: #099b27;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
 
+    position: absolute;
+    bottom: 15px;
+    right: 25px;
+    font-size: 18px;
+    
+}
 
+.bottomleft {
+    font-family: Lato;
+    background-color: #314bde;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+
+    position: absolute;
+    bottom: 15px;
+    left: 25px;
+    font-size: 18px;
+}
