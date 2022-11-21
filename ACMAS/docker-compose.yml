@@ -1,4 +1,4 @@
-# Docker compose file for PRODUCTION deployment
+# Docker compose file for DEVELOPMENT deployment
 ---
 version: '3.7'
 
@@ -60,5 +60,5 @@ services:
 
 volumes:
   postgres_data:
-  static_files:
-  media_files:
+  static_volume:
+  media_volume:
