@@ -39,7 +39,7 @@ def searchByQuestion(request):
 def searchByCourse(request):
     return render(request, "search-by-course.html")
 
-def loginPage(request):
+def login(request):
     return render(request, "login-page.html")
 
 def register(request):

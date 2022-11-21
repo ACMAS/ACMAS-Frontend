@@ -2,9 +2,9 @@
 
 <html lang="en">
 <head>
-    <title>ACMAS Search</title>
+    <title>Login</title>
     <link rel="icon" type="image/x-icon" href="../static/img/star.svg">
-    <meta content="ACMAS Search" property="og:title"/>
+    <meta content="Login" property="og:title"/>
     <meta content="summary_large_image" property="twitter:card"/>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -18,7 +18,30 @@
 <body>
   {% extends 'navbar.html' %}
   {% block content %}
+  <div class="container-fluid search-container">
+    <!-- Header -->
+    <h1 class="display-3 text-center">Login</h1>
 
+    <form class="row user-inpt" id="manual-entry-form" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
+      <!-- Question -->
+      <div class="mb-3 row">
+        <label for="username" class="visually-hidden">Username</label>
+        <div class="col-md-12">
+          <input type="text" class="form-control form-control-lg" name="username" placeholder="Enter Username">
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="password" class="visually-hidden">Password</label>
+        <div class="col-md-12">
+          <input type="text" class="form-control form-control-lg" name="password" placeholder="Enter Password">
+        </div>
+      </div>
+      <!-- Submit Button-->
+      <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center">
+        <button type="submit" class="btn btn-primary btn-lg" value="Search">Login</button>
+      </div>
+    </form>
   {% endblock %}
 </body>
 </html>

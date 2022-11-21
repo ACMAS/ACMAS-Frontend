@@ -31,7 +31,7 @@ urlpatterns = (
         path("upload-options", views.uploadOptions, name="uploadOptions"),
         path("upload-file", views.uploadFile, name="uploadFile"),
         path("upload-manually", views.uploadManually, name="uploadManually"),
-        path("loginPage", views.loginPage, name="loginPage"),
+        path("login", views.login, name="login"),
         path("register", views.register, name="register"),
 
     ]
