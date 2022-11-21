@@ -3,5 +3,5 @@
 }
 
 .upload-option {
-  background-color: #2f617c;
+  background-color: var(--acmas-blue);
 }

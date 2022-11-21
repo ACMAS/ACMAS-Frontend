@@ -21,24 +21,29 @@
         <!-- Header -->
         <h1 class="display-3" style="text-align: center">ACMAS Upload</h1>
 
-        <form class="row user-inpt" id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'uploadManually' %}"> {% csrf_token %}
+        <form class="row user-inpt" id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'uploadFile' %}"> {% csrf_token %}
             <!-- School -->
             <div class="col-md-12">
                 <input class="form-control form-control-lg" placeholder="Enter your school" type="text" name="school"/>
             </div>
             <!-- Course -->
+            <div class="col-md-6 user-inpt">
+                <input class="form-control form-control-lg input" placeholder="Enter your course" type="text" name="course"/>
+            </div>
+            <!-- Assignment Dropdown -->
+            <div class="col-md-6 user-inpt">
+                <select class="form-select form-select-lg" placeholder="Select assignment type" autocomplete="on" name="type">
+                    <option style="color: #D4D6D9;" value="All">Select assignment type</option>
+                    <option value="Assignment">Assignment</option>
+                    <option value="Exam">Exam</option>
+                    <option value="Practice">Practice</option>
+                </select>
+            </div>
+            <!-- Upload Button -->
             <div class="col-md-12 user-inpt">
-                <input class="form-control form-control-lg" placeholder="Enter your course" type="text" name="course"/>
+                <input type="file" class="form-control form-control-lg" name="fileUpload"/>
             </div>
-            <!-- Question -->
-            <div class="col-md-12 user-inpt" style="margin-top: 1%">
-                <input class="form-control form-control-lg" placeholder="Enter your question" type="text" name="question"/>
-            </div>
-            <!-- Answer -->
-            <div class="col-md-12 user-inpt">
-                <input class="form-control form-control-lg" placeholder="Enter your answer" type="text" name="answer"/>
-            </div>
-            <!-- Submit Button-->
+            <!-- Submit Button -->
             <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center">
                 <input type="submit" class="btn btn-primary btn-lg" value="Upload"/>
             </div>

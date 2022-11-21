@@ -1,7 +1,6 @@
 #!/bin/sh
-# This file is used to verify that Postgres is healthy before applying migrations and running Django dev server
-# DEVELOPMENT only
 
+# This file is used to verify that Postgres is healthy before applying migrations and running Gunicorn deployment
 if [ "$DATABASE" = "postgres" ]
 then
     echo "Waiting for postgres..."
@@ -13,7 +12,10 @@ then
     echo "PostgreSQL started"
 fi
 
-python manage.py flush --no-input
+# PRODUCTION only -- Doesn't flush the db
+# Build the database based on models.py
+python manage.py makemigrations ACMAS_Web
 python manage.py migrate
+python manage.py collectstatic
 
 exec "$@"

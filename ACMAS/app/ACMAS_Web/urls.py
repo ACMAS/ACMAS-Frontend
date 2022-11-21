@@ -29,7 +29,7 @@ urlpatterns = (
         path("returnQuery", views.returnQuery, name="returnQuery"),
         path("pdfReader", views.pdfReader, name="pdfReader"),
         path("upload-options", views.uploadOptions, name="uploadOptions"),
-        path("upload-OCR", views.uploadOCR, name="uploadOCR"),
+        path("upload-file", views.uploadFile, name="uploadFile"),
         path("upload-manually", views.uploadManually, name="uploadManually"),
     ]
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
