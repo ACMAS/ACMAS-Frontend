@@ -1,6 +1,5 @@
 const confirmBttn = document.getElementById('confirm-button')
 const alertBox = document.getElementById('alert-box')
-const csrf = document.getElementsByName('csrfmiddlewaretoken')
 
 var $image = $('#image')
 $image.cropper({
@@ -21,9 +20,8 @@ confirmBttn.addEventListener('click',()=>{
     cropper.getCroppedCanvas().toBlob((blob) => {
         const formData = new FormData();
       // Pass the image file name as the third parameter if necessary
-        formData.append('csrfmiddlewaretoken', csrf[0].value)
         formData.append('file', blob, 'my-image.png');
-
+        
         $.ajax('/crop-Img/',{
             method: 'POST',
             enctype: 'multipart/form-data',
