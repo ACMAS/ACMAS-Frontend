@@ -1,8 +1,5 @@
 from .models import Course, Question, University, UploadedFile
 from elasticsearch import Elasticsearch
-from elasticsearch_dsl import connections
-from elasticsearch_dsl import Search
-from elasticsearch_dsl import Index
 
 
 # Class handles external interaction with searching
@@ -137,24 +134,10 @@ class courseSearchHandler:
 
 class questionSearchHandler:
     def __init__(self):
-        connections.create_connection(
-            alias = 'es_connection',
-            hosts = [self.elastic_address],
-            timeout = 60,
-            verify_certs = False
-        )
-
-        self.elastic_address = "http://localhost:9200"
-        self.es = Search(using='es_connection')
+        self.elastic_address = "http://172.17.0.1:9200"
+        self.question_index_name = "question_index"
+        self.es = Elasticsearch(self.elastic_address)
         self.min_question_length_for_fuzzy = 3
-
-        # Create the index
-        self.question_index_name = "question-index"
-        self.question_index = Index('question_index_name')
-        self.question_index.settings(
-            number_of_shards = 1,
-            number_of_replicas = 0
-        )
 
         # Only allow searching by question, the question will be preprocessed first
         # The question field will be split and expanded using an ngram from size 2 to 9
@@ -213,13 +196,13 @@ class questionSearchHandler:
         }
 
         # Only create the questions index if it doesn't already exit
-        if not self.question_index.exists(self.question_index_name):
-            self.question_index.create(
-                index=self.question_index_name,
-                mappings=self.mapping,
-                settings=self.setting,
-                ignore=400 # ignore 400 already exists code
-            )
+        if not self.es.indices.exists(index=self.question_index_name):
+          self.es.indices.create(
+            index=self.question_index_name,
+            mappings=self.mapping,
+            settings=self.setting,
+            ignore=400 # ignore 400 already exists code
+          )
 
 
     def addQuestionToIndex(self, question_id):
@@ -235,7 +218,7 @@ class questionSearchHandler:
         Parameters: String question - string containing the question
         Returns:    QuerySet of Question
         """
-        self.question_index.refresh(index=self.question_index_name)
+        self.es.indices.refresh(index=self.question_index_name)
         query_for_question = {
           "bool": {
             "should": [
@@ -271,7 +254,7 @@ class questionSearchHandler:
           query_for_question['bool']['should'][1]['fuzziness'] = 0
 
         # Returns an object detailing the reseults of the search ranked by score
-        return self.question_index.search(
+        return self.es.search(
             index=self.question_index_name,
             query=query_for_question
         )
