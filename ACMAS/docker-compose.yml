@@ -57,7 +57,9 @@ services:
     depends_on:
       - web
       - db
-
+networks:
+  es-net:
+    driver: bridge
 volumes:
   postgres_data:
   static_files:

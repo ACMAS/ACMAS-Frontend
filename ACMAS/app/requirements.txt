@@ -1,6 +1,8 @@
 Django==4.0.8
 django-dbbackup
-elasticsearch
+elasticsearch7==7.17.7
+django-elasticsearch-dsl==7.2.2
+
 
 psycopg2-binary==2.9.1
 gunicorn==20.1.0
