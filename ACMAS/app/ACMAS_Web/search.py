@@ -1,6 +1,6 @@
+import json
 from .models import Course, Question, University, UploadedFile
 from elasticsearch import Elasticsearch
-
 
 # Class handles external interaction with searching
 class searchFacade:
@@ -220,43 +220,45 @@ class questionSearchHandler:
         """
         self.es.indices.refresh(index=self.question_index_name)
         query_for_question = {
-          "bool": {
-            "should": [
-              {
-                # Exact phrase matches should be prioritized and ranked higher, +10 score
-                "multi_match": {
-                    "query": question,
-                    "type": "phrase",
-                    "fields": [
-                        "question"
-                    ],
-                    "boost": 10
+            "query": {
+                "bool": {
+                    "should": [
+                        {
+                            # Exact phrase matches should be prioritized and ranked higher, +10 score
+                            "multi_match": {
+                                "query": question,
+                                "type": "phrase",
+                                "fields": [
+                                    "question"
+                                ],
+                                "boost": 10
+                            }
+                        },
+                        {
+                            # Uses Levenshtein to allow for typos within a certain edit distance automatically found
+                            # The query is compared against the n-grams generated for each question in the index
+                            "multi_match": {
+                                "query": question,
+                                "type": "most_fields",
+                                "fields": [
+                                    "question"
+                                ],
+                                "fuzziness":"AUTO"
+                            }
+                        }
+                    ]
                 }
-              },
-              {
-                # Uses Levenshtein to allow for typos within a certain edit distance automatically found
-                # The query is compared against the n-grams generated for each question in the index
-                "multi_match": {
-                    "query": question,
-                    "type": "most_fields",
-                    "fields": [
-                        "question"
-                    ],
-                    "fuzziness":"AUTO"
-                }
-              }
-            ]
-          }
+            }
         }
 
         # Small queries will not use fuzzy search to avoid too many search results
         if question and len(question) < self.min_question_length_for_fuzzy:
-          query_for_question['bool']['should'][1]['fuzziness'] = 0
+          query_for_question['query']['bool']['should'][1]['multi_match']['fuzziness'] = "0"
 
         # Returns an object detailing the reseults of the search ranked by score
         return self.es.search(
             index=self.question_index_name,
-            query=query_for_question
+            body=json.dumps(query_for_question)
         )
 
 class fileSearchHandler:
