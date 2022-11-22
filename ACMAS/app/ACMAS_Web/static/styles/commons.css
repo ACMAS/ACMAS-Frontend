@@ -33,4 +33,20 @@
   --dl-space-space-fourunits: 64px;
   --dl-space-space-threeunits: 48px;
   --dl-space-space-oneandhalfunits: 24px;
+  --acmas-blue: #327796;
 }
+
+/* ::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 2px rgb(126, 126, 126);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #f1d592;
+  -webkit-box-shadow: inset 0 0 2px rgba(158, 158, 158, 0.7);
+} */
