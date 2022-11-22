@@ -205,13 +205,12 @@ class questionSearchHandler:
           )
 
 
-    def addQuestionToIndex(self, question_id):
+    def addQuestionToIndex(self, question_doc):
         """
         Parameters: A question id (string)
         Returns: None
         """
-        question_object = Question.objects.get(pk=question_id)
-        self.es.index(index=self.question_index_name, id=question_id, document=question_object)
+        self.es.index(index=self.question_index_name, document=question_doc)
             
     def searchQuestion(self, question):
         """
@@ -256,10 +255,19 @@ class questionSearchHandler:
           query_for_question['query']['bool']['should'][1]['multi_match']['fuzziness'] = "0"
 
         # Returns an object detailing the reseults of the search ranked by score
-        return self.es.search(
+        response = self.es.search(
             index=self.question_index_name,
             body=json.dumps(query_for_question)
         )
+        print('response', response)
+
+        filenames = []
+        for hit in response['hits']['hits']:
+            filename = hit['_source']['filename']
+            filenames.append(filename)
+
+        return filenames
+
 
 class fileSearchHandler:
     def getFiles(self, course, fType):

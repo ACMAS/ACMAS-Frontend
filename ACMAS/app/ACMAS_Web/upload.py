@@ -5,7 +5,7 @@ from django.core.files.base import ContentFile
 from django.core.files.storage import FileSystemStorage
 
 from .models import Course, Question, University, UploadedFile
-
+from .search import questionSearchHandler
 
 # Facade for uploading text questions/answers or a file
 class createFacade:
@@ -110,6 +110,16 @@ class questionEditHandler:
             Hash=hashString,
         )
         db_question.save()
+
+        # Make a question search handler and add the course to the elastic search index
+        question_search_handler = questionSearchHandler()
+        db_question_doc = {
+            "filename": djangoFileName,
+            "question": question,
+            "Answers": answer,
+            "Hash": hashString,
+        }
+        question_search_handler.addQuestionToIndex(db_question_doc)
 
         # Adding file to database
         db_file = UploadedFile(

@@ -31,7 +31,7 @@ def searchByQuestion(request):
         # Search with Facade
         files = facade.searchQuestion(question)
         # Save facade state
-        cache.set(sessionID, facade, 1200)
+        # cache.set(sessionID, facade, 1200)
         return render(request, "search-results.html", {"files": files, "manual": True})
     return render(request, "search-by-question.html")
 
