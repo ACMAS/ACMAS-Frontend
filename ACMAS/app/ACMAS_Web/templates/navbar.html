@@ -3,20 +3,19 @@
 <html lang="en">
 <head>
   <title>Navbar</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <link
     data-tag="font"
     href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
     rel="stylesheet"
   />
   <link rel="stylesheet" href="../static/styles/bootstrap/bootstrap.min.css">
-  <link href="../static/styles/commons.css" rel="stylesheet" />
+  <link href="../static/styles/commons.css" rel="stylesheet"/>
 
 </head>
 <body>
 <!-- JS Scripts -->
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../static/js/bootstrap.bundle.min.js"></script>
 
 <!-- Urls -->
@@ -37,8 +36,7 @@
     </a>
 
     <!-- Collapse Button -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbar-coll" aria-expanded="false">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-coll" aria-expanded="false">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -48,8 +46,7 @@
         <!-- Home -->
         <li class="nav-item">
           {% if request.path == home_url %}
-            <a class="nav-link active" aria-current="page"
-               href="../static/index.html">Home</a>
+            <a class="nav-link active" aria-current="page" href="../static/index.html">Home</a>
           {% else %}
             <a class="nav-link" aria-current="page" href="../static/index.html">Home</a>
           {% endif %}
@@ -57,15 +54,12 @@
 
         <!-- Search -->
         <li class="nav-item dropdown">
-          {% if request.path == search_url or request.path == search_url2 or
-              request.path == search_url3 %}
-            <a class="nav-link active dropdown-toggle" href="#" role="button"
-               data-bs-toggle="dropdown" aria-expanded="false">
+          {% if request.path == search_url or request.path == search_url2 or request.path == search_url3 %}
+            <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Search
             </a>
           {% else %}
-            <a class="nav-link dropdown-toggle" href="#" role="button"
-               data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Search
             </a>
           {% endif %}
@@ -77,15 +71,12 @@
 
         <!-- Upload -->
         <li class="nav-item dropdown">
-          {% if request.path == upload_url or request.path == upload_url2 or
-              request.path == upload_url3 %}
-            <a class="nav-link dropdown-toggle active" href="#" role="button"
-               data-bs-toggle="dropdown" aria-expanded="false">
+          {% if request.path == upload_url or request.path == upload_url2 or request.path == upload_url3 %}
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Upload
             </a>
           {% else %}
-            <a class="nav-link dropdown-toggle" href="#" role="button"
-               data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Upload
             </a>
           {% endif %}
@@ -97,8 +88,7 @@
 
         <!-- Github -->
         <li class="nav-item">
-          <a class="nav-link"
-             href="https://github.com/ACMAS/ACMAS-Frontend">GitHub Repository</a>
+          <a class="nav-link" href="https://github.com/ACMAS/ACMAS-Frontend">GitHub Repository</a>
         </li>
       </ul>
     </div>
