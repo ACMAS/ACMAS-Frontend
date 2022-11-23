@@ -1,11 +1,20 @@
 .button {
-  color: var(--dl-color-gray-black);
-  display: inline-block;
+  background-color: #ffffff11;
+  transition-duration: 0.4s;
+  border: 2px solid var(--dl-color-gray-white);
+  text-decoration: none !important; 
   padding: 0.5rem 1rem;
-  border-color: var(--dl-color-gray-black);
-  border-width: 1px;
   border-radius: 4px;
-  background-color: var(--dl-color-gray-white);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: var(--acmas-blue);
+}
+
+.button:hover {
+  background-color: var(--dl-color-gray-white); 
+  color: var(--acmas-blue);
 }
 
 .input {
@@ -98,14 +107,14 @@
   border-radius: var(--dl-radius-radius-radius4);
 }
 
-.home-search-by-question {
+/* .home-search-by-question {
   text-align: center;
   display: flex;
   justify-content: center;
   width: 100%;
   max-width: 350px;
   border: 2px solid var(--acmas-blue);
-}
+} */
 
 .search-title {
   font-size: 30px;
@@ -114,7 +123,7 @@
   font-weight: 400;
 }
 
-.home-upload {
+/* .home-upload {
   border-radius: var(--dl-radius-radius-round);
   text-align: center;
   display: flex;
@@ -122,7 +131,7 @@
   width: 100%;
   max-width: 260px;
   border: 2px solid var(--acmas-blue);
-}
+} */
 
 .upload-button-text {
   color: var(--acmas-blue);
@@ -133,14 +142,14 @@
   line-height: 1.75;
 }
 
-.home-search-by-course {
+/* .home-search-by-course {
   text-align: center;
   display: flex;
   justify-content: center;
   width: 100%;
   max-width: 350px;
   border: 2px solid var(--acmas-blue);
-}
+} */
 
 .home-header {
   width: 100%;

@@ -15,6 +15,22 @@
 
         body {
             margin: 0;
+            background: linear-gradient(-45deg, #f8f8f3, #f5f2d6, #dbebf3, #c6d6f7);
+            background-size: 300% 300%;
+            animation: gradient 65s ease infinite;
+            height: 100vh;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         * {
@@ -102,7 +118,7 @@
     <script src="../static/js/bootstrap.bundle.min.js"></script>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light opacity-75">
         <div class="container-fluid">
             <!-- Logo -->
             <a class="navbar-brand" href="/static/index.html">
@@ -166,15 +182,15 @@
 
         <div class="home-buttons-container">
             <a href="/searchByQuestion" style="width:350px;">
-                  <span class="home-text home-search-by-question button">Search By Question</span>
+                  <span class="home-text button">Search By Question</span>
             </a>
 
             <a href="/searchByCourse" style="width:350px;">
-                <span class="home-text home-search-by-course button">Search By Course</span>
+                <span class="home-text button">Search By Course</span>
             </a>
 
             <a href="/upload-options" style="width:260px;">
-                <span class="upload-button-text button home-upload">Upload</span>
+                <span class="home-text button">Upload</span>
             </a>
         </div>
     </div>
