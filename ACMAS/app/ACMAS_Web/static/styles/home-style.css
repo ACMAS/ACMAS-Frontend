@@ -2,7 +2,6 @@
   background-color: #ffffff11;
   transition-duration: 0.4s;
   border: 2px solid var(--dl-color-gray-white);
-  text-decoration: none !important; 
   padding: 0.5rem 1rem;
   border-radius: 4px;
   text-align: center;
@@ -74,16 +73,26 @@
 
 /* parent container */
 .home-container {
-  width: 100%;
-  margin-top: 30px;
-  justify-content: center;
-  display: block;
+  /* width: 100%; */
+  margin: 132px;
+  /* justify-content: center;
+  display: block; */
+}
+
+.home-display-text {
+  color: var(--acmas-blue);
+  font-size: 66px;
+  font-family: Inter, serif;
+  line-height: 1.3;
+  text-transform: none;
+  text-decoration: none;
+
 }
 
 .home-buttons-container {
   width: 100%;
-  display: block;
-  justify-content: center;
+  display: flex;
+  /* justify-content: center; */
   margin-top: 70px;
 }
 
@@ -91,19 +100,20 @@
   display: flex;
   justify-content: center;
   margin-bottom: 25px;
-  margin-left: auto;
   margin-right: auto;
+  text-decoration: none;
 }
 
 /* ACMAS image */
 .home-logo {
-  width: 100%;
+  width: 45vh;
   max-width: 500px;
-  display: block;
+  /* display: block;
   margin-left: auto;
   margin-right: auto;
-  align-self: center;
-  padding-top: 40px;
+  align-self: center; */
+  padding-top: 13px;
+  padding-left: 25px;
   border-radius: var(--dl-radius-radius-radius4);
 }
 
@@ -176,4 +186,25 @@
   width: var(--dl-size-size-xsmall);
   height: var(--dl-size-size-xsmall);
   display: flex;
+}
+
+.custom-shape-divider-bottom-1669508581 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1669508581 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 96px;
+}
+
+.custom-shape-divider-bottom-1669508581 .shape-fill {
+  fill: #FFFFFFDE;
 }
