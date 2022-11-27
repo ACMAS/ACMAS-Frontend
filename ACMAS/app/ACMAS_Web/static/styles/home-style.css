@@ -2,12 +2,12 @@
   background-color: #ffffff11;
   transition-duration: 0.4s;
   border: 2px solid var(--dl-color-gray-white);
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+  padding: 18px;
+  border-radius: 5px;
   text-align: center;
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 224px;
   color: var(--acmas-blue);
 }
 
@@ -74,23 +74,23 @@
 /* parent container */
 .home-container {
   /* width: 100%; */
-  margin: 132px;
+  margin: 150px;
   /* justify-content: center;
   display: block; */
 }
 
 .home-display-text {
   color: var(--acmas-blue);
-  font-size: 66px;
   font-family: Inter, serif;
+  font-size: 66px;
+  /* font-family: Inter, serif; */
   line-height: 1.3;
   text-transform: none;
   text-decoration: none;
-
 }
 
 .home-buttons-container {
-  width: 100%;
+  width: 40%;
   display: flex;
   /* justify-content: center; */
   margin-top: 70px;
@@ -108,23 +108,10 @@
 .home-logo {
   width: 45vh;
   max-width: 500px;
-  /* display: block;
-  margin-left: auto;
-  margin-right: auto;
-  align-self: center; */
   padding-top: 13px;
   padding-left: 25px;
-  border-radius: var(--dl-radius-radius-radius4);
+  /* border-radius: var(--dl-radius-radius-radius4); */
 }
-
-/* .home-search-by-question {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  max-width: 350px;
-  border: 2px solid var(--acmas-blue);
-} */
 
 .search-title {
   font-size: 30px;
@@ -133,16 +120,6 @@
   font-weight: 400;
 }
 
-/* .home-upload {
-  border-radius: var(--dl-radius-radius-round);
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  max-width: 260px;
-  border: 2px solid var(--acmas-blue);
-} */
-
 .upload-button-text {
   color: var(--acmas-blue);
   font-size: 38px;
@@ -150,29 +127,6 @@
   font-family: Arial, serif;
   font-weight: 400;
   line-height: 1.75;
-}
-
-/* .home-search-by-course {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  max-width: 350px;
-  border: 2px solid var(--acmas-blue);
-} */
-
-.home-header {
-  width: 100%;
-  display: flex;
-  max-width: var(--dl-size-size-maxwidth);
-  align-items: center;
-  padding: var(--dl-space-space-twounits) var(--dl-space-space-threeunits);
-  justify-content: space-between;
-}
-
-.hexagon-image {
-  width: 100px;
-  object-fit: cover;
 }
 
 .home-text {
