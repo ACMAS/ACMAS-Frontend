@@ -1,4 +1,5 @@
 # ACMAS-Frontend
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/L4L4GMYID)
 
 [![Lint Code Base](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/super-linter.yml/badge.svg)](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/super-linter.yml)  [![Django CI](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/django.yml/badge.svg)](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/django.yml)
 
