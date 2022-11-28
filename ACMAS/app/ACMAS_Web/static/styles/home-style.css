@@ -106,11 +106,10 @@
 
 /* ACMAS image */
 .home-logo {
-  width: 45vh;
-  max-width: 500px;
-  padding-top: 13px;
+  width: 405px;
+  height: auto;
+  padding-top: 20px;
   padding-left: 25px;
-  /* border-radius: var(--dl-radius-radius-radius4); */
 }
 
 .search-title {
@@ -161,4 +160,49 @@
 
 .custom-shape-divider-bottom-1669508581 .shape-fill {
   fill: #FFFFFFDE;
+}
+
+/* mobile */
+@media (max-width: 480px) {
+  body {
+      background-color: #d6e6f5;
+  }
+
+  #hide-mobile {
+    display: none;
+  }
+}
+
+/* tablets */
+@media (min-width: 481px) and (max-width: 1024px) {
+  body {
+    background-color: #d6e6f5;
+  }
+
+  #hide-mobile {
+    display: none;
+  }
+}
+
+/* desktop */
+@media (min-width: 1025px) {
+  body {
+    margin: 0;
+    background: linear-gradient(-45deg, #f8f8f3, #f5f2d6, #dbebf3, #c6d6f7);
+    background-size: 300% 300%;
+    animation: gradient 65s ease infinite;
+    height: 100vh;
+  }
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+  }
 }
