@@ -26,8 +26,16 @@
     <form class="row user-inpt" method="POST"> {% csrf_token %}
       {{ form.as_p }}
       <div class="col-md-12">
-        <input type="text" class="form-control form-control-lg" id="input-user" name="user" placeholder="Username">
-        <label for="floatingInput">Email address</label>
+        <input type="user" class="form-control form-control-lg" id="floatingInput" name="user" placeholder="Email">
+      </div>
+      <div class="col-md-12 user-inpt">
+        <input type="user" class="form-control form-control-lg" id="floatingInput" name="user" placeholder="Username">
+      </div>
+      <div class="col-md-6 user-inpt">
+        <input type="password" class="form-control form-control-lg" id="floatingPassword" name="user" placeholder="Password">
+      </div>
+      <div class="col-md-6 user-inpt">
+        <input type="password" class="form-control form-control-lg" id="floatingPassword" name="user" placeholder="Confirm Password">
       </div>
       <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center">
         <button type="submit" class="btn btn-primary btn-lg" value="Search">Sign Up</button>
