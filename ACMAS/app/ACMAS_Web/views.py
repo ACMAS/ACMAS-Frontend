@@ -11,6 +11,11 @@ def index(request):
     return redirect("static/index.html")
 
 
+# ACMAS Sitemap.xml file (used for Google Search Console)
+def sitemap(request):
+    return redirect("static/sitemap.xml")
+
+
 # Search by question page
 def searchByQuestion(request):
     question = request.POST.get("question")  # Check to see if a question was entered
