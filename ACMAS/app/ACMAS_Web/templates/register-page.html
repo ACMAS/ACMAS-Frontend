@@ -22,18 +22,23 @@
     <!-- Header -->
     <h1 class="display-3 text-center">Register an Account</h1>
 
-    
     <form class="row user-inpt" method="POST"> {% csrf_token %}
-      {{ form.as_p }}
+      <!-- Email -->
       <div class="col-md-12">
-        <input type="user" class="form-control form-control-lg" id="floatingInput" name="user" placeholder="Email">
+        <input type="email" class="form-control form-control-lg" id="floatingInput" name="user" placeholder="Email">
       </div>
+
+      <!-- Username -->
       <div class="col-md-12 user-inpt">
         <input type="user" class="form-control form-control-lg" id="floatingInput" name="user" placeholder="Username">
       </div>
+
+      <!-- Password -->
       <div class="col-md-6 user-inpt">
         <input type="password" class="form-control form-control-lg" id="floatingPassword" name="user" placeholder="Password">
       </div>
+
+      <!-- Confirm Password -->
       <div class="col-md-6 user-inpt">
         <input type="password" class="form-control form-control-lg" id="floatingPassword" name="user" placeholder="Confirm Password">
       </div>
