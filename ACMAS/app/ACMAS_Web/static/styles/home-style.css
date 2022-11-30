@@ -36,23 +36,6 @@
   background-color: var(--dl-color-gray-white);
 }
 
-.list {
-  width: 100%;
-  margin: 1em 0;
-  display: block;
-  padding: 0 0 0 1.5rem;
-  list-style-type: none;
-  list-style-position: outside;
-}
-
-.list-item {
-  display: list-item;
-}
-
-.teleport-show {
-  display: flex !important;
-}
-
 .content {
   font-size: 16px;
   font-family: Inter, serif;
