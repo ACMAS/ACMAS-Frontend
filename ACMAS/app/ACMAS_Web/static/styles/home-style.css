@@ -1,0 +1,170 @@
+.button {
+  color: var(--dl-color-gray-black);
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  border-radius: 4px;
+  background-color: var(--dl-color-gray-white);
+}
+
+.input {
+  color: var(--dl-color-gray-black);
+  cursor: auto;
+  padding: 0.5rem 1rem;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  border-radius: 4px;
+  background-color: var(--dl-color-gray-white);
+}
+
+.textarea {
+  color: var(--dl-color-gray-black);
+  cursor: auto;
+  padding: 0.5rem;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  border-radius: 4px;
+  background-color: var(--dl-color-gray-white);
+}
+
+.list {
+  width: 100%;
+  margin: 1em 0;
+  display: block;
+  padding: 0 0 0 1.5rem;
+  list-style-type: none;
+  list-style-position: outside;
+}
+
+.list-item {
+  display: list-item;
+}
+
+.teleport-show {
+  display: flex !important;
+}
+
+.content {
+  font-size: 16px;
+  font-family: Inter, serif;
+  font-weight: 400;
+  line-height: 1.15;
+  text-transform: none;
+  text-decoration: none;
+}
+
+.heading {
+  font-size: 32px;
+  font-family: Inter, serif;
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: none;
+  text-decoration: none;
+}
+
+/* parent container */
+.home-container {
+  width: 100%;
+  margin-top: 30px;
+  justify-content: center;
+  display: block;
+}
+
+.home-buttons-container {
+  width: 100%;
+  display: block;
+  justify-content: center;
+  margin-top: 70px;
+}
+
+.home-buttons-container > a {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ACMAS image */
+.home-logo {
+  width: 100%;
+  max-width: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  align-self: center;
+  padding-top: 40px;
+  border-radius: var(--dl-radius-radius-radius4);
+}
+
+.home-search-by-question {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 350px;
+  border: 2px solid var(--acmas-blue);
+}
+
+.search-title {
+  font-size: 30px;
+  font-style: normal;
+  font-family: Arial, serif;
+  font-weight: 400;
+}
+
+.home-upload {
+  border-radius: var(--dl-radius-radius-round);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 260px;
+  border: 2px solid var(--acmas-blue);
+}
+
+.upload-button-text {
+  color: var(--acmas-blue);
+  font-size: 38px;
+  font-style: normal;
+  font-family: Arial, serif;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+.home-search-by-course {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 350px;
+  border: 2px solid var(--acmas-blue);
+}
+
+.home-header {
+  width: 100%;
+  display: flex;
+  max-width: var(--dl-size-size-maxwidth);
+  align-items: center;
+  padding: var(--dl-space-space-twounits) var(--dl-space-space-threeunits);
+  justify-content: space-between;
+}
+
+.hexagon-image {
+  width: 100px;
+  object-fit: cover;
+}
+
+.home-text {
+  font-size: 30px;
+  font-style: normal;
+  font-family: Arial, serif;
+  font-weight: 400;
+}
+
+.home-icon {
+  width: var(--dl-size-size-xsmall);
+  height: var(--dl-size-size-xsmall);
+  display: flex;
+}

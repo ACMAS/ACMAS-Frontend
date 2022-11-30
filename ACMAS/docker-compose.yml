@@ -1,0 +1,43 @@
+# Docker compose file for PRODUCTION deployment
+---
+version: '3.7'
+
+services:
+  web:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    command: gunicorn ACMAS.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - static_files:/home/app/web/staticfiles
+      - media_files:/home/app/web/mediafiles
+    expose:
+      - 8000  # Port 8000 is only exposed internally
+    env_file:
+      - .env
+    depends_on:
+      - db
+  db:
+    image: postgres:13.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env.db
+    ports:
+      - "5432:5432"
+  nginx:
+    image: nginx:1.21-alpine
+    volumes:
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - static_files:/home/app/web/staticfiles
+      - media_files:/home/app/web/mediafiles
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+      - db
+
+volumes:
+  postgres_data:
+  static_files:
+  media_files:
