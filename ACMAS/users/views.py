@@ -6,6 +6,12 @@ from django.views import generic
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
+from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+
+from oauth2_provider.views.generic import ProtectedResourceView
+from django.http import HttpResponse
+
 
 @login_required()
 def secret_page(request, *args, **kwargs):
@@ -17,3 +23,8 @@ class Register(generic.CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy("login")
     template_name = "registration/register.html"
+
+
+class ApiEndpoint(ProtectedResourceView):
+    def get(self, request, *args, **kwargs):
+        return HttpResponse('Hello, OAuth2!')
