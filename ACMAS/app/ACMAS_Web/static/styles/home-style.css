@@ -179,15 +179,11 @@
     0% { background-position: 0% 50%; }
 
     50% { background-position: 100% 50%; }
-    
+
     100% { background-position: 0% 50%; }
   }
 }
-/* delete this after lint
 
-
-
-*/
 .dropdown-button {
   background-color: #fff1;
   transition-duration: 0.4s;
@@ -239,24 +235,24 @@
   color: var(--acmas-blue);
 }
 
-/* these lines with "--animated" controls hide/show of dropdown */
-.dropdown-opts--animated {
+/* these lines with "-animated" controls hide/show of dropdown */
+.dropdown-opts-animated {
   display: none;
 }
 
-.dropdown-button:hover .dropdown-opts--animated {
-  display: block;
-}
-
-.dropdown-opts--animated > li {
+.dropdown-opts-animated > li {
   display: block;
   opacity: 1;
 }
- 
+
+.dropdown-button:hover .dropdown-opts-animated {
+  display: block;
+}
+
 @keyframes grow-down {
   0% { transform: scaleY(0); }
 
   80% { transform: scaleY(1.1); }
 
- 100% { transform: scaleY(1); }
+  100% { transform: scaleY(1); }
 }
