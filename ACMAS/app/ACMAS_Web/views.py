@@ -45,6 +45,9 @@ def login(request):
 def register(request):
     return render(request, "register-page.html")
 
+def account(request):
+    return render(request, "account-page.html")
+
 # Utilizes search by course form
 def searchResults(request):
     # Get input
