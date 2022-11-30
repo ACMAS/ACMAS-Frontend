@@ -2,22 +2,33 @@
 
 <html lang="en">
 <head>
-    <title>ACMAS Search</title>
-    <link rel="icon" type="image/x-icon" href="../static/img/star.svg">
-    <meta content="ACMAS Search" property="og:title"/>
-    <meta content="summary_large_image" property="twitter:card"/>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <link
-      data-tag="font"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <link href="../static/styles/search-by-course-style.css" rel="stylesheet"/>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QXWLM7EHRF"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QXWLM7EHRF');
+  </script>
+
+  <title>ACMAS Search</title>
+  <link rel="icon" type="image/x-icon" href="../static/img/star.svg">
+  <meta content="ACMAS Search" property="og:title"/>
+  <meta content="summary_large_image" property="twitter:card"/>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link
+    data-tag="font"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+  <link href="../static/styles/search-by-course-style.css" rel="stylesheet"/>
 </head>
+
 <body>
-  {% extends 'navbar.html' %}
-  {% block content %}
+{% extends 'navbar.html' %}
+{% block content %}
   <div class="container-fluid search-container">
     <!-- Header -->
     <h1 class="display-3" style="text-align: center">Search by Course</h1>
@@ -47,6 +58,6 @@
       </div>
     </form>
   </div>
-  {% endblock %}
+{% endblock %}
 </body>
 </html>
