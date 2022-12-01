@@ -33,11 +33,10 @@ def png_conversion(pdf_name):
 
 
 def run_ocr(image_name):
-    ocr_results = []
     acceptable_formats = set({'png', 'jpg', 'gif', 'tiff'})
     if ending_type(image_name) not in acceptable_formats:
         return
-    ocr_results.append(pytesseract.image_to_string('{}'.format(image_name), lang='eng'))
+    ocr_results = pytesseract.image_to_string('{}'.format(image_name), lang='eng')
     return ocr_results
 
 
