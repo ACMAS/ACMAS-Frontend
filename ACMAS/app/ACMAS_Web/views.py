@@ -106,7 +106,7 @@ def pdfReader(request):
     else:
         file_extension = ""
     if file_extension == "txt":  # If the file is a .txt load by filename
-        return render(request, "pdf-reader.html", {"directory": "../media/" + name})
+        return render(request, "pdf-reader.html", {"directory": "../mediafiles/" + name})
     # Else obtain object from session Facade and display file
     sessionID = request.session._get_or_create_session_key()
     facade = cache.get(sessionID)
@@ -163,7 +163,7 @@ def get_Cropped_Image(request):
 def crop_uploaded_file(request, file_id, pgcount):
     uploadedfile = UploadedFile.objects.get(id=file_id)
     if ocr_prototype.ending_type(uploadedfile.filename) == "pdf":
-        pages = ocr_prototype.png_conversion("." + "/media/" + uploadedfile.filename)
+        pages = ocr_prototype.png_conversion("." + "/mediafiles/" + uploadedfile.filename)
         tcount = len(pages) - 1
         return render(
             request,

@@ -60,7 +60,8 @@ RUN apk update && apk add libpq
 COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
 RUN pip install --no-cache /wheels/*
-RUN apk update  && apk add --no-cache tesseract-ocr
+RUN apk update  && apk add --no-cache tesseract-ocr 
+RUN apk update  && apk add --no-cache poppler-utils
 
 # copy entrypoint.sh
 COPY ./entrypoint.sh .
