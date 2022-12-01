@@ -23,11 +23,11 @@ Open the repository directory `ACMAS-Frontend` and navigate to the `ACMAS` direc
 
 ---
 #### __Turn on the Docker containers when you want to start working__
-`docker-compose -f docker-compose.yml up -d --build`
+`docker-compose up -d --build`
 #### __Turn off the Docker containers when you are done working__
-If you want to shut down normally: `docker-compose -f docker-compose.yml down`
+If you want to shut down normally: `docker-compose down`
 
-If you want to flush your database and project files: `docker-compose -f docker-compose.yml down -v`
+If you want to flush your database and project files: `docker-compose down -v`
 
 ---
 ### Using ACMAS with Docker
