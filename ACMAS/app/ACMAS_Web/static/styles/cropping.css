@@ -44,6 +44,33 @@
     margin-right: 10px;
 }
 
+.editQ{
+    font-family: Lato;
+    font-size: 50px;
+}
+
+.editQ-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.editQ-Submit{
+    margin-top: 10px;
+    display: block;
+    background-color: #347235;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-family: Lato;
+    height: 30px;
+    width: 90px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
 .cropped_question{
     font-size: 20px;
     text-align: center;
