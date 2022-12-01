@@ -187,7 +187,7 @@ def ocr_cropped_files(request, file_id2):
     for img in cropped_imgs:
         if img.text:
             continue
-        img.text = ocr_prototype.ocr_driver("media/{}".format(img.file))
+        img.text = ocr_prototype.ocr_driver("mediafiles/{}".format(img.file))
         img.save()
     context = {"Cimages": cropped_imgs, "file": file_id2}
     return render(request, "all-cropped-imgs.html", context)
