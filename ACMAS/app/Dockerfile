@@ -55,7 +55,7 @@ RUN mkdir $APP_HOME/mediafiles   # Make media files directory
 WORKDIR $APP_HOME
 
 # install dependencies
-RUN apk add -u zlib-dev jpeg-dev gcc musl-dev
+
 RUN apk update && apk add libpq
 COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
