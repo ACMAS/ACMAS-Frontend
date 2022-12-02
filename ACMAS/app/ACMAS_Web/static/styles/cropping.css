@@ -71,6 +71,34 @@
     font-size: 15px;
 }
 
+.deleteQ{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.deleteQ-bttns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-bttn{
+    margin-top: 10px;
+    font-family: Lato;
+    display: grid;
+    text-decoration: none;
+    height: 30px;
+    width: 120px;
+    border-radius: 5px;
+    letter-spacing: 2px;
+    color: white;
+    place-items: center;
+    background-color: #078787;
+    margin-right: 5px;
+}
+
 .cropped_question{
     font-size: 20px;
     text-align: center;

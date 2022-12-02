@@ -1,9 +1,12 @@
+{% extends 'cropper.html' %}
 {% block content %}
+<div class="deleteQ">
     <form method="post" action="">
-        <div>Are you sure want to delete?</div>
-        <div>
-            <a href="{{ request.META.HTTP_REFERER }}">Go Back</a>
-            <input type = submit value="Confirm">
+        <h1 class="editQ">Are you sure want to delete?</h1>
+        <div class="deleteQ-bttns">
+            <a class = "back-bttn" href="{{ request.META.HTTP_REFERER }}">Go Back</a>
+            <input class = "editQ-Submit" type = submit value="Confirm">
         </div>
     </form>
+</div>
 {% endblock %}
