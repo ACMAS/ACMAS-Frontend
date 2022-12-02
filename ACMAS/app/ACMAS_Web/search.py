@@ -134,7 +134,7 @@ class courseSearchHandler:
 
 class questionSearchHandler:
     def __init__(self):
-        self.elastic_address = "http://172.17.0.1:9200"
+        self.elastic_address = "http://host.docker.internal:9200"
         self.question_index_name = "question_index"
         self.es = Elasticsearch(self.elastic_address)
         self.min_question_length_for_fuzzy = 3

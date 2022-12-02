@@ -13,6 +13,8 @@ services:
       - es-net
     ports:
       - 9200:9200
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
   kibana:
     container_name: kb_container
     image: docker.elastic.co/kibana/kibana:8.4.3
