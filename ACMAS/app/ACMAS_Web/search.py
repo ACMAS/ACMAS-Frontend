@@ -261,12 +261,12 @@ class questionSearchHandler:
         )
         print('response', response)
 
-        filenames = []
+        files = []
         for hit in response['hits']['hits']:
-            filename = hit['_source']['filename']
-            filenames.append(filename)
+            file = hit['_source']
+            files.append(file)
 
-        return filenames
+        return files
 
 
 class fileSearchHandler:
