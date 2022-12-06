@@ -20,10 +20,71 @@
   {% block content %}
   <div class="container-fluid search-container">
     <!-- Header -->
-    <h1 class="display-3 text-center">Login</h1>
+    <h1 class="display-3 text-center" style="margin-bottom:30px">Login</h1>
 
-    <form class="row user-inpt" id="manual-entry-form" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
-      <!-- Question -->
+    <form>
+      <!-- Username input -->
+      <div class="mb-3 row">
+        <label for="username" class="visually-hidden">Username</label>
+        <div class="col-md-12">
+          <input type="text" class="form-control form-control-lg" name="username" placeholder="Enter Username">
+        </div>
+      </div>
+    
+      <!-- Password input -->
+      <div class="mb-3 row">
+        <label for="password" class="visually-hidden">Password</label>
+        <div class="col-md-12">
+          <input type="text" class="form-control form-control-lg" name="password" placeholder="Enter Password">
+        </div>
+      </div>
+    
+      <!-- 2 column grid layout for inline styling -->
+      <div class="col-md-15 user-inpt h-60 d-flex align-items-center justify-content-center">
+        <div class="row mb-4">
+          <div class="col d-flex justify-content-center">
+            <!-- Checkbox -->
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+              <label class="form-check-label" for="form2Example31"> Remember me </label>
+            </div>
+          </div>
+      
+          <div class="col">
+            <!-- Simple link -->
+            <a href="#!">Forgot password?</a>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Submit button -->
+      <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center" style="margin-bottom:30px">
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 100px;" value="Login">Sign in</button>
+      </div>
+
+      <!-- Register buttons -->
+      <div class="text-center">
+        <p>Not a member? <a href="#!">Register</a></p>
+        <p>or sign up with:</p>
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-facebook-f"></i>
+        </button>
+    
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-google"></i>
+        </button>
+    
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-twitter"></i>
+        </button>
+    
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-github"></i>
+        </button>
+      </div>
+    </form>
+
+    <!-- <form class="row user-inpt" id="manual-entry-form" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
       <div class="mb-3 row">
         <label for="username" class="visually-hidden">Username</label>
         <div class="col-md-12">
@@ -37,11 +98,11 @@
           <input type="text" class="form-control form-control-lg" name="password" placeholder="Enter Password">
         </div>
       </div>
-      <!-- Submit Button-->
+
       <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center">
         <button type="submit" class="btn btn-primary btn-lg" value="Login">Login</button>
       </div>
-    </form>
+    </form> -->
   {% endblock %}
 </body>
 </html>
