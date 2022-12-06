@@ -2,6 +2,15 @@
 
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QXWLM7EHRF"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QXWLM7EHRF');
+  </script>
   <title>ACMAS Search</title>
   <link href="../static/img/star.svg" rel="icon" type="image/x-icon">
   <meta property="og:title" content="Search Results"/>
@@ -22,7 +31,6 @@
   <div class="container-fluid search-container">
     <!-- Header -->
     <h1 class="display-3 text-center">Search by Question</h1>
-
     <form class="row user-inpt" id="manual-entry-form" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
       <!-- Question -->
       <div class="col-md-12">

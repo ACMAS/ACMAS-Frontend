@@ -14,88 +14,88 @@
 </head>
 
 <body>
-  <!-- JS Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="../static/js/bootstrap.bundle.min.js"></script>
+<!-- JS Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../static/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Urls -->
-  {% url 'index' as home_url %}
-  {% url 'searchByQuestion' as search_url %}
-  {% url 'searchByCourse' as search_url2 %}
-  {% url 'searchResults' as search_url3 %}
-  {% url 'uploadOptions' as upload_url %}
-  {% url 'uploadFile' as upload_url2 %}
-  {% url 'uploadManually' as upload_url3 %}
+<!-- Urls -->
+{% url 'index' as home_url %}
+{% url 'searchByQuestion' as search_url %}
+{% url 'searchByCourse' as search_url2 %}
+{% url 'searchResults' as search_url3 %}
+{% url 'uploadOptions' as upload_url %}
+{% url 'uploadFile' as upload_url2 %}
+{% url 'uploadManually' as upload_url3 %}
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <!-- Logo -->
-      <a class="navbar-brand" href="/static/index.html">
-        <img src="../static/img/star.svg" width="40" height="40" alt="">
-      </a>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <!-- Logo -->
+    <a class="navbar-brand" href="../static/index.html">
+      <img src="../static/img/star.svg" width="40" height="40" alt="">
+    </a>
 
-      <!-- Collapse Button -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-coll" aria-expanded="false">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <!-- Collapse Button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-coll" aria-expanded="false">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <div class="collapse navbar-collapse" id="navbar-coll">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
+    <div class="collapse navbar-collapse" id="navbar-coll">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-          <!-- Home -->
-          <li class="nav-item">
-            {% if request.path == home_url %}
-            <a class="nav-link active" aria-current="page" href="/static/index.html">Home</a>
-            {% else %} 
-            <a class="nav-link" aria-current="page" href="/static/index.html">Home</a>
-            {% endif %}
-          </li>
+        <!-- Home -->
+        <li class="nav-item">
+          {% if request.path == home_url %}
+            <a class="nav-link active" aria-current="page" href="../static/index.html">Home</a>
+          {% else %}
+            <a class="nav-link" aria-current="page" href="../static/index.html">Home</a>
+          {% endif %}
+        </li>
 
-          <!-- Search -->
-          <li class="nav-item dropdown">
-            {% if request.path == search_url or request.path == search_url2 or request.path == search_url3 %}
+        <!-- Search -->
+        <li class="nav-item dropdown">
+          {% if request.path == search_url or request.path == search_url2 or request.path == search_url3 %}
             <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Search
             </a>
-            {% else %}
+          {% else %}
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Search
             </a>
-            {% endif %}
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="/searchByQuestion">by Question</a>
-              <a class="dropdown-item" href="/searchByCourse">by Course</a>
-            </div>
-          </li>
+          {% endif %}
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/searchByQuestion">by Question</a>
+            <a class="dropdown-item" href="/searchByCourse">by Course</a>
+          </div>
+        </li>
 
-          <!-- Upload -->
-          <li class="nav-item dropdown">
-            {% if request.path == upload_url or request.path == upload_url2 or request.path == upload_url3 %}
+        <!-- Upload -->
+        <li class="nav-item dropdown">
+          {% if request.path == upload_url or request.path == upload_url2 or request.path == upload_url3 %}
             <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Upload
             </a>
-            {% else %}
+          {% else %}
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Upload
             </a>
-            {% endif %}
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/upload-file">With a file</a></li>
-              <li><a class="dropdown-item" href="/upload-manually">Manually</a></li>
-            </ul>
-          </li>
+          {% endif %}
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/upload-file">With a file</a></li>
+            <li><a class="dropdown-item" href="/upload-manually">Manually</a></li>
+          </ul>
+        </li>
 
-          <!-- Github -->
-          <li class="nav-item">
-            <a class="nav-link" href="https://github.com/ACMAS/ACMAS-Frontend">GitHub Repository</a>
-          </li>
-        </ul>
-      </div>
+        <!-- Github -->
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/ACMAS/ACMAS-Frontend">GitHub Repository</a>
+        </li>
+      </ul>
     </div>
-  </nav>
-  {% block content %}
-  {% endblock %}
+  </div>
+</nav>
+{% block content %}
+{% endblock %}
 </body>
 
 </html>
