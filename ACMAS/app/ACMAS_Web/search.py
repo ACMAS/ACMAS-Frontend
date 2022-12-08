@@ -267,7 +267,7 @@ class questionSearchHandler:
             file = hit['_source']
             files.append(file)
 
-        return filesi
+        return files
 
 
 class fileSearchHandler:
