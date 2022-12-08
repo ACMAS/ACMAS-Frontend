@@ -134,6 +134,7 @@ class courseSearchHandler:
 
 class questionSearchHandler:
     def __init__(self):
+        # This host.docker.internal allows for access to localhost outside of the container
         self.elastic_address = "http://host.docker.internal:9200"
         self.question_index_name = "question_index"
         self.es = Elasticsearch(self.elastic_address)
@@ -266,7 +267,7 @@ class questionSearchHandler:
             file = hit['_source']
             files.append(file)
 
-        return files
+        return filesi
 
 
 class fileSearchHandler:
