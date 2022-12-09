@@ -1,2 +1,2 @@
 # Django_practice
- My repo to practuce rge Django
+ My repo to practice Django
