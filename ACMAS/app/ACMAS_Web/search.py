@@ -143,68 +143,60 @@ class questionSearchHandler:
         # Only allow searching by question, the question will be preprocessed first
         # The question field will be split and expanded using an ngram from size 2 to 9
         self.mapping = {
-          "properties": {
-            "question": {
-                "type": "text",
-                "analyzer": "ngram_token_analyzer",
-                "search_analyzer": "search_term_analyzer"
+            "properties": {
+                "question": {
+                    "type": "text",
+                    "analyzer": "ngram_token_analyzer",
+                    "search_analyzer": "search_term_analyzer",
+                }
             }
-          }
         }
 
         # The query is lowercased, tokenized, stop words are removed, and ascii folding is performed
         # to convert non-ascii characters to their ascii equivalent
         self.setting = {
-          "index": {
-            "max_ngram_diff": 7,
-            "analysis": {
-                "analyzer": {
-                    "search_term_analyzer": {
-                        "type": "custom",
-                        "stopwords": "_none_",
-                        "filter": [
-                            "lowercase",
-                            "asciifolding",
-                            "no_stop"
-                        ],
-                        "tokenizer": "standard"
+            "index": {
+                "max_ngram_diff": 7,
+                "analysis": {
+                    "analyzer": {
+                        "search_term_analyzer": {
+                            "type": "custom",
+                            "stopwords": "_none_",
+                            "filter": ["lowercase", "asciifolding", "no_stop"],
+                            "tokenizer": "standard",
+                        },
+                        "ngram_token_analyzer": {
+                            "type": "custom",
+                            "stopwords": "_none_",
+                            "filter": [
+                                "lowercase",
+                                "asciifolding",
+                                "no_stop",
+                                "ngram_filter",
+                            ],
+                            "tokenizer": "standard",
+                        },
                     },
-                    "ngram_token_analyzer": {
-                        "type": "custom",
-                        "stopwords": "_none_",
-                        "filter": [
-                            "lowercase",
-                            "asciifolding",
-                            "no_stop",
-                            "ngram_filter"
-                        ],
-                        "tokenizer": "standard"
-                    }
+                    "filter": {
+                        "no_stop": {"type": "stop", "stopwords": "_none_"},
+                        "ngram_filter": {
+                            "type": "ngram",
+                            "min_gram": "2",
+                            "max_gram": "9",
+                        },
+                    },
                 },
-                "filter": {
-                    "no_stop": {
-                        "type": "stop",
-                        "stopwords": "_none_"
-                    },
-                    "ngram_filter": {
-                        "type": "ngram",
-                        "min_gram": "2",
-                        "max_gram": "9"
-                    }
-                }
             }
-          }
         }
 
         # Only create the questions index if it doesn't already exit
         if not self.es.indices.exists(index=self.question_index_name):
-          self.es.indices.create(
-            index=self.question_index_name,
-            mappings=self.mapping,
-            settings=self.setting,
-            ignore=400 # ignore 400 already exists code
-          )
-
+            self.es.indices.create(
+                index=self.question_index_name,
+                mappings=self.mapping,
+                settings=self.setting,
+                ignore=400,  # ignore 400 already exists code
+            )
 
     def addQuestionToIndex(self, question_doc):
         """
@@ -212,7 +204,7 @@ class questionSearchHandler:
         Returns: None
         """
         self.es.index(index=self.question_index_name, document=question_doc)
-            
+
     def searchQuestion(self, question):
         """
         Parameters: String question - string containing the question
@@ -228,10 +220,8 @@ class questionSearchHandler:
                             "multi_match": {
                                 "query": question,
                                 "type": "phrase",
-                                "fields": [
-                                    "question"
-                                ],
-                                "boost": 10
+                                "fields": ["question"],
+                                "boost": 10,
                             }
                         },
                         {
@@ -240,12 +230,10 @@ class questionSearchHandler:
                             "multi_match": {
                                 "query": question,
                                 "type": "most_fields",
-                                "fields": [
-                                    "question"
-                                ],
-                                "fuzziness":"AUTO"
+                                "fields": ["question"],
+                                "fuzziness": "AUTO",
                             }
-                        }
+                        },
                     ]
                 }
             }
@@ -253,18 +241,19 @@ class questionSearchHandler:
 
         # Small queries will not use fuzzy search to avoid too many search results
         if question and len(question) < self.min_question_length_for_fuzzy:
-          query_for_question['query']['bool']['should'][1]['multi_match']['fuzziness'] = "0"
+            query_for_question["query"]["bool"]["should"][1]["multi_match"][
+                "fuzziness"
+            ] = "0"
 
         # Returns an object detailing the reseults of the search ranked by score
         response = self.es.search(
-            index=self.question_index_name,
-            body=json.dumps(query_for_question)
+            index=self.question_index_name, body=json.dumps(query_for_question)
         )
-        print('response', response)
+        print("response", response)
 
         files = []
-        for hit in response['hits']['hits']:
-            file = hit['_source']
+        for hit in response["hits"]["hits"]:
+            file = hit["_source"]
             files.append(file)
 
         return files
