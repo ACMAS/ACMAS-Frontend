@@ -1,0 +1,17 @@
+Django through ACAMAS source code
+
+Django: High level Python web framework for the development of secure and maintainable websites
+
+Sending a request to a view: ACMAS/web/urls.py
+
+Handling the request: ACMAS/web/views.py
+
+Defining data models: ACMAS/web/models.py
+
+Rendering web pages: ACMAS/web/templates
+                                         ACMAS/web/static
+
+
+Work on branches
+ACAMAS Source code
+Python & Django
