@@ -1,6 +1,7 @@
 # ACMAS-Frontend
 
 [![Lint Code Base](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/super-linter.yml/badge.svg)](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/super-linter.yml)  [![Django CI](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/django.yml/badge.svg)](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/django.yml)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/c4e7f48ee49a4504bc2a4cdef806dfa8)](https://www.codacy.com/gh/ACMAS/ACMAS-Frontend/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ACMAS/ACMAS-Frontend&amp;utm_campaign=Badge_Grade)
 
 ## Usage
 
@@ -34,8 +35,10 @@ If you want to flush your database and project files: `docker-compose down -v`
 ___After turning on the Docker container follow these steps:___
 #### Ensure that the Docker application was successfully built and is running
 - Successful builds will return no errors (red)
+
 - One of the following messages will appear in your command prompt
-- __Note:__ If you do not flush, only the affected containers will appear
+
+  - __Note:__ If you do not flush, only the affected containers will appear
 
   ```shell
   Running 3/3
@@ -45,6 +48,7 @@ ___After turning on the Docker container follow these steps:___
   ```
 
 - Ensure that the application's containers in Docker Desktop all appear as __green__
+
 - Navigate to `localhost:80` in any web browser
   - If this does not work, default to using `127.0.0.1:80`
 ---
