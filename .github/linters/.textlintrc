@@ -1,9 +1,10 @@
 {
-  "filters": {},
-  "rules": {
-    "spelling": {
-      "language": "en-us",
-      "skipPatterns": ["Smartphone", "ACMAS"]
+    "rules": {
+        "spelling": {
+            "language": "en",
+            "skipPatterns": ["ACMAS", "Smartphone"],
+            "wordDefinitionRegexp": "/[\\w']+/g",
+            "suggestCorrections": true
+        }
     }
-  }
 }
