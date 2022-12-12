@@ -24,15 +24,15 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Desktop \(please complete the following information\):**
- - OS: \[ex: iOS\]
- - Browser \[ex: chrome, safari\]
- - Version \[ex: 22\]
+- OS: \[ex: iOS\]
+- Browser \[ex: chrome, safari\]
+- Version \[ex: 22\]
 
 **Smartphone \(please complete the following information\):**
- - Device: \[ex: iPhone6\]
- - OS: \[ex: iOS8.1\]
- - Browser \[ex: chrome, safari\]
- - Version \[ex: 22\]
+- Device: \[ex: iPhone6\]
+- OS: \[ex: iOS8.1\]
+- Browser \[ex: chrome, safari\]
+- Version \[ex: 22\]
 
 **Additional context**
 Add any other context about the problem here.

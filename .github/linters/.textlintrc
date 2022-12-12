@@ -1,0 +1,9 @@
+{
+  "filters": {},
+  "rules": {
+    "spelling": {
+      "language": "en-us",
+      "skipPatterns": ["Smartphone", "ACMAS"]
+    }
+  }
+}

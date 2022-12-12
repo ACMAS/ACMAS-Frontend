@@ -34,9 +34,9 @@ If you want to flush your database and project files: `docker-compose -f docker-
 ### Using ACMAS with Docker
 ___After turning on the Docker container follow these steps:___
 #### Ensure that the Docker application was successfully built and is running
-  - Successful builds will return no errors (red)
+- Successful builds will return no errors (red)
 
-  - One of the following messages will appear in your command prompt
+- One of the following messages will appear in your command prompt
 
   - __Note:__ If you do not flush, only the affected containers will appear
 
