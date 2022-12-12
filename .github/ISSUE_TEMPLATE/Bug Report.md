@@ -28,7 +28,7 @@ If applicable, add screenshots to help explain your problem.
 - Browser \[ex: chrome, safari\]
 - Version \[ex: 22\]
 
-**Smartphone \(please complete the following information\):**
+**Smart Phone \(please complete the following information\):**
 - Device: \[ex: iPhone6\]
 - OS: \[ex: iOS8.1\]
 - Browser \[ex: chrome, safari\]
