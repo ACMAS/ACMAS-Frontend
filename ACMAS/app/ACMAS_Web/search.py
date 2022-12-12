@@ -1,8 +1,8 @@
 import json
 
-from .models import Course, University, UploadedFile
-
 from elasticsearch import Elasticsearch
+
+from .models import Course, University, UploadedFile
 
 
 # Class handles external interaction with searching
