@@ -1,6 +1,9 @@
 import json
-from .models import Course, Question, University, UploadedFile
+
+from .models import Course, University, UploadedFile
+
 from elasticsearch import Elasticsearch
+
 
 # Class handles external interaction with searching
 class searchFacade:

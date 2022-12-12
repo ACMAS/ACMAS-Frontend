@@ -41,7 +41,7 @@ services:
     depends_on:
       - db
     environment:
-    - PYTHONUNBUFFERED=1
+      - PYTHONUNBUFFERED=1
   db:
     image: postgres:13.0-alpine
     volumes:
