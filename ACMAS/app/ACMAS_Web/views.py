@@ -7,16 +7,16 @@ from .models import UploadedFile
 from .search import searchFacade
 from .upload import createFacade
 
-from django.conf import settings
 
 # When using context, use context_base.copy() to create a copy of this base context, rather than using this directly
 context_base = {
-    "GOOGLE_ADSENSE_URL": os.getenv("GOOGLE_ADSENSE_URL")
-    + os.getenv("GOOGLE_ADSENSE_ID"),
-    "GOOGLE_ANALYTICS_ID": os.getenv("GOOGLE_ANALYTICS_ID"),
-    "GOOGLE_ANALYTICS_URL": os.getenv("GOOGLE_ANALYTICS_URL")
-    + os.getenv("GOOGLE_ANALYTICS_ID"),
+    "GOOGLE_ADSENSE_URL": os.getenv("GOOGLE_ADSENSE_URL", default="")
+    + os.getenv("GOOGLE_ADSENSE_ID", default=""),
+    "GOOGLE_ANALYTICS_ID": os.getenv("GOOGLE_ANALYTICS_ID", default=""),
+    "GOOGLE_ANALYTICS_URL": os.getenv("GOOGLE_ANALYTICS_URL", default="")
+    + os.getenv("GOOGLE_ANALYTICS_ID", default=""),
 }
+
 
 # ACMAS homepage
 def index(request):
