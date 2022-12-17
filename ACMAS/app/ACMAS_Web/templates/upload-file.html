@@ -1,20 +1,24 @@
-<!DOCTYPE html>
+{% extends 'navbar.html' %}
+{% block title %} 
+    ACMAS Upload 
+{% endblock %}
+{% block content %}
 
 <html lang="en">
 <head>
   <!-- Google Analytics -->
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QXWLM7EHRF"></script>
+  <script async src='{{ GOOGLE_ANALYTICS_URL }}'></script>
   <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-QXWLM7EHRF');
+      gtag('config', '{{ GOOGLE_ANALYTICS_ID }}');
   </script>
 
   <!-- Google Adsense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7274874831359267"
+  <script async src='{{ GOOGLE_ADSENSE_URL }}'
      crossorigin="anonymous"></script>
 
   <title>ACMAS Upload</title>
@@ -31,8 +35,6 @@
 </head>
 
 <body>
-{% extends 'navbar.html' %}
-{% block content %}
   <div class="container-fluid search-container">
     <!-- Header -->
     <h1 class="display-3" style="text-align: center">ACMAS Upload</h1>
