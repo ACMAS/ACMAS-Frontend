@@ -1,3 +1,5 @@
+import os
+
 from django.core.cache import cache
 from django.shortcuts import redirect, render
 
@@ -6,6 +8,12 @@ from .search import searchFacade
 from .upload import createFacade
 
 from django.conf import settings
+
+context = {
+        'GOOGLE_ADSENSE_URL' : os.getenv('GOOGLE_ADSENSE_URL') + os.getenv('GOOGLE_ADSENSE_ID'),
+        'GOOGLE_ANALYTICS_ID' : os.getenv('GOOGLE_ANALYTICS_ID'),
+        'GOOGLE_ANALYTICS_URL' : os.getenv('GOOGLE_ANALYTICS_URL') + os.getenv('GOOGLE_ANALYTICS_ID')
+}
 
 # ACMAS homepage
 def index(request):
@@ -43,12 +51,7 @@ def searchByQuestion(request):
 
 
 def searchByCourse(request):
-    context = {
-        'GOOGLE_ADSENSE' : 'G-QXWLM7EHRF',
-        'GOOGLE_ADSENSE_URL' : 'https://www.googletagmanager.com/gtag/js?id=G-QXWLM7EHRF',
-        'GOOGLE_ANALYTICS' : 'ca-pub-7274874831359267',
-        'GOOGLE_ANALYTICS_URL' : 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7274874831359267'
-    }
+    
     return render(request, "search-by-course.html", context)
 
 
