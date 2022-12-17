@@ -7,7 +7,6 @@ from .models import UploadedFile
 from .search import searchFacade
 from .upload import createFacade
 
-
 # When using context, use context_base.copy() to create a copy of this base context, rather than using this directly
 context_base = {
     "GOOGLE_ADSENSE_URL": os.getenv("GOOGLE_ADSENSE_URL", default="")
