@@ -5,6 +5,7 @@ from .models import UploadedFile
 from .search import searchFacade
 from .upload import createFacade
 
+from django.conf import settings
 
 # ACMAS homepage
 def index(request):
@@ -42,7 +43,13 @@ def searchByQuestion(request):
 
 
 def searchByCourse(request):
-    return render(request, "search-by-course.html")
+    context = {
+        'GOOGLE_ADSENSE' : 'G-QXWLM7EHRF',
+        'GOOGLE_ADSENSE_URL' : 'https://www.googletagmanager.com/gtag/js?id=G-QXWLM7EHRF',
+        'GOOGLE_ANALYTICS' : 'ca-pub-7274874831359267',
+        'GOOGLE_ANALYTICS_URL' : 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7274874831359267'
+    }
+    return render(request, "search-by-course.html", context)
 
 
 # Utilizes search by course form

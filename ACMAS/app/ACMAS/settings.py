@@ -131,3 +131,15 @@ MEDIA_ROOT = BASE_DIR / "mediafiles"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Google Analytics Tracking ID
+if DEBUG == 0:
+    GOOGLE_ANALYTICS = os.environ.get("GOOGLE_ANALYTICS", default="")
+    GOOGLE_ANALYTICS_URL = "https://www.googletagmanager.com/gtag/js?id=" + GOOGLE_ANALYTICS
+    GOOGLE_ADSENSE = os.environ.get("GOOGLE_ADSENSE", default="")
+    GOOGLE_ADSENSE_URL = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + GOOGLE_ADSENSE
+else:
+    GOOGLE_ANALYTICS = ""
+    GOOGLE_ANALYTICS_URL = ""
+    GOOGLE_ADSENSE = ""
+    GOOGLE_ADSENSE_URL = ""
