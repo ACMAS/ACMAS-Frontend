@@ -19,12 +19,17 @@ context_base = {
 
 # ACMAS homepage
 def index(request):
-    return redirect("static/index.html")
+    return render(request, "index.html")
 
 
 # ACMAS Sitemap.xml file (used for Google Search Console)
 def sitemap(request):
     return redirect("static/sitemap.xml")
+
+
+# ACMAS favicon.ico logo (used for browser tab icon)
+def favicon(request):
+    return redirect("static/img/favicon.ico")
 
 
 # Search by question page
