@@ -75,8 +75,8 @@ WSGI_APPLICATION = "ACMAS.wsgi.application"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 DATABASES = {
     "default": {
-        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
-        "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "db.sqlite3"),
+        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.postgresql"),
+        "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "acmas_db"),
         "USER": os.environ.get("SQL_USER", "user"),
         "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
         "HOST": os.environ.get("SQL_HOST", "localhost"),
@@ -120,8 +120,9 @@ USE_TZ = True  # Stores datetime information in UTC
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 # Any request to http://localhost:8000/static/* will be served from "staticfiles" directory (development)
 STATIC_URL = "staticfiles/"  # URL to serve static files (/home/app/web/staticfiles/)
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # Collect static files here (production)
-STATICFILES_DIRS = []  # Additional static files directories
+STATIC_ROOT = os.path.join(
+    BASE_DIR, "staticfiles"
+)  # Collect static files here (production)
 
 # Media files
 MEDIA_URL = "mediafiles/"
