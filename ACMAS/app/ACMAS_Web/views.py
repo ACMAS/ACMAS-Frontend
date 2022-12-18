@@ -19,7 +19,8 @@ context_base = {
 
 # ACMAS homepage
 def index(request):
-    return render(request, "index.html")
+    context = context_base.copy()
+    return render(request, "index.html", context)
 
 
 # ACMAS Sitemap.xml file (used for Google Search Console)
