@@ -119,13 +119,13 @@ USE_TZ = True  # Stores datetime information in UTC
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 # Any request to http://localhost:8000/static/* will be served from "staticfiles" directory (development)
-STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_DIRS = [os.path.join(BASE_DIR, STATIC_URL)]
+STATIC_URL = "staticfiles/"  # URL to serve static files (/home/app/web/staticfiles/)
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # Collect static files here (production)
+STATICFILES_DIRS = []  # Additional static files directories
 
 # Media files
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "mediafiles"
+MEDIA_URL = "mediafiles/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

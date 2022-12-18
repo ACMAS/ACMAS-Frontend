@@ -16,6 +16,6 @@ fi
 # Build the database based on models.py
 python manage.py makemigrations ACMAS_Web
 python manage.py migrate
-python manage.py collectstatic
+python manage.py collectstatic --noinput
 
 exec "$@"
