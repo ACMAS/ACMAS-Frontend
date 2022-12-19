@@ -28,9 +28,10 @@ urlpatterns = (
         path("searchResults", views.searchResults, name="searchResults"),
         path("returnQuery", views.returnQuery, name="returnQuery"),
         path("pdfReader", views.pdfReader, name="pdfReader"),
-        path("upload-options", views.uploadOptions, name="uploadOptions"),
         path("upload-file", views.uploadFile, name="uploadFile"),
         path("upload-manually", views.uploadManually, name="uploadManually"),
+        path("sitemap.xml", views.sitemap, name="sitemap"),
+        path("favicon.ico", views.favicon, name="favicon"),
     ]
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

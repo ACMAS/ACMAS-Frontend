@@ -2,7 +2,8 @@
 
 <html lang="en">
 <head>
-  <title>Navbar</title>
+  <title>{% block title %} {% endblock %}</title>
+  <link rel="icon" type="image/x-icon" href="../static/img/star.svg">
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <link
     data-tag="font"
@@ -11,7 +12,6 @@
   />
   <link rel="stylesheet" href="../static/styles/bootstrap/bootstrap.min.css">
   <link href="../static/styles/commons.css" rel="stylesheet"/>
-
 </head>
 <body>
 <!-- JS Scripts -->
@@ -31,7 +31,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <!-- Logo -->
-    <a class="navbar-brand" href="../static/index.html">
+    <a class="navbar-brand" href="/">
       <img src="../static/img/star.svg" width="40" height="40" alt="">
     </a>
 
@@ -46,9 +46,9 @@
         <!-- Home -->
         <li class="nav-item">
           {% if request.path == home_url %}
-            <a class="nav-link active" aria-current="page" href="../static/index.html">Home</a>
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
           {% else %}
-            <a class="nav-link" aria-current="page" href="../static/index.html">Home</a>
+            <a class="nav-link" aria-current="page" href="/">Home</a>
           {% endif %}
         </li>
 
@@ -97,5 +97,4 @@
 {% block content %}
 {% endblock %}
 </body>
-
 </html>
