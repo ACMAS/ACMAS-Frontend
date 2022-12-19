@@ -1,8 +1,9 @@
 # ACMAS-Frontend
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/L4L4GMYID)
 
 [![Lint Code Base](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/super-linter.yml/badge.svg)](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/super-linter.yml)  [![Django CI](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/django.yml/badge.svg)](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/django.yml)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/c4e7f48ee49a4504bc2a4cdef806dfa8)](https://www.codacy.com/gh/ACMAS/ACMAS-Frontend/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ACMAS/ACMAS-Frontend&amp;utm_campaign=Badge_Grade)
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/L4L4GMYID)
 
 ## Usage
 
