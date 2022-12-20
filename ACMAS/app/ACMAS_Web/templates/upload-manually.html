@@ -1,8 +1,18 @@
 {% extends 'navbar.html' %}
 {% block title %}ACMAS Upload{% endblock %}
-{% block meta_description %}Upload your homework/exam questions and answers to ACMAS anonymously and join our community of students today!{% endblock %}
-{% block content %}
 
+{% block google_description %}Upload your homework/exam questions and answers to ACMAS anonymously and join our community of students today!{% endblock %}
+{% block google_title %}ACMAS Manual Upload Tool{% endblock %}
+{% block google_keywords %}upload, question, assignment, homework, homework help, exam, exam help, student, free homework help, free school help, tutor, online tutor{% endblock %}
+
+{% block twitter_title %}ACMAS Manual Upload Tool{% endblock %}
+{% block twitter_description %}Upload your homework/exam questions and answers to ACMAS anonymously and join our community of students today!{% endblock %}
+
+{% block facebook_title %}ACMAS Manual Upload Tool{% endblock %}
+{% block facebook_description %}Upload your homework/exam questions and answers to ACMAS anonymously and join our community of students today!{% endblock %}
+{% block facebook_url %}www.acmas.systems/upload-manually{% endblock %}
+
+{% block content %}
 <html lang="en">
 <head>
   <!-- Google Analytics -->
@@ -20,17 +30,12 @@
   <script async src='{{ GOOGLE_ADSENSE_URL }}'
      crossorigin="anonymous"></script>
 
-  <title>ACMAS Upload</title>
-  <link rel="icon" type="image/x-icon" href="../static/img/star.svg">
-  <meta content="summary_large_image" property="twitter:card"/>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <link
+    rel="stylesheet"
     data-tag="font"
     href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
   />
-  <link href="../static/styles/search-by-course-style.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="../static/styles/search-by-course-style.css"/>
 </head>
 
 <body>

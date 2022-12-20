@@ -1,8 +1,18 @@
 {% extends 'navbar.html' %}
 {% block title %}ACMAS Viewer{% endblock %}
-{% block meta_description %}File viewer for the ACMAS free homework and backtest database. Join our community of students anonymously today!{% endblock %}
-{% block content %}
 
+{% block google_description %}File viewer for the ACMAS free homework and backtest database. Join our community of students anonymously today!{% endblock %}
+{% block google_title %}ACMAS Assignment Viewer{% endblock %}
+{% block google_keywords %}homework, homework help, exam, exam help, student, free homework help, free school help, tutor, online tutor{% endblock %}
+
+{% block twitter_title %}ACMAS Assignment Viewer{% endblock %}
+{% block twitter_description %}File viewer for the ACMAS free homework and backtest database. Join our community of students anonymously today!{% endblock %}
+
+{% block facebook_title %}ACMAS Assignment Viewer{% endblock %}
+{% block facebook_description %}File viewer for the ACMAS free homework and backtest database. Join our community of students anonymously today!{% endblock %}
+{% block facebook_url %}www.acmas.systems{% endblock %}
+
+{% block content %}
 <html lang="en">
 <head>
   <!-- Google Analytics -->
@@ -20,24 +30,13 @@
   <script async src='{{ GOOGLE_ADSENSE_URL }}'
      crossorigin="anonymous"></script>
 
-  <title>ACMAS Viewer</title>
-  <link rel="icon" type="image/x-icon" href="../static/img/star.svg">
-  <meta property="og:title" content="read-pdf" />
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta charset="utf-8" />
-  <meta property="twitter:card" content="summary_large_image" />
-
   <link
     rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
     data-tag="font"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
   />
-  <link href="../static/styles/commons.css" rel="stylesheet" />
-  <link href="../static/styles/pdf-reader-style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../static/styles/commons.css"/>
+  <link rel="stylesheet" href="../static/styles/pdf-reader-style.css" />
 </head>
 
 <body>

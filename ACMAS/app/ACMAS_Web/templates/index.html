@@ -1,8 +1,18 @@
 {% extends 'navbar.html' %}
 {% block title %}ACMAS Homepage{% endblock %}
-{% block meta_description %}ACMAS is the free homework and backtest helper created by students for students. Join our community of students anonymously today!{% endblock %}
-{% block content %}
 
+{% block google_description %}ACMAS is the free homework and backtest helper created by students for students. Join our community of students anonymously today!{% endblock %}
+{% block google_title %}ACMAS: Automated Course Material Archiving System{% endblock %}
+{% block google_keywords %}homework, homework help, exam, exam help, student, free homework help, free school help, tutor, online tutor{% endblock %}
+
+{% block twitter_title %}ACMAS: Automated Course Material Archiving System{% endblock %}
+{% block twitter_description %}ACMAS is the free homework and backtest helper created by students for students. Join our community of students anonymously today!{% endblock %}
+
+{% block facebook_title %}ACMAS: Automated Course Material Archiving System{% endblock %}
+{% block facebook_description %}ACMAS is the free homework and backtest helper created by students for students. Join our community of students anonymously today!{% endblock %}
+{% block facebook_url %}www.acmas.systems{% endblock %}
+
+{% block content %}
 <html lang="en">
 <head>
     <!-- Google Analytics -->
@@ -20,20 +30,14 @@
     <script async src='{{ GOOGLE_ADSENSE_URL }}'
         crossorigin="anonymous"></script>
 
-    <title>ACMAS Homepage</title>
-    <meta content="ACMAS Homepage" property="og:title"/>
-    <link rel="icon" type="image/x-icon" href="../static/img/star.svg">
-    <meta content="summary_large_image" property="twitter:card"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <meta charset="utf-8"/>
     <link
+        rel="stylesheet"
         data-tag="font"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet"
     />
     <link rel="stylesheet" href="../static/styles/bootstrap/bootstrap.min.css">
-    <link href="../static/styles/commons.css" rel="stylesheet"/>
-    <link href="../static/styles/home-style.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/styles/commons.css"/>
+    <link rel="stylesheet" href="../static/styles/home-style.css" />
 </head>
 <body>
     <div class="home-container">
@@ -44,7 +48,7 @@
                     <img
                         alt="ACMAS logo"
                         class="home-logo"
-                        src="../static/img/logo.v1.svg"
+                        src="../static/img/ACMAS_Logo.svg"
                     />
                 </a>
             </div>
@@ -70,7 +74,7 @@
     </div>
     <div class="custom-shape-divider-bottom-1669508581" id="hide-mobile">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path 
+            <path
                 d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" 
                 class="shape-fill">
             </path>
