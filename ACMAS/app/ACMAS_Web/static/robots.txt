@@ -3,3 +3,6 @@ Disallow: /pdfReader*
 Disallow: /searchResults*
 Disallow: /admin
 Sitemap: http://acmas.systems/sitemap.xml
+
+User-agent: TurnitinBot
+Disallow: /

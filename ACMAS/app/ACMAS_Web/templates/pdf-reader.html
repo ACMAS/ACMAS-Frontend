@@ -13,7 +13,6 @@
 {% block facebook_url %}www.acmas.systems{% endblock %}
 
 {% block content %}
-<html lang="en">
 <head>
   <!-- Google Analytics -->
   <!-- Google tag (gtag.js) -->
@@ -34,35 +33,32 @@
     rel="stylesheet"
     data-tag="font"
     href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    crossorigin="anonymous"
   />
-  <link rel="stylesheet" href="../static/styles/commons.css"/>
-  <link rel="stylesheet" href="../static/styles/pdf-reader-style.css" />
+  <link rel="stylesheet" href="../static/styles/pdf-reader-style.css"/>
 </head>
 
 <body>
-  <link href="../static/styles/commons.css" rel="stylesheet" />
-  <link href="../static/styles/pdf-reader-style.css" rel="stylesheet" />
-
-  <div>
-    <div class="home-container" style="margin-top: 3%;">
-      <div class="container-fluid">
-        <h1 class="display-3" style="text-align: center">ACMAS Reader</h1>
-      </div>
-      <div class="home-pdf-reader-container">
-        <embed src="{{directory}}" type="application/pdf" width="100%" height="100%" />
-      </div>
-      <div class="home-nav-button-container">
-        <button class="home-return-homepage-btn button content" onclick="window.location.href='/';">
-          Return to Homepage
-        </button>
-        <form id="return-to-query" action="{% url 'returnQuery' %}">
-          <input type="submit" class="home-button button content" value="Return to Query">
-        </form>
+  <main>
+    <div>
+      <div class="home-container" style="margin-top: 3%;">
+        <div class="container-fluid">
+          <h1 class="display-3" style="text-align: center">ACMAS Reader</h1>
+        </div>
+        <div class="home-pdf-reader-container">
+          <embed src="{{directory}}" type="application/pdf" width="100%" height="100%" />
+        </div>
+        <div class="home-nav-button-container">
+          <button class="home-return-homepage-btn button content" onclick="window.location.href='/';">
+            Return to Homepage
+          </button>
+          <form id="return-to-query" action="{% url 'returnQuery' %}">
+            <input type="submit" class="home-button button content" value="Return to Query">
+          </form>
+        </div>
       </div>
     </div>
-  </div>
+  </main>
 {% endblock %}
-
 </body>
-
 </html>

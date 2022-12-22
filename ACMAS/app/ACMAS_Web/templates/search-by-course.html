@@ -13,7 +13,6 @@
 {% block facebook_url %}www.acmas.systems/searchByCourse{% endblock %}
 
 {% block content %}
-<html lang="en">
 <head>
   <!-- Google Analytics -->
   <!-- Google tag (gtag.js) -->
@@ -31,43 +30,46 @@
      crossorigin="anonymous"></script>
 
   <link
-    data-tag="font"
     rel="stylesheet"
+    data-tag="font"
     href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    crossorigin="anonymous"
   />
   <link rel="stylesheet" href="../static/styles/search-by-course-style.css"/>
 </head>
 
 <body>
-  <div class="container-fluid search-container">
-    <!-- Header -->
-    <h1 class="display-3" style="text-align: center">Search by Course</h1>
+  <main>
+    <div class="container-fluid search-container">
+      <!-- Header -->
+      <h1 class="display-3" style="text-align: center">Search by Course</h1>
 
-    <form class="row user-inpt" method="POST" enctype="multipart/form-data" action="{% url 'searchResults' %}"> {% csrf_token %}
-      <!-- School -->
-      <div class="col-md-12">
-        <input type="text" class="form-control form-control-lg" id="input-uni" name="school" placeholder="Enter University">
-      </div>
-      <!-- Course -->
-      <div class="col-md-6 user-inpt">
-        <input type="text" class="form-control form-control-lg" id="input-course" name="course" placeholder="Enter Course">
-      </div>
-      <!-- Assignment Dropdown -->
-      <div class="col-md-6 user-inpt">
-        <select class="form-select form-select-lg" placeholder="Select assignment type" autocomplete="on" name="type">
-          <option style="color: #D4D6D9;" value="All">Select assignment type</option>
-          <option value="All">All</option>
-          <option value="Assignment">Assignment</option>
-          <option value="Exam">Exam</option>
-          <option value="Practice">Practice</option>
-        </select>
-      </div>
-      <!-- Submit Button -->
-      <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center">
-        <button type="submit" class="btn btn-primary btn-lg" value="Search">Search</button>
-      </div>
-    </form>
-  </div>
+      <form class="row user-inpt" method="POST" enctype="multipart/form-data" action="{% url 'searchResults' %}"> {% csrf_token %}
+        <!-- School -->
+        <div class="col-md-12">
+          <input type="text" class="form-control form-control-lg" id="input-uni" name="school" placeholder="Enter University" label="School name entry">
+        </div>
+        <!-- Course -->
+        <div class="col-md-6 user-inpt">
+          <input type="text" class="form-control form-control-lg" id="input-course" name="course" placeholder="Enter Course" label="Course name entry">
+        </div>
+        <!-- Assignment Dropdown -->
+        <div class="col-md-6 user-inpt">
+          <select class="form-select form-select-lg" placeholder="Select assignment type" autocomplete="on" name="type" label="Search type selection">
+            <option style="color: #D4D6D9;" value="All">Select assignment type</option>
+            <option value="All">All</option>
+            <option value="Assignment">Assignment</option>
+            <option value="Exam">Exam</option>
+            <option value="Practice">Practice</option>
+          </select>
+        </div>
+        <!-- Submit Button -->
+        <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center">
+          <button type="submit" class="btn btn-primary btn-lg" value="Search">Search</button>
+        </div>
+      </form>
+    </div>
+  </main>
 {% endblock %}
 </body>
 </html>

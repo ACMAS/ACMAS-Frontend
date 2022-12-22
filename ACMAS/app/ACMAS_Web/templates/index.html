@@ -13,7 +13,6 @@
 {% block facebook_url %}www.acmas.systems{% endblock %}
 
 {% block content %}
-<html lang="en">
 <head>
     <!-- Google Analytics -->
     <!-- Google tag (gtag.js) -->
@@ -34,44 +33,46 @@
         rel="stylesheet"
         data-tag="font"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../static/styles/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/styles/commons.css"/>
-    <link rel="stylesheet" href="../static/styles/home-style.css" />
+    <link rel="stylesheet" href="../static/styles/home-style.css"/>
 </head>
+
 <body>
-    <div class="home-container">
-        <div style="display:flex;">
-            <div class="home-display-text">Simplify <br> studying with</div>
-            <div class="home-logo-title">
-                <a href="/" >
-                    <img
-                        alt="ACMAS logo"
-                        class="home-logo"
-                        src="../static/img/ACMAS_Logo.svg"
-                    />
-                </a>
+    <main>
+        <div class="home-container">
+            <div style="display:flex;">
+                <div class="home-display-text">Simplify <br> studying with</div>
+                <div class="home-logo-title">
+                    <a href="/" >
+                        <img
+                            alt="ACMAS logo"
+                            class="home-logo"
+                            src="../static/img/ACMAS_Logo.svg"
+                        />
+                    </a>
+                </div>
+            </div>
+
+            <div class="home-buttons-container gap-4">
+                <li class="dropdown-button home-text">
+                    Search
+                    <ul class="dropdown-opts dropdown-opts-animated">
+                    <li><a href="/searchByQuestion">by Question</a></li>
+                    <li><a href="/searchByCourse">by Course</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown-button home-text">
+                    Upload
+                    <ul class="dropdown-opts dropdown-opts-animated">
+                    <li><a href="/upload-file">With a file</a></li>
+                    <li><a href="/upload-manually">Manually</a></li>
+                    </ul>
+                </li>
             </div>
         </div>
-
-        <div class="home-buttons-container gap-4">
-            <li class="dropdown-button home-text">
-                Search
-                <ul class="dropdown-opts dropdown-opts-animated">
-                  <li><a href="/searchByQuestion">by Question</a></li>
-                  <li><a href="/searchByCourse">by Course</a></li>
-                </ul>
-              </li>
-
-              <li class="dropdown-button home-text">
-                Upload
-                <ul class="dropdown-opts dropdown-opts-animated">
-                  <li><a href="/upload-file">With a file</a></li>
-                  <li><a href="/upload-manually">Manually</a></li>
-                </ul>
-              </li>
-        </div>
-    </div>
+    </main>
     <div class="custom-shape-divider-bottom-1669508581" id="hide-mobile">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
             <path
@@ -80,6 +81,6 @@
             </path>
         </svg>
     </div>
-    {% endblock %}
+{% endblock %}
 </body>
 </html>

@@ -13,7 +13,6 @@
 {% block facebook_url %}www.acmas.systems{% endblock %}
 
 {% block content %}
-<html lang="en">
 <head>
   <!-- Google Analytics -->
   <!-- Google tag (gtag.js) -->
@@ -50,33 +49,35 @@
     rel="stylesheet"
     data-tag="font"
     href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    crossorigin="anonymous"
   />
-  <link rel="stylesheet" href="../static/styles/commons.css"/>
   <link rel="stylesheet" href="../static/styles/search-results-style.css"/>
 </head>
 
 <body>
-  <div class="search-results-page-container" style="margin-top: 6%">
-    <span class="search-results-page-title heading">Search Results</span>
-    <div class="search-results-page-results-frame">
-      <ul class="list">
-        {% for file in files %}
-          <form method="GET" action="{% url 'pdfReader' %}">
-            <li class="list-item"><button type="submit" > <input type="text" name="url" value="{{file.filename}}" readonly> </button></li>
-          </form>
-        {% endfor %}
-      </ul>
+  <main>
+    <div class="search-results-page-container" style="margin-top: 6%">
+      <span class="search-results-page-title heading">Search Results</span>
+      <div class="search-results-page-results-frame">
+        <ul class="list">
+          {% for file in files %}
+            <form method="GET" action="{% url 'pdfReader' %}">
+              <li class="list-item"><button type="submit" aria-label="{{file.filename}}"> <input type="text" name="url" value="{{file.filename}}" readonly> </button></li>
+            </form>
+          {% endfor %}
+        </ul>
+      </div>
+      {% if manual == True %}
+        <button class="search-results-page-new-search-button button heading" onclick="window.location.href='searchByQuestion';">
+          New Search
+        </button>
+      {% else %}
+        <button class="search-results-page-new-search-button button heading" onclick="window.location.href='searchByCourse';">
+          New Search
+        </button>
+      {% endif %}
     </div>
-    {% if manual == True %}
-      <button class="search-results-page-new-search-button button heading" onclick="window.location.href='searchByQuestion';">
-        New Search
-      </button>
-    {% else %}
-      <button class="search-results-page-new-search-button button heading" onclick="window.location.href='searchByCourse';">
-        New Search
-      </button>
-    {% endif %}
-  </div>
+  </main>
 {% endblock %}
 </body>
 </html>
