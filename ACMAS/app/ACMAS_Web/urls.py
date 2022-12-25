@@ -37,7 +37,7 @@ urlpatterns = (
         path("print-Cropped-Imgs/<file_id2>/",views.ocr_cropped_files, name="print-Cropped-Imgs"),
         path("delete-cropped-img/<str:pk>/<str:pk2>/",views.delete_Cropped_Text, name ="delete-cropped-img"),
         path("edit-questin/<str:pk>/<str:pk2>/",views.edit_question, name = "edit-question"),
-        path("submit/",views.submit_questions,name="submit")
+        path("submit/<file_id>/",views.submit_questions,name="submit")
     ]
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

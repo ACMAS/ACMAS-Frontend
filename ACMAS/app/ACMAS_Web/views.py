@@ -1,3 +1,4 @@
+import zlib
 from django.core.cache import cache
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
@@ -110,7 +111,6 @@ def pdfReader(request):
     # Else obtain object from session Facade and display file
     sessionID = request.session._get_or_create_session_key()
     facade = cache.get(sessionID)
-
     # If session expired, or no search by course was made, or recent search does not contain file
     if (
         facade is None
@@ -213,9 +213,11 @@ def delete_Cropped_Text(request, pk, pk2):
     return render(request, "delete.html")
 
 
-def submit_questions(request):
+def submit_questions(request, file_id):
+    uploadedfile = UploadedFile.objects.get(id=file_id)
     for q in CroppedImg.objects.all():
-        Question.objects.create(question=q.text, Answers="", Hash="", filename="")
+        hashString = str(zlib.crc32(bytes(q.text.encode("utf-8"))))
+        Question.objects.create(question=q.text, Answers="", Hash=hashString, filename=uploadedfile.filename)
     CroppedImg.objects.all().delete()
     return redirect("index")
 
