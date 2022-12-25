@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<url>
+		<loc>http://www.acmas.systems</loc>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://www.acmas.systems/searchByQuestion</loc>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://www.acmas.systems/searchByCourse</loc>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://www.acmas.systems/upload-file</loc>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://www.acmas.systems/upload-manually</loc>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://www.acmas.systems/upload-options</loc>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://www.acmas.systems/searchResults</loc>
+		<changefreq>always</changefreq>
+	</url>
+</urlset>
