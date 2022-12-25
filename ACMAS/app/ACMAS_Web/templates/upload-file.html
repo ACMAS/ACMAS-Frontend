@@ -14,37 +14,6 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-<<<<<<< HEAD
-        <form class="row user-inpt" id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'uploadFile' %}">
-            <!-- School -->
-            <div class="col-md-12">
-                <input class="form-control form-control-lg" placeholder="Enter your school" type="text" name="school"/>
-            </div>
-            <!-- Course -->
-            <div class="col-md-6 user-inpt">
-                <input class="form-control form-control-lg input" placeholder="Enter your course" type="text" name="course"/>
-            </div>
-            <!-- Assignment Dropdown -->
-            <div class="col-md-6 user-inpt">
-                <select class="form-select form-select-lg" placeholder="Select assignment type" autocomplete="on" name="type">
-                    <option style="color: #D4D6D9;" value="All">Select assignment type</option>
-                    <option value="Assignment">Assignment</option>
-                    <option value="Exam">Exam</option>
-                    <option value="Practice">Practice</option>
-                </select>
-            </div>
-            <!-- Upload Button -->
-            <div class="col-md-12 user-inpt">
-                <input type="file" class="form-control form-control-lg" name="fileUpload"/>
-            </div>
-            <!-- Submit Button -->
-            <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center">
-                <input type="submit" class="btn btn-primary btn-lg" value="Upload"/>
-            </div>
-        </form>
-    </div>
-    {% endblock %}
-=======
       gtag('config', '{{ GOOGLE_ANALYTICS_ID }}');
   </script>
 
@@ -98,7 +67,6 @@
       </div>
     </form>
   </div>
-{% endblock %}
->>>>>>> main
 </body>
+{% endblock %}
 </html>

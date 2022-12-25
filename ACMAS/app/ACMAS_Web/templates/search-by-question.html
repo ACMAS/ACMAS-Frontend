@@ -14,20 +14,6 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-<<<<<<< HEAD
-        <form class="row user-inpt" id="manual-entry-form" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}">
-            <!-- Question -->
-            <div class="col-md-12">
-                <input type="text" class="form-control form-control-lg" name="question" placeholder="Enter your question">
-            </div>
-            <!-- Submit Button-->
-            <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center">
-                <button type="submit" class="btn btn-primary btn-lg" value="Search">Search</button>
-            </div>
-        </form>
-    </div>
-    {% endblock %}
-=======
       gtag('config', '{{ GOOGLE_ANALYTICS_ID }}');
   </script>
 
@@ -66,6 +52,5 @@
     </form>
   </div>
 {% endblock %}
->>>>>>> main
 </body>
 </html>

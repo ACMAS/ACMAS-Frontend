@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 import zlib
-=======
 import os
 
->>>>>>> main
 from django.core.cache import cache
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
@@ -140,12 +137,7 @@ def pdfReader(request):
     else:
         file_extension = ""
     if file_extension == "txt":  # If the file is a .txt load by filename
-<<<<<<< HEAD
         return render(request, "pdf-reader.html", {"directory": "../mediafiles/" + name})
-=======
-        context.update({"directory": "../media/" + name})
-        return render(request, "pdf-reader.html", context)
->>>>>>> main
     # Else obtain object from session Facade and display file
     sessionID = request.session._get_or_create_session_key()
     facade = cache.get(sessionID)
@@ -184,13 +176,9 @@ def uploadFile(request):
         file = request.FILES["fileUpload"]  # Get the uploaded file
         uploaded_id = createFacade().uploadPdf(school, course, assignmentType, file)
         print("School: ", school, "\nCourse: ", course)
-<<<<<<< HEAD
         CroppedImg.objects.all().delete()  # delete all cropped images that may have not been deleted from previous use
         return redirect("crop-file", file_id=uploaded_id, pgcount=0)
     return render(request, "upload-file.html")
-=======
-    return render(request, "upload-file.html", context)
->>>>>>> main
 
 
 def get_Cropped_Image(request):

@@ -30,18 +30,15 @@ urlpatterns = (
         path("pdfReader", views.pdfReader, name="pdfReader"),
         path("upload-file", views.uploadFile, name="uploadFile"),
         path("upload-manually", views.uploadManually, name="uploadManually"),
-<<<<<<< HEAD
         path("crop-file/<file_id>/<int:pgcount>/",views.crop_uploaded_file, name="crop-file"),
         path("pdf-reader/<file_id>/<int:pgcount>/<int:total>/", views.pdf_reader, name="pdf-reader"),
         path("crop-Img/",views.get_Cropped_Image, name="crop-Img"),
         path("print-Cropped-Imgs/<file_id2>/",views.ocr_cropped_files, name="print-Cropped-Imgs"),
         path("delete-cropped-img/<str:pk>/<str:pk2>/",views.delete_Cropped_Text, name ="delete-cropped-img"),
         path("edit-questin/<str:pk>/<str:pk2>/",views.edit_question, name = "edit-question"),
-        path("submit/<file_id>/",views.submit_questions,name="submit")
-=======
+        path("submit/<file_id>/",views.submit_questions,name="submit"),
         path("sitemap.xml", views.sitemap, name="sitemap"),
         path("favicon.ico", views.favicon, name="favicon"),
->>>>>>> main
     ]
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
