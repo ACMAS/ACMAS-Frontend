@@ -28,6 +28,11 @@ def sitemap(request):
     return redirect("static/sitemap.xml")
 
 
+# ACMAS robots.txt file (used for SEO and web crawlers)
+def robots(request):
+    return redirect("static/robots.txt")
+
+
 # ACMAS favicon.ico logo (used for browser tab icon)
 def favicon(request):
     return redirect("static/img/favicon.ico")

@@ -2,20 +2,44 @@
 
 <html lang="en">
 <head>
+  <!-- HTML Meta Tags -->
   <title>{% block title %} {% endblock %}</title>
   <link rel="icon" type="image/x-icon" href="../static/img/star.svg">
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta charset="utf-8"/>
+
+  <!-- Google / Search Engine Meta Tags -->
+  <meta itemprop="name" content="{% block google_title %} {% endblock %}"/>
+  <meta itemprop="description" content="{% block google_description %} {% endblock %}"/>
+  <meta itemprop="keywords" content="{% block google_keywords %} {% endblock %}"/>
+  <meta itemprop="image" content="../static/img/ACMAS_Logo.svg"/>
+
+  <!-- Twitter Meta Tags -->
+  <meta property="twitter:card" content="summary_large_image"/>
+  <meta property="twitter:title" content="{% block twitter_title %} {% endblock %}"/>
+  <meta name="twitter:description" content="{% block twitter_description %} {% endblock %}">
+  <meta name="twitter:image" content="../static/img/ACMAS_Logo.svg">
+
+  <!-- Facebook Meta Tags -->
+  <meta property="og:url" content="{% block facebook_url %} {% endblock %}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{% block facebook_title %} {% endblock %}">
+  <meta property="og:description" content="{% block facebook_description %} {%endblock %}">
+  <meta property="og:image" content="../static/img/ACMAS_Logo.svg">
+
   <link
-    data-tag="font"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
+        rel="stylesheet"
+        data-tag="font"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        crossorigin="anonymous"
   />
   <link rel="stylesheet" href="../static/styles/bootstrap/bootstrap.min.css">
   <link href="../static/styles/commons.css" rel="stylesheet"/>
 </head>
 <body>
+
 <!-- JS Scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="../static/js/bootstrap.bundle.min.js"></script>
 
 <!-- Urls -->
@@ -31,12 +55,12 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <!-- Logo -->
-    <a class="navbar-brand" href="/">
-      <img src="../static/img/star.svg" width="40" height="40" alt="">
+    <a class="navbar-brand" href="/" aria-label="ACMAS star logo">
+      <img src="../static/img/star.svg" width="40" height="40" alt="ACMAS star logo">
     </a>
 
     <!-- Collapse Button -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-coll" aria-expanded="false">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-coll" aria-expanded="false" aria-label="Menu collapse">
       <span class="navbar-toggler-icon"></span>
     </button>
 
