@@ -21,10 +21,6 @@
 		<changefreq>weekly</changefreq>
 	</url>
 	<url>
-		<loc>http://www.acmas.systems/upload-options</loc>
-		<changefreq>weekly</changefreq>
-	</url>
-	<url>
 		<loc>http://www.acmas.systems/searchResults</loc>
 		<changefreq>always</changefreq>
 	</url>
