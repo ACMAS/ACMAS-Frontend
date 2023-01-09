@@ -28,13 +28,11 @@ def index(request):
 
 # ACMAS Sitemap.xml file (used for Google Search Console)
 def sitemap(request):
-    context = generateContext(request)
     return redirect("static/sitemap.xml")
 
 
 # ACMAS robots.txt file (used for SEO and web crawlers)
 def robots(request):
-    context = generateContext(request)
     return redirect("static/robots.txt")
 
 
