@@ -7,29 +7,34 @@ from .models import UploadedFile
 from .search import searchFacade
 from .upload import createFacade
 
-# When using context, use context_base.copy() to create a copy of this base context, rather than using this directly
-context_base = {
-    "GOOGLE_ADSENSE_URL": os.getenv("GOOGLE_ADSENSE_URL", default="")
-    + os.getenv("GOOGLE_ADSENSE_ID", default=""),
-    "GOOGLE_ANALYTICS_ID": os.getenv("GOOGLE_ANALYTICS_ID", default=""),
-    "GOOGLE_ANALYTICS_URL": os.getenv("GOOGLE_ANALYTICS_URL", default="")
-    + os.getenv("GOOGLE_ANALYTICS_ID", default=""),
-}
+
+def generateContext(request):
+    context = {
+        "GOOGLE_ADSENSE_URL": os.getenv("GOOGLE_ADSENSE_URL", default="")
+        + os.getenv("GOOGLE_ADSENSE_ID", default=""),
+        "GOOGLE_ANALYTICS_ID": os.getenv("GOOGLE_ANALYTICS_ID", default=""),
+        "GOOGLE_ANALYTICS_URL": os.getenv("GOOGLE_ANALYTICS_URL", default="")
+        + os.getenv("GOOGLE_ANALYTICS_ID", default=""),
+        "CANONICAL_PATH": request.build_absolute_uri(request.path),
+    }
+    return context
 
 
 # ACMAS homepage
 def index(request):
-    context = context_base.copy()
+    context = generateContext(request)
     return render(request, "index.html", context)
 
 
 # ACMAS Sitemap.xml file (used for Google Search Console)
 def sitemap(request):
+    context = generateContext(request)
     return redirect("static/sitemap.xml")
 
 
 # ACMAS robots.txt file (used for SEO and web crawlers)
 def robots(request):
+    context = generateContext(request)
     return redirect("static/robots.txt")
 
 
@@ -40,7 +45,7 @@ def favicon(request):
 
 # Search by question page
 def searchByQuestion(request):
-    context = context_base.copy()
+    context = generateContext(request)
     question = request.POST.get("question")  # Check to see if a question was entered
     if (
         question is not None and len(question) > 0
@@ -67,13 +72,13 @@ def searchByQuestion(request):
 
 
 def searchByCourse(request):
-    context = context_base.copy()
+    context = generateContext(request)
     return render(request, "search-by-course.html", context)
 
 
 # Utilizes search by course form
 def searchResults(request):
-    context = context_base.copy()
+    context = generateContext(request)
 
     # Get input
     school = request.POST.get("school")
@@ -112,7 +117,7 @@ def searchResults(request):
 
 
 def returnQuery(request):
-    context = context_base.copy()
+    context = generateContext(request)
 
     # Returns to previous query results
     # Getting current session facade
@@ -130,7 +135,7 @@ def returnQuery(request):
 
 
 def pdfReader(request):
-    context = context_base.copy()
+    context = generateContext(request)
 
     name = request.GET.get("url")
     if "." in name:
@@ -161,7 +166,7 @@ def pdfReader(request):
 
 
 def uploadFile(request):
-    context = context_base.copy()
+    context = generateContext(request)
 
     school = request.POST.get("school")  # Check to see if a school was entered
     course = request.POST.get(
@@ -183,7 +188,7 @@ def uploadFile(request):
 
 
 def uploadManually(request):
-    context = context_base.copy()
+    context = generateContext(request)
 
     school = request.POST.get("school")  # Check to see if a school was entered
     course = request.POST.get(
