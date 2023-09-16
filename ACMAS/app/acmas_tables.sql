@@ -5,7 +5,7 @@ create table "ACMAS_Web_university"
     name varchar(50) not null
 );
 
-alter table "ACMAS_Web_university" owner to hello_acmas;
+alter table "ACMAS_Web_university" owner to acmas_admin;
 
 create table "ACMAS_Web_course"
 (
@@ -15,10 +15,10 @@ create table "ACMAS_Web_course"
     code varchar(20) not null,
     university text not null,
     semester varchar(30) not null,
-    years text not null,
+    years text not null
 );
 
-alter table "ACMAS_Web_course" owner to hello_acmas;
+alter table "ACMAS_Web_course" owner to acmas_admin;
 
 
 create table "ACMAS_Web_question"
@@ -31,7 +31,7 @@ create table "ACMAS_Web_question"
     "Hash" text not null
 );
 
-alter table "ACMAS_Web_question" owner to hello_acmas;
+alter table "ACMAS_Web_question" owner to acmas_admin;
 
 
 create table "ACMAS_Web_uploadedfile"
@@ -48,7 +48,7 @@ create table "ACMAS_Web_uploadedfile"
     deferrable initially deferred
 );
 
-alter table "ACMAS_Web_uploadedfile" owner to hello_acmas;
+alter table "ACMAS_Web_uploadedfile" owner to acmas_admin;
 
 create index "ACMAS_Web_uploadedfile_Course_id_0d560cf7"
 on "ACMAS_Web_uploadedfile" (course_id);
