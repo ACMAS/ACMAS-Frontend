@@ -14,9 +14,8 @@ create table "ACMAS_Web_course"
     name text not null,
     code varchar(20) not null,
     university text not null,
-    semster varchar(30) not null,
+    semester varchar(30) not null,
     years text not null,
-    test_type varchar(20) not null
 );
 
 alter table "ACMAS_Web_course" owner to hello_acmas;

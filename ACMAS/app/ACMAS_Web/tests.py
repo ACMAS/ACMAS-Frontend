@@ -15,27 +15,24 @@ class Test_db(TestCase):
             name="FOCS",
             code="2200",
             university="RPI",
-            semster="Fall",
+            semester="Fall",
             years="2022",
-            test_type="Final",
         )
         course.save()
         course = Course.objects.create(
             name="FOCS2",
             code="2200",
             university="RPI",
-            semster="Fall",
+            semester="Fall",
             years="2022",
-            test_type="Final",
         )
         course.save()
         self.assertEqual(len(Course.objects.all()), 2)
         course1 = Course.objects.get(name="FOCS")
         self.assertEqual(course1.code, "2200")
         self.assertEqual(course1.university, "RPI")
-        self.assertEqual(course1.semster, "Fall")
+        self.assertEqual(course1.semester, "Fall")
         self.assertEqual(course1.years, "2022")
-        self.assertEqual(course1.test_type, "Final")
 
     def test_db_count(self):
         all_entries = Course.objects.all()

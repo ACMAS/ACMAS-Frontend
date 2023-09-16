@@ -22,9 +22,8 @@ class Course(models.Model):
     name = models.TextField()
     code = models.CharField(max_length=20)
     university = models.TextField()
-    semster = models.CharField(max_length=30)
+    semester = models.CharField(max_length=30)
     years = models.TextField()
-    test_type = models.CharField(max_length=20)
 
     def __str__(self):
         return self.name
