@@ -20,7 +20,7 @@ Each time you make changes to the code you will need to turn off the Docker cont
  manual deletion of docker "volumes" associated with ACMAS.
 #### Start Docker
 In order to run Docker applications you must open __Docker Desktop__ or start the Docker service on your device.
-#### Navigate to "/ACMAS-Frontend/ACMAS"
+#### Navigate to `/ACMAS-Frontend/ACMAS`
 Open the repository directory `ACMAS-Frontend` and navigate to the `ACMAS` directory within. Open this `ACMAS`
  directory in the command-line or terminal.
 
@@ -59,7 +59,7 @@ ___After turning on the Docker container follow these steps:___
 1) Check for an error message. If one appears, search it on Google or talk to other ACMAS developers on your sub-team
 2) If you are unable to find the exact error code on Google, attempt to search for similar or more generic versions
 3) Discuss the issue with other ACMAS sub-teams
-4) Talk to the project co-leads Jacob @jaw12346 or Susan @susanh
+4) Talk to the project lead Jacob @jaw12346
 5) __Open an issue!__
 
 ---
