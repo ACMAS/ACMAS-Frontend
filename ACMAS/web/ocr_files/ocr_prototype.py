@@ -20,6 +20,7 @@ def png_conversion(pdf_name):
         return None
 
     print("CONVERTING PNG")
+
     if not os.path.isdir('mediafiles/ocr_images'):
         os.system("mkdir mediafiles/ocr_images")
 
@@ -51,6 +52,6 @@ def ocr_driver(pdf_name):
 
 if __name__ == '__main__':
     # This is just an example pdf to test the ocr. You can swap it with any pdf of your choosing
-    pdf = '../ocr_misc/ocr_input/Foam_Hw4.pdf'
+    pdf =  '../ocr_misc/ocr_input/test.png'     #'../ocr_misc/ocr_input/Foam_Hw4.pdf'
     result = ocr_driver(pdf)
     print(result)
