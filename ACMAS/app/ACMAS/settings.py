@@ -124,6 +124,10 @@ STATIC_URL = "staticfiles/"  # URL to serve static files (/home/app/web/staticfi
 STATIC_ROOT = os.path.join(
     BASE_DIR, "staticfiles"
 )  # Collect static files here (production)
+#Compressor
+COMPRESS_ROOT = BASE_DIR / 'ACMAS_Web/static'
+COMPRESS_ENABLED = True
+STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
 
 # Media files
 MEDIA_URL = "media/"
@@ -134,9 +138,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-#Compressor
-COMPRESS_ROOT = BASE_DIR / 'static'
-
-COMPRESS_ENABLED = True
-
-STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
