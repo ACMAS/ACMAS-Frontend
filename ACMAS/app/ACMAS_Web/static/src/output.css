@@ -534,4 +534,40 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-@tailwAind utilities;
+.collapse {
+  visibility: collapse;
+}
+
+.static {
+  position: static;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.me-auto {
+  -webkit-margin-end: auto;
+          margin-inline-end: auto;
+}
+
+.block {
+  display: block;
+}
+
+.list-item {
+  display: list-item;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+.outline {
+  outline-style: solid;
+}
