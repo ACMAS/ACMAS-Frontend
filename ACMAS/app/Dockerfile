@@ -7,7 +7,7 @@
 ###########
 
 # pull official base image
-FROM python:3.10.7-alpine as builder
+FROM python:3.11.5-alpine AS builder
 
 # set work directory
 WORKDIR /usr/src/app
@@ -17,7 +17,8 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # install psycopg2 dependencies
-RUN apk update \
+RUN apk update --no-cache \
+    && apk upgrade \
     && apk add postgresql-dev gcc python3-dev musl-dev
 
 # install dependencies
@@ -31,7 +32,9 @@ RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requir
 #########
 
 # pull official base image
-FROM python:3.10.7-alpine
+FROM python:3.11.5-alpine
+RUN apk update --no-cache
+RUN apk upgrade --no-cache
 
 ####################################
 # CREATE APP (non-root) USER       #
@@ -55,7 +58,7 @@ RUN mkdir $APP_HOME/mediafiles   # Make media files directory
 WORKDIR $APP_HOME
 
 # install dependencies
-RUN apk update && apk add libpq
+RUN apk add libpq
 COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
 RUN pip install --no-cache /wheels/*
@@ -70,6 +73,7 @@ COPY . $APP_HOME
 
 # chown all the files to the app user
 RUN chown -R app:app $APP_HOME
+RUN chmod +x "/home/app/web/entrypoint.sh"
 
 # change to the app user
 USER app
