@@ -18,7 +18,6 @@ ENV PYTHONUNBUFFERED 1
 
 # install psycopg2 dependencies
 RUN apk update --no-cache \
-    && apk upgrade \
     && apk add postgresql-dev gcc python3-dev musl-dev
 
 # install dependencies
@@ -34,7 +33,6 @@ RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requir
 # pull official base image
 FROM python:3.11.5-alpine
 RUN apk update --no-cache
-RUN apk upgrade --no-cache
 
 ####################################
 # CREATE APP (non-root) USER       #
