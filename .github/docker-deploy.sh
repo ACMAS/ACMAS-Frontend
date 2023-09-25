@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Inspired by:
+# https://dev.to/koladev/deploy-a-django-app-on-aws-lightsail-docker-docker-compose-postgresql-nginx-github-actions-bo6
+
 TARGET='main'
 upstream='main'
 
