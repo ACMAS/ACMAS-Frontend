@@ -2,6 +2,10 @@ import os
 
 from django.core.cache import cache
 from django.shortcuts import redirect, render
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+
+#from .forms import RegisterForm
 
 from .models import UploadedFile
 from .search import searchFacade
@@ -208,3 +212,17 @@ def uploadManually(request):
         # Do manual question upload logic
         createFacade().uploadText(school, course, question, answer)
     return render(request, "upload-manually.html", context)
+
+def register(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect("/")
+    else:
+        form = UserCreationForm()
+   
+    context = generateContext(request)
+    return render(request, "register.html", {"form": form, "context": context})
+
+
