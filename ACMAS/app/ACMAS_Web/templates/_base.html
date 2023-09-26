@@ -1,11 +1,11 @@
 <!-- templates/_base.html -->
-
-{% load compress %}
 {% load static %}
+{% load component_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
 
+{% block head %}
 <head>
       <!-- HTML Meta Tags -->
   <title>{% block title %} {% endblock %}</title>
@@ -32,19 +32,17 @@
   <meta property="og:description" content="{% block facebook_description %} {%endblock %}">
   <meta property="og:image" content="../static/img/ACMAS_Logo.svg">
 
-  {% compress css %}
-  <link rel="stylesheet" href="{% static 'src/output.css' %}">
-  {% endcompress %}
   <link
-      rel="stylesheet"
-      data-tag="font"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      crossorigin="anonymous"
+    rel="stylesheet"
+    data-tag="font"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    crossorigin="anonymous"
   />
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  {% component_css_dependencies %}
 </head>
+{% endblock head %}
 
-<!-- Urls -->
 {% url 'index' as home_url %}
 {% url 'searchByQuestion' as search_url %}
 {% url 'searchByCourse' as search_url2 %}
@@ -53,73 +51,106 @@
 {% url 'uploadFile' as upload_url2 %}
 {% url 'uploadManually' as upload_url3 %}
 
-<!-- Navbar -->
-<nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <!-- Logo -->
-    <a class="flex" href="/" aria-label="ACMAS star logo">
-      <img src="../static/img/star.svg" width="40" height="40" alt="ACMAS star logo">
-    </a>
-
-    <!-- Collapse Button -->
-    <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-dropdown" aria-expanded="false">
-      <span class="sr-only">Open main menu</span>
-      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-      </svg>
-  </button>
-
-    <div class="hidden w-full md:block md:w-auto" id="navbar-multi-level">
-      <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-
-        <!-- Home -->
-        <li>
-            <a href="/" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent" aria-current="page">Home</a>
-        </li>
-
-        <!-- Search -->
-        <li>
-          <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Search <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-          </svg></button>
-          <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-            <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
-              <li>
-                <a href="/searchByQuestion" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">by Question</a>
-              </li>
-              <li>
-                <a href="/searchByCourse"  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">by Course</a>
-              </li>
-            </ul>
-          </div>
-        </li>
-
-        <!-- Upload -->
-        <li>
-          <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Upload <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-          </svg></button>
-          <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-            <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
-              <li>
-                <a href="/upload-file" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">With a file</a>
-              </li>
-              <li>
-                <a href="/upload-manually"  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Manually</a>
-              </li>
-            </ul>
-          </div>
-        </li>
-
-        <!-- Github -->
-        <li>
-          <a href="https://github.com/ACMAS/ACMAS-Frontend" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">GitHub Repository</a>
-        </li>
+<!-- Background animation -->
+<style scoped>
+  /* home page footer graphic */
+  .custom-shape-divider-bottom-1669508581 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+  }
+  .custom-shape-divider-bottom-1669508581 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 96px;
+  }
+  .custom-shape-divider-bottom-1669508581 .shape-fill {
+    fill: #ffffffde;
+  }
+  /* mobile */
+  @media (max-width: 480px) {
+    body {
+      background-color: #d6e6f5;
+    }
+    #hide-mobile {
+      display: none;
+    }
+  }
+  /* tablet */
+  @media (min-width: 481px) and (max-width: 1024px) {
+    body {
+      background-color: #d6e6f5;
+    }
+    #hide-mobile {
+      display: none;
+    }
+  }
+  /* desktop */
+  @media (min-width: 1025px) {
+    body {
+      margin: 0;
+      background: linear-gradient(-45deg, #f8f8f3, #f5f2d6, #dbebf3, #c6d6f7);
+      background-size: 300% 300%;
+      animation: gradient 65s ease infinite;
+      height: 100vh;
+    }
+    /* background gradient animation  */
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  }
+</style>
+{% block body %}
+<body>
+  <script>0</script>
+  <nav class="flex bg-white text-gray-700 w-screen">
+    <div class="px-5 py-4 flex w-full items-center">
+      <a href="/">
+        <img class="h-9 pr-4" src="../static/img/star.svg" alt="ACMAS star logo">
+      </a>
+      <!-- Nav Links -->
+      <ul class="hidden md:flex mr-auto px-6 font-heading space-x-12">
+        <li><a class="hover:text-gray-500" href="/">Home</a></li>
+        <li><a class="hover:text-gray-500" href="/searchByQuestion">Search</a></li>
+        <li><a class="hover:text-gray-500" href="/upload-manually">Upload</a></li>
+        <li><a class="hover:text-gray-500" href="https://github.com/ACMAS/ACMAS-Frontend">Github</a></li>
       </ul>
+      <!-- Icons -->
+      <div class="hidden pr-4 xl:flex items-center space-x-5 items-center">
+        <!-- Acount Icon -->
+        <a class="flex items-center hover:text-gray-900" href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hover:text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </a>
+      </div>
     </div>
+    <!-- Responsive navbar -->
+    <a class="navbar-burger self-center mr-12 xl:hidden" href="#">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </a>
+  </nav>
+  <div class="container mx-auto mt-4">
+    {% block content %}
+    {% endblock content %}
   </div>
-</nav>
-{% block content %}
-{% endblock %}
+  <div class="custom-shape-divider-bottom-1669508581" id="hide-mobile">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path
+            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" 
+            class="shape-fill">
+        </path>
+    </svg>
+  </div>
 </body>
+{% endblock body %}
 </html>

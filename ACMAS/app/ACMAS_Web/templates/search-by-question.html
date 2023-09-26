@@ -1,4 +1,6 @@
-{% extends 'navbar.html' %}
+{% extends '_base.html' %}
+{% load component_tags %}
+
 {% block title %}ACMAS Search{% endblock %}
 
 {% block google_description %}Search for assignments, exams and practice questions for your course using the free ACMAS database. Join our community of students anonymously today!{% endblock %}
@@ -13,7 +15,7 @@
 {% block facebook_url %}www.acmas.systems/searchByQuestion{% endblock %}
 
 {% block content %}
-<head>
+{% comment %} <head>
   <!-- Google Analytics -->
   <!-- Google tag (gtag.js) -->
   <script async src='{{ GOOGLE_ANALYTICS_URL }}'></script>
@@ -36,26 +38,25 @@
     crossorigin="anonymous"
   />
   <link rel="stylesheet" href=""/>
-</head>
+</head> {% endcomment %}
 
-<body>
-  <main>
-    <div class="container-fluid search-container">
-      <!-- Header -->
-      <h1 class="display-3" style="text-align: center">Search by Question</h1>
 
-      <form class="row user-inpt" id="manual-entry-form" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
-        <!-- Question -->
-        <div class="col-md-12">
-          <input type="text" class="form-control form-control-lg" name="question" placeholder="Enter your question" label="Question text entry box">
-        </div>
-        <!-- Submit Button-->
-        <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center">
-          <button type="submit" class="btn btn-primary btn-lg" value="Search">Search</button>
-        </div>
-      </form>
-    </div>
-  </main>
+<!-- Header -->
+<div class="flex flex-col mt-20">
+  <h1 class="text-5xl font-light text-gray-900 text-center" style="font-family: Inter, serif;">Search by Question</h1>
+  <div class="pt-2 w-full flex items-center justify-center">
+    <form class="w-1/2 xs:w-2/3 justify-center" id="manual-entry-form" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
+      <!-- Question -->
+      {% component "field" placeholder="Enter your question" name="question" %}
+      <!-- Submit Button-->
+      {% comment %} <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center">
+        <button type="submit" class="btn btn-primary btn-lg" value="Search">Search</button>
+      </div> {% endcomment %}
+      <div class="flex items-center justify-items-center justify-center">
+        {% component "button" text="Search" type="secondary" %}
+      </div>
+    </form>
+  </div>
+</div>
 {% endblock %}
-</body>
-</html>
+

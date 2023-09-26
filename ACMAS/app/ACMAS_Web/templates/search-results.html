@@ -1,4 +1,6 @@
-{% extends 'navbar.html' %}
+{% extends '_base.html' %}
+{% load component_tags %}
+
 {% block title %}ACMAS Search Results{% endblock %}
 
 {% block google_description %}Search results from the free ACMAS database. Join our community of students anonymously today!{% endblock %}
@@ -13,7 +15,35 @@
 {% block facebook_url %}www.acmas.systems{% endblock %}
 
 {% block content %}
-<head>
+<div class="flex flex-col mt-20 items-center justify-items-center">
+  <h1 class="text-5xl font-light text-gray-900 text-center pb-8" style="font-family: Inter, serif;">Search Results</h1>
+  <div class="w-2/3 h-96">
+    <div class="grid grid-cols-1">
+      {% for file in files %}
+        <div class="flex w-full bg-white p-4 rounded-md border border-gray-100 items-center">
+          <a class="mr-auto">{{ file.filename }}</a>
+          <form class="" method="GET" action="{% url 'pdfReader' %}">
+            {% component "button" text="View" type="secondary" %}
+            {% comment %} <li class="list-item"><button type="submit" aria-label="{{file.filename}}"> <input type="text" name="url" value="{{file.filename}}" readonly> </button></li> {% endcomment %}
+          </form>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% if manual == True %}
+    <span onclick="window.location.href='searchByQuestion';">
+      {% component "button" text="New Search" type="primary" %}
+    </span>
+  {% else %}
+    <span onclick="window.location.href='searchByCourse';">
+      {% component "button" text="New Search" type="primary" %}
+    </span>
+  {% endif %}
+</div>
+{% endblock %}
+
+
+{% comment %} <head>
   <!-- Google Analytics -->
   <!-- Google tag (gtag.js) -->
   <script async src='{{ GOOGLE_ANALYTICS_URL }}'></script>
@@ -52,32 +82,4 @@
     crossorigin="anonymous"
   />
   <link rel="stylesheet" href=""/>
-</head>
-
-<body>
-  <main>
-    <div class="search-results-page-container" style="margin-top: 6%">
-      <span class="search-results-page-title heading">Search Results</span>
-      <div class="search-results-page-results-frame">
-        <ul class="list">
-          {% for file in files %}
-            <form method="GET" action="{% url 'pdfReader' %}">
-              <li class="list-item"><button type="submit" aria-label="{{file.filename}}"> <input type="text" name="url" value="{{file.filename}}" readonly> </button></li>
-            </form>
-          {% endfor %}
-        </ul>
-      </div>
-      {% if manual == True %}
-        <button class="search-results-page-new-search-button button heading" onclick="window.location.href='searchByQuestion';">
-          New Search
-        </button>
-      {% else %}
-        <button class="search-results-page-new-search-button button heading" onclick="window.location.href='searchByCourse';">
-          New Search
-        </button>
-      {% endif %}
-    </div>
-  </main>
-{% endblock %}
-</body>
-</html>
+</head> {% endcomment %}
