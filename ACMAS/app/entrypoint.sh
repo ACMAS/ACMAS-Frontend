@@ -18,4 +18,8 @@ python manage.py makemigrations ACMAS_Web
 python manage.py migrate
 python manage.py collectstatic --noinput
 
+#Set up a superuser
+echo "from django.contrib.auth.models import User; 
+User.objects.create_superuser('$DJANGO_USER', '$DJANGO_EMAIL', '$DJANGO_PASS')" | python manage.py shell
+
 exec "$@"
