@@ -1,7 +1,7 @@
 <span class="button-component pt-2">
     {% if type == "primary" %}
-    <button type="submit" class="px-4 py-2 rounded-xl text-white text-semibold text-lg bg-blue-600 hover:bg-blue-700 transition ease-in duration-200" value="Search">{{ text }}</button>
+    <button type="submit" class="px-4 py-2 rounded-xl text-white text-semibold text-lg bg-blue-600 hover:bg-blue-700 transition ease-in duration-200" value="{{ value }}" name="{{ name }}">{{ text }}</button>
     {% elif type == "secondary" %}
-    <button type="submit" class="px-4 py-2 rounded-xl text-gray-700 text-semibold border border-gray-300 text-lg bg-white hover:bg-gray-100 transition ease-in duration-200" value="Search">{{ text }}</button>
+    <button type="submit" class="px-4 py-2 rounded-xl text-gray-700 text-semibold border border-gray-300 text-lg bg-white hover:bg-gray-100 transition ease-in duration-200" value="{{ value }}" name="{{ name }}">{{ text }}</button>
     {% endif %}
 </span>

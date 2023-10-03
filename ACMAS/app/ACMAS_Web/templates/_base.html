@@ -32,6 +32,21 @@
   <meta property="og:description" content="{% block facebook_description %} {%endblock %}">
   <meta property="og:image" content="../static/img/ACMAS_Logo.svg">
 
+   <!-- Google Analytics -->
+  <!-- Google tag (gtag.js) -->
+  <script async src='{{ GOOGLE_ANALYTICS_URL }}'></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', '{{ GOOGLE_ANALYTICS_ID }}');
+  </script>
+
+  <!-- Google Adsense -->
+  <script async src='{{ GOOGLE_ADSENSE_URL }}'
+     crossorigin="anonymous"></script>
+
   <link
     rel="stylesheet"
     data-tag="font"
@@ -39,6 +54,7 @@
     crossorigin="anonymous"
   />
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
   {% component_css_dependencies %}
 </head>
 {% endblock head %}
@@ -110,6 +126,7 @@
 {% block body %}
 <body>
   <script>0</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
   <nav class="flex bg-white text-gray-700 w-screen">
     <div class="px-5 py-4 flex w-full items-center">
       <a href="/">

@@ -1,4 +1,6 @@
-{% extends 'navbar.html' %}
+{% extends '_base.html' %}
+{% load component_tags %}
+
 {% block title %}ACMAS Viewer{% endblock %}
 
 {% block google_description %}File viewer for the ACMAS free homework and backtest database. Join our community of students anonymously today!{% endblock %}
@@ -13,52 +15,23 @@
 {% block facebook_url %}www.acmas.systems{% endblock %}
 
 {% block content %}
-<head>
-  <!-- Google Analytics -->
-  <!-- Google tag (gtag.js) -->
-  <script async src='{{ GOOGLE_ANALYTICS_URL }}'></script>
-  <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
-      gtag('config', '{{ GOOGLE_ANALYTICS_ID }}');
-  </script>
-
-  <!-- Google Adsense -->
-  <script async src='{{ GOOGLE_ADSENSE_URL }}'
-     crossorigin="anonymous"></script>
-
-  <link
-    rel="stylesheet"
-    data-tag="font"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    crossorigin="anonymous"
-  />
-  <link rel="stylesheet" href=""/>
-</head>
-
-<body>
-  <main>
-    <div>
-      <div class="home-container" style="margin-top: 3%;">
-        <div class="container-fluid">
-          <h1 class="display-3" style="text-align: center">ACMAS Reader</h1>
-        </div>
-        <div class="home-pdf-reader-container">
-          <embed src="{{directory}}" type="application/pdf" width="100%" height="100%" />
-        </div>
-        <div class="home-nav-button-container">
-          <button class="home-return-homepage-btn button content" onclick="window.location.href='/';">
-            Return to Homepage
-          </button>
-          <form id="return-to-query" action="{% url 'returnQuery' %}">
-            <input type="submit" class="home-button button content" value="Return to Query">
-          </form>
-        </div>
-      </div>
+<div class="flex flex-col mt-20 items-center justify-items-center">
+  <h1 class="text-5xl font-light text-gray-900 text-center pb-8" style="font-family: Inter, serif;">ACMAS Reader</h1>
+  <div class="h-96 w-2/3">
+    <div class="h-full w-full bg-white border border-black rounded-lg">
+      <embed src="{{directory}}" type="application/pdf" width="100%" height="100%" />
     </div>
-  </main>
+  </div>
+
+  <span class="mt-6 flex gap-x-6">
+    <span onclick="window.location.href='searchByQuestion';">
+      {% component "button" text="Return to Homepage" type="primary" value="" %}
+    </span>
+    <form id="return-to-query" action="{% url 'returnQuery' %}">
+      {% component "button" text="Return to Query" type="primary" value="Return to Query" %}
+      {% comment %} <input type="submit" class="home-button button content" value="Return to Query"> {% endcomment %}
+    </form>
+  </span>
+</div>
 {% endblock %}
-</body>
-</html>

@@ -1,4 +1,5 @@
-{% extends 'navbar.html' %}
+{% extends '_base.html' %}
+{% load component_tags %}
 {% block title %}ACMAS Upload{% endblock %}
 
 {% block google_description %}Upload your homework/exam questions and answers to ACMAS anonymously and join our community of students today!{% endblock %}
@@ -13,61 +14,32 @@
 {% block facebook_url %}www.acmas.systems/upload-manually{% endblock %}
 
 {% block content %}
-<head>
-  <!-- Google Analytics -->
-  <!-- Google tag (gtag.js) -->
-  <script async src='{{ GOOGLE_ANALYTICS_URL }}'></script>
-  <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', '{{ GOOGLE_ANALYTICS_ID }}');
-  </script>
-
-  <!-- Google Adsense -->
-  <script async src='{{ GOOGLE_ADSENSE_URL }}'
-     crossorigin="anonymous"></script>
-
-  <link
-    rel="stylesheet"
-    data-tag="font"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    crossorigin="anonymous"
-  />
-  <link rel="stylesheet" href=""/>
-</head>
-
-<body>
-  <main>
-    <div class="container-fluid search-container">
-      <!-- Header -->
-      <h1 class="display-3" style="text-align: center">ACMAS Upload</h1>
-
-      <form class="row user-inpt" id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'uploadManually' %}"> {% csrf_token %}
-        <!-- School -->
-        <div class="col-md-12">
-          <input class="form-control form-control-lg" placeholder="Enter your school" type="text" name="school" label="School name entry"/>
-        </div>
-        <!-- Course -->
-        <div class="col-md-12 user-inpt">
-          <input class="form-control form-control-lg" placeholder="Enter your course" type="text" name="course" label="Course name entry"/>
-        </div>
-        <!-- Question -->
-        <div class="col-md-12 user-inpt" style="margin-top: 1%">
-          <input class="form-control form-control-lg" placeholder="Enter your question" type="text" name="question" label="Question entry"/>
-        </div>
-        <!-- Answer -->
-        <div class="col-md-12 user-inpt">
-          <input class="form-control form-control-lg" placeholder="Enter your answer" type="text" name="answer" label="Answer entry"/>
-        </div>
-        <!-- Submit Button-->
-        <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center">
-          <input type="submit" class="btn btn-primary btn-lg" value="Upload"/>
-        </div>
-      </form>
-    </div>
-  </main>
+<div class="flex flex-col mt-20">
+  <!-- Header -->
+  <h1 class="text-5xl font-light text-gray-900 text-center mb-8" style="font-family: Inter, serif;">ACMAS Upload</h1>
+  <div class="pt-2 w-full flex items-center justify-center">
+    <form class="w-1/2 xs:w-2/3 justify-center" id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'uploadManually' %}"> {% csrf_token %}
+      <!-- School -->
+      <div class="mb-4">
+        {% component "field" type="text" placeholder="Enter University" name="school" %}
+      </div>
+      <!-- Course -->
+      <div class="mb-6">
+        {% component "field" type="text" placeholder="Enter Course" name="course" %}
+      </div>
+      <!-- Question -->
+      <div class="mb-4">
+        {% component "field" type="text" placeholder="Enter Question" name="question" %}
+      </div>
+      <!-- Answer -->
+      <div class="mb-4">
+        {% component "field" type="text" placeholder="Enter Answer" name="answer" %}
+      </div>
+      <!-- Submit Button-->
+      <div class="flex items-center justify-items-center justify-center">
+        {% component "button" text="Search" type="primary" value="Upload" %}
+      </div>
+    </form>
+  </div>
+</div>
 {% endblock %}
-</body>
-</html>
