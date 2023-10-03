@@ -10,7 +10,3 @@ class Field(component.Component):
             "name": name,
             "type": type,
         }
-
-    class Media:
-        css = "field/field.css"
-        js = "field/field.js"

@@ -11,7 +11,3 @@ class Button(component.Component):
             "value": value,
             "name": name,
         }
-
-    class Media:
-        css = "button/button.css"
-        js = "button/button.js"

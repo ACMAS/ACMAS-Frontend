@@ -10,7 +10,3 @@ class Field(component.Component):
             "options": options,
             "placeholder": placeholder,
         }
-
-    class Media:
-        css = "select/select.css"
-        js = "select/select.js"
