@@ -115,21 +115,32 @@
           <a class="nav-link" href="https://github.com/ACMAS/ACMAS-Frontend">GitHub Repository</a>
         </li>
 
-        <!-- Register -->
-        <li class="nav-item">
-          <a class="nav-link" href="/register">Register</a>
-        </li>
+        {%if user.is_authenticated %}
+          {%block user%}
+            <!-- Logout -->
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+          <!-- Hello Username-->
+          <li class="nav-item">
+            <a class="nav-link" href="/profile">{{user.username}}</a>
+          </li>
+          {%endblock%}
+        {% else %}
+          {%block anon%}
+          <!-- Register -->
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Register</a>
+          </li>
 
-        <!-- Login -->
-        <li class="nav-item">
-          <a class="nav-link" href="/login">Login</a>
-        </li>
+          <!-- Login -->
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          {%endblock%}
+        {% endif %}
 
-        <!--Logout only show if logged in-->
-        <li class="nav-item">
-          <a class="nav-link" href="/logout">Logout</a>
-        </li>
-        
+
 
       </ul>
     </div>

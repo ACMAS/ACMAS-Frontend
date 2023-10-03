@@ -223,4 +223,9 @@ def register(request):
     context = generateContext(request)
     return render(request, "register.html", {"form": form, "context": context})
 
+#profile
+def profile(request):
+    context = generateContext(request)
+    return render(request, "profile.html", context)
+
 
