@@ -18,7 +18,13 @@
 <div class="flex flex-col mt-20 items-center justify-items-center">
   <h1 class="text-5xl font-light text-gray-900 text-center pb-8" style="font-family: Inter, serif;">Search Results</h1>
   <div class="w-2/3 h-96">
+      {% if not files %}
+        <div class="flex w-full">
+            No Results.
+        </div>
+      {% endif %}
     <div class="grid grid-cols-1">
+      
       {% for file in files %}
         <div class="flex w-full bg-white p-4 rounded-md border border-gray-100 items-center">
           <a class="mr-auto">{{ file.filename }}</a>

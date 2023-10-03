@@ -6,22 +6,23 @@
 <html lang="en">
 
 {% block head %}
+
 <head>
-      <!-- HTML Meta Tags -->
+  <!-- HTML Meta Tags -->
   <title>{% block title %} {% endblock %}</title>
   <link rel="icon" type="image/x-icon" href="../static/img/star.svg">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta charset="utf-8" />
 
   <!-- Google / Search Engine Meta Tags -->
-  <meta itemprop="name" content="{% block google_title %} {% endblock %}"/>
-  <meta itemprop="description" content="{% block google_description %} {% endblock %}"/>
-  <meta itemprop="keywords" content="{% block google_keywords %} {% endblock %}"/>
-  <meta itemprop="image" content="../static/img/ACMAS_Logo.svg"/>
+  <meta itemprop="name" content="{% block google_title %} {% endblock %}" />
+  <meta itemprop="description" content="{% block google_description %} {% endblock %}" />
+  <meta itemprop="keywords" content="{% block google_keywords %} {% endblock %}" />
+  <meta itemprop="image" content="../static/img/ACMAS_Logo.svg" />
 
   <!-- Twitter Meta Tags -->
-  <meta property="twitter:card" content="summary_large_image"/>
-  <meta property="twitter:title" content="{% block twitter_title %} {% endblock %}"/>
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="{% block twitter_title %} {% endblock %}" />
   <meta name="twitter:description" content="{% block twitter_description %} {% endblock %}">
   <meta name="twitter:image" content="../static/img/ACMAS_Logo.svg">
 
@@ -47,14 +48,12 @@
   <script async src='{{ GOOGLE_ADSENSE_URL }}'
      crossorigin="anonymous"></script>
 
-  <link
-    rel="stylesheet"
-    data-tag="font"
+  <link rel="stylesheet" data-tag="font"
     href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    crossorigin="anonymous"
-  />
+    crossorigin="anonymous" />
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
+
   {% component_css_dependencies %}
 </head>
 {% endblock head %}
@@ -69,43 +68,104 @@
 
 <!-- Background animation -->
 <style scoped>
+  body {
+    overflow: hidden;
+  }
+
   /* home page footer graphic */
-  .custom-shape-divider-bottom-1669508581 {
+  .ocean {
+    height: 0;
+    width: 100%;
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-    transform: rotate(180deg);
+    background: white;
   }
-  .custom-shape-divider-bottom-1669508581 svg {
-    position: relative;
-    display: block;
-    width: calc(100% + 1.3px);
-    height: 96px;
+
+  .wave {
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="198"><path fill="white" d="M.005 121C311 121 409.898-.25 811 0c400 0 500 121 789 121v77H0s.005-48 .005-77z" transform="matrix(-1 0 0 1 1600 0)" /></svg>') repeat-x;
+    position: absolute;
+    top: -198px;
+    width: 6400px;
+    height: 198px;
+    animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+    transform: translate3d(0, 0, 0);
+    opacity: 0.5;
   }
-  .custom-shape-divider-bottom-1669508581 .shape-fill {
-    fill: #ffffffde;
+
+  .wave:nth-of-type(2) {
+    top: -175px;
+    animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 7s ease -1.25s infinite;
+    opacity: 1;
   }
+
+  @keyframes wave {
+    0% {
+      margin-left: 0;
+    }
+
+    100% {
+      margin-left: -1600px;
+    }
+  }
+
+  @keyframes swell {
+
+    0%,
+    100% {
+      transform: translate3d(0, -25px, 0);
+    }
+
+    50% {
+      transform: translate3d(0, 5px, 0);
+    }
+  }
+
+  /*
+.custom-shape-divider-bottom-1669508581 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1669508581 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 96px;
+}
+
+.custom-shape-divider-bottom-1669508581 .shape-fill {
+  fill: #ffffffde;
+}
+  */
+
   /* mobile */
   @media (max-width: 480px) {
     body {
       background-color: #d6e6f5;
     }
+
     #hide-mobile {
       display: none;
     }
   }
+
   /* tablet */
   @media (min-width: 481px) and (max-width: 1024px) {
     body {
       background-color: #d6e6f5;
     }
+
     #hide-mobile {
       display: none;
     }
   }
+
   /* desktop */
   @media (min-width: 1025px) {
     body {
@@ -115,15 +175,25 @@
       animation: gradient 65s ease infinite;
       height: 100vh;
     }
+
     /* background gradient animation  */
     @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
   }
 </style>
 {% block body %}
+
 <body>
   <script>0</script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
@@ -143,16 +213,19 @@
       <div class="hidden pr-4 xl:flex items-center space-x-5 items-center">
         <!-- Acount Icon -->
         <a class="flex items-center hover:text-gray-900" href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hover:text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hover:text-gray-900" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </a>
       </div>
     </div>
     <!-- Responsive navbar -->
     <a class="navbar-burger self-center mr-12 xl:hidden" href="#">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24"
+        stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </a>
   </nav>
@@ -160,14 +233,22 @@
     {% block content %}
     {% endblock content %}
   </div>
+  <div class="ocean" id="hide-mobile">
+    <div class="wave"></div>
+    <div class="wave"></div>
+  </div>
+  <!--
   <div class="custom-shape-divider-bottom-1669508581" id="hide-mobile">
     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path
-            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" 
-            class="shape-fill">
-        </path>
-    </svg>
+      <path
+        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" 
+        class="shape-fill">
+      </path>
+    /svg>
   </div>
+  -->
+
 </body>
 {% endblock body %}
+
 </html>
