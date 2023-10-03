@@ -1,5 +1,6 @@
 from django_components import component
 
+
 @component.register("field")
 class Field(component.Component):
     template_name = "field/field.html"

@@ -1,5 +1,6 @@
 from django_components import component
 
+
 @component.register("select")
 class Field(component.Component):
     template_name = "select/select.html"
