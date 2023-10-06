@@ -19,8 +19,15 @@
   <h1 class="text-5xl font-light text-gray-900 text-center pb-8" style="font-family: Inter, serif;">Search Results</h1>
   <div class="w-2/3 h-96">
       {% if not files %}
-        <div class="flex w-full">
-            No Results.
+        <div class="flex flex-col w-full">
+          <div class="flex justify-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+          </div>
+          <div class="flex justify-center">
+            <h2>Sorry, we couldn't find what you're looking for.</h2>
+          </div>
         </div>
       {% endif %}
     <div class="grid grid-cols-1">
