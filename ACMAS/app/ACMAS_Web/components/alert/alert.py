@@ -11,6 +11,3 @@ class Button(component.Component):
             "color": color,
             "text": text,
         }
-
-
-# {% component "alert" type="closable" color="green" text="Alert Alert Alert" %}
