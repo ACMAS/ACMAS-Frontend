@@ -21,12 +21,12 @@
     <form class="w-1/2 xs:w-2/3 justify-center" id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'uploadFile' %}"> {% csrf_token %}
       <!-- School -->
       <div class="mb-4">
-        {% component "field" type="text" placeholder="Enter University" name="school" %}
+        {% component "field" component_type="text" placeholder="Enter University" name="school" %}
       </div>
 
       <div class="grid gap-6 mb-4 md:grid-cols-2">
         <div>
-          {% component "field" type="text" placeholder="Enter Course" name="course" %}
+          {% component "field" component_type="text" placeholder="Enter Course" name="course" %}
         </div>
         <div>
           {% component "select" placeholder="Select assignment type" name="type" options="types" %}
@@ -35,11 +35,11 @@
       <!-- Upload Button -->
       <div class="mb-6">
         {% comment %} <input type="file" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" name="fileUpload"> {% endcomment %}
-        {% component "field" type="input" placeholder="Upload File" name="fileUpload" %}
+        {% component "field" component_type="input" placeholder="Upload File" name="fileUpload" %}
       </div>
       <!-- Submit Button -->
       <div class="flex items-center justify-items-center justify-center">
-        {% component "button" text="Upload" type="primary" value="Upload" %}
+        {% component "button" text="Upload" component_type="primary" value="Upload" %}
       </div>
     </form>
   </div>

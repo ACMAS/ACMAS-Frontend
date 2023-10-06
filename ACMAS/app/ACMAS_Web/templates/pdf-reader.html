@@ -26,10 +26,10 @@
 
   <span class="mt-6 flex gap-x-6">
     <span onclick="window.location.href='searchByQuestion';">
-      {% component "button" text="Return to Homepage" type="primary" value="" %}
+      {% component "button" text="Return to Homepage" component_type="primary" value="" %}
     </span>
     <form id="return-to-query" action="{% url 'returnQuery' %}">
-      {% component "button" text="Return to Query" type="primary" value="Return to Query" %}
+      {% component "button" text="Return to Query" component_type="primary" value="Return to Query" %}
       {% comment %} <input type="submit" class="home-button button content" value="Return to Query"> {% endcomment %}
     </form>
   </span>

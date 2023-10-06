@@ -5,9 +5,9 @@ from django_components import component
 class Field(component.Component):
     template_name = "field/field.html"
 
-    def get_context_data(self, placeholder, name, type):
+    def get_context_data(self, placeholder, name, component_type):
         return {
             "placeholder": placeholder,
             "name": name,
-            "type": type,
+            "component_type": component_type,
         }

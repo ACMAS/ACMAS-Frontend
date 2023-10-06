@@ -21,23 +21,23 @@
     <form class="w-1/2 xs:w-2/3 justify-center" id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'uploadManually' %}"> {% csrf_token %}
       <!-- School -->
       <div class="mb-4">
-        {% component "field" type="text" placeholder="Enter University" name="school" %}
+        {% component "field" component_type="text" placeholder="Enter University" name="school" %}
       </div>
       <!-- Course -->
       <div class="mb-6">
-        {% component "field" type="text" placeholder="Enter Course" name="course" %}
+        {% component "field" component_type="text" placeholder="Enter Course" name="course" %}
       </div>
       <!-- Question -->
       <div class="mb-4">
-        {% component "field" type="text" placeholder="Enter Question" name="question" %}
+        {% component "field" component_type="text" placeholder="Enter Question" name="question" %}
       </div>
       <!-- Answer -->
       <div class="mb-4">
-        {% component "field" type="text" placeholder="Enter Answer" name="answer" %}
+        {% component "field" component_type="text" placeholder="Enter Answer" name="answer" %}
       </div>
       <!-- Submit Button-->
       <div class="flex items-center justify-items-center justify-center">
-        {% component "button" text="Search" type="primary" value="Upload" %}
+        {% component "button" text="Search" component_type="primary" value="Upload" %}
       </div>
     </form>
   </div>

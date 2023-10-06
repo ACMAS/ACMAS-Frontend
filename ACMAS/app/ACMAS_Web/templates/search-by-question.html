@@ -21,10 +21,10 @@
   <div class="pt-2 w-full flex items-center justify-center">
     <form class="w-1/2 xs:w-2/3 justify-center" id="manual-entry-form" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
       <div class="mb-4">
-        {% component "field" type="text" placeholder="Enter your question" name="question" %}
+        {% component "field" component_type="text" placeholder="Enter your question" name="question" %}
       </div>
       <div class="flex items-center justify-items-center justify-center">
-        {% component "button" text="Search" type="primary" value="Search" %}
+        {% component "button" text="Search" component_type="primary" value="Search" %}
       </div>
     </form>
   </div>

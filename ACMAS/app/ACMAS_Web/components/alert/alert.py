@@ -5,9 +5,9 @@ from django_components import component
 class Button(component.Component):
     template_name = "alert/alert.html"
 
-    def get_context_data(self, type, color, text):
+    def get_context_data(self, component_type, color, text):
         return {
-            "type": type,
+            "component_type": component_type,
             "color": color,
             "text": text,
         }
