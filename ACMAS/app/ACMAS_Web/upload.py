@@ -25,18 +25,19 @@ class createFacade:
 
     # Parameters: All strings
     # uploadText: uploads question and its answer to database
-    def uploadText(self, uni, course, question, answer):
+    def uploadText(self, uni, course, question, answer, assignment_type):
         """
-        Parameters: String uni          - string of school/university name
-                    String course       - string of course/class
-                    String question     - string containing the question
-                    String answer       - string containing the answer
+        Parameters: String uni             - string of school/university name
+                    String course          - string of course/class
+                    String question        - string containing the question
+                    String answer          - string containing the answer
+                    String assignment_type - string designating upload type (Assignment, Exam, Practice)
         """
         # If any entry doesn't exist raise exception
         if uni is None or course is None or question is None or answer is None:
             raise ValueError("Invalid input for question upload")
         # Perform upload
-        questionEditHandler().uploadFile(uni, course, question, answer)
+        questionEditHandler().uploadFile(uni, course, question, answer, assignment_type)
 
 
 # Handles file upload
@@ -72,12 +73,13 @@ class fileEditHandler:
 # Handles creation and upload of txt
 class questionEditHandler:
     # Method uploads txt of questions with answers
-    def uploadFile(self, uni, course, question, answer):
+    def uploadFile(self, uni, course, question, answer, assignment_type):
         """
-        Parameters: String uni          - string of school/university name
-                    String course       - string of course/class
-                    String question     - string containing the question
-                    String answer       - string containing the answer
+        Parameters: String uni             - string of school/university name
+                    String course          - string of course/class
+                    String question        - string containing the question
+                    String answer          - string containing the answer
+                    String assignment_type - string designating upload type (Assignment, Exam, Practice)
         """
         # Ensure University and Course are valid
         coursesEditHandler().prepare(uni, course)
@@ -107,6 +109,7 @@ class questionEditHandler:
             filename=djangoFileName,
             question=question,
             Answers=answer,
+            flag=assignment_type if assignment_type != '' else (),
             Hash=hashString,
         )
         db_question.save()
@@ -117,7 +120,7 @@ class questionEditHandler:
             file_dir="/media/" + fileName,
             course=Course.objects.get(name=course),
             date_uploaded=date.today(),
-            flag=(),
+            flag=assignment_type if assignment_type != '' else (),
         )
         db_file.save()
 

@@ -5,6 +5,7 @@ class Question(models.Model):
     filename = models.TextField()
     question = models.TextField()
     Answers = models.TextField()
+    flag = models.TextField(default='()')
     Hash = models.TextField()
 
     def __str__(self):

@@ -194,6 +194,7 @@ def uploadManually(request):
     )  # Check to see if a course name or course code was entered
     question = request.POST.get("question")  # Check to see if a question was entered
     answer = request.POST.get("answer")  # Check to see if an answer was entered
+    assignment_type = request.POST.get("type")  # Retrieve the assignment type
 
     if (
         question is not None
@@ -206,5 +207,5 @@ def uploadManually(request):
         and len(course) > 0
     ):  # If a school, course, question, and answer were entered
         # Do manual question upload logic
-        createFacade().uploadText(school, course, question, answer)
+        createFacade().uploadText(school, course, question, answer, assignment_type)
     return render(request, "upload-manually.html", context)
