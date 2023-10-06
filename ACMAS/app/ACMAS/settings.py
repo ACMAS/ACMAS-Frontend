@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "ACMAS_Web",
     "compressor",
-    'django_components'
+    "django_components",
 ]
 
 MIDDLEWARE = [
