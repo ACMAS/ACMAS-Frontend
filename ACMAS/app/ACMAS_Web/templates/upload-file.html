@@ -34,11 +34,12 @@
       </div>
       <!-- Upload Button -->
       <div class="mb-6">
+        {% comment %} <input type="file" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" name="fileUpload"> {% endcomment %}
         {% component "field" type="input" placeholder="Upload File" name="fileUpload" %}
       </div>
       <!-- Submit Button -->
       <div class="flex items-center justify-items-center justify-center">
-        {% component "button" text="Search" type="primary" value="Upload" %}
+        {% component "button" text="Upload" type="primary" value="Upload" %}
       </div>
     </form>
   </div>
