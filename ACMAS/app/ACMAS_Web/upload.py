@@ -109,7 +109,7 @@ class questionEditHandler:
             filename=djangoFileName,
             question=question,
             Answers=answer,
-            flag=assignment_type if assignment_type != '' else (),
+            flag=assignment_type if assignment_type != "" else (),
             Hash=hashString,
         )
         db_question.save()
@@ -120,7 +120,7 @@ class questionEditHandler:
             file_dir="/media/" + fileName,
             course=Course.objects.get(name=course),
             date_uploaded=date.today(),
-            flag=assignment_type if assignment_type != '' else (),
+            flag=assignment_type if assignment_type != "" else (),
         )
         db_file.save()
 
