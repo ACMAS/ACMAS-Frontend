@@ -67,7 +67,32 @@ class fileEditHandler:
             flag=fType,
         )
         db_file.save()
-
+        
+        ##################################################
+        
+         # Creating text file in filesystem
+        sep = '.'
+        stripped = fileName.split(sep, 1)[0]
+        fileName2 = stripped + ".txt"
+        fileText2 = (
+            f""
+        )
+        
+        # Adding file to filesystem
+        fs2 = FileSystemStorage()
+        savedFile2 = fs.save(fileName2, file)  # Retrieve the filename
+        file_url2 = fs.url(savedFile2)  # Retrieve the file path
+        print(f'FILE "{savedFile2}" uploaded to "{file_url2}"\n')
+        
+        db_file2 = UploadedFile(
+            filename=fileName2,
+            file_dir="/media/" + fileName2,
+            course=Course.objects.get(name=course),
+            date_uploaded=date.today(),
+            flag=(),
+        )
+        db_file2.save()
+        
 
 # Handles creation and upload of txt
 class questionEditHandler:
