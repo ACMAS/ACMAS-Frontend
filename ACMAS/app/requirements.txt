@@ -1,6 +1,5 @@
 Django==4.2.5
 django-dbbackup==4.0.2
-django-compressor
 django_components
 
 psycopg2-binary==2.9.7
