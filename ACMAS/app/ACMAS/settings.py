@@ -134,14 +134,6 @@ STATIC_ROOT = os.path.join(
     BASE_DIR, "staticfiles"
 )  # Collect static files here (production)
 
-# Compressor
-COMPRESS_ROOT = BASE_DIR / "ACMAS_Web/static"
-COMPRESS_ENABLED = True
-STATICFILES_FINDERS = ("compressor.finders.CompressorFinder",)
-STATICFILES_DIRS = [
-    STATIC_ROOT,
-]
-
 # Media files
 MEDIA_URL = "media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")

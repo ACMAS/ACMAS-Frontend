@@ -36,8 +36,10 @@
         {% component "field" component_type="text" placeholder="Enter Answer" name="answer" %}
       </div>
         <!-- Assignment Dropdown -->
-      <div class="mb-4">
-        {% component "select" placeholder="Select assignment type" name="type" options="types" %}
+      <div class="mb-4 flex justify-content-center items-center justify-center justify-items-center">
+        <div class="w-1/2">
+          {% component "select" placeholder="Select assignment type" name="type" options="types" %}
+        </div>
       </div>
       <!-- Submit Button-->
       <div class="flex items-center justify-items-center justify-center">
