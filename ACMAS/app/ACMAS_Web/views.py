@@ -69,6 +69,9 @@ def searchByQuestion(request):
     return render(request, "search-by-question.html", context)
 
 
+def login(request):
+    context = generateContext(request)
+    return render(request, "login.html", context)
 def searchByCourse(request):
     context = generateContext(request)
     return render(request, "search-by-course.html", context)

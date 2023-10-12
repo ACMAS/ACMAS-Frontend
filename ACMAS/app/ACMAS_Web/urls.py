@@ -30,6 +30,7 @@ urlpatterns = (
         path("pdfReader", views.pdfReader, name="pdfReader"),
         path("upload-file", views.uploadFile, name="uploadFile"),
         path("upload-manually", views.uploadManually, name="uploadManually"),
+        path("login", views.login, name="login"),
         path("sitemap.xml", views.sitemap, name="sitemap"),
         path("favicon.ico", views.favicon, name="favicon"),
         path("robots.txt", views.robots, name="robots"),
