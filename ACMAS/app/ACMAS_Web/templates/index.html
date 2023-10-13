@@ -62,7 +62,8 @@
                     <li><a href="/searchByCourse">by Course</a></li>
                     </ul>
                 </li>
-
+                {%if user.is_authenticated %}
+                {%block UploadOptions%}
                 <li class="dropdown-button home-text">
                     Upload
                     <ul class="dropdown-opts dropdown-opts-animated">
@@ -70,6 +71,9 @@
                     <li><a href="/upload-manually">Manually</a></li>
                     </ul>
                 </li>
+                {%endblock%}
+                {% endif %}
+                
             </div>
         </div>
     </main>

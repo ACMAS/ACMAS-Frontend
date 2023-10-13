@@ -3,6 +3,7 @@ import os
 from django.core.cache import cache
 from django.shortcuts import redirect, render
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
 
 from .forms import RegisterForm
 from .models import UploadedFile
@@ -164,7 +165,7 @@ def pdfReader(request):
     context.update({"directory": file.file_dir})
     return render(request, "pdf-reader.html", context)
 
-
+@login_required(login_url="/login")
 def uploadFile(request):
     context = generateContext(request)
 
@@ -186,7 +187,7 @@ def uploadFile(request):
         print("School: ", school, "\nCourse: ", course)
     return render(request, "upload-file.html", context)
 
-
+@login_required(login_url="/login")
 def uploadManually(request):
     context = generateContext(request)
 
@@ -224,6 +225,7 @@ def register(request):
     return render(request, "register.html", {"form": form, "context": context})
 
 #profile
+@login_required(login_url="/login")
 def profile(request):
     context = generateContext(request)
     return render(request, "profile.html", context)
