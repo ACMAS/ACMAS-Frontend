@@ -6,6 +6,8 @@ from django.core.files.storage import FileSystemStorage
 
 from .models import Course, Question, University, UploadedFile
 
+from .ocr_files import ocr
+
 
 # Facade for uploading text questions/answers or a file
 class createFacade:
@@ -75,7 +77,7 @@ class fileEditHandler:
         stripped = fileName.split(sep, 1)[0]
         fileName2 = stripped + ".txt"
         fileText2 = (
-            f""
+            f"{ocr.ocr_driver(file)}"
         )
         
         # Adding file to filesystem
