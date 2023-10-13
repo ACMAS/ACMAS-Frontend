@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include, path
+from django.contrib.auth import views as auth_views
 
 from . import views
 
@@ -37,7 +38,11 @@ urlpatterns = (
         path("admin/", admin.site.urls),
         path("", include("django.contrib.auth.urls")),
         path("profile", views.profile, name="profile"),
+        #password change
+        path("password/", auth_views.PasswordChangeView.as_view()),
+        path("password/done/", auth_views.PasswordChangeDoneView.as_view()),
         
+
     ]
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
