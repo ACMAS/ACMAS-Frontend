@@ -29,12 +29,17 @@
           {% component "field" component_type="text" placeholder="Enter Course" name="course" %}
         </div>
         <div>
-          {% component "select" placeholder="Select assignment type" name="type" options="types" %}
+          <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select assignment type" autocomplete="on" name="type" label="Search type selection">
+            <option style="color: #D4D6D9;" value="All">Select assignment type</option>
+            <option value="All">All</option>
+            <option value="Assignment">Assignment</option>
+            <option value="Exam">Exam</option>
+            <option value="Practice">Practice</option>
+          </select>
         </div>
       </div>
       <!-- Upload Button -->
       <div class="mb-6">
-        {% comment %} <input type="file" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" name="fileUpload"> {% endcomment %}
         {% component "field" component_type="input" placeholder="Upload File" name="fileUpload" %}
       </div>
       <!-- Submit Button -->

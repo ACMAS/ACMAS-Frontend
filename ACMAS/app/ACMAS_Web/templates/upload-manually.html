@@ -38,12 +38,19 @@
         <!-- Assignment Dropdown -->
       <div class="mb-4 flex justify-content-center items-center justify-center justify-items-center">
         <div class="w-1/2">
-          {% component "select" placeholder="Select assignment type" name="type" options="types" %}
+          <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select assignment type" autocomplete="on" name="type" label="Search type selection">
+            <option style="color: #D4D6D9;" value="All">Select assignment type</option>
+            <option value="All">All</option>
+            <option value="Assignment">Assignment</option>
+            <option value="Exam">Exam</option>
+            <option value="Practice">Practice</option>
+          </select>
+          {% comment %} {% component "select" placeholder="Select assignment type" name="type" options="types" %} {% endcomment %}
         </div>
       </div>
       <!-- Submit Button-->
       <div class="flex items-center justify-items-center justify-center">
-        {% component "button" text="Search" component_type="primary" value="Upload" %}
+        {% component "button" text="Upload" component_type="primary" value="Upload" %}
       </div>
     </form>
   </div>
