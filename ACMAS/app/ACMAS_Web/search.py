@@ -1,5 +1,5 @@
 from .models import Course, Question, University, UploadedFile
-
+import yake
 
 # Class handles external interaction with searching
 class searchFacade:
@@ -74,6 +74,32 @@ class searchFacade:
         self.recentSearch = self.questionFiles
 
         return self.questionFiles
+    
+    #This "should" be how it works, I have to try it still
+    def searchByKeyWord(self, question):
+        """
+        Parameters: String question - string containing the question that will be getting 
+        digested via yake, a keyword extractor that uses an NLP model to glean keywords 
+        from a text string
+        Returns: QuerySet of Question
+        """
+        # If no question designated Error (delete?)
+        if question is None:
+            raise ValueError("No question provided")
+        
+        #Using Yake
+        language = "en"
+        max_ngram_size = 1
+        deduplication_threshold = 0.9
+        #Essentially, roughly half of the words in the original question
+        numOfKeywords = res = (question.count(" ")+1)//2 
+        custom_kw_extractor = yake.KeywordExtractor(lan=language, n=max_ngram_size, 
+            dedupLim=deduplication_threshold, top=numOfKeywords, features=None)
+        keywords = custom_kw_extractor.extract_keywords(question)
+        for kw in keywords:
+            self.searchQuestion(self,kw[0])
+            #^kw[0] gets the word entry in the two-value tuples each keyword has
+        return
 
 
 class courseSearchHandler:
