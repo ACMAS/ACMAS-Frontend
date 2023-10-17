@@ -10,4 +10,4 @@ admin.site.register(User)
 
 admin.site.site_header = "ACMAS Admin"
 admin.site.site_title = "ACMAS Admin Portal"
-admin.site.index_title = "Welcome to ACMAS Portal"
+admin.site.index_title = "Welcome to the ACMAS Administration Portal"
