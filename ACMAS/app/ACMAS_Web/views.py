@@ -3,7 +3,6 @@ import os
 from django.core.cache import cache
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-
 from .forms import RegisterForm
 from .models import UploadedFile
 from .search import searchFacade
@@ -226,7 +225,6 @@ def register(request):
     return render(request, "register.html", {"form": form, "context": context})
 
 
-#profile
 @login_required(login_url="/login")
 def profile(request):
     context = generateContext(request)
