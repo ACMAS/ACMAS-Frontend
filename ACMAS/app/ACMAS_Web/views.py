@@ -193,9 +193,7 @@ def uploadManually(request):
     context = generateContext(request)
 
     school = request.POST.get("school")  # Check to see if a school was entered
-    course = request.POST.get(
-        "course"
-    )  # Check to see if a course name or course code was entered
+    course = request.POST.get("course")  # Check to see if a course name or course code was entered
     question = request.POST.get("question")  # Check to see if a question was entered
     answer = request.POST.get("answer")  # Check to see if an answer was entered
     assignment_type = request.POST.get("type")  # Retrieve the assignment type
