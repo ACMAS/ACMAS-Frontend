@@ -41,22 +41,10 @@
 <body>
   <main>
     <div class="container-fluid search-container">
+      <!-- Header -->
+      <h1 class="display-3" style="text-align: center">ACMAS Upload</h1>
 
-      {%if user.is_authenticated %}
-          {%block file-Up%}
-          <!-- Header -->
-          <h1 class="display-3" style="text-align: center">ACMAS Upload</h1>
-          {%endblock%}
-        {% else %}
-          {%block anon-File-Up%}
-          <h1 class="display-3" style="text-align: center">Anonymous ACMAS Upload</h1>
-          <h5 style="text-align: center"><i>Note: Anonymous uploads need to be approved by a moderator before being published to ACMAS</i></h1>
-
-          {%endblock%}
-        {% endif %}
-
-
-      <form class="row user-inpt" id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'uploadManually' %}"> {% csrf_token %}
+      <form class="row user-inpt justify-content-center align-items-center" id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'uploadManually' %}"> {% csrf_token %}
         <!-- School -->
         <div class="col-md-12">
           <input class="form-control form-control-lg" placeholder="Enter your school" type="text" name="school" label="School name entry"/>
@@ -73,25 +61,20 @@
         <div class="col-md-12 user-inpt">
           <input class="form-control form-control-lg" placeholder="Enter your answer" type="text" name="answer" label="Answer entry"/>
         </div>
-        
-
-        {%if user.is_authenticated %}
-          {%block submit%}
-          <!-- Submit Button-->
-          <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center">
-            <input type="submit" class="btn btn-primary btn-lg" value="Upload"/>
-          </div>
-          {%endblock%}
-        {% else %}
-          {%block submitQueue%}
-          <!--Submit to Queue-->
-          <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center">
-            <input type="submit" class="btn btn-primary btn-lg" value="Upload to Moderation Queue"/>
-          </div>
-          {%endblock%}
-        {% endif %}
-        
-
+        <!-- Assignment Dropdown -->
+        <div class="col-md-6 user-inpt">
+          <select class="form-select form-select-lg" placeholder="Select assignment type" autocomplete="on" name="type" label="Search type selection">
+            <option style="color: #D4D6D9;" value="All">Select assignment type</option>
+            <option value="All">All</option>
+            <option value="Assignment">Assignment</option>
+            <option value="Exam">Exam</option>
+            <option value="Practice">Practice</option>
+          </select>
+        </div>
+        <!-- Submit Button-->
+        <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center">
+          <input type="submit" class="btn btn-primary btn-lg" value="Upload"/>
+        </div>
       </form>
     </div>
   </main>
