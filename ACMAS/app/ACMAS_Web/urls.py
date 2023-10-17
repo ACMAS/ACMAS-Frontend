@@ -35,7 +35,6 @@ urlpatterns = (
         path("favicon.ico", views.favicon, name="favicon"),
         path("robots.txt", views.robots, name="robots"),
         path("register", views.register, name="register"),
-        path("admin/", admin.site.urls),
         path("", include("django.contrib.auth.urls")),
         path("profile", views.profile, name="profile"),
         path("password/", auth_views.PasswordChangeView.as_view()),
