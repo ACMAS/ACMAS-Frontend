@@ -12,6 +12,7 @@ class Icon(component.Component):
             "icon_class": icon_class,
         }
 
+
 # {% component "icon" icon="" icon_type="" icon_class="" %}
 # icon: "information-circle", ... (same naming as the website: https://heroicons.com/)
 # icon_type: "outline", "solid", "mini"

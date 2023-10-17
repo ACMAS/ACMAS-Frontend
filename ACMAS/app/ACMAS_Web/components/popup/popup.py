@@ -16,7 +16,8 @@ class Popup(component.Component):
             "color": color,
             "text": text,
         }
-    
+
+
 # {% component "popup" component_type="" behavior="" position="" icon_name="" color="" text="" %}
 
 # component_type: "alert", "toast"
