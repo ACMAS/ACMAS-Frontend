@@ -5,7 +5,9 @@ from django_components import component
 class Popup(component.Component):
     template_name = "popup/popup.html"
 
-    def get_context_data(self, component_type, behavior, position, icon_name, color, text):
+    def get_context_data(
+        self, component_type, behavior, position, icon_name, color, text
+    ):
         return {
             "component_type": component_type,
             "behavior": behavior,
