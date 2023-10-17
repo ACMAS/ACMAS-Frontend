@@ -5,7 +5,6 @@ class Question(models.Model):
     filename = models.TextField()
     question = models.TextField()
     Answers = models.TextField()
-    flag = models.TextField(default="()")
     Hash = models.TextField()
 
     def __str__(self):
@@ -41,6 +40,7 @@ class UploadedFile(models.Model):
     def __str__(self):
         return self.filename
 
+
 class User(models.Model):
     username = models.CharField(max_length=50)
     password = models.CharField(max_length=50)
@@ -48,4 +48,3 @@ class User(models.Model):
 
     def __str__(self):
         return self.username
-
