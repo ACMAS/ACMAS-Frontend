@@ -38,10 +38,8 @@ urlpatterns = (
         path("admin/", admin.site.urls),
         path("", include("django.contrib.auth.urls")),
         path("profile", views.profile, name="profile"),
-        #password change
         path("password/", auth_views.PasswordChangeView.as_view()),
         path("password/done/", auth_views.PasswordChangeDoneView.as_view()),
-
     ]
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
