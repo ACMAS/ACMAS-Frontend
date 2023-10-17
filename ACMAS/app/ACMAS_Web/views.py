@@ -1,8 +1,9 @@
 import os
 
+from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
 from django.shortcuts import redirect, render
-from django.contrib.auth.decorators import login_required
+
 from .forms import RegisterForm
 from .models import UploadedFile
 from .search import searchFacade
