@@ -1,0 +1,10 @@
+{% extends 'navbar.html' %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+   <h2>Hello {{user.username}}!</h1>
+   <br/> <br/>
+
+   <h4>Want to change it up?</h4>   
+   <a href="{% url 'password_change' %}">Change Password</a>    
+   
+{% endblock%}
