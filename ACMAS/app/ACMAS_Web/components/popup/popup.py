@@ -22,7 +22,8 @@ class Popup(component.Component):
 
 # component_type: "alert", "toast"
 # behavior: "dismiss" (click to dismiss), "fade" (timed dismiss),
-# position: "top", "bottom", "center" (cause alert to be focused like a modal), "top-left", "top-right", "bottom-left", "bottom-right"
+# position: "top", "bottom", "center" (cause alert to be focused like a modal), 
+#           "top-left", "top-right", "bottom-left", "bottom-right"
 # icon_name: "information-circle", "exclamation-circle", "check-circle", "exclamation-triangle"
 # color: "blue", "red", "green", "yellow", "gray", any color given in tailwind for both bg- and text-
 # text: "..."
