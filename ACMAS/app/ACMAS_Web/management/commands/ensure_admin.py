@@ -16,7 +16,7 @@ class Command(BaseCommand):
         User = get_user_model()
 
         if options['no_input']:
-            options['username'] = os.environ['DJANGO_SUPERUSER_USERNAME']
+            options['username'] = os.environ['$DJANGO_USER']
             options['email'] = os.environ['DJANGO_SUPERUSER_EMAIL']
             options['password'] = os.environ['DJANGO_SUPERUSER_PASSWORD']
 
