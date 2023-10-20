@@ -1,5 +1,5 @@
 from .models import Course, Question, University, UploadedFile
-
+import yake
 
 # Class handles external interaction with searching
 class searchFacade:
@@ -53,27 +53,28 @@ class searchFacade:
 
     def searchQuestion(self, question):
         """
-        Parameters: String question - string containing the question
-        Returns:    QuerySet of Question
+        Parameters: String question - string containing the question that will be getting 
+        digested via yake, a keyword extractor that uses an NLP model to glean keywords 
+        from a text string
+        Returns: QuerySet of Question
         """
-        # If this class has yet to search, create search handler
-        if self.questionSearch is None:
-            self.questionSearch = questionSearchHandler(question)
-        # Else if previous search is same as current, return previous result
-        elif self.questionSearch.question == question:
-            print("Returning cached question")
-            # Set recent query
-            self.recentSearch = self.questionFiles
-            return self.questionFiles
         # If no question designated Error (delete?)
         if question is None:
             raise ValueError("No question provided")
-        # Search for QuerySet
-        # Set recent query
-        self.questionFiles = self.questionSearch.searchQuestion(question)
-        self.recentSearch = self.questionFiles
-
-        return self.questionFiles
+        
+        #Using Yake
+        language = "en"
+        max_ngram_size = 1
+        deduplication_threshold = 0.9
+        #Essentially, roughly half of the words in the original question
+        numOfKeywords = 10 # res = (question.count(" ")+1)//2 
+        custom_kw_extractor = yake.KeywordExtractor(lan=language, n=max_ngram_size, 
+            dedupLim=deduplication_threshold, top=numOfKeywords, features=None)
+        keywords = custom_kw_extractor.extract_keywords(question)
+        for kw in keywords:
+            self.searchQuestion(kw[0])
+            #^kw[0] gets the word entry in the two-value tuples each keyword has
+        return
 
 
 class courseSearchHandler:
@@ -140,7 +141,8 @@ class questionSearchHandler:
         Parameters: String question - string containing the question
         Returns:    QuerySet of Question
         """
-        return Question.objects.filter(question=question)
+        print("TESTING")
+        return Question.objects.all() #.filter(question=question)
 
 
 class fileSearchHandler:

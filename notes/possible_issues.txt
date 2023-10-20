@@ -1,0 +1,35 @@
+# Edge cases of similar questions e.g
+# Q1: How do I differentiate between two different questions that have different meaning but the same exact keywords
+
+Solution: Differentiation from sorting
+
+Suppose we have multiple questions that have similar keywords. 
+Question 1: How do I integrate a lambda function in C
+Question 2: How do I integrate C with a lambda function
+
+Q1 Keywords: integrate lambda function C
+Q2 Keywords: integrate C lambda function 
+
+These two questions have the same keywords so they would both show up when being queried even though they are two unrelated questions.
+
+If our search query was "How do I integrate lambda in C" the keywords of this query would be
+Query keywords: integrate lambda C
+
+If we were to match the key words in in order with the questions we would get
+
+Q1: integrate lambda C
+Q2: integrate lambda
+
+C gets skipped over because in our search query, lambda is the second keyword.
+
+This allows us to differentate different questions by their keyword order
+
+
+
+# Q2: Doing the NLP parser on server side is too slow
+Solution: Do the parsing client side
+
+Since we have to parse every question sent by the clients, the NLP parser will be throttled and cause performance issues with the code.
+A solution would be to have the clients parse the queries and then send us the keywords so that all the server needs to do is match the keywords.
+This will help distribute server load to the clients and allow for more requests to be served.
+
