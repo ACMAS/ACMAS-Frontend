@@ -89,34 +89,33 @@
         </li>
 
         {%if user.is_authenticated %}
-        {%block UploadNav%}
-          <!-- Upload -->
-          <li class="nav-item dropdown">
-            {% if request.path == upload_url or request.path == upload_url2 or request.path == upload_url3 %}
-              <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Upload
-              </a>
-            {% else %}
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Upload
-              </a>
-            {% endif %}
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/upload-file">With a file</a></li>
-              <li><a class="dropdown-item" href="/upload-manually">Manually</a></li>
-            </ul>
-          </li>
-        {%endblock%}
+          {% block UploadNav %}
+            <!-- Upload -->
+            <li class="nav-item dropdown">
+              {% if request.path == upload_url or request.path == upload_url2 or request.path == upload_url3 %}
+                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Upload
+                </a>
+              {% else %}
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Upload
+                </a>
+              {% endif %}
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/upload-file">With a file</a></li>
+                <li><a class="dropdown-item" href="/upload-manually">Manually</a></li>
+              </ul>
+            </li>
+          {% endblock %}
         {% endif %}
 
-      
         <!-- Github -->
         <li class="nav-item">
           <a class="nav-link" href="https://github.com/ACMAS/ACMAS-Frontend">GitHub Repository</a>
         </li>
 
-        {%if user.is_authenticated %}
-          {%block user%}
+        {% if user.is_authenticated %}
+          {% block user %}
             <!-- Logout -->
           <li class="nav-item">
             <a class="nav-link" href="/logout">Logout</a>
@@ -125,9 +124,9 @@
           <li class="nav-item">
             <a class="nav-link" href="/profile">{{user.username}}</a>
           </li>
-          {%endblock%}
+          {% endblock %}
         {% else %}
-          {%block anon%}
+          {% block anon %}
           <!-- Register -->
           <li class="nav-item">
             <a class="nav-link" href="/register">Register</a>
@@ -137,7 +136,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>
           </li>
-          {%endblock%}
+          {% endblock %}
         {% endif %}
 
       </ul>
@@ -146,5 +145,3 @@
 </nav>
 {% block content %}
 {% endblock %}
-</body>
-</html>
