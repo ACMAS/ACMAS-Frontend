@@ -1,4 +1,6 @@
-{% extends 'navbar.html' %}
+{% extends '_base.html' %}
+{% load component_tags %}
+
 {% block title %}ACMAS Homepage{% endblock %}
 
 {% block google_description %}ACMAS is the free homework and backtest helper created by students for students. Join our community of students anonymously today!{% endblock %}
@@ -12,8 +14,26 @@
 {% block facebook_description %}ACMAS is the free homework and backtest helper created by students for students. Join our community of students anonymously today!{% endblock %}
 {% block facebook_url %}www.acmas.systems{% endblock %}
 
+
 {% block content %}
-<head>
+<div class="flex mt-24">
+    <div class="text-7xl" style="color: #327796; font-family: Inter, serif;">Simplify <br> studying with</div>
+    <div class="">
+        <a href="/">
+            <img
+                alt="ACMAS logo"
+                class="w-96 h-auto pt-4 pl-5"
+                src="../static/img/ACMAS_Logo.svg"
+            />
+        </a>
+    </div>
+</div>
+{% endblock content %}
+
+{% comment %} {% block content %} {% endcomment %}
+
+
+{% comment %} <head>
     <!-- Google Analytics -->
     <!-- Google tag (gtag.js) -->
     <script async src='{{ GOOGLE_ANALYTICS_URL }}'></script>
@@ -35,14 +55,13 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../static/styles/home-style.css"/>
 </head>
 
 <body>
-    <main>
-        <div class="home-container">
+    {% comment %} <main> {% endcomment %}
+        {% comment %} <div class="p-6">
             <div style="display:flex;">
-                <div class="home-display-text">Simplify <br> studying with</div>
+                <div class="home-display-text text-blue">Simplify <br> studying with</div>
                 <div class="home-logo-title">
                     <a href="/" >
                         <img
@@ -84,7 +103,6 @@
                 class="shape-fill">
             </path>
         </svg>
-    </div>
-{% endblock %}
-</body>
+    </div> {% endcomment %}
+{% comment %} {% endblock %} {% endcomment %}
 </html>
