@@ -9,6 +9,8 @@ def extract_text_from_pdf(fileName):
         text += page.get_text()
     return text
 
+asdfasdfasf
+
 def create_txtfile(fileName, text):
     removeExt = os.path.splitext(fileName)[0]
     file_Name = removeExt + ".txt"
