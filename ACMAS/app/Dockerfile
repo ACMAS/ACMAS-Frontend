@@ -61,6 +61,11 @@ COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
 RUN pip install --no-cache /wheels/*
 
+RUN apk --no-cache add --virtual .builddeps gcc g++
+RUN apk --no-cache add  mupdf-dev freetype-dev jbig2dec-dev jpeg-dev openjpeg-dev 
+RUN pip install pymupdf
+RUN apk del .builddeps
+
 # copy entrypoint.sh
 COPY ./entrypoint.sh .
 RUN sed -i 's/\r$//g'  $APP_HOME/entrypoint.sh
