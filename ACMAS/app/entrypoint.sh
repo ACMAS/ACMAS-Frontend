@@ -19,8 +19,9 @@ python manage.py migrate
 python manage.py collectstatic --noinput
 
 #Create a superuser
-echo "from django.contrib.auth.models import User; 
-if not User.objects.filter(username='$DJANGO_USER').exists():
-  User.objects.create_superuser('$DJANGO_USER', '$DJANGO_EMAIL', '$DJANGO_PASS')" | python manage.py shell
+python manage.py ensure_admin --username=$DJANGO_USER \
+    --email=$DJANGO_EMAIL \
+    --password=$DJANGO_PASS
+
 
 exec "$@"
