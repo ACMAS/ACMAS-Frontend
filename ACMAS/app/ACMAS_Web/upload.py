@@ -77,7 +77,7 @@ class fileEditHandler:
         stripped = fileName.split(sep, 1)[0]
         fileName2 = stripped + ".txt"
         fileText2 = (
-            f"{ocr.ocr_driver(file)}"
+            f"{ocr.ocr_driver(fileName)}"
         )
         
         # Adding file to filesystem

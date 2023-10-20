@@ -20,6 +20,15 @@ ENV PYTHONUNBUFFERED 1
 RUN apk update \
     && apk add postgresql-dev gcc python3-dev musl-dev
 
+# install python-poppler dependencies
+RUN apk add build-base
+RUN apk add libc-dev
+RUN apk add poppler-dev
+RUN apk add cmake
+# install poppler
+#RUN apk-get update
+#RUN apk-get install poppler-utils -y
+
 # install dependencies
 COPY ./requirements.txt .
 RUN pip install --upgrade pip
