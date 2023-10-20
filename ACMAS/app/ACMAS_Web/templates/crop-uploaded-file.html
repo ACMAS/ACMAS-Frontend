@@ -1,0 +1,18 @@
+{% extends 'cropper.html' %}
+
+{% block content %}
+    <div class="Cropper-Container">
+        <div class="crop-title">
+            <h1 class="OCR-Title">ACMAS OCR</h1>
+            <div id = "alert-box" class = "hide">SAVED ✓</div>
+         </div>
+         <div class="Cropper-Tool">
+             <button id ="confirm-button" class="confirm">CROP</button>
+             <a href="{% url "print-Cropped-Imgs" file.id %}" class="finish">DONE!</a>
+         </div>
+        <div id = "image-box" class="Images-Container">
+            <img src="{{ file.file_dir }}" id = "image" width="500px">
+        </div>
+    </div>
+
+{% endblock %}

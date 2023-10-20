@@ -1,5 +1,14 @@
+<<<<<<< HEAD
 Django==4.2.5
 django-dbbackup==4.0.2
 
 psycopg2-binary==2.9.7
+=======
+Django==4.0.8
+django-dbbackup
+pdf2image
+tesseract
+pytesseract
+psycopg2-binary==2.9.1
+>>>>>>> 80adf50b7156a504e20166589de9845bfba371af
 gunicorn==20.1.0

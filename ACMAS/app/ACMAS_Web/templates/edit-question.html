@@ -1,0 +1,11 @@
+{% extends 'cropper.html' %}
+{% block content %}
+    <div class="editQ-container">
+        <h1 class="editQ"> Edit Question</h1>
+        <form method="post" action="">
+            {{ form.text }}
+            <input class = "editQ-Submit" type="submit" value="Submit">
+        </form>    
+    </div>
+
+{% endblock %}

@@ -1,0 +1,238 @@
+.Cropper-Container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.OCR-Title{
+    font-size: 50px;
+    font-family: "Lato";
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.hide{
+    opacity: 0;
+    font-size: 30px;
+    font-family: Lato;
+    letter-spacing: 2px;
+    background-color: #32a94c;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    font-family: "Arial";
+    margin-bottom: 15px;
+    transition: opacity 0.3s;
+}
+.show{
+    opacity: 1;
+    font-size: 30px;
+    font-family: Lato;
+    letter-spacing: 2px;
+    background-color: #32a94c;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    font-family: "Arial";
+    margin-bottom: 15px;
+    transition: opacity 0.3s;
+
+}
+
+.edit-delete{
+    margin-right: 10px;
+}
+
+.editQ{
+    font-family: Lato;
+    font-size: 50px;
+}
+
+.editQ-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.editQ-Submit{
+    margin-top: 10px;
+    display: block;
+    background-color: #347235;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-family: Lato;
+    height: 30px;
+    width: 90px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.deleteQ{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.deleteQ-bttns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-bttn{
+    margin-top: 10px;
+    font-family: Lato;
+    display: grid;
+    text-decoration: none;
+    height: 30px;
+    width: 120px;
+    border-radius: 5px;
+    letter-spacing: 2px;
+    color: white;
+    place-items: center;
+    background-color: #078787;
+    margin-right: 5px;
+}
+
+.cropped_question{
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 15px;
+    border: solid;
+    padding: 5px 5px;
+    border-radius: 5px;
+    width: 500px;
+}
+.cropped_question_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.cropped_questions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Cropper-Tool{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
+    width: 500px;
+    height: 30px;
+}
+
+
+.confirm{
+    background-color: #347235;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-family: Lato;
+    margin-right: 5px;
+    height: 30px;
+    width: 90px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    font-size: 15px;
+    position: absolute;
+    left: 0;
+}
+
+.arrows{
+    font-family: Lato;
+    display: grid;
+    text-decoration: none;
+    height: 30px;
+    width: 150px;
+    border-radius: 5px;
+    letter-spacing: 2px;
+    color: white;
+    place-items: center;
+    background-color: #078787;
+    margin-right: 5px;
+}
+
+.arrows:hover{
+    opacity: 0.9;
+    transition: 0.5s;
+}
+
+.no_prev{
+    font-family: Lato;
+    height: 30px;
+    width: 150px;
+    border-radius: 5px;
+    letter-spacing: 2px;
+    display: grid;
+    place-items: center;
+    color: gray;
+    background-color: #ebebeb;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.no_prev.next{
+    width: 100px;
+}
+.arrows.next{
+    width: 100px;
+}
+
+.finish{
+    font-family: Lato;
+    display: grid;
+    text-decoration: none;
+    height: 30px;
+    width: 90px;
+    border-radius: 5px;
+    letter-spacing: 2px;
+    color: white;
+    place-items: center;
+    background-color: #ffd07d;
+    position: absolute;
+    right: 0px;
+}
+
+.Images-Container{
+    border: solid 10px cornflowerblue;
+}
+
+.bottomright {
+    font-family: Lato;
+    background-color: #099b27;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+
+    position: absolute;
+    bottom: 15px;
+    right: 25px;
+    font-size: 18px;
+    
+}
+
+.bottomleft {
+    font-family: Lato;
+    background-color: #314bde;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+
+    position: absolute;
+    bottom: 15px;
+    left: 25px;
+    font-size: 18px;
+}

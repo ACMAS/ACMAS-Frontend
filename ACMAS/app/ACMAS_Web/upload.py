@@ -21,7 +21,7 @@ class createFacade:
         if uni is None or course is None or file is None or fType is None:
             raise ValueError("Invalid input for file upload")
         # Perform upload
-        fileEditHandler().uploadFile(uni, course, fType, file)
+        return fileEditHandler().uploadFile(uni, course, fType, file)
 
     # Parameters: All strings
     # uploadText: uploads question and its answer to database
@@ -68,6 +68,7 @@ class fileEditHandler:
             flag=fType,
         )
         db_file.save()
+        return db_file.id
 
 
 # Handles creation and upload of txt

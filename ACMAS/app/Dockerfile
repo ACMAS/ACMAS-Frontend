@@ -56,10 +56,17 @@ RUN mkdir $APP_HOME/mediafiles   # Make media files directory
 WORKDIR $APP_HOME
 
 # install dependencies
+<<<<<<< HEAD
 RUN apk add libpq==15.4-r0
+=======
+
+RUN apk update && apk add libpq
+>>>>>>> 80adf50b7156a504e20166589de9845bfba371af
 COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
 RUN pip install --no-cache /wheels/*
+RUN apk update  && apk add --no-cache tesseract-ocr 
+RUN apk update  && apk add --no-cache poppler-utils
 
 RUN apk --no-cache add --virtual .builddeps gcc g++
 RUN apk --no-cache add  mupdf-dev freetype-dev jbig2dec-dev jpeg-dev openjpeg-dev 

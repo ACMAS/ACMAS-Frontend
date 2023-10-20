@@ -1,0 +1,28 @@
+{% extends 'cropper.html' %}
+
+{% block content %}
+    <div class="Cropper-Container">
+        <div class="crop-title">
+            <h1 class="OCR-Title">ACMAS OCR</h1>
+            <div id = "alert-box" class = "hide"> SAVED ✓</div>
+        </div>
+        <div class="Cropper-Tool">
+            <button id ="confirm-button" class="confirm">CROP</button>
+            {% if count > 0 %}
+                <a class="arrows" href="{% url "pdf-reader" file.id count|add:"-1" total%}"> < PREVIOUS </a>
+            {% else %}
+                <div class="no_prev"> < PREVIOUS </div>
+            {% endif %}
+            {% if count < total %}
+                <a class="arrows next" href="{% url "pdf-reader" file.id count|add:"1" total %}"> NEXT > </a>
+            {% else %}
+                <div class="no_prev next">  NEXT ></div>
+            {% endif %}
+            <a href="{% url "print-Cropped-Imgs"  file.id %}" class = "finish">DONE!</a>
+        </div>
+
+        <div id = "image-box" class="Images-Container">
+            <img src="/media/ocr_images/page{{ count }}.jpg" id = "image" width="500px">
+        </div>
+    </div>
+{% endblock %}
