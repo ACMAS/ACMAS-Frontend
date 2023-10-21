@@ -51,11 +51,13 @@ class searchFacade:
 
         return self.courseFiles
 
-    def searchQuestion(self, question):
+    
+    def searchQuestion2(self, question):
         """
         Parameters: String question - string containing the question
         Returns:    QuerySet of Question
         """
+        
         # If this class has yet to search, create search handler
         if self.questionSearch is None:
             self.questionSearch = questionSearchHandler(question)
@@ -70,13 +72,14 @@ class searchFacade:
             raise ValueError("No question provided")
         # Search for QuerySet
         # Set recent query
-        self.questionFiles = self.questionSearch.searchQuestion(question)
+        self.questionFiles = self.questionSearch.searchQuestion2(question)
         self.recentSearch = self.questionFiles
 
         return self.questionFiles
     
+    
     #This "should" be how it works, I have to try it still
-    def searchByKeyWord(self, question):
+    def searchQuestion(self, question):
         """
         Parameters: String question - string containing the question that will be getting 
         digested via yake, a keyword extractor that uses an NLP model to glean keywords 
@@ -97,7 +100,7 @@ class searchFacade:
             dedupLim=deduplication_threshold, top=numOfKeywords, features=None)
         keywords = custom_kw_extractor.extract_keywords(question)
         for kw in keywords:
-            self.searchQuestion(self,kw[0])
+            self.searchQuestion2(kw[0])
             #^kw[0] gets the word entry in the two-value tuples each keyword has
         return
 
