@@ -11,8 +11,10 @@ class Command(BaseCommand):
         parser.add_argument("--username", help="Admin's username")
         parser.add_argument("--email", help="Admin's email")
         parser.add_argument("--password", help="Admin's password")
-        parser.add_argument("--no-input", help="Read options from the environment",
-                            action="store_true")
+        parser.add_argument(
+            "--no-input", help="Read options from the environment",
+action="store_true"
+        )
 
     def handle(self, *args, **options):
         User = get_user_model()
@@ -23,6 +25,7 @@ class Command(BaseCommand):
             options["password"] = os.environ["DJANGO_SUPERUSER_PASSWORD"]
 
         if not User.objects.filter(username=options["username"]).exists():
-            User.objects.create_superuser(username=options["username"],
-                                          email=options["email"],
-                                          password=options["password"])
+            User.objects.create_superuser(
+                username=options["username"],
+                email=options["email"],
+                password=options["password"])
