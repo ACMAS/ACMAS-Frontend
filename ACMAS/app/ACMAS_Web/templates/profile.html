@@ -1,10 +1,18 @@
 {% extends '_base.html' %}
+{% load component_tags %}
 {% block title %}Profile{% endblock %}
-{% block content %}
-   <h2>Hello {{user.username}}!</h1>
-   <br/> <br/>
 
-   <h4>Want to change it up?</h4>   
-   <a href="{% url 'password_change' %}">Change Password</a>    
-   
+{% block content %}
+<div class="flex flex-col mt-20">
+   <h1 class="text-3xl font-light text-gray-900 text-center mb-8" style="font-family: Inter, serif;">Hello {{user.username}}!</h1>
+   <div class="w-full flex items-center justify-center pt-2">
+      <br/> <br/>
+      <p class="mt-8">
+          Want to change it up?
+          <a href="{% url 'password_change' %}">
+              {% component "button" text="Change Password" component_type="secondary" value="" %}
+          </a>
+      </p>
+  </div>
+</div>
 {% endblock%}
