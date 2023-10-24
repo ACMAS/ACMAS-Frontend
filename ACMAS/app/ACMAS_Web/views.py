@@ -1,8 +1,10 @@
 import os
 
+from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
 from django.shortcuts import redirect, render
 
+from .forms import RegisterForm
 from .models import UploadedFile
 from .search import searchFacade
 from .upload import createFacade
@@ -163,6 +165,7 @@ def pdfReader(request):
     return render(request, "pdf-reader.html", context)
 
 
+@login_required(login_url="/login")
 def uploadFile(request):
     context = generateContext(request)
 
@@ -185,6 +188,7 @@ def uploadFile(request):
     return render(request, "upload-file.html", context)
 
 
+@login_required(login_url="/login")
 def uploadManually(request):
     context = generateContext(request)
 
@@ -209,3 +213,21 @@ def uploadManually(request):
         # Do manual question upload logic
         createFacade().uploadText(school, course, question, answer, assignment_type)
     return render(request, "upload-manually.html", context)
+
+
+def register(request):
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("/")
+    else:
+        form = RegisterForm()
+    context = generateContext(request)
+    return render(request, "register.html", {"form": form, "context": context})
+
+
+@login_required(login_url="/login")
+def profile(request):
+    context = generateContext(request)
+    return render(request, "profile.html", context)

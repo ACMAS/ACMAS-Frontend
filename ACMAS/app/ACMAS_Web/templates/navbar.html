@@ -33,14 +33,9 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         crossorigin="anonymous"
   />
-  <link rel="stylesheet" href="../static/styles/bootstrap/bootstrap.min.css">
-  <link href="../static/styles/commons.css" rel="stylesheet"/>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-
-<!-- JS Scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<script src="../static/js/bootstrap.bundle.min.js"></script>
 
 <!-- Urls -->
 {% url 'index' as home_url %}
@@ -52,10 +47,10 @@
 {% url 'uploadManually' as upload_url3 %}
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
+<nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <!-- Logo -->
-    <a class="navbar-brand" href="/" aria-label="ACMAS star logo">
+    <a class="flex items-center" href="/" aria-label="ACMAS star logo">
       <img src="../static/img/star.svg" width="40" height="40" alt="ACMAS star logo">
     </a>
 
@@ -93,32 +88,60 @@
           </div>
         </li>
 
-        <!-- Upload -->
-        <li class="nav-item dropdown">
-          {% if request.path == upload_url or request.path == upload_url2 or request.path == upload_url3 %}
-            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Upload
-            </a>
-          {% else %}
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Upload
-            </a>
-          {% endif %}
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/upload-file">With a file</a></li>
-            <li><a class="dropdown-item" href="/upload-manually">Manually</a></li>
-          </ul>
-        </li>
+        {%if user.is_authenticated %}
+          {% block UploadNav %}
+            <!-- Upload -->
+            <li class="nav-item dropdown">
+              {% if request.path == upload_url or request.path == upload_url2 or request.path == upload_url3 %}
+                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Upload
+                </a>
+              {% else %}
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Upload
+                </a>
+              {% endif %}
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/upload-file">With a file</a></li>
+                <li><a class="dropdown-item" href="/upload-manually">Manually</a></li>
+              </ul>
+            </li>
+          {% endblock %}
+        {% endif %}
 
         <!-- Github -->
         <li class="nav-item">
           <a class="nav-link" href="https://github.com/ACMAS/ACMAS-Frontend">GitHub Repository</a>
         </li>
+
+        {% if user.is_authenticated %}
+          {% block user %}
+            <!-- Logout -->
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+          <!-- Hello Username-->
+          <li class="nav-item">
+            <a class="nav-link" href="/profile">{{user.username}}</a>
+          </li>
+          {% endblock %}
+        {% else %}
+          {% block anon %}
+          <!-- Register -->
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Register</a>
+          </li>
+
+          <!-- Login -->
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          {% endblock %}
+        {% endif %}
+
       </ul>
     </div>
   </div>
 </nav>
 {% block content %}
 {% endblock %}
-</body>
-</html>

@@ -1,4 +1,6 @@
-{% extends 'navbar.html' %}
+{% extends '_base.html' %}
+{% load component_tags %}
+
 {% block title %}ACMAS Search{% endblock %}
 
 {% block google_description %}Search for assignments, exams and practice questions for your course using the free ACMAS database. Join our community of students anonymously today!{% endblock %}
@@ -13,49 +15,18 @@
 {% block facebook_url %}www.acmas.systems/searchByQuestion{% endblock %}
 
 {% block content %}
-<head>
-  <!-- Google Analytics -->
-  <!-- Google tag (gtag.js) -->
-  <script async src='{{ GOOGLE_ANALYTICS_URL }}'></script>
-  <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', '{{ GOOGLE_ANALYTICS_ID }}');
-  </script>
-
-  <!-- Google Adsense -->
-  <script async src='{{ GOOGLE_ADSENSE_URL }}'
-     crossorigin="anonymous"></script>
-
-  <link
-    rel="stylesheet"
-    data-tag="font"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    crossorigin="anonymous"
-  />
-  <link rel="stylesheet" href="../static/styles/search-by-course-style.css"/>
-</head>
-
-<body>
-  <main>
-    <div class="container-fluid search-container">
-      <!-- Header -->
-      <h1 class="display-3" style="text-align: center">Search by Question</h1>
-
-      <form class="row user-inpt" id="manual-entry-form" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
-        <!-- Question -->
-        <div class="col-md-12">
-          <input type="text" class="form-control form-control-lg" name="question" placeholder="Enter your question" label="Question text entry box">
-        </div>
-        <!-- Submit Button-->
-        <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center">
-          <button type="submit" class="btn btn-primary btn-lg" value="Search">Search</button>
-        </div>
-      </form>
-    </div>
-  </main>
+<!-- Header -->
+<div class="flex flex-col mt-20">
+  <h1 class="text-5xl font-light text-gray-900 text-center mb-8" style="font-family: Inter, serif;">Search by Question</h1>
+  <div class="pt-2 w-full flex items-center justify-center">
+    <form class="w-1/2 xs:w-2/3 justify-center" id="manual-entry-form" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
+      <div class="mb-4">
+        {% component "field" component_type="text" placeholder="Enter your question" name="question" %}
+      </div>
+      <div class="flex items-center justify-items-center justify-center">
+        {% component "button" text="Search" component_type="primary" value="Search" %}
+      </div>
+    </form>
+  </div>
+</div>
 {% endblock %}
-</body>
-</html>
