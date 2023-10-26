@@ -3,8 +3,8 @@
 {% load component_tags %}
 
 <!DOCTYPE html>
-<html lang="en">
-
+{% with mode="dark" %}
+<html lang="en" class={{ mode }}>
 {% block head %}
 
 <head>
@@ -277,6 +277,10 @@
             </div>
           </li>
           <li><a class="block py-2 pl-3 pr-4 text-gray-900 dark:text-white rounded md:hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-gray-500" href="https://github.com/ACMAS/ACMAS-Frontend">Github</a></li>
+          <li>
+              <button href="#" class="block py-2 pl-3 pr-4 text-gray-900 dark:text-white rounded md:hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-gray-500">Toggle dark mode</button>
+            <!-- To do: add an event listener to "listen" for when this button is pressed and change the mode variable from light to dark or vice versa-->
+          </li>
         </ul>
       </div>
     </div>
@@ -303,5 +307,5 @@
   -->
 </body>
 {% endblock body %}
-
+{% endwith %}
 </html>
