@@ -41,11 +41,6 @@ class QuestionModerationQueueAdmin(admin.ModelAdmin):
     actions = [approve_questions, reject_questions]
 
 
-approve_files.short_description = "Approve selected file(s)"
-reject_files.short_description = "Reject selected file(s)"
-reject_questions.short_description = "Reject selected question(s)"
-approve_questions.short_description = "Approve selected question(s)"
-
 admin.site.register(Question)
 admin.site.register(University)
 admin.site.register(Course)
@@ -53,6 +48,11 @@ admin.site.register(UploadedFile)
 admin.site.register(User)
 admin.site.register(FileModerationQueue, FileModerationQueueAdmin)
 admin.site.register(QuestionModerationQueue, QuestionModerationQueueAdmin)
+
+approve_files.short_description = "Approve selected file(s)"
+reject_files.short_description = "Reject selected file(s)"
+reject_questions.short_description = "Reject selected question(s)"
+approve_questions.short_description = "Approve selected question(s)"
 
 admin.site.site_header = "ACMAS Admin"
 admin.site.site_title = "ACMAS Admin Portal"
