@@ -2,12 +2,12 @@ from django.contrib import admin
 
 from .models import (
     Course,
+    FileModerationQueue,
     Question,
+    QuestionModerationQueue,
     University,
     UploadedFile,
     User,
-    FileModerationQueue,
-    QuestionModerationQueue,
 )
 
 
