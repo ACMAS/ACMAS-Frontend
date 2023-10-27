@@ -61,6 +61,8 @@ admin.site.register(User)
 admin.site.register(FileModerationQueue, FileModerationQueueAdmin)
 admin.site.register(QuestionModerationQueue, QuestionModerationQueueAdmin)
 
+class MyModelAdmin(admin.ModelAdmin):
+    actions = [approve_files, reject_files, approve_questions, reject_questions]
 
 admin.site.site_header = "ACMAS Admin"
 admin.site.site_title = "ACMAS Admin Portal"
