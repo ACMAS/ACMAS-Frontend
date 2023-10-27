@@ -9,7 +9,6 @@ class searchFacade:
         self.questionSearch = None
         self.questionFiles = None
         self.recentSearch = None
-        // TEST
 
     def getQuery(self, search_type=None):
         # Returns:  Last QuerySet results from any search
