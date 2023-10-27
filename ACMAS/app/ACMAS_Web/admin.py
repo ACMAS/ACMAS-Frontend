@@ -41,7 +41,7 @@ def reject_questions(modeladmin, request, queryset):
     for question in queryset:
         question.delete()
 
-        
+
 reject_questions.short_description = "Reject selected question(s)"
 
 
