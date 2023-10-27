@@ -10,6 +10,7 @@ from .models import (
     User,
 )
 
+
 def approve_files(modeladmin, request, queryset):
     for file in queryset:
         file.toFile().save()
