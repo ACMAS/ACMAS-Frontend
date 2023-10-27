@@ -15,12 +15,16 @@ def approve_files(modeladmin, request, queryset):
     for file in queryset:
         file.toFile().save()
         file.delete()
+
+
 approve_files.short_description = "Approve selected file(s)"
 
 
 def reject_files(modeladmin, request, queryset):
     for file in queryset:
         file.delete()
+
+
 reject_files.short_description = "Reject selected file(s)"
 
 
@@ -28,12 +32,16 @@ def approve_questions(modeladmin, request, queryset):
     for question in queryset:
         question.toQuestion().save()
         question.delete()
+
+
 approve_questions.short_description = "Approve selected question(s)"
 
 
 def reject_questions(modeladmin, request, queryset):
     for question in queryset:
         question.delete()
+
+        
 reject_questions.short_description = "Reject selected question(s)"
 
 
