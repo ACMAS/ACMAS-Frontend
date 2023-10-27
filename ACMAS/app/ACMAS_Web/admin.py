@@ -10,29 +10,24 @@ from .models import (
     User,
 )
 
-
 def approve_files(modeladmin, request, queryset):
-    short_description:str
     for file in queryset:
         file.toFile().save()
         file.delete()
 
 
 def reject_files(modeladmin, request, queryset):
-    short_description:str
     for file in queryset:
         file.delete()
 
 
 def approve_questions(modeladmin, request, queryset):
-    short_description:str
     for question in queryset:
         question.toQuestion().save()
         question.delete()
 
 
 def reject_questions(modeladmin, request, queryset):
-    short_description:str
     for question in queryset:
         question.delete()
 
@@ -56,10 +51,6 @@ admin.site.register(QuestionModerationQueue, QuestionModerationQueueAdmin)
 
 class MyModelAdmin(admin.ModelAdmin):
     actions = [approve_files, reject_files, approve_questions, reject_questions]
-    approve_files.short_description = "Approve selected file(s)"
-    reject_files.short_description = "Reject selected file(s)"
-    approve_questions.short_description = "Approve selected question(s)"
-    reject_questions.short_description = "Reject selected question(s)"
 
 
 admin.site.site_header = "ACMAS Admin"
