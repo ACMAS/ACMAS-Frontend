@@ -29,23 +29,13 @@
             <h5 style="text-align: center"><i>Note: Anonymous uploads need to be approved by a moderator before being published to ACMAS</i></h1>
           {%endblock%}
         {% endif %}
-        <form method="POST" enctype="multipart/form-data" action="{% url 'searchResults' %}"> {% csrf_token %}
+        <form method="POST" enctype="multipart/form-data" action="{% url 'uploadFile' %}"> {% csrf_token %}
           <!-- School -->
           <div class="flex items-center space-x-6 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-500">
             <div class="flex-col flex space-y-4 w-full">
-              <div class="flex bg-gray-100 p-4 h-14 space-x-4 rounded-lg w-full">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 opacity-30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-                <input class="bg-gray-100 outline-none border-0 w-full ring-0 focus:ring-0" type="text" name="school" placeholder="Enter university..." />
-              </div>
+              {% component "field" component_type="text" placeholder="Enter university..." name="school" icon_name="academic-cap" %}
               <div class="grid gap-6 mb-6 md:grid-cols-2 w-full">
-                <div class="flex bg-gray-100 p-4 h-14 space-x-4 rounded-lg w-full">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 opacity-30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
-                  <input class="bg-gray-100 outline-none border-0 w-full ring-0 focus:ring-0" type="text" name="course" placeholder="Enter course..." />
-                </div>
+                {% component "field" component_type="text" placeholder="Enter course..." name="course" icon_name="book-open" %}
                 <div class="flex w-full">
                   <select class="bg-gray-100 h-14 space-x-4 rounded-lg p-4 outline-none border-0 w-full ring-0 focus:ring-0" placeholder="Select assignment type" autocomplete="on" name="type" label="Search type selection">
                     <option style="color: #D4D6D9;" value="All">Select assignment type</option>
@@ -64,12 +54,12 @@
               {% if user.is_authenticated %}
                 {% block submitNew %}
                   <!-- Submit Button-->
-                  <button type="submit" class="px-5 py-3 rounded-xl text-white font-semibold text-lg bg-blue-600 hover:bg-blue-700 transition ease-in duration-200" value="Upload">Upload</button>
+                  {% component "button" text="Upload" component_type="primary" value="Upload" %}
                 {% endblock %}
               {% else %}
                 {% block submitQueue %}
                   <!--Submit to Queue-->
-                  <button type="submit" class="px-5 py-3 rounded-xl text-white font-semibold text-lg bg-blue-600 hover:bg-blue-700 transition ease-in duration-200" value="Upload to Moderation Queue">Upload</button>
+                  {% component "button" text="Upload" component_type="primary" value="Upload to Moderation Queue" %}
                 {% endblock %}
               {% endif %}
             </div>
@@ -80,49 +70,3 @@
 <div class="w-full absolute text-white bottom-0 z-3 "></div>
 </div>
 {% endblock %}
-
-{% comment %} 
-  <div class="pt-2 w-full flex items-center justify-center">
-    <form class="w-1/2 xs:w-2/3 justify-center" id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'uploadFile' %}"> {% csrf_token %}
-      <!-- School -->
-      <div class="mb-4">
-        {% component "field" component_type="text" placeholder="Enter University" name="school" %}
-      </div>
-
-      <div class="grid gap-6 mb-4 md:grid-cols-2">
-        <div>
-          {% component "field" component_type="text" placeholder="Enter Course" name="course" %}
-        </div>
-        <div>
-          <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select assignment type" autocomplete="on" name="type" label="Search type selection">
-            <option style="color: #D4D6D9;" value="All">Select assignment type</option>
-            <option value="All">All</option>
-            <option value="Assignment">Assignment</option>
-            <option value="Exam">Exam</option>
-            <option value="Practice">Practice</option>
-          </select>
-        </div>
-      </div>
-      <!-- Upload Button -->
-      <div class="mb-6">
-        {% component "field" component_type="input" placeholder="Upload File" name="fileUpload" %}
-      </div>
-      {%if user.is_authenticated %}
-        {%block submitNew%}
-          <!-- Submit Button-->
-        <div class="flex items-center justify-items-center justify-center">
-          {% component "button" text="Upload" component_type="primary" value="Upload" %}
-        </div>
-        {%endblock%}
-      {% else %}
-        {%block submitQueue%}
-          <!--Submit to Queue-->
-          <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center">
-            <input type="submit" class="btn btn-primary btn-lg" value="Upload to Moderation Queue"/>
-          </div>
-        {%endblock%}
-      {% endif %}
-    </form>
-  </div>
-</div>
-{% endblock %} {% endcomment %}

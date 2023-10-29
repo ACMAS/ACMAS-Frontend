@@ -3,14 +3,28 @@
 {% block title %} Create an Account {% endblock %}
 
 {% block content %}
-<div class="flex flex-col mt-20">
-    <div class="w-full flex items-center justify-center">
+<div class="p-0 flex items-center overflow-hidden relative" style="height: 85vh;">
+    <div class="absolute w-full h-full" style="background: linear-gradient(-45deg, #f8f8f3, #f5f2d6, #dbebf3, #c6d6f7); background-size: 300% 300%; animation: gradient 65s ease infinite;"> </div>
+    <div class="container mx-auto px-4 z-3 relative lg:w-6/12">
+      <div class="justify-center flex flex-wrap flex-col -mx-4 text-center">
+        <h1 class="text-5xl font-semibold text-white leading-tight -mt-8 mb-6" style="color: #327796">Register</h1>
         <form method="POST" class="form-group"> {% csrf_token %}
-            {{ form }}
-            <div class="flex items-center justify-items-center justify-center mt-2">
-                {% component "button" text="Register" component_type="primary" value="submit" %}
+            <div class="flex items-center space-x-6 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-500">
+                <div class="flex-col flex space-y-4 w-full">
+                    <div class="grid gap-6 md:grid-cols-2 w-full">
+                        {% component "field" component_type="text" placeholder="Enter username..." name="username" icon_name="academic-cap" %}
+                        {% component "field" component_type="text" placeholder="Enter email..." name="email" icon_name="academic-cap" %}
+                        {% component "field" component_type="password" placeholder="Enter password..." name="password" icon_name="academic-cap" %}
+                        {% component "field" component_type="password" placeholder="Confirm password..." name="password" icon_name="academic-cap" %}
+                    </div>
+                </div>
+                <div class="mx-auto">
+                    {% component "button" text="Register" component_type="primary" value="submit" %}
+                </div>
             </div>
         </form>
     </div>
+</div>
+<div class="w-full absolute text-white bottom-0 z-3 "></div>
 </div>
 {% endblock %}

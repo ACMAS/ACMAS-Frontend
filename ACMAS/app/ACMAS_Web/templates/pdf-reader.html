@@ -15,23 +15,26 @@
 {% block facebook_url %}www.acmas.systems{% endblock %}
 
 {% block content %}
-
-<div class="flex flex-col mt-20 items-center justify-items-center">
-  <h1 class="text-5xl font-light text-gray-900 text-center pb-8" style="font-family: Inter, serif;">ACMAS Reader</h1>
-  <div class="h-96 w-2/3">
-    <div class="h-full w-full bg-white border border-black rounded-lg">
-      <embed src="{{directory}}" type="application/pdf" width="100%" height="100%" />
+<div class="p-0 flex items-center overflow-hidden relative" style="height: 85vh;">
+  <div class="absolute w-full h-full" style="background: linear-gradient(-45deg, #f8f8f3, #f5f2d6, #dbebf3, #c6d6f7); background-size: 300% 300%; animation: gradient 65s ease infinite;"> </div>
+  <div class="container mx-auto px-4 z-3 relative lg:w-6/12">
+    <div class="justify-center flex flex-wrap flex-col -mx-4 text-center">
+      <div class="flex items-center space-x-6 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-500 xl:h-96 lg:h-80 md:h-48">
+        <div class="h-full w-full bg-gray-100 text-gray-600 rounded-lg">
+          <embed src="{{ directory }}" type="application/pdf" width="100%" height="100%" />
+        </div>
+      </div>
     </div>
-  </div>
-
-  <span class="mt-6 flex gap-x-6">
-    <span onclick="window.location.href='searchByQuestion';">
-      {% component "button" text="Return to Homepage" component_type="primary" value="" %}
+    <span class="mt-4 flex justify-center items-center gap-x-4">
+      <form id="return-to-query" action="{% url 'returnQuery' %}">
+        {% component "button" text="Return to Query" component_type="primary" value="Return to Query" %}
+      </form>
+      <span onclick="window.location.href='/';">
+        {% component "button" text="Return to Homepage" component_type="secondary" value="" %}
+      </span>
     </span>
-    <form id="return-to-query" action="{% url 'returnQuery' %}">
-      {% component "button" text="Return to Query" component_type="primary" value="Return to Query" %}
-      {% comment %} <input type="submit" class="home-button button content" value="Return to Query"> {% endcomment %}
-    </form>
-  </span>
+  </div>
+</div>
+<div class="w-full absolute text-white bottom-0 z-3 "></div>
 </div>
 {% endblock %}
