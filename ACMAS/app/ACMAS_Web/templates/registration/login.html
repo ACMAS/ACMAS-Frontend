@@ -11,8 +11,8 @@
         <form method="POST" class="form-group"> {% csrf_token %}
             <div class="flex items-center space-x-6 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-500">
                 <div class="flex-col flex space-y-4 w-full">
-                    {% component "field" component_type="text" placeholder="Enter username..." name="username" icon_name="academic-cap" %}
-                    {% component "field" component_type="password" placeholder="Enter password..." name="password" icon_name="academic-cap" %}
+                    {% component "field" component_type="text" placeholder="Enter username..." name="username" icon_name="user" %}
+                    {% component "field" component_type="password" placeholder="Enter password..." name="password" icon_name="lock-closed" %}
                 </div>
                 <div class="mx-auto">
                     {% component "button" text="Login" component_type="primary" value="submit" %}
