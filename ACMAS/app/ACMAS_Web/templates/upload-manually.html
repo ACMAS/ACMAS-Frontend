@@ -21,7 +21,7 @@
         <h1 class="text-6xl font-semibold text-white leading-tight -mt-8 mb-6" style="color: #327796">ACMAS Upload</h1>
         <form method="POST" enctype="multipart/form-data" action="{% url 'uploadManually' %}"> {% csrf_token %}
           <!-- School -->
-          <div class="flex items-center space-x-6 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-500">
+          <div class="flex flex-col items-center space-x-6 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-500">
             <div class="flex-col flex space-y-4 w-full">
               {% component "field" component_type="text" placeholder="Enter university..." name="school" icon_name="academic-cap" %}
               {% component "field" component_type="text" placeholder="Enter course..." name="course" icon_name="book-open" %}
@@ -37,7 +37,7 @@
                 </select>
               </div>
             </div>
-            <div class="mx-auto">
+            <div class="mt-4 pr-6">
               {% component "button" text="Upload" component_type="primary" value="Upload" %}
           </div>
         </form>
