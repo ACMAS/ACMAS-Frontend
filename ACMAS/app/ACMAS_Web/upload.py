@@ -4,13 +4,13 @@ from datetime import date
 from django.core.files.base import ContentFile
 from django.core.files.storage import FileSystemStorage
 
-from .models import Course, Question, University, UploadedFile
+from .models import Course, ModerationQueue, Question, University, UploadedFile
 
 
 # Facade for uploading text questions/answers or a file
 class createFacade:
     # Uploads pdf to database with given parameters
-    def uploadPdf(self, uni, course, fType, file):
+    def uploadPdf(self, uni, course, fType, file, verified):
         """
         Parameters: String uni          - string of school/university name
                     String course       - string of course/class
@@ -21,11 +21,11 @@ class createFacade:
         if uni is None or course is None or file is None or fType is None:
             raise ValueError("Invalid input for file upload")
         # Perform upload
-        fileEditHandler().uploadFile(uni, course, fType, file)
+        fileEditHandler().uploadFile(uni, course, fType, file, verified)
 
     # Parameters: All strings
     # uploadText: uploads question and its answer to database
-    def uploadText(self, uni, course, question, answer, assignment_type):
+    def uploadText(self, uni, course, question, answer, assignment_type, verified):
         """
         Parameters: String uni             - string of school/university name
                     String course          - string of course/class
@@ -37,13 +37,13 @@ class createFacade:
         if uni is None or course is None or question is None or answer is None:
             raise ValueError("Invalid input for question upload")
         # Perform upload
-        questionEditHandler().uploadFile(uni, course, question, answer, assignment_type)
+        questionEditHandler().uploadFile(uni, course, question, answer, assignment_type, verified)
 
 
 # Handles file upload
 class fileEditHandler:
     # Method uploads file
-    def uploadFile(self, uni, course, fType, file):
+    def uploadFile(self, uni, course, fType, file, verified):
         """
         Parameters: String uni          - string of school/university name
                     String course       - string of course/class
@@ -59,21 +59,30 @@ class fileEditHandler:
         file_url = fs.url(savedFile)  # Retrieve the file path
         print(f'FILE "{savedFile}" uploaded to "{file_url}"\n')
 
-        # Adding file to database
-        db_file = UploadedFile(
-            filename=savedFile,
-            file_dir=file_url,
-            course=Course.objects.get(name=course),
-            date_uploaded=date.today(),
-            flag=fType,
-        )
-        db_file.save()
+        if verified == True:
+            db_file = UploadedFile(
+                filename=savedFile,
+                file_dir=file_url,
+                course=Course.objects.get(name=course),
+                date_uploaded=date.today(),
+                flag=fType,
+            )
+            db_file.save()
+        else:
+            db_file = ModerationQueue(
+                filename=savedFile,
+                file_dir=file_url,
+                course=Course.objects.get(name=course),
+                date_uploaded=date.today(),
+                flag=fType,
+            )
+            db_file.save()
 
 
 # Handles creation and upload of txt
 class questionEditHandler:
     # Method uploads txt of questions with answers
-    def uploadFile(self, uni, course, question, answer, assignment_type):
+    def uploadFile(self, uni, course, question, answer, assignment_type, verified):
         """
         Parameters: String uni             - string of school/university name
                     String course          - string of course/class
@@ -105,24 +114,25 @@ class questionEditHandler:
         fs.save(djangoFileName, fileContent)  # Save file
 
         # Insert entry to the database
-        db_question = Question(
-            filename=djangoFileName,
-            question=question,
-            Answers=answer,
-            flag=assignment_type if assignment_type != "" else (),
-            Hash=hashString,
-        )
-        db_question.save()
-
-        # Adding file to database
-        db_file = UploadedFile(
-            filename=fileName,
-            file_dir="/media/" + fileName,
-            course=Course.objects.get(name=course),
-            date_uploaded=date.today(),
-            flag=assignment_type if assignment_type != "" else (),
-        )
-        db_file.save()
+        
+        if verified == True:
+            db_file = UploadedFile(
+                filename=fileName,
+                file_dir="/media/" + fileName,
+                course=Course.objects.get(name=course),
+                date_uploaded=date.today(),
+                flag=assignment_type if assignment_type != "" else (),
+            )
+            db_file.save()
+        else:
+            db_file = ModerationQueue(
+                filename=fileName,
+                file_dir="/media/" + fileName,
+                course=Course.objects.get(name=course),
+                date_uploaded=date.today(),
+                flag=assignment_type if assignment_type != "" else (),
+            )
+            db_file.save()
 
         print(
             f"School: {uni}\nCourse: {course}\nManual question: {question}\nManual answer: {answer}\n"

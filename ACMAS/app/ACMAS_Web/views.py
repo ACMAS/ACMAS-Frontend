@@ -172,6 +172,7 @@ def uploadFile(request):
     course = request.POST.get(
         "course"
     )  # Check to see if a course name or course code was entered
+    verified = request.POST.get("verified")
 
     if (
         len(request.FILES) != 0
@@ -182,8 +183,15 @@ def uploadFile(request):
     ):  # If a school and course were entered, and there is an uploaded file
         assignmentType = request.POST.get("type")
         file = request.FILES["fileUpload"]  # Get the uploaded file
-        createFacade().uploadPdf(school, course, assignmentType, file)
-        print("School: ", school, "\nCourse: ", course)
+        if verified == "true":
+            # upload to queue
+            createFacade().uploadPdf(school, course, assignmentType, file, True)
+            print("School: ", school, "\nCourse: ", course)
+
+        else:
+            createFacade().uploadPdf(school, course, assignmentType, file, False)
+            print("School: ", school, "\nCourse: ", course)
+        
     return render(request, "upload-file.html", context)
 
 
@@ -197,6 +205,7 @@ def uploadManually(request):
     question = request.POST.get("question")  # Check to see if a question was entered
     answer = request.POST.get("answer")  # Check to see if an answer was entered
     assignment_type = request.POST.get("type")  # Retrieve the assignment type
+    verified = request.POST.get("verified")
 
     if (
         question is not None
@@ -209,7 +218,13 @@ def uploadManually(request):
         and len(course) > 0
     ):  # If a school, course, question, and answer were entered
         # Do manual question upload logic
-        createFacade().uploadText(school, course, question, answer, assignment_type)
+        if verified == "true":
+            createFacade().uploadText(school, course, question, answer, assignment_type, True)
+            print("School: ", school, "\nCourse: ", course)
+        else:
+            createFacade().uploadText(school, course, question, answer, assignment_type, False)
+            print("School: ", school, "\nCourse: ", course)
+
     return render(request, "upload-manually.html", context)
 
 
