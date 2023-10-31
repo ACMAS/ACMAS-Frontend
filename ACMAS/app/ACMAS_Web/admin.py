@@ -1,13 +1,6 @@
 from django.contrib import admin
 
-from .models import (
-    Course,
-    ModerationQueue,
-    Question,
-    University,
-    UploadedFile,
-    User,
-)
+from .models import (Course, ModerationQueue, Question, University, UploadedFile, User)
 
 
 def approve(modeladmin, request, queryset):

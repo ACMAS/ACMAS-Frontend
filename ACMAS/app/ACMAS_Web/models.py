@@ -48,6 +48,7 @@ class UploadedFile(models.Model):
         verbose_name = "Uploaded File"
         verbose_name_plural = "Uploaded Files"
 
+
 class ModerationQueue(models.Model):
     filename = models.CharField(max_length=60)
     file_dir = models.TextField()
@@ -56,7 +57,11 @@ class ModerationQueue(models.Model):
     flag = models.CharField(max_length=80)
 
     def toFile(self):
-        return UploadedFile(filename=self.filename, file_dir=self.file_dir, course=self.course, date_uploaded=self.date_uploaded, flag=self.flag)
+        return UploadedFile(filename=self.filename, 
+                            file_dir=self.file_dir, 
+                            course=self.course, 
+                            date_uploaded=self.date_uploaded, 
+                            flag=self.flag)
 
     def __str__(self):
         return self.filename

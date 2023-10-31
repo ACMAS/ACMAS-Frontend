@@ -59,7 +59,7 @@ class fileEditHandler:
         file_url = fs.url(savedFile)  # Retrieve the file path
         print(f'FILE "{savedFile}" uploaded to "{file_url}"\n')
 
-        if verified == True:
+        if verified:
             db_file = UploadedFile(
                 filename=savedFile,
                 file_dir=file_url,
@@ -115,7 +115,7 @@ class questionEditHandler:
 
         # Insert entry to the database
         
-        if verified == True:
+        if verified:
             db_file = UploadedFile(
                 filename=fileName,
                 file_dir="/media/" + fileName,
