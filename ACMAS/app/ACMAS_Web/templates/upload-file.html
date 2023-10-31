@@ -19,11 +19,12 @@
       {%if user.is_authenticated %}
           {%block file-Up%}
       <!-- Header -->
-      <h1 class="text-5xl font-light text-gray-900 text-center mb-8" style="font-family: Inter, serif;">ACMAS Upload</h1>
+      <h1 class="text-5xl font-light text-gray-900 text-center mb-8" style="font-family: Inter, serif;">ACMAS File Upload</h1>
           {%endblock%}
         {% else %}
           {%block anon-File-Up%}
-          <h1 class="display-3" style="text-align: center">Anonymous ACMAS Upload</h1>
+          <!-- Header -->
+      <h1 class="text-5xl font-light text-gray-900 text-center mb-8" style="font-family: Inter, serif;">Anonymous File Upload</h1>
           <h5 style="text-align: center"><i>Note: Anonymous uploads need to be approved by a moderator before being published to ACMAS</i></h1>
 
           {%endblock%}
@@ -64,8 +65,8 @@
       {% else %}
         {%block submitQueue%}
           <!--Submit to Queue-->
-          <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center">
-            <input type="submit" class="btn btn-primary btn-lg" value="Upload to Moderation Queue"/>
+          <div class="flex items-center justify-items-center justify-center">
+            {% component "button" text="Upload to Queue" component_type="primary" value="Upload" %}
           </div>
         {%endblock%}
       {% endif %}

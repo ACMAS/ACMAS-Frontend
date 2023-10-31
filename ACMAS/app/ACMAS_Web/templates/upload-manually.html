@@ -15,9 +15,25 @@
 
 {% block content %}
 <div class="flex flex-col mt-20">
-  <!-- Header -->
-  <h1 class="text-5xl font-light text-gray-900 text-center mb-8" style="font-family: Inter, serif;">ACMAS Upload</h1>
-  <div class="pt-2 w-full flex items-center justify-center">
+  
+    {%if user.is_authenticated %}
+    {%block manual-Up%}
+      <!-- Header -->
+      <h1 class="text-5xl font-light text-gray-900 text-center mb-8" style="font-family: Inter, serif;">ACMAS Manual Upload</h1>
+      <div class="pt-2 w-full flex items-center justify-center">
+    
+        {%endblock%}
+      {% else %}
+        {%block anon-manual-Up%}
+        <!-- Header -->
+        <h1 class="text-5xl font-light text-gray-900 text-center mb-8" style="font-family: Inter, serif;">Anonymous Manual Upload</h1>
+        <h5 style="text-align: center"><i>Note: Anonymous uploads need to be approved by a moderator before being published to ACMAS</i></h1>
+        <div class="pt-2 w-full flex items-center justify-center">
+
+
+        {%endblock%}
+      {% endif %}
+  
     <form class="w-1/2 xs:w-2/3 justify-center justify-content-center align-items-center" id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'uploadManually' %}"> {% csrf_token %}
       <!-- School -->
       <div class="mb-4">
@@ -48,11 +64,22 @@
           {% comment %} {% component "select" placeholder="Select assignment type" name="type" options="types" %} {% endcomment %}
         </div>
       </div>
-      <!-- Submit Button-->
-      <div class="flex items-center justify-items-center justify-center">
-        {% component "button" text="Upload" component_type="primary" value="Upload" %}
-      </div>
-    </form>
+      {%if user.is_authenticated %}
+        {%block submitNew%}
+          <!-- Submit Button-->
+        <div class="flex items-center justify-items-center justify-center">
+          {% component "button" text="Upload" component_type="primary" value="Upload" %}
+        </div>
+        {%endblock%}
+      {% else %}
+        {%block submitQueue%}
+          <!--Submit to Queue-->
+          <div class="flex items-center justify-items-center justify-center">
+            {% component "button" text="Upload to Queue" component_type="primary" value="Upload" %}
+          </div>
+        {%endblock%}
+      {% endif %}
+      
   </div>
 </div>
 {% endblock %}

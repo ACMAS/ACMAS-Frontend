@@ -165,7 +165,6 @@ def pdfReader(request):
     return render(request, "pdf-reader.html", context)
 
 
-@login_required(login_url="/login")
 def uploadFile(request):
     context = generateContext(request)
 
@@ -188,7 +187,6 @@ def uploadFile(request):
     return render(request, "upload-file.html", context)
 
 
-@login_required(login_url="/login")
 def uploadManually(request):
     context = generateContext(request)
 

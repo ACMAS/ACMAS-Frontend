@@ -267,8 +267,6 @@
               </ul>
             </div>
           </li>
-
-          {% if user.is_authenticated %}
             {% block UploadNav %}
             <li class="pt-2">
               <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Upload<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
@@ -281,7 +279,6 @@
               </div>
             </li>
             {% endblock %}
-          {% endif %}
           <li><a class="block py-2 pl-3 pr-4 text-gray-900 rounded md:hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-gray-500" href="https://github.com/ACMAS/ACMAS-Frontend">GitHub</a></li>
           {% if user.is_authenticated %}
             {% block user %}
