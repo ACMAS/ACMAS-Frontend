@@ -23,6 +23,7 @@ def generateContext(request):
 # ACMAS homepage
 def index(request):
     context = generateContext(request)
+    request.session.set_test_cookie()
     return render(request, "index.html", context)
 
 
@@ -209,3 +210,11 @@ def uploadManually(request):
         # Do manual question upload logic
         createFacade().uploadText(school, course, question, answer, assignment_type)
     return render(request, "upload-manually.html", context)
+def toggleDarkMode(request):
+    context = generateContext(request)
+    #There must be some way to detect which template the user is on.
+    current_template="index.html"
+    if request.session.test_cookie_worked():
+        print("The test cookie works")
+        request.session.delete_test_cookie()
+    return render(request,current_template,context)
