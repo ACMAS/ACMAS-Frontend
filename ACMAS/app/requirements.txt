@@ -4,3 +4,4 @@ django_components
 
 psycopg2-binary==2.9.7
 gunicorn==20.1.0
+vt-py==0.17.5

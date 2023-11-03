@@ -1,5 +1,6 @@
 import zlib
 from datetime import date
+from file_scanning import scan_file
 
 from django.core.files.base import ContentFile
 from django.core.files.storage import FileSystemStorage
@@ -58,6 +59,8 @@ class fileEditHandler:
         savedFile = fs.save(fileName, file)  # Retrieve the filename
         file_url = fs.url(savedFile)  # Retrieve the file path
         print(f'FILE "{savedFile}" uploaded to "{file_url}"\n')
+
+        scan_result = scan_file(file_url)
 
         # Adding file to database
         db_file = UploadedFile(
