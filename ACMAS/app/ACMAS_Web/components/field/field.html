@@ -1,7 +1,47 @@
-<div class="field-component p-0.5">
+{% load component_tags %}
+
+<div class="field-component relative flex bg-gray-100 p-4 h-14 space-x-4 rounded-lg w-full items-center">
     {% if component_type == "input" %}
-    <input type="file" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" name="{{ name }}">
-    {% else %}
-    <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="{{ name }}" placeholder="{{ placeholder }}">
+        <input type="file" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" name="{{ name }}">
+        {% else %}
+        {% if icon_name != "" %}
+            {% component "icon" icon=icon_name icon_type="mini" icon_class="w-6 h-6 flex-shrink-0 text-gray-400" %}
+        {% endif %}
+        <input type="{{ component_type }}" class="peer bg-gray-100 outline-none border-0 w-full ring-0 focus:ring-0" name="{{ name }}" placeholder="{{ placeholder }}" />
+    {% endif %}
+    {% if name == "password1" and placeholder == "Create password..." %}
+    <div class="-left-48 absolute invisible peer-focus:visible">
+        <div class="w-40 h-40 flex flex-col bg-white text-gray-600 text-xs rounded-xl text-left p-4 border border-light-gray z-50 justify-items-center">
+            <p>Password can't be:</p>
+            <ul class="list-disc pl-2 gap-y-2">
+                <li>too similar to other personal information</li>
+                <li>less than 8 characters </li>
+                <li>be a commonly used password</li>
+                <li>entirely numeric</li>
+            </ul>
+        </div>
+        <div class="relative z-30">
+            <div class="flex left-full -ml-3 bottom-20 absolute z-0">
+                <div class="h-4 w-4 origin-bottom-left rotate-45 transform border border-light-gray bg-white border-b-white border-l-white"></div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% if name == "username" and placeholder == "Create username..." %}
+    <div class="-left-48 absolute invisible peer-focus:visible">
+        <div class="w-40 h-36 flex flex-col bg-white text-gray-600 text-xs rounded-xl text-left p-4 border border-light-gray z-50 justify-items-center">
+            <ul class="list-disc pl-2 gap-y-2">
+                <li>Required</li>
+                <li>150 characters or fewer</li>
+                <li>Letters, digits and @/./+/-/_ only.</li>
+                <li>entirely numeric</li>
+            </ul>
+        </div>
+        <div class="relative z-30">
+            <div class="flex left-full -ml-3 bottom-[4.5rem] absolute z-0">
+                <div class="h-4 w-4 origin-bottom-left rotate-45 transform border border-light-gray bg-white border-b-white border-l-white"></div>
+            </div>
+        </div>
+    </div>
     {% endif %}
 </div>
