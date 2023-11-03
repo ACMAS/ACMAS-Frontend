@@ -23,5 +23,6 @@ python manage.py ensure_admin --username="$DJANGO_USER" \
     --email="$DJANGO_EMAIL" \
     --password="$DJANGO_PASS"
 
+python manage.py create_groups
 
 exec "$@"
