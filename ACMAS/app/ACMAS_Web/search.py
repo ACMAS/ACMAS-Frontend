@@ -72,7 +72,7 @@ class searchFacade:
             raise ValueError("No question provided")
         # Search for QuerySet
         # Set recent query
-        self.questionFiles = self.questionSearch.searchQuestion2(question)
+        self.questionFiles = self.questionSearch.searchQuestion(question)
         self.recentSearch = self.questionFiles
 
         return self.questionFiles
@@ -95,14 +95,17 @@ class searchFacade:
         max_ngram_size = 1
         deduplication_threshold = 0.9
         #Essentially, roughly half of the words in the original question
-        numOfKeywords = res = (question.count(" ")+1)//2 
+        numOfKeywords = (question.count(" ")+1)
         custom_kw_extractor = yake.KeywordExtractor(lan=language, n=max_ngram_size, 
             dedupLim=deduplication_threshold, top=numOfKeywords, features=None)
         keywords = custom_kw_extractor.extract_keywords(question)
-        for kw in keywords:
-            self.searchQuestion2(kw[0])
+
+        search_list = list()
+        for kw in question.split(" "): # Temporary # for kw in keywords:
+            search_list.append(questionSearchHandler.searchByKeyword(kw)) # Temporary
+            #search_list.append(questionSearchHandler.searchByKeyword(kw[0]))
             #^kw[0] gets the word entry in the two-value tuples each keyword has
-        return
+        return search_list
 
 
 class courseSearchHandler:
@@ -170,6 +173,10 @@ class questionSearchHandler:
         Returns:    QuerySet of Question
         """
         return Question.objects.filter(question=question)
+    
+    @staticmethod
+    def searchByKeyword(keyword):
+        return Question.objects.filter(question__icontains=keyword)
 
 
 class fileSearchHandler:
