@@ -1,3 +1,4 @@
+
 import logging
 
 from django.core.management.base import BaseCommand
@@ -23,9 +24,11 @@ class Command(BaseCommand):
                     try:
                         model_add_perm = Permission.objects.get(name=name)
                     except Permission.DoesNotExist:
-                        logging.warning("Permission not found with name "{}".".format(name))
+                        logging.warning("Permission not found with name '{}'.".format(name))
                         continue
 
                     new_group.permissions.add(model_add_perm)
 
         print("Created default group and permissions.")
+
+
