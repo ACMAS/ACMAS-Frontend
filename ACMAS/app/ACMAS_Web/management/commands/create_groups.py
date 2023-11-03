@@ -1,9 +1,7 @@
-
 import logging
 
+from django.contrib.auth.models import Group, Permission
 from django.core.management.base import BaseCommand
-from django.contrib.auth.models import Group
-from django.contrib.auth.models import Permission
 
 GROUPS = ["Moderators", "APO"]
 MODELS = ["question", "university", "course", "uploadedfile", "moderationqueue"]
@@ -24,11 +22,11 @@ class Command(BaseCommand):
                     try:
                         model_add_perm = Permission.objects.get(name=name)
                     except Permission.DoesNotExist:
-                        logging.warning("Permission not found with name '{}'.".format(name))
+                        logging.warning(
+                            "Permission not found with name '{}'.".format(name)
+                            )
                         continue
 
                     new_group.permissions.add(model_add_perm)
 
         print("Created default group and permissions.")
-
-
