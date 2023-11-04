@@ -52,7 +52,7 @@ class searchFacade:
         return self.courseFiles
 
     
-    def searchQuestion2(self, question):
+    def searchQuestion(self, question):
         """
         Parameters: String question - string containing the question
         Returns:    QuerySet of Question
@@ -77,32 +77,32 @@ class searchFacade:
 
         return self.questionFiles
     
-    
-    #This "should" be how it works, I have to try it still
-    def searchQuestion(self, question):
-        """
-        Parameters: String question - string containing the question that will be getting 
-        digested via yake, a keyword extractor that uses an NLP model to glean keywords 
-        from a text string
-        Returns: QuerySet of Question
-        """
-        # If no question designated Error (delete?)
-        if question is None:
-            raise ValueError("No question provided")
+    # #Tried it, doesn't work as multiple, back-to-back queries can't be performed
+    # def searchbyKeyWordQuestion(self, question):
+    #     """
+    #     Parameters: String question - string containing the question that will be getting 
+    #     digested via yake, a keyword extractor that uses an NLP model to glean keywords 
+    #     from a text string
+    #     Returns: QuerySet of Question
+    #     """
+    #     # If no question designated Error (delete?)
+    #     if question is None:
+    #         raise ValueError("No question provided")
         
-        #Using Yake
-        language = "en"
-        max_ngram_size = 1
-        deduplication_threshold = 0.9
-        #Essentially, roughly half of the words in the original question
-        numOfKeywords = res = (question.count(" ")+1)//2 
-        custom_kw_extractor = yake.KeywordExtractor(lan=language, n=max_ngram_size, 
-            dedupLim=deduplication_threshold, top=numOfKeywords, features=None)
-        keywords = custom_kw_extractor.extract_keywords(question)
-        for kw in keywords:
-            self.searchQuestion2(kw[0])
-            #^kw[0] gets the word entry in the two-value tuples each keyword has
-        return
+    #     #Using Yake
+    #     language = "en"
+    #     max_ngram_size = 1
+    #     deduplication_threshold = 0.9
+    #     #Essentially, roughly half of the words in the original question
+    #     numOfKeywords = res = (question.count(" ")+1)//2 
+    #     custom_kw_extractor = yake.KeywordExtractor(lan=language, n=max_ngram_size, 
+    #         dedupLim=deduplication_threshold, top=numOfKeywords, features=None)
+    #     keywords = custom_kw_extractor.extract_keywords(question)
+    #     for kw in keywords:
+    #         self.questionSearch.searchQuestion2(kw[0])
+    #         #^kw[0] gets the word entry in the two-value tuples each keyword has
+    #     return
+    
 
 
 class courseSearchHandler:
