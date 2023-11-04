@@ -2,32 +2,35 @@
 # "builder" is a temporary image that's used for building Python wheels. Wheels are then copied to final PROD image.
 ## "builder" image is discarded!
 
+
 ###########
 # BUILDER #
 ###########
 
+
 # pull official base image
 FROM python:3.10.7-alpine as builder
 
+
 # set work directory
 WORKDIR /usr/src/app
+
 
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
+
 # install psycopg2 dependencies
 RUN apk update \
-    && apk add postgresql-dev gcc python3-dev musl-dev
+   && apk add postgresql-dev gcc python3-dev musl-dev
+
 
 # install python-poppler dependencies
 RUN apk add build-base
 RUN apk add libc-dev
-RUN apk add poppler-dev
-RUN apk add cmake
-# install poppler
-#RUN apk-get update
-#RUN apk-get install poppler-utils -y
+RUN apk add mupdf-dev
+
 
 # install dependencies
 COPY ./requirements.txt .
@@ -35,12 +38,16 @@ RUN pip install --upgrade pip
 RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt
 
 
+
+
 #########
 # FINAL #
 #########
 
+
 # pull official base image
 FROM python:3.10.7-alpine
+
 
 ####################################
 # CREATE APP (non-root) USER       #
@@ -49,11 +56,14 @@ FROM python:3.10.7-alpine
 # container.                       #
 ####################################
 
+
 # create directory for the app user
 RUN mkdir -p /home/app
 
+
 # create the app user
 RUN addgroup -S app && adduser -S app -G app
+
 
 # create the appropriate directories
 ENV HOME=/home/app
@@ -63,25 +73,32 @@ RUN mkdir $APP_HOME/staticfiles  # Make static files directory
 RUN mkdir $APP_HOME/mediafiles   # Make media files directory
 WORKDIR $APP_HOME
 
+
 # install dependencies
 RUN apk update && apk add libpq
 COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
 RUN pip install --no-cache /wheels/*
 
+
 # copy entrypoint.sh
 COPY ./entrypoint.sh .
 RUN sed -i 's/\r$//g'  $APP_HOME/entrypoint.sh
 RUN chmod +x  $APP_HOME/entrypoint.sh
 
+
 # copy project
 COPY . $APP_HOME
+
 
 # chown all the files to the app user
 RUN chown -R app:app $APP_HOME
 
+
 # change to the app user
 USER app
 
+
 # run entrypoint.sh
 ENTRYPOINT ["/home/app/web/entrypoint.sh"]
+
