@@ -1,4 +1,4 @@
-Django==4.2.5
+Django==4.2.7
 django-dbbackup==4.0.2
 django_components
 
