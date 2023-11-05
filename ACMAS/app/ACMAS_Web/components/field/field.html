@@ -12,7 +12,7 @@
     {% if name == "password1" and placeholder == "Create password..." %}
     <div class="-left-48 absolute invisible peer-focus:visible">
         <div class="w-40 h-40 flex flex-col bg-white text-gray-600 text-xs rounded-xl text-left p-4 border border-light-gray z-50 justify-items-center">
-            <p>Password can't be:</p>
+            <p class="text-center">Password can't be:</p>
             <ul class="list-disc pl-2 gap-y-2">
                 <li>too similar to other personal information</li>
                 <li>less than 8 characters </li>
@@ -29,15 +29,16 @@
     {% endif %}
     {% if name == "username" and placeholder == "Create username..." %}
     <div class="-left-48 absolute invisible peer-focus:visible">
-        <div class="w-40 h-28 flex flex-col bg-white text-gray-600 text-xs rounded-xl text-left p-4 border border-light-gray z-50 justify-items-center">
+        <div class="w-40 h-40 flex flex-col bg-white text-gray-600 text-xs rounded-xl text-left p-4 border border-light-gray z-50 justify-items-center">
+            <p class="text-center">Required</p>
             <ul class="list-disc pl-2 gap-y-2">
-                <li>Required</li>
-                <li>< 150 characters</li>
+                <li>150 characters or fewer</li>
                 <li>Letters, digits and @/./+/-/_ only</li>
+                <li>Must not be fully numeric</li>
             </ul>
         </div>
         <div class="relative z-30">
-            <div class="flex left-full -ml-3 bottom-14 absolute z-0">
+            <div class="flex left-full -ml-3 bottom-20 absolute z-0">
                 <div class="h-4 w-4 origin-bottom-left rotate-45 transform border border-light-gray bg-white border-b-white border-l-white"></div>
             </div>
         </div>
