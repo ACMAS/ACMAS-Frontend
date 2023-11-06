@@ -1,6 +1,11 @@
 # ACMAS-Frontend
 
-[![Lint Code Base](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/super-linter.yml/badge.svg)](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/super-linter.yml)  [![Django CI](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/django.yml/badge.svg)](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/django.yml)
+[![Lint Code Base](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/super-linter.yml/badge.svg)](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/super-linter.yml)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/c4e7f48ee49a4504bc2a4cdef806dfa8)](https://app.codacy.com/gh/ACMAS/ACMAS-Frontend/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Django CI](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/django.yml/badge.svg)](https://github.com/ACMAS/ACMAS-Frontend/actions/workflows/django.yml)
+
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/L4L4GMYID)
 
 ## Usage
 
@@ -17,25 +22,27 @@ Each time you make changes to the code you will need to turn off the Docker cont
  manual deletion of docker "volumes" associated with ACMAS.
 #### Start Docker
 In order to run Docker applications you must open __Docker Desktop__ or start the Docker service on your device.
-#### Navigate to "/ACMAS-Frontend/ACMAS"
+#### Navigate to `/ACMAS-Frontend/ACMAS`
 Open the repository directory `ACMAS-Frontend` and navigate to the `ACMAS` directory within. Open this `ACMAS`
  directory in the command-line or terminal.
 
 ---
 #### __Turn on the Docker containers when you want to start working__
-`docker-compose -f docker-compose.yml up -d --build`
+`docker-compose up -d --build`
 #### __Turn off the Docker containers when you are done working__
-If you want to shut down normally: `docker-compose -f docker-compose.yml down`
+If you want to shut down normally: `docker-compose down`
 
-If you want to flush your database and project files: `docker-compose -f docker-compose.yml down -v`
+If you want to flush your database and project files: `docker-compose down -v`
 
 ---
 ### Using ACMAS with Docker
 ___After turning on the Docker container follow these steps:___
 #### Ensure that the Docker application was successfully built and is running
 - Successful builds will return no errors (red)
+
 - One of the following messages will appear in your command prompt
-- __Note:__ If you do not flush, only the affected containers will appear
+
+  - __Note:__ If you do not flush, only the affected containers will appear
 
   ```shell
   Running 3/3
@@ -45,26 +52,28 @@ ___After turning on the Docker container follow these steps:___
   ```
 
 - Ensure that the application's containers in Docker Desktop all appear as __green__
-- Navigate to `localhost:80` in any web browser
-  - If this does not work, default to using `127.0.0.1:80`
+
+- Navigate to `localhost` in any web browser
+  - If this does not work, default to using `127.0.0.1`
 ---
 
 ### Resolving issues with Docker and/or ACMAS
 1) Check for an error message. If one appears, search it on Google or talk to other ACMAS developers on your sub-team
-2) If you are unable to find the exact error code on Google, attempt to search for similar or more generic versions
-3) Discuss the issue with other ACMAS sub-teams
-4) Talk to the project co-leads Jacob @jaw12346 or Susan @susanh
-5) __Open an issue!__
+   - Error messages will appear inside Docker containers. Access these by clicking on the container name in Docker Desktop or by running `docker ps` to get container IDs and then `docker logs <container ID>`.
+3) If you are unable to find the exact error code on Google, attempt to search for similar or more generic versions
+4) Discuss the issue with other ACMAS sub-teams
+5) Talk to the project lead Jacob @jaw12346
+6) __Open an issue!__
 
 ---
 
 ## Executive Summary
 
-  ACMAS, or Automatic Course Material Archiving System is a free to use database site for anyone to both upload and view documents, materials, coursework, etc. for various courses and questions from any school/institute.
-On the internet today, there are many services that allow students to help each other with homework from various courses all over the world. However, those services are not free to access, which can make it difficult for everyone to use. ACMAS is a free to use database available for anyone to upload, and view backtests from their specific college’s courses, which can be very helpful for test preparation.
+  ACMAS, or Automatic Course Material Archiving System is a free-to-use database site for anyone to both upload and view documents, materials, coursework, etc. for various courses and questions from any school/institute.
+On the internet today, there are many services that allow students to help each other with homework from various courses all over the world. However, those services are not free to access, which can make it difficult for everyone to use. ACMAS is a free-to-use database available for anyone to upload, and view backtests from their specific college’s courses, which can be very helpful for test preparation.
 
 ## Features
 
-  There are many features that ACMAS will contain to make accessing content and using the database as simple and straightforward as possible. First, ACMAS will be able to support uploading problems as photos/PDFs/scanned in documents.
-In addition to this, there will also be the ability to search for problems by a specific school and course, or by specific question, or by image, which would all allow the user to then find the backtests and back work that they are looking for and use them for their own studying.
-There also will be links from questions on a backtests to alternative answers to the same question from other sources.
+  There are many features that ACMAS will contain to make accessing content and using the database as simple and straightforward as possible. First, ACMAS will be able to support uploading problems as photos/PDFs/scanned-in documents.
+In addition to this, there will also be the ability to search for problems by a specific school and course, by a specific question, or by image, which would all allow the user to find the backtests and backwork that they are looking for and use them for their own studying.
+There also will be links from questions on backtests to alternative answers to the same question from other sources.

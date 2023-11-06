@@ -1,85 +1,54 @@
-<!DOCTYPE html>
+{% extends '_base.html' %}
+{% load component_tags %}
 
-<html lang="en">
-  <head>
-    <title>ACMAS Search</title>
-    <link rel="icon" type="image/x-icon" href="../static/img/star.svg">
-    <meta property="og:title" content="Search Results" />
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{% block title %}ACMAS Search Results{% endblock %}
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8" />
-    <meta property="twitter:card" content="summary_large_image" />
-    <style data-tag="reset-style-sheet">
-      html {  line-height: 1.15;}
-      body {  margin: 0;}
-      * {  box-sizing: border-box;  border-width: 0;  border-style: solid;}
-      p,li,ul,pre,div,h1,h2,h3,h4,h5,h6 {  margin: 0;  padding: 0;}
-      button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}
-      button,select {  text-transform: none;}
-      button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}
-      button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}
-      button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}
-      a {  color: inherit;  text-decoration: inherit;}
-      input {  padding: 2px 4px;}
-      img {  display: block;}
-      html { scroll-behavior: smooth  }
-    </style>
-    <style data-tag="default-style-sheet">
-      html {
-        font-family: Inter;
-        font-size: 16px;
-      }
+{% block google_description %}Search results from the free ACMAS database. Join our community of students anonymously today!{% endblock %}
+{% block google_title %}ACMAS Search Results{% endblock %}
+{% block google_keywords %}search, search result, homework, homework help, exam, exam help, student, free homework help, free school help, tutor, online tutor{% endblock %}
 
-      body {
-        font-weight: 400;
-        font-style:normal;
-        text-decoration: none;
-        text-transform: none;
-        letter-spacing: normal;
-        line-height: 1.15;
-        color: var(--dl-color-gray-black);
-        background-color: var(--dl-color-gray-white);
+{% block twitter_title %}ACMAS Search Results{% endblock %}
+{% block twitter_description %}Search results from the free ACMAS database. Join our community of students anonymously today!{% endblock %}
 
-      }
-    </style>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      data-tag="font"
-    />
-    <link href="../static/styles/commons.css" rel="stylesheet"/>
-    <link href="../static/styles/search-results-style.css" rel="stylesheet"/>
-  </head>
+{% block facebook_title %}ACMAS Search Results{% endblock %}
+{% block facebook_description %}Search results from the free ACMAS database. Join our community of students anonymously today!{% endblock %}
+{% block facebook_url %}www.acmas.systems{% endblock %}
 
-  <body>
-    {% extends 'navbar.html' %}
-    <link href="../static/styles/commons.css" rel="stylesheet"/>
-    <link href="../static/styles/search-results-style.css" rel="stylesheet"/>
-    {% block content %}
-    <div class="search-results-page-container" style="margin-top: 6%">
-      <span class="search-results-page-title heading">Search Results</span>
-      <div class="search-results-page-results-frame">
-        <ul class="list">
-            {% for file in files %}
-            <form method="GET" action="{% url 'pdfReader' %}">
-              <li class="list-item" ><button type="submit" > <input type="text" name="url" value="{{file.filename}}" readonly> </button></li>
-            </form>
-            {% endfor %}
-        </ul>
-      </div>
-      {% if manual == True %}
-      <button class="search-results-page-new-search-button button heading" onclick="window.location.href='searchByQuestion';">
-        New Search
-      </button>
-      {% else %}
-      <button class="search-results-page-new-search-button button heading" onclick="window.location.href='searchByCourse';">
-        New Search
-      </button>
+{% block content %}
+<div class="flex flex-col mt-20 items-center justify-items-center">
+  <h1 class="text-5xl font-light text-gray-900 text-center pb-8" style="font-family: Inter, serif;">Search Results</h1>
+  <div class="w-2/3 h-96">
+      {% if not files %}
+        <div class="flex flex-col w-full">
+          <div class="flex justify-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+          </div>
+          <div class="flex justify-center">
+            <h2>Sorry, we couldn't find what you're looking for.</h2>
+          </div>
+        </div>
       {% endif %}
+    <div class="grid grid-cols-1">
+      {% for file in files %}
+        <div class="flex w-full bg-white p-4 rounded-md border border-gray-100 items-center">
+          <a class="mr-auto">{{ file.filename }}</a>
+          <form class="" method="GET" action="{% url 'pdfReader' %}">
+            <button class="px-4 py-2 rounded-xl text-gray-700 text-semibold border border-gray-300 text-lg bg-white hover:bg-gray-100 transition ease-in duration-200" name="url" value="{{file.filename}}" type="submit" aria-label="{{file.filename}}">View</button>
+          </form>
+        </div>
+      {% endfor %}
     </div>
-    {% endblock %}
-</body>
-</html>
+  </div>
+  {% if manual == True %}
+    <span onclick="window.location.href='searchByQuestion';">
+      {% component "button" text="New Search" component_type="primary" value="" %}
+    </span>
+  {% else %}
+    <span onclick="window.location.href='searchByCourse';">
+      {% component "button" text="New Search" component_type="primary" value="" %}
+    </span>
+  {% endif %}
+</div>
+{% endblock %}

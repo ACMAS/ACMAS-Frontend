@@ -1,0 +1,24 @@
+{% extends '_base.html' %}
+{% load component_tags %}
+{% block title %}Login{% endblock %}
+
+{%block content%}
+<div class="flex flex-col mt-20">
+    <div class="w-full flex items-center justify-center">
+        <form method="POST" class="form-group"> {% csrf_token %}
+            {{ form }}
+            <div class="flex items-center justify-items-center justify-center mt-2">
+                {% component "button" text="Login" component_type="primary" value="submit" %}
+            </div>
+        </form>
+    </div>
+    <div class="w-full flex items-center justify-center">
+        <p class="mt-8">
+            Don't have an account? Create one
+            <a href="/register">
+                {% component "button" text="Here" component_type="secondary" value="" %}
+            </a>
+        </p>
+    </div>
+</div>
+{%endblock%}

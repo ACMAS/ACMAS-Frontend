@@ -1,38 +1,32 @@
-<!DOCTYPE html>
+{% extends '_base.html' %}
+{% load component_tags %}
 
-<html lang="en">
-<head>
-    <title>ACMAS Search</title>
-    <link rel="icon" type="image/x-icon" href="../static/img/star.svg">
-    <meta content="ACMAS Search" property="og:title"/>
-    <meta content="summary_large_image" property="twitter:card"/>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <link
-        data-tag="font"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet"
-    />
-    <link href="../static/styles/search-by-course-style.css" rel="stylesheet"/>
-</head>
-<body>
-    {% extends 'navbar.html' %}
-    {% block content %}
-    <div class="container-fluid search-container">
-        <!-- Header -->
-        <h1 class="display-3" style="text-align: center">Search by Question</h1>
+{% block title %}ACMAS Search{% endblock %}
 
-        <form class="row user-inpt" id="manual-entry-form" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
-            <!-- Question -->
-            <div class="col-md-12">
-                <input type="text" class="form-control form-control-lg" name="question" placeholder="Enter your question">
-            </div>
-            <!-- Submit Button-->
-            <div class="col-md-12 user-inpt h-100 d-flex align-items-center justify-content-center">
-                <button type="submit" class="btn btn-primary btn-lg" value="Search">Search</button>
-            </div>
-        </form>
-    </div>
-    {% endblock %}
-</body>
-</html>
+{% block google_description %}Search for assignments, exams and practice questions for your course using the free ACMAS database. Join our community of students anonymously today!{% endblock %}
+{% block google_title %}ACMAS Question Search{% endblock %}
+{% block google_keywords %}search, question, homework, homework help, exam, exam help, student, free homework help, free school help, tutor, online tutor{% endblock %}
+
+{% block twitter_title %}ACMAS Question Search{% endblock %}
+{% block twitter_description %}Search for assignments, exams and practice questions for your course using the free ACMAS database. Join our community of students anonymously today!{% endblock %}
+
+{% block facebook_title %}ACMAS Question Search{% endblock %}
+{% block facebook_description %}Search for assignments, exams and practice questions for your course using the free ACMAS database. Join our community of students anonymously today!{% endblock %}
+{% block facebook_url %}www.acmas.systems/searchByQuestion{% endblock %}
+
+{% block content %}
+<!-- Header -->
+<div class="flex flex-col mt-20">
+  <h1 class="text-5xl font-light text-gray-900 text-center mb-8" style="font-family: Inter, serif;">Search by Question</h1>
+  <div class="pt-2 w-full flex items-center justify-center">
+    <form class="w-1/2 xs:w-2/3 justify-center" id="manual-entry-form" method="POST" enctype="multipart/form-data" action="{% url 'searchByQuestion' %}"> {% csrf_token %}
+      <div class="mb-4">
+        {% component "field" component_type="text" placeholder="Enter your question" name="question" %}
+      </div>
+      <div class="flex items-center justify-items-center justify-center">
+        {% component "button" text="Search" component_type="primary" value="Search" %}
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,108 @@
+{% extends '_base.html' %}
+{% load component_tags %}
+
+{% block title %}ACMAS Homepage{% endblock %}
+
+{% block google_description %}ACMAS is the free homework and backtest helper created by students for students. Join our community of students anonymously today!{% endblock %}
+{% block google_title %}ACMAS: Automated Course Material Archiving System{% endblock %}
+{% block google_keywords %}homework, homework help, exam, exam help, student, free homework help, free school help, tutor, online tutor{% endblock %}
+
+{% block twitter_title %}ACMAS: Automated Course Material Archiving System{% endblock %}
+{% block twitter_description %}ACMAS is the free homework and backtest helper created by students for students. Join our community of students anonymously today!{% endblock %}
+
+{% block facebook_title %}ACMAS: Automated Course Material Archiving System{% endblock %}
+{% block facebook_description %}ACMAS is the free homework and backtest helper created by students for students. Join our community of students anonymously today!{% endblock %}
+{% block facebook_url %}www.acmas.systems{% endblock %}
+
+
+{% block content %}
+<div class="flex flex-wrap mt-24 mx-auto max-w-screen-xl">
+    <div class="text-7xl" style="color: #327796; font-family: Inter, serif;">Simplify <br> studying with</div>
+    <div class="">
+        <a href="/">
+            <img
+                alt="ACMAS logo"
+                class="w-96 h-auto pt-4 pl-5"
+                src="../static/img/ACMAS_Logo.svg"
+            />
+        </a>
+    </div>
+</div>
+{% endblock content %}
+
+{% comment %} {% block content %} {% endcomment %}
+
+
+{% comment %} <head>
+    <!-- Google Analytics -->
+    <!-- Google tag (gtag.js) -->
+    <script async src='{{ GOOGLE_ANALYTICS_URL }}'></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{{ GOOGLE_ANALYTICS_ID }}');
+    </script>
+
+    <!-- Google Adsense -->
+    <script async src='{{ GOOGLE_ADSENSE_URL }}'
+        crossorigin="anonymous"></script>
+
+    <link
+        rel="stylesheet"
+        data-tag="font"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        crossorigin="anonymous"
+    />
+</head>
+
+<body>
+    {% comment %} <main> {% endcomment %}
+        {% comment %} <div class="p-6">
+            <div style="display:flex;">
+                <div class="home-display-text text-blue">Simplify <br> studying with</div>
+                <div class="home-logo-title">
+                    <a href="/" >
+                        <img
+                            alt="ACMAS logo"
+                            class="home-logo"
+                            src="../static/img/ACMAS_Logo.svg"
+                        />
+                    </a>
+                </div>
+            </div>
+
+            <div class="home-buttons-container gap-4">
+                <li class="dropdown-button home-text">
+                    Search
+                    <ul class="dropdown-opts dropdown-opts-animated">
+                    <li><a href="/searchByQuestion">by Question</a></li>
+                    <li><a href="/searchByCourse">by Course</a></li>
+                    </ul>
+                </li>
+                {%if user.is_authenticated %}
+                {%block UploadOptions%}
+                <li class="dropdown-button home-text">
+                    Upload
+                    <ul class="dropdown-opts dropdown-opts-animated">
+                    <li><a href="/upload-file">With a file</a></li>
+                    <li><a href="/upload-manually">Manually</a></li>
+                    </ul>
+                </li>
+                {%endblock%}
+                {% endif %}
+                
+            </div>
+        </div>
+    </main>
+    <div class="custom-shape-divider-bottom-1669508581" id="hide-mobile">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path
+                d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" 
+                class="shape-fill">
+            </path>
+        </svg>
+    </div> {% endcomment %}
+{% comment %} {% endblock %} {% endcomment %}
+</html>
