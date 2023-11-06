@@ -11,6 +11,7 @@ services:
     volumes:
       - static_files:/home/app/web/staticfiles
       - media_files:/home/app/web/mediafiles
+      - /var/certbot/conf:/etc/letsencrypt/:ro
     expose:
       - 8000  # Port 8000 is only exposed internally
     env_file:
@@ -31,12 +32,22 @@ services:
       - ./nginx/conf.d/:/etc/nginx/conf.d/
       - static_files:/home/app/web/staticfiles
       - media_files:/home/app/web/mediafiles
+      - ./var/www/html:/var/www/html
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /var/lib/letsencrypt:/var/lib/letsencrypt
     ports:
       - "80:80"
+      - "442:443"
     depends_on:
       - web
       - db
-
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /var/lib/letsencrypt:/var/lib/letsencrypt
+    depends_on:
+      - nginx
 volumes:
   postgres_data:
   static_files:
