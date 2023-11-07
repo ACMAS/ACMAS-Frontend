@@ -4,7 +4,7 @@ from django.contrib.auth.models import Group, Permission
 from django.core.management.base import BaseCommand
 
 GROUPS = ["Moderators", "APO"]
-MODELS = ["question", "university", "course", "uploadedfile", "moderationqueue"]
+MODELS = ["moderationqueue", "uploadedfile"]
 PERMISSIONS = ["view", "add", "change", "delete"]
 
 

@@ -51,17 +51,7 @@
               </div>
             </div>
             <div class="mt-4 pr-6">
-              {% if user.is_authenticated %}
-                {% block submitNew %}
-                  <!-- Submit Button-->
-                  {% component "button" text="Upload" component_type="primary" value="Upload" %}
-                {% endblock %}
-              {% else %}
-                {% block submitQueue %}
-                  <!--Submit to Queue-->
-                  {% component "button" text="Upload" component_type="primary" value="Upload to Moderation Queue" %}
-                {% endblock %}
-              {% endif %}
+              {% component "button" text="Upload" component_type="primary" value="Upload" %}
             </div>
           </div>
         </form>

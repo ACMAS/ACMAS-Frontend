@@ -164,7 +164,7 @@ def pdfReader(request):
     context.update({"directory": file.file_dir})
     return render(request, "pdf-reader.html", context)
 
-
+@login_required(login_url="/login")
 def uploadFile(request):
     context = generateContext(request)
 
@@ -183,18 +183,16 @@ def uploadFile(request):
     ):  # If a school and course were entered, and there is an uploaded file
         assignmentType = request.POST.get("type")
         file = request.FILES["fileUpload"]  # Get the uploaded file
-        if verified == "true":
-            # upload to queue
+       
+        #if user is in group "APO"
+        if request.user.groups.filter(name="APO").exists():
             createFacade().uploadPdf(school, course, assignmentType, file, True)
-            print("School: ", school, "\nCourse: ", course)
-
         else:
             createFacade().uploadPdf(school, course, assignmentType, file, False)
-            print("School: ", school, "\nCourse: ", course)
-        
+
     return render(request, "upload-file.html", context)
 
-
+@login_required(login_url="/login")
 def uploadManually(request):
     context = generateContext(request)
 
@@ -217,8 +215,7 @@ def uploadManually(request):
         and course is not None
         and len(course) > 0
     ):  # If a school, course, question, and answer were entered
-        # Do manual question upload logic
-        if verified == "true":
+        if request.user.groups.filter(name="APO").exists():
             createFacade().uploadText(school, course, question, answer, assignment_type, True)
             print("School: ", school, "\nCourse: ", course)
         else:
