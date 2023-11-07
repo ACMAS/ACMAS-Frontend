@@ -29,8 +29,7 @@ RUN apk update \
 # install python-poppler dependencies
 RUN apk add build-base
 RUN apk add libc-dev
-RUN apk add mupdf-dev
-
+RUN apk --no-cache add poppler-utils
 
 # install dependencies
 COPY ./requirements.txt .
@@ -56,6 +55,10 @@ FROM python:3.10.7-alpine
 # container.                       #
 ####################################
 
+RUN apk add poppler-dev
+RUN apk add sudo
+RUN apk add cmake
+
 
 # create directory for the app user
 RUN mkdir -p /home/app
@@ -79,7 +82,7 @@ RUN apk update && apk add libpq
 COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
 RUN pip install --no-cache /wheels/*
-
+RUN apk add bash
 
 # copy entrypoint.sh
 COPY ./entrypoint.sh .
@@ -100,5 +103,6 @@ USER app
 
 
 # run entrypoint.sh
-ENTRYPOINT ["/home/app/web/entrypoint.sh"]
+#ENTRYPOINT ["/home/app/web/entrypoint.sh"]
+CMD bash
 
