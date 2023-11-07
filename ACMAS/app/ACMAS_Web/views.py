@@ -216,10 +216,14 @@ def uploadManually(request):
         and len(course) > 0
     ):  # If a school, course, question, and answer were entered
         if request.user.groups.filter(name="APO").exists():
-            createFacade().uploadText(school, course, question, answer, assignment_type, True)
+            createFacade().uploadText(
+                school, course, question, answer, assignment_type, True
+                )
             print("School: ", school, "\nCourse: ", course)
         else:
-            createFacade().uploadText(school, course, question, answer, assignment_type, False)
+            createFacade().uploadText(
+                school, course, question, answer, assignment_type, False
+                )
             print("School: ", school, "\nCourse: ", course)
 
     return render(request, "upload-manually.html", context)
