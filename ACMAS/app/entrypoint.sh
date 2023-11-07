@@ -18,4 +18,10 @@ python manage.py makemigrations ACMAS_Web
 python manage.py migrate
 python manage.py collectstatic --noinput
 
+#Create a superuser
+python manage.py ensure_admin --username="$DJANGO_USER" \
+    --email="$DJANGO_EMAIL" \
+    --password="$DJANGO_PASS"
+
+
 exec "$@"

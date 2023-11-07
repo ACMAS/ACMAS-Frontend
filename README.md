@@ -53,26 +53,27 @@ ___After turning on the Docker container follow these steps:___
 
 - Ensure that the application's containers in Docker Desktop all appear as __green__
 
-- Navigate to `localhost:80` in any web browser
-  - If this does not work, default to using `127.0.0.1:80`
+- Navigate to `localhost` in any web browser
+  - If this does not work, default to using `127.0.0.1`
 ---
 
 ### Resolving issues with Docker and/or ACMAS
 1) Check for an error message. If one appears, search it on Google or talk to other ACMAS developers on your sub-team
-2) If you are unable to find the exact error code on Google, attempt to search for similar or more generic versions
-3) Discuss the issue with other ACMAS sub-teams
-4) Talk to the project lead Jacob @jaw12346
-5) __Open an issue!__
+   - Error messages will appear inside Docker containers. Access these by clicking on the container name in Docker Desktop or by running `docker ps` to get container IDs and then `docker logs <container ID>`.
+3) If you are unable to find the exact error code on Google, attempt to search for similar or more generic versions
+4) Discuss the issue with other ACMAS sub-teams
+5) Talk to the project lead Jacob @jaw12346
+6) __Open an issue!__
 
 ---
 
 ## Executive Summary
 
-  ACMAS, or Automatic Course Material Archiving System is a free to use database site for anyone to both upload and view documents, materials, coursework, etc. for various courses and questions from any school/institute.
-On the internet today, there are many services that allow students to help each other with homework from various courses all over the world. However, those services are not free to access, which can make it difficult for everyone to use. ACMAS is a free to use database available for anyone to upload, and view backtests from their specific college’s courses, which can be very helpful for test preparation.
+  ACMAS, or Automatic Course Material Archiving System is a free-to-use database site for anyone to both upload and view documents, materials, coursework, etc. for various courses and questions from any school/institute.
+On the internet today, there are many services that allow students to help each other with homework from various courses all over the world. However, those services are not free to access, which can make it difficult for everyone to use. ACMAS is a free-to-use database available for anyone to upload, and view backtests from their specific college’s courses, which can be very helpful for test preparation.
 
 ## Features
 
-  There are many features that ACMAS will contain to make accessing content and using the database as simple and straightforward as possible. First, ACMAS will be able to support uploading problems as photos/PDFs/scanned in documents.
-In addition to this, there will also be the ability to search for problems by a specific school and course, or by specific question, or by image, which would all allow the user to then find the backtests and back work that they are looking for and use them for their own studying.
-There also will be links from questions on a backtests to alternative answers to the same question from other sources.
+  There are many features that ACMAS will contain to make accessing content and using the database as simple and straightforward as possible. First, ACMAS will be able to support uploading problems as photos/PDFs/scanned-in documents.
+In addition to this, there will also be the ability to search for problems by a specific school and course, by a specific question, or by image, which would all allow the user to find the backtests and backwork that they are looking for and use them for their own studying.
+There also will be links from questions on backtests to alternative answers to the same question from other sources.

@@ -1,8 +1,10 @@
 import os
 
+from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
 from django.shortcuts import redirect, render
 
+from .forms import RegisterForm
 from .models import UploadedFile
 from .search import searchFacade
 from .upload import createFacade
@@ -23,8 +25,6 @@ def generateContext(request):
 # ACMAS homepage
 def index(request):
     context = generateContext(request)
-    print("So this is where print messages go")
-    request.session.set_test_cookie()
     return render(request, "index.html", context)
 
 
@@ -45,9 +45,6 @@ def favicon(request):
 
 # Search by question page
 def searchByQuestion(request):
-    if request.session.test_cookie_worked():
-        print("The test cookie works")
-        request.session.delete_test_cookie()
     context = generateContext(request)
     question = request.POST.get("question")  # Check to see if a question was entered
     if (
@@ -168,6 +165,7 @@ def pdfReader(request):
     return render(request, "pdf-reader.html", context)
 
 
+@login_required(login_url="/login")
 def uploadFile(request):
     context = generateContext(request)
 
@@ -190,6 +188,7 @@ def uploadFile(request):
     return render(request, "upload-file.html", context)
 
 
+@login_required(login_url="/login")
 def uploadManually(request):
     context = generateContext(request)
 
@@ -216,12 +215,19 @@ def uploadManually(request):
     return render(request, "upload-manually.html", context)
 
 
-def darkMode(request):
+def register(request):
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("/")
+    else:
+        form = RegisterForm()
     context = generateContext(request)
-    if request.session.test_cookie_worked():
-        print("The test cookie worked!!!")
-        request.session.delete_test_cookie()
-    # There must be some way to detect which template the user is on.
-    return render(request, "darkmode.html", context)
+    return render(request, "register.html", {"form": form, "context": context})
 
 
+@login_required(login_url="/login")
+def profile(request):
+    context = generateContext(request)
+    return render(request, "profile.html", context)

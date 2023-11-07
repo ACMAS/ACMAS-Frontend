@@ -3,8 +3,8 @@
 {% load component_tags %}
 
 <!DOCTYPE html>
-{% with mode="light" %}
-<html lang="en" class={{ mode }}>
+<html lang="en">
+
 {% block head %}
 
 <head>
@@ -51,261 +51,129 @@
 {% url 'uploadFile' as upload_url2 %}
 {% url 'uploadManually' as upload_url3 %}
 
-<!-- Background animation -->
+{% block body %}
 <style scoped>
-  body {
-    overflow: hidden;
-  }
-
-  /* home page footer graphic */
-  .ocean {
-    height: 0;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background: white;
-  }
-
-  .wave {
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="198"><path fill="white" d="M.005 121C311 121 409.898-.25 811 0c400 0 500 121 789 121v77H0s.005-48 .005-77z" transform="matrix(-1 0 0 1 1600 0)" /></svg>') repeat-x;
-    position: absolute;
-    top: -198px;
-    width: 6400px;
-    height: 198px;
-    animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
-    transform: translate3d(0, 0, 0);
-    opacity: 0.5;
-  }
-
-  .wave:nth-of-type(2) {
-    top: -175px;
-    animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 7s ease -1.25s infinite;
-    opacity: 1;
-  }
-
-  @keyframes wave {
-    0% {
-      margin-left: 0;
+  .custom-shape-divider-bottom-1669508581 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      transform: rotate(180deg);
     }
-
-    100% {
-      margin-left: -1600px;
+    
+    .custom-shape-divider-bottom-1669508581 svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 96px;
     }
-  }
-
-  @keyframes swell {
-
-    0%,
-    100% {
-      transform: translate3d(0, -25px, 0);
-    }
-
-    50% {
-      transform: translate3d(0, 5px, 0);
-    }
-  }
-
-  /*
-.custom-shape-divider-bottom-1669508581 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-  transform: rotate(180deg);
-}
-
-.custom-shape-divider-bottom-1669508581 svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-  height: 96px;
-}
-
-.custom-shape-divider-bottom-1669508581 .shape-fill {
-  fill: #ffffffde;
-}
-  */
-
-  /* mobile */
-  @media (max-width: 480px) {
-    body {
-      background-color: #d6e6f5;
-    }
-
-    #hide-mobile {
-      display: none;
-    }
-  }
-
-  /* tablet */
-  @media (min-width: 481px) and (max-width: 1024px) {
-    body {
-      background-color: #d6e6f5;
-    }
-
-    #hide-mobile {
-      display: none;
-    }
-  }
-
-  /* desktop */
-  @media (min-width: 1025px) {
-    body {
-      margin: 0;
-      background: linear-gradient(-45deg, #f8f8f3, #f5f2d6, #dbebf3, #c6d6f7);
-      background-size: 300% 300%;
-      animation: gradient 65s ease infinite;
-      height: 100vh;
-    }
-
     /* background gradient animation  */
-    @keyframes gradient {
-      0% {
-        background-position: 0% 50%;
-      }
+  @keyframes gradient {
+  0% {
+      background-position: 0% 50%;
+  }
 
-      50% {
-        background-position: 100% 50%;
-      }
+  50% {
+      background-position: 100% 50%;
+  }
 
-      100% {
-        background-position: 0% 50%;
-      }
-    }
+  100% {
+      background-position: 0% 50%;
+  }
   }
 </style>
-{% block body %}
-
 <body>
   <script>0</script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  
      {% comment %} <!-- Google Analytics -->
   <!-- Google tag (gtag.js) -->
   <script async src='{{ GOOGLE_ANALYTICS_URL }}'></script>
-  <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', '{{ GOOGLE_ANALYTICS_ID }}');
-  </script>
-
-  <!-- Google Adsense -->
-  <script async src='{{ GOOGLE_ADSENSE_URL }}'
-     crossorigin="anonymous"></script> {% endcomment %}
-  {% comment %} <nav class="flex bg-white text-gray-700 w-screen">
-    <div class="px-5 py-4 flex w-full items-center">
-      <a href="/">
-        <img class="h-9 pr-4" src="../static/img/star.svg" alt="ACMAS star logo">
-      </a>
-      <!-- Nav Links -->
-      <ul class="hidden md:flex mr-auto px-6 font-heading space-x-12">
-        <li><a class="hover:text-gray-500" href="/">Home</a></li>
-        <li><a class="hover:text-gray-500" href="/searchByQuestion">Search</a></li>
-        <li><a class="hover:text-gray-500" href="/upload-manually">Upload</a></li>
-        <li><a class="hover:text-gray-500" href="https://github.com/ACMAS/ACMAS-Frontend">Github</a></li>
-      </ul>
-      <!-- Icons -->
-      <div class="hidden pr-4 xl:flex items-center space-x-5 items-center">
-        <!-- Acount Icon -->
-        <a class="flex items-center hover:text-gray-900" href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hover:text-gray-900" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        </a>
-      </div>
-    </div>
-    <!-- Responsive navbar -->
-    <a class="navbar-burger self-center mr-12 xl:hidden" href="#">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24"
-        stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </a>
   </nav> {% endcomment %}
 
-  <nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+  <nav class="bg-white border-gray-200">
+    <div class="flex flex-wrap items-center justify-between mx-auto p-4 mr-4">
       <a href="/">
         <img class="h-9 pr-4" src="../static/img/star.svg" alt="ACMAS star logo">
       </a>
-      <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-dropdown" aria-expanded="false">
+      <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-dropdown" aria-expanded="false">
           <span class="sr-only">Open main menu</span>
           <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
           </svg>
       </button>
       <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
-        <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-          {% comment %} <li>
-            <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
-          </li>
+        <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
           <li>
-            <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pricing</a>
+            <a class="block py-2 pl-3 pr-4 text-gray-900 rounded md:hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-gray-500" href="/">Home</a>
           </li>
-          <li>
-            <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
-
-          </li> {% endcomment %}
-          <li><a class="block py-2 pl-3 pr-4 text-gray-900 dark:text-white rounded md:hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-gray-500" href="/">Home</a></li>
-          <li class="pt-2"><button id="searchDropdownNavbarLink" data-dropdown-toggle="searchDropdownNavbar" class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+          <li class="pt-2">
+            <button id="searchDropdownNavbarLink" data-dropdown-toggle="searchDropdownNavbar" class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">
                 Search
                 <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg>
             </button>
               <!-- Dropdown menu -->
-            <div id="searchDropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-              <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
-                <li><a href="/searchByCourse" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">By course</a></li>
-                <li><a href="/searchByQuestion" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">By question</a></li>
+            <div id="searchDropdownNavbar" class="z-50 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+              <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                <li><a href="/searchByCourse" class="block px-4 py-2 hover:bg-gray-100">By course</a></li>
+                <li><a href="/searchByQuestion" class="block px-4 py-2 hover:bg-gray-100">By question</a></li>
               </ul>
             </div>
           </li>
-          <li class="pt-2">
-            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Upload<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg>
-            </button>
-              <!-- Dropdown menu -->
-            <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-              <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
-                <li><a href="/upload-file" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">With a file</a></li>
-                <li><a href="/upload-manually" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Manually</a></li>
-              </ul>
-            </div>
-          </li>
-          <li><a class="block py-2 pl-3 pr-4 text-gray-900 dark:text-white rounded md:hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-gray-500" href="https://github.com/ACMAS/ACMAS-Frontend">Github</a></li>
-          <li>
-              <button href="/dark-mode" class="block py-2 pl-3 pr-4 text-gray-900 dark:text-white rounded md:hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-gray-500">Toggle dark mode</button>
-            <!-- To do: add an event listener to "listen" for when this button is pressed and change the mode variable from light to dark or vice versa-->
-          </li>
+
+          {% if user.is_authenticated %}
+            {% block UploadNav %}
+            <li class="pt-2">
+              <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">Upload<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <!-- Dropdown menu -->
+              <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                  <li><a href="/upload-file" class="block px-4 py-2 hover:bg-gray-100">With a file</a></li>
+                  <li><a href="/upload-manually" class="block px-4 py-2 hover:bg-gray-100">Manually</a></li>
+                </ul>
+              </div>
+            </li>
+            {% endblock %}
+          {% endif %}
+          {% if user.is_authenticated %}
+            {% block user %}
+              <!-- Logout -->
+              <li><a class="block py-2 pl-3 pr-4 text-gray-900 rounded md:hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-gray-500" href="/logout">Logout</a></li>
+              <!-- Hello Username-->
+              <li><a class="block py-2 pl-3 pr-4 text-gray-900 rounded md:hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-gray-500" href="/profile">{{ user.username }}</a></li>
+            {% endblock %}
+          {% else %}
+            {% block anon %}
+            <!-- Register -->
+            <li><a class="block py-2 pl-3 pr-4 text-gray-900 rounded md:hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-gray-500" href="/register">Register</a></li>
+            <!-- Hello Username-->
+            <li><a class="block py-2 pl-3 pr-4 text-gray-900 rounded md:hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-gray-500" href="/login">Login</a></li>
+            {% endblock %}
+          {% endif %}
         </ul>
       </div>
     </div>
   </nav>
-
-
-  <div class="container mx-auto mt-4">
+  <div>
     {% block content %}
     {% endblock content %}
   </div>
-  <div class="ocean" id="hide-mobile">
-    <div class="wave"></div>
-    <div class="wave"></div>
-  </div>
-  <!--
-  <div class="custom-shape-divider-bottom-1669508581" id="hide-mobile">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path
-        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" 
-        class="shape-fill">
-      </path>
-    /svg>
-  </div>
-  -->
 </body>
+
+<footer class="fixed bottom-0 left-0 z-20 w-full p-4 bg-white md:flex md:items-center md:justify-between md:p-6">
+  <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"></span>
+  <ul class="flex flex-wrap items-center justify-items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+    <li class="mr-6">
+        <a href="https://github.com/ACMAS/ACMAS-Frontend"><img class="xl:h-6 h-4 text-gray-500" src="../static/img/github.png" alt="github"></a>
+    </li>
+    <li class="mr-4 filter invert">
+      <a href="https://new.rcos.io/"><img class="xl:h-6 h-4 text-gray-500" src="../static/img/RCOS.png" alt="RCOS"></a>
+    </li>
+  </ul>
+</footer>
 {% endblock body %}
-{% endwith %}
+
 </html>
