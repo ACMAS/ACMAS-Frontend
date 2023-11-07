@@ -52,7 +52,7 @@ class searchFacade:
         return self.courseFiles
 
     
-    def searchQuestion(self, question):
+    def searchQuestion2(self, question):
         """
         Parameters: String question - string containing the question
         Returns:    QuerySet of Question
@@ -72,37 +72,40 @@ class searchFacade:
             raise ValueError("No question provided")
         # Search for QuerySet
         # Set recent query
-        self.questionFiles = self.questionSearch.searchQuestion2(question)
+        self.questionFiles = questionSearchHandler.searchByKeyword(question)
         self.recentSearch = self.questionFiles
 
         return self.questionFiles
     
-    # #Tried it, doesn't work as multiple, back-to-back queries can't be performed
-    # def searchbyKeyWordQuestion(self, question):
-    #     """
-    #     Parameters: String question - string containing the question that will be getting 
-    #     digested via yake, a keyword extractor that uses an NLP model to glean keywords 
-    #     from a text string
-    #     Returns: QuerySet of Question
-    #     """
-    #     # If no question designated Error (delete?)
-    #     if question is None:
-    #         raise ValueError("No question provided")
+    #Tried it, doesn't work as multiple, back-to-back queries can't be performed
+    def searchQuestion(self, question):
+        """
+        Parameters: String question - string containing the question that will be getting 
+        digested via yake, a keyword extractor that uses an NLP model to glean keywords 
+        from a text string
+        Returns: QuerySet of Question
+        """
+        # If no question designated Error (delete?)
+        if question is None:
+            raise ValueError("No question provided")
         
-    #     #Using Yake
-    #     language = "en"
-    #     max_ngram_size = 1
-    #     deduplication_threshold = 0.9
-    #     #Essentially, roughly half of the words in the original question
-    #     numOfKeywords = res = (question.count(" ")+1)//2 
-    #     custom_kw_extractor = yake.KeywordExtractor(lan=language, n=max_ngram_size, 
-    #         dedupLim=deduplication_threshold, top=numOfKeywords, features=None)
-    #     keywords = custom_kw_extractor.extract_keywords(question)
-    #     for kw in keywords:
-    #         self.questionSearch.searchQuestion2(kw[0])
-    #         #^kw[0] gets the word entry in the two-value tuples each keyword has
-    #     return
+        #Using Yake
+        language = "en"
+        max_ngram_size = 1
+        deduplication_threshold = 0.9
+        #Essentially, roughly half of the words in the original question
+        numOfKeywords = (question.count(" ")+1) 
+        custom_kw_extractor = yake.KeywordExtractor(lan=language, n=max_ngram_size, 
+            dedupLim=deduplication_threshold, top=numOfKeywords, features=None)
+        keywords = custom_kw_extractor.extract_keywords(question) + [['what ',0.0]]
+
+        ret = Question.objects.none()
+        for kw in keywords:
+            ret = ret.union(questionSearchHandler.searchByKeyword(kw[0]))
+            #^kw[0] gets the word entry in the two-value tuples each keyword has
+        return ret
     
+
 
 
 class courseSearchHandler:
@@ -164,7 +167,12 @@ class questionSearchHandler:
     def __init__(self, question):
         self.question = question
 
-    def searchQuestion(self, question):
+    @staticmethod
+    def searchByKeyword(keyword):
+        return Question.objects.filter(question__icontains=keyword)
+
+    @staticmethod
+    def searchQuestion(question):
         """
         Parameters: String question - string containing the question
         Returns:    QuerySet of Question
