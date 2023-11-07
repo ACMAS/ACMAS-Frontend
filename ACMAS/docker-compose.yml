@@ -26,7 +26,7 @@ services:
     ports:
       - "5432:5432"
   nginx:
-    image: nginx:1.21-alpine
+    image: nginx:1.25.3-alpine
     volumes:
       - ./nginx/conf.d/:/etc/nginx/conf.d/
       - static_files:/home/app/web/staticfiles
