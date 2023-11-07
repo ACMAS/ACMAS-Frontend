@@ -23,6 +23,7 @@ def generateContext(request):
 # ACMAS homepage
 def index(request):
     context = generateContext(request)
+    print("So this is where print messages go")
     request.session.set_test_cookie()
     return render(request, "index.html", context)
 
@@ -44,6 +45,9 @@ def favicon(request):
 
 # Search by question page
 def searchByQuestion(request):
+    if request.session.test_cookie_worked():
+        print("The test cookie works")
+        request.session.delete_test_cookie()
     context = generateContext(request)
     question = request.POST.get("question")  # Check to see if a question was entered
     if (
@@ -210,11 +214,14 @@ def uploadManually(request):
         # Do manual question upload logic
         createFacade().uploadText(school, course, question, answer, assignment_type)
     return render(request, "upload-manually.html", context)
-def toggleDarkMode(request):
+
+
+def darkMode(request):
     context = generateContext(request)
-    #There must be some way to detect which template the user is on.
-    current_template="index.html"
     if request.session.test_cookie_worked():
-        print("The test cookie works")
+        print("The test cookie worked!!!")
         request.session.delete_test_cookie()
-    return render(request,current_template,context)
+    # There must be some way to detect which template the user is on.
+    return render(request, "darkmode.html", context)
+
+
