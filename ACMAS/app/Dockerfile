@@ -26,11 +26,6 @@ RUN apk update \
    && apk add postgresql-dev gcc python3-dev musl-dev
 
 
-# install python-poppler dependencies
-RUN apk add build-base
-RUN apk add libc-dev
-RUN apk --no-cache add poppler-utils
-
 # install dependencies
 COPY ./requirements.txt .
 RUN pip install --upgrade pip
@@ -55,9 +50,11 @@ FROM python:3.10.7-alpine
 # container.                       #
 ####################################
 
-RUN apk add poppler-dev
-RUN apk add sudo
-RUN apk add cmake
+
+# install python-poppler dependencies
+RUN apk add build-base
+RUN apk add libc-dev
+RUN apk --no-cache add poppler-utils
 
 
 # create directory for the app user
@@ -105,4 +102,3 @@ USER app
 # run entrypoint.sh
 #ENTRYPOINT ["/home/app/web/entrypoint.sh"]
 CMD bash
-
