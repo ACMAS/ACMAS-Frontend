@@ -168,7 +168,6 @@ def pdfReader(request):
 @login_required(login_url="/login")
 def uploadFile(request):
     context = generateContext(request)
-
     school = request.POST.get("school")  # Check to see if a school was entered
     course = request.POST.get(
         "course"
@@ -203,7 +202,6 @@ def uploadManually(request):
     question = request.POST.get("question")  # Check to see if a question was entered
     answer = request.POST.get("answer")  # Check to see if an answer was entered
     assignment_type = request.POST.get("type")  # Retrieve the assignment type
-    verified = request.POST.get("verified")
 
     if (
         question is not None
