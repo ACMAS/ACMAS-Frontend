@@ -14,45 +14,35 @@
 {% block facebook_url %}www.acmas.systems/upload-manually{% endblock %}
 
 {% block content %}
-<div class="flex flex-col mt-20">
-  <!-- Header -->
-  <h1 class="text-5xl font-light text-gray-900 text-center mb-8" style="font-family: Inter, serif;">ACMAS Upload</h1>
-  <div class="pt-2 w-full flex items-center justify-center">
-    <form class="w-1/2 xs:w-2/3 justify-center justify-content-center align-items-center" id="school-course-input" method="POST" enctype="multipart/form-data" action="{% url 'uploadManually' %}"> {% csrf_token %}
-      <!-- School -->
-      <div class="mb-4">
-        {% component "field" component_type="text" placeholder="Enter University" name="school" %}
-      </div>
-      <!-- Course -->
-      <div class="mb-6">
-        {% component "field" component_type="text" placeholder="Enter Course" name="course" %}
-      </div>
-      <!-- Question -->
-      <div class="mb-4">
-        {% component "field" component_type="text" placeholder="Enter Question" name="question" %}
-      </div>
-      <!-- Answer -->
-      <div class="mb-4">
-        {% component "field" component_type="text" placeholder="Enter Answer" name="answer" %}
-      </div>
-        <!-- Assignment Dropdown -->
-      <div class="mb-4 flex justify-content-center items-center justify-center justify-items-center">
-        <div class="w-1/2">
-          <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select assignment type" autocomplete="on" name="type" label="Search type selection">
-            <option style="color: #D4D6D9;" value="All">Select assignment type</option>
-            <option value="All">All</option>
-            <option value="Assignment">Assignment</option>
-            <option value="Exam">Exam</option>
-            <option value="Practice">Practice</option>
-          </select>
-          {% comment %} {% component "select" placeholder="Select assignment type" name="type" options="types" %} {% endcomment %}
-        </div>
-      </div>
-      <!-- Submit Button-->
-      <div class="flex items-center justify-items-center justify-center">
-        {% component "button" text="Upload" component_type="primary" value="Upload" %}
-      </div>
-    </form>
-  </div>
+<div class="p-0 flex items-center overflow-hidden relative" style="height: 85vh;">
+  <div class="absolute w-full h-full" style="background: linear-gradient(-45deg, #f8f8f3, #f5f2d6, #dbebf3, #c6d6f7); background-size: 300% 300%; animation: gradient 65s ease infinite;"> </div>
+  <div class="container mx-auto px-4 z-3 relative lg:w-6/12">
+      <div class="justify-center flex flex-wrap flex-col -mx-4 text-center">
+        <h1 class="text-6xl font-semibold text-white leading-tight -mt-8 mb-6" style="color: #327796">ACMAS Upload</h1>
+        <form method="POST" enctype="multipart/form-data" action="{% url 'uploadManually' %}"> {% csrf_token %}
+          <!-- School -->
+          <div class="flex flex-col items-center space-x-6 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-500">
+            <div class="flex-col flex space-y-4 w-full">
+              {% component "field" component_type="text" placeholder="Enter university..." name="school" icon_name="academic-cap" %}
+              {% component "field" component_type="text" placeholder="Enter course..." name="course" icon_name="book-open" %}
+              {% component "field" component_type="text" placeholder="Enter question..." name="question" icon_name="question-mark-circle" %}
+              {% component "field" component_type="text" placeholder="Enter answer..." name="answer" icon_name="light-bulb" %}
+              <div class="flex w-full">
+                <select class="bg-gray-100 h-14 space-x-4 rounded-lg p-4 outline-none border-0 w-full ring-0 focus:ring-0" placeholder="Select assignment type" autocomplete="on" name="type" label="Search type selection">
+                  <option style="color: #D4D6D9;" value="All">Select assignment type</option>
+                  <option value="All">All</option>
+                  <option value="Assignment">Assignment</option>
+                  <option value="Exam">Exam</option>
+                  <option value="Practice">Practice</option>
+                </select>
+              </div>
+            </div>
+            <div class="mt-4 pr-6">
+              {% component "button" text="Upload" component_type="primary" value="Upload" %}
+          </div>
+        </form>
+    </div>
+</div>
+<div class="w-full absolute text-white bottom-0 z-3 "></div>
 </div>
 {% endblock %}
