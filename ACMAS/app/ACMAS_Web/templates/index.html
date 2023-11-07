@@ -14,20 +14,97 @@
 {% block facebook_description %}ACMAS is the free homework and backtest helper created by students for students. Join our community of students anonymously today!{% endblock %}
 {% block facebook_url %}www.acmas.systems{% endblock %}
 
-
 {% block content %}
-<div class="flex flex-wrap mt-24 mx-auto max-w-screen-xl">
-    <div class="text-7xl" style="color: #327796; font-family: Inter, serif;">Simplify <br> studying with</div>
-    <div class="">
-        <a href="/">
-            <img
-                alt="ACMAS logo"
-                class="w-96 h-auto pt-4 pl-5"
-                src="../static/img/ACMAS_Logo.svg"
-            />
-        </a>
+<div class="p-0 flex items-center overflow-hidden relative" style="height: 75vh;">
+    <div class="absolute w-full h-full" style="background: linear-gradient(-45deg, #f8f8f3, #f5f2d6, #dbebf3, #c6d6f7); background-size: 300% 300%; animation: gradient 65s ease infinite;"> </div>
+    <div class="container mx-auto px-4 z-3 pt-6 relative lg:w-6/12">
+        <div class="justify-center items-center flex flex-wrap flex-col -mx-4 text-center">
+            <img class="h-48 w-96" src="../static/img/ACMAS_Logo.svg" alt="ACMAS star logo">
+            <h2 class="text-3xl text-white mb-24" style="color: #327796">Automated Course Material Archiving System</h2>
+        </div>
+    </div>
+    <div class="w-full absolute text-white bottom-0 z-3 ">
+        <div class="custom-shape-divider-bottom-1669508581 rotate-180" id="hide-mobile">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" style="fill: #ffffffff"></path>
+            </svg>
+        </div>
     </div>
 </div>
+<div class="container mx-auto px-4 z-3 -mt-64 pt-24 relative w-8/12">
+    <div class="justify-center flex flex-wrap -mx-4">
+        <div class="bg-white rounded-xl shadow-lg">
+            <div class="flex flex-wrap select-none">
+                <div
+                    class="px-6 rounded-xl relative w-full lg:w-3/12 w-full py-8 md:w-6/12 transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-105 hover:bg-gray-50 duration-200 cursor-pointer"
+                    onclick="window.location.href='searchByCourse';"
+                >
+                <div class="flex justify-center text-gray-600">
+                    {% component "icon" icon="academic-cap" icon_type="mini" icon_class="w-6 h-6" %}
+                </div>
+                    <div class="text-center py-2">
+                        <h5 class="text-xl font-semibold text-center text-gray-700 mt-2 mb-1">Search by Course</h5>
+                    </div>
+                </div>
+                <div
+                    class="px-6 rounded-xl relative w-full lg:w-3/12 w-full py-8 md:w-6/12 transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-105 hover:bg-gray-50 duration-200 cursor-pointer"
+                    onclick="window.location.href='searchByQuestion';"
+                >
+                    <div class="flex justify-center text-gray-600">
+                        {% component "icon" icon="magnifying-glass" icon_type="mini" icon_class="w-6 h-6" %}
+                    </div>
+                    <div class="text-center py-2">
+                        <h5 class="text-xl font-semibold text-center text-gray-700 mt-2 mb-1">Search by Question</h5>
+                    </div>
+                </div>
+                {% if user.is_authenticated %}
+                <div
+                    class="px-6 rounded-xl relative w-full lg:w-3/12 w-full py-8 md:w-6/12 transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-105 hover:bg-gray-50 duration-200 cursor-pointer"
+                    onclick="window.location.href='upload-file';"
+                >
+                    <div class="flex justify-center text-gray-600">
+                        {% component "icon" icon="document-arrow-up" icon_type="mini" icon_class="w-6 h-6" %}
+                    </div>
+                    <div class="text-center py-2">
+                        <h5 class="text-xl font-semibold text-center text-gray-700 mt-2 mb-1">Upload<br>File</h5>
+                    </div>
+                </div>
+                <div
+                    class="px-6 rounded-xl relative w-full lg:w-3/12 w-full py-8 md:w-6/12 transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-105 hover:bg-gray-50 duration-200 cursor-pointer"
+                    onclick="window.location.href='upload-manually';"
+                >
+                    <div class="flex justify-center text-gray-600">
+                        {% component "icon" icon="cloud-arrow-up" icon_type="mini" icon_class="w-6 h-6" %}
+                    </div>
+                    <div class="text-center py-2">
+                        <h5 class="text-xl font-semibold text-center text-gray-700 mt-2 mb-1">Upload<br>Manually</h5>
+                    </div>
+                </div>
+                {% else %}
+                <div class="px-6 relative w-full lg:w-3/12 w-full py-8 md:w-6/12 bg-gray-100 opacity-75 cursor-not-allowed">
+                    <div class="flex justify-center text-gray-600">
+                        {% component "icon" icon="document-arrow-up" icon_type="mini" icon_class="w-6 h-6" %}
+                    </div>
+                    <div class="text-center py-2">
+                        <h5 class="text-xl font-semibold text-center text-gray-700 mt-2 mb-1">Upload<br>File</h5>
+                        <p class="text-gray-500 text-md">Login to upload</p>
+                    </div>
+                </div>
+                <div class="px-6 lg:rounded-r-xl md:rounded-br-xl relative w-full lg:w-3/12 w-full py-8 md:w-6/12 bg-gray-100 opacity-75 cursor-not-allowed">
+                    <div class="flex justify-center text-gray-600">
+                        {% component "icon" icon="cloud-arrow-up" icon_type="mini" icon_class="w-6 h-6" %}
+                    </div>
+                    <div class="text-center py-2">
+                        <h5 class="text-xl font-semibold text-center text-gray-700 mt-2 mb-1">Upload<br>Manually</h5>
+                        <p class="text-gray-500 text-md">Login to upload</p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock content %}
 
 {% comment %} {% block content %} {% endcomment %}
@@ -55,54 +132,5 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         crossorigin="anonymous"
     />
-</head>
-
-<body>
-    {% comment %} <main> {% endcomment %}
-        {% comment %} <div class="p-6">
-            <div style="display:flex;">
-                <div class="home-display-text text-blue">Simplify <br> studying with</div>
-                <div class="home-logo-title">
-                    <a href="/" >
-                        <img
-                            alt="ACMAS logo"
-                            class="home-logo"
-                            src="../static/img/ACMAS_Logo.svg"
-                        />
-                    </a>
-                </div>
-            </div>
-
-            <div class="home-buttons-container gap-4">
-                <li class="dropdown-button home-text">
-                    Search
-                    <ul class="dropdown-opts dropdown-opts-animated">
-                    <li><a href="/searchByQuestion">by Question</a></li>
-                    <li><a href="/searchByCourse">by Course</a></li>
-                    </ul>
-                </li>
-                {%if user.is_authenticated %}
-                {%block UploadOptions%}
-                <li class="dropdown-button home-text">
-                    Upload
-                    <ul class="dropdown-opts dropdown-opts-animated">
-                    <li><a href="/upload-file">With a file</a></li>
-                    <li><a href="/upload-manually">Manually</a></li>
-                    </ul>
-                </li>
-                {%endblock%}
-                {% endif %}
-                
-            </div>
-        </div>
-    </main>
-    <div class="custom-shape-divider-bottom-1669508581" id="hide-mobile">
-        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path
-                d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" 
-                class="shape-fill">
-            </path>
-        </svg>
-    </div> {% endcomment %}
-{% comment %} {% endblock %} {% endcomment %}
+</head> {% endcomment %}
 </html>
