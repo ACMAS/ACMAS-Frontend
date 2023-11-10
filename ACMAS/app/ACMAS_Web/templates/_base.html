@@ -1,9 +1,9 @@
 <!-- templates/_base.html -->
 {% load static %}
 {% load component_tags %}
-
+{% with mode = "dark" %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class={{ mode }}>
 
 {% block head %}
 
