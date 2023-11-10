@@ -3,16 +3,26 @@
 {% block title %}Profile{% endblock %}
 
 {% block content %}
-<div class="flex flex-col mt-20">
-   <h1 class="text-3xl font-light text-gray-900 text-center mb-8" style="font-family: Inter, serif;">Hello {{user.username}}!</h1>
-   <div class="w-full flex items-center justify-center pt-2">
-      <br/> <br/>
-      <p class="mt-8">
-          Want to change it up?
-          <a href="{% url 'password_change' %}">
-              {% component "button" text="Change Password" component_type="secondary" value="" %}
-          </a>
-      </p>
-  </div>
+<div class="p-0 flex items-center overflow-hidden relative" style="height: 85vh;">
+    <div class="absolute w-full h-full" style="background: linear-gradient(-45deg, #f8f8f3, #f5f2d6, #dbebf3, #c6d6f7); background-size: 300% 300%; animation: gradient 65s ease infinite;"> </div>
+    <div class="container mx-auto px-4 z-3 relative lg:w-3/12">
+        <div class="justify-center flex flex-wrap flex-col -mx-4 text-center">
+            <div class="flex items-center space-x-6 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-500">
+                <div class="flex-col flex space-y-4 w-full">
+                    <div class="flex justify-center text-gray-600">
+                        {% component "icon" icon="user" icon_type="mini" icon_class="w-20 h-20" %}
+                    </div>
+                    <div class="text-center py-2">
+                        <h2 class="text-4xl font-semibold text-center text-gray-700 mt-2 mb-1">{{ user.username }}</h2>
+                        <p class="text-gray-500 text-md">{{ user.email }}</p>
+                    </div>
+                    <a href="{% url 'password_change' %}">
+                        {% component "button" text="Change Password" component_type="secondary" value="" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-full absolute text-white bottom-0 z-3 "></div>
 </div>
 {% endblock%}

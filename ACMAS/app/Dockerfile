@@ -7,7 +7,7 @@
 ###########
 
 # pull official base image
-FROM python:3.11.5-alpine AS builder
+FROM python:3.12-alpine AS builder
 
 # set work directory
 WORKDIR /usr/src/app
@@ -31,7 +31,7 @@ RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requir
 #########
 
 # pull official base image
-FROM python:3.11.5-alpine
+FROM python:3.12-alpine
 RUN apk update --no-cache
 
 ####################################
