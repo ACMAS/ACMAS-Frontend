@@ -1,9 +1,9 @@
 <!-- templates/_base.html -->
 {% load static %}
 {% load component_tags %}
-{% with mode = "dark" %}
+{% with mode="light" %}
 <!DOCTYPE html>
-<html lang="en" class={{ mode }}>
+<html lang="en" class={{mode}}>
 
 {% block head %}
 
@@ -175,5 +175,5 @@
   </ul>
 </footer>
 {% endblock body %}
-
+{% endwith %}
 </html>

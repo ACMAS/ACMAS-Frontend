@@ -231,3 +231,8 @@ def register(request):
 def profile(request):
     context = generateContext(request)
     return render(request, "profile.html", context)
+
+
+def darkmode(request):
+    context = generateContext(request)
+    return render(request, "darkmode.html", context)
