@@ -24,8 +24,8 @@
     transform: rotate(168deg);
 }
 
-#dropdown_profile_por {
-    
+#dropdown_profile {
+    clip-path: polygon(-50% 0, 60% 0, 60% 150%, -50% 150%);
 }
 #dropdown_profile_hover-zone {
     width: 12rem;
@@ -50,7 +50,7 @@
 </style>
 
 <div class="relative px-4 z-50">
-    <div class="absolute top-1/2 right-1/2 dropdown_profile_translate invisible">
+    <div id="dropdown_profile" class="absolute top-1/2 right-1/2 dropdown_profile_translate invisible">
         <div id="dropdown_profile_por"
                 class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full visible"
                 onmouseover="rotate()">
