@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-
 DEBUG = False
 
 if DEBUG:

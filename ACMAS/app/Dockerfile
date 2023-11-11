@@ -31,7 +31,7 @@ RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requir
 #########
 
 # pull official base image
-FROM python:3.11.5-alpine
+FROM python:3.11.0
 RUN apk update --no-cache
 
 ####################################
