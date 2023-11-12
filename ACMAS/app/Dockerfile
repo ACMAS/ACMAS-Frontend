@@ -63,8 +63,11 @@ RUN pip install --no-cache /wheels/*
 
 # copy entrypoint.sh
 COPY ./entrypoint.sh .
+COPY ./init-letsencrypt.sh .
 RUN sed -i 's/\r$//g'  $APP_HOME/entrypoint.sh
+RUN sed -i 's/\r$//g'  $APP_HOME/init-letsencrypt.sh
 RUN chmod +x  $APP_HOME/entrypoint.sh
+RUN chmod +x $APP_HOME/init-letsencrypt.sh
 
 # copy project
 COPY . $APP_HOME
@@ -72,9 +75,10 @@ COPY . $APP_HOME
 # chown all the files to the app user
 RUN chown -R app:app $APP_HOME
 RUN chmod +x "/home/app/web/entrypoint.sh"
+RUN chmod +x "/home/app/web/init-letsencrypt.sh"
 
 # change to the app user
 USER app
 
 # run entrypoint.sh
-ENTRYPOINT ["/home/app/web/entrypoint.sh"]
+ENTRYPOINT ["/home/app/web/entrypoint.sh", "/home/app/web/init-letsencrypt.sh"]
