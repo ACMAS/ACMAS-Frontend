@@ -11,9 +11,6 @@
 #dropdown_profile_z {
     transform: rotate(-78deg);
 }
-#dropdown_profile_X, #dropdown_profile_Y, #dropdown_profile_Z {
-    background: lightgrey;
-}
 #dropdown_profile_X > svg {
     transform: rotate(282deg); /* 102 + 180, there's a bug with tooltip, X also has class rotate-180 */
 }
@@ -25,7 +22,7 @@
 }
 
 #dropdown_profile {
-    clip-path: polygon(-50% 0, 60% 0, 60% 150%, -50% 150%);
+    clip-path: polygon(-50% 0, 70% 0, 70% 150%, -50% 150%);
 }
 #dropdown_profile_hover-zone {
     width: 12rem;
@@ -52,7 +49,7 @@
 <div class="relative px-4 z-50">
     <div id="dropdown_profile" class="absolute top-1/2 right-1/2 dropdown_profile_translate invisible">
         <div id="dropdown_profile_por"
-                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full visible"
+                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full transition-all duration-200 ease-in-out visible"
                 onmouseover="rotate()">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-gray-700">
                 <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd" />
@@ -64,7 +61,7 @@
                 onmouseout="reset()"></div>
             <div id="dropdown_profile_x" class="absolute w-full h-full invisible">
                 <div id="dropdown_profile_X" onmouseover="rotate()" onclick="window.location.href='profile'"
-                class="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full invisible flex justify-center items-center opacity-0 transition-opacity duration-200 ease-in-out rotate-180 cursor-pointer"
+                class="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full invisible flex justify-center items-center bg-gray-300 hover:bg-gray-400 opacity-0 transition-all duration-200 ease-in-out rotate-180 cursor-pointer"
                 data-tooltip-target="tooltip-x" data-tooltip-placement="top">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-6 h-6">
@@ -80,7 +77,7 @@
             </div>
             <div id="dropdown_profile_y" class="absolute w-full h-full invisible">
                 <div id="dropdown_profile_Y" onmouseover="rotate()"
-                    class="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full invisible flex justify-center items-center opacity-0 transition-opacity duration-200 ease-in-out cursor-not-allowed"
+                    class="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full invisible flex justify-center items-center bg-gray-300 hover:bg-gray-400 opacity-0 transition-all duration-200 ease-in-out cursor-not-allowed"
                     data-tooltip-target="tooltip-y" data-tooltip-placement="top">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-6 h-6">
@@ -97,7 +94,7 @@
             </div>
             <div id="dropdown_profile_z" class="absolute w-full h-full invisible">
                 <div id="dropdown_profile_Z" onmouseover="rotate()" onclick="window.location.href='logout'"
-                    class="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full invisible flex justify-center items-center opacity-0 transition-opacity duration-200 ease-in-out cursor-pointer"
+                    class="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full invisible flex justify-center items-center bg-gray-300 hover:bg-gray-400 opacity-0 transition-all duration-200 ease-in-out cursor-pointer"
                     data-tooltip-target="tooltip-z" data-tooltip-placement="top">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-6 h-6">
