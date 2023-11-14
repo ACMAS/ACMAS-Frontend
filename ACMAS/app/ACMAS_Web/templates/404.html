@@ -4,7 +4,26 @@
 {% block title %}Not Found{% endblock %}
 
 {% block content %}
-<div class="flex flex-col mt-24 items-center justify-items-center">
+<div class="p-0 flex items-center overflow-hidden relative" style="height: 85vh;">
+    <div class="absolute w-full h-full" style="background: linear-gradient(-45deg, #f8f8f3, #f5f2d6, #dbebf3, #c6d6f7); background-size: 300% 300%; animation: gradient 65s ease infinite;"> </div>
+    <div class="container px-4 mx-auto z-3 relative lg:w-6/12">
+        <div class="flex flex-col items-center justify-items-center">
+            <div class="flex gap-x-6">
+                <div class="self-end">
+                    <a class="text-9xl font-bold text-gray-700" style="font-family: Inter, serif;">404</a>
+                </div>
+                <div class="self-start">
+                    <a class="text-6xl font-semibold text-gray-500" style="font-family: Inter, serif;">We couldn't find <br> this page</a>
+                </div>
+            </div>
+        
+            <span class="mt-8" onclick="window.location.href='/';">
+                {% component "button" text="Back to Home" component_type="primary" value="" %}
+            </span>
+        </div>
+    </div>
+</div>
+{% comment %} <div class="flex flex-col mt-24 items-center justify-items-center">
     <div class="flex gap-x-6">
         <div class="self-end">
             <a class="text-9xl font-bold text-gray-700" style="font-family: Inter, serif;">404</a>
@@ -17,5 +36,5 @@
     <span class="mt-8" onclick="window.location.href='/';">
         {% component "button" text="Back to Home" component_type="primary" value="" %}
     </span>
-</div>
+</div> {% endcomment %}
 {% endblock content %}
