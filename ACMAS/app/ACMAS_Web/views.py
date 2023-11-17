@@ -19,6 +19,11 @@ def generateContext(request):
         + os.getenv("GOOGLE_ANALYTICS_ID", default=""),
         "CANONICAL_PATH": request.build_absolute_uri(request.path),
     }
+    if 'mode' in request.COOKIES:
+        context['mode'] = request.COOKIES.get('mode')
+    else:
+        request.COOKIES['mode'] = 'light'
+        context['mode'] = "light"
     return context
 
 
@@ -234,5 +239,12 @@ def profile(request):
 
 
 def darkmode(request):
+    if 'mode' in request.COOKIES:
+        mode = request.COOKIES.get('mode')
+        if mode == 'dark':
+            request.COOKIES['mode'] = 'light'
+        else:
+            request.COOKIES['mode'] = 'dark'
     context = generateContext(request)
-    return render(request, "darkmode.html", context)
+
+    return render(request, "index.html", context)
