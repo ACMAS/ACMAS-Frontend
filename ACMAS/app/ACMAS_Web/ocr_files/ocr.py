@@ -1,34 +1,31 @@
-import os
-from pdf2image import convert_from_path
-import pytesseract
-
-def ocr_driver(pdf_name):
-    '''if ending_type(pdf_name) == 'pdf':
-        images = 'Hi'
-    else:
-        images = pdf_name
-    ocr_output = images'''
-    return pdf_name
-
 '''
 import os
 from pdf2image import convert_from_path
 import pytesseract
 
+def ocr_driver(pdf_name):
+    if ending_type(pdf_name) == 'pdf':
+        images = 'Hi'
+    else:
+        images = pdf_name
+    ocr_output = images
+    return pdf_name
+'''
 
-absolute_path = os.path.dirname(__file__)
-relative_path = "../ocr_files/lib"
-full_path = os.path.join(absolute_path, relative_path)
+import os
+from pdf2image import convert_from_path
+import pytesseract
 
 
+#absolute_path = os.path.dirname(__file__)
+#relative_path = "../ocr_files/"
+#full_path = os.path.join(absolute_path, relative_path)
 
 
 # Gets the ending types of files
 def ending_type(string):
     index = string.rfind('.')
     return string[index + 1:]
-
-
 
 
 def png_conversion(pdf_name):
@@ -39,7 +36,6 @@ def png_conversion(pdf_name):
 
 
     print("CONVERTING PNG")
-
 
     if not os.path.isdir('mediafiles/ocr_images'):
         os.system("mkdir mediafiles/ocr_images")
@@ -55,14 +51,12 @@ def png_conversion(pdf_name):
 
 
 
-
 def run_ocr(image_name):
     acceptable_formats = set({'png', 'jpg', 'gif', 'tiff'})
     if ending_type(image_name) not in acceptable_formats:
         return
     ocr_results = pytesseract.image_to_string('{}'.format(image_name), lang='eng')
     return ocr_results
-
 
 
 
@@ -73,4 +67,3 @@ def ocr_driver(pdf_name):
         images = pdf_name
     ocr_output = run_ocr(images)
     return ocr_output
-'''

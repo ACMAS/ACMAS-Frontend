@@ -62,8 +62,8 @@ class fileEditHandler:
 
         # Adding file to database
         db_file = UploadedFile(
-            filename=savedFile,
-            file_dir=file_url,
+            filename=fileName,
+            file_dir="/media/" + fileName,
             course=Course.objects.get(name=course),
             date_uploaded=date.today(),
             flag=fType,
@@ -77,12 +77,14 @@ class fileEditHandler:
         stripped = fileName.split(sep, 1)[0]
         fileName2 = stripped + ".txt"
         fileText2 = (
-            f"{ocr.ocr_driver(fileName2)}"
+            f"{ocr.ocr_driver(fileName)}"
         )
         
         # Adding file to filesystem
-        fs2 = FileSystemStorage()
-        savedFile2 = fs.save(fileName2, file)  # Retrieve the filename
+        fs = FileSystemStorage()
+        fileContent2 = ContentFile(fileText2)  # Set the content of the new file
+        
+        savedFile2 = fs.save(fileName2, fileContent2)  # Retrieve the filename
         file_url2 = fs.url(savedFile2)  # Retrieve the file path
         print(f'FILE "{savedFile2}" uploaded to "{file_url2}"\n')
         
