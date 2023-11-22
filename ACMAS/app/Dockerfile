@@ -7,7 +7,7 @@
 ###########
 
 # pull official base image
-FROM python:3.11.5-alpine AS builder
+FROM python:3.12-alpine AS builder
 
 # set work directory
 WORKDIR /usr/src/app
@@ -31,7 +31,7 @@ RUN pip wheel --no-cache-dir --wheel-dir /usr/src/app/wheels -r requirements.txt
 #########
 
 # pull official base image
-FROM python:3.11.0
+FROM python:3.12-alpine
 RUN apk update --no-cache
 
 ####################################
@@ -56,7 +56,7 @@ RUN mkdir $APP_HOME/mediafiles   # Make media files directory
 WORKDIR $APP_HOME
 
 # install dependencies
-RUN apk add libpq==15.4-r0
+RUN apk add libpq==15.5-r0
 COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
 RUN pip install --no-cache /wheels/*
