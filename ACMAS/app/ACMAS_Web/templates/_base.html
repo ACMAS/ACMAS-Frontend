@@ -84,7 +84,7 @@
   }
   }
 </style>
-<body>
+<body class="overflow-x-hidden">
   <script>0</script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
@@ -92,10 +92,10 @@
      {% comment %} <!-- Google Analytics -->
   <!-- Google tag (gtag.js) -->
   <script async src='{{ GOOGLE_ANALYTICS_URL }}'></script>
-  </nav> {% endcomment %}
+  {% endcomment %}
 
-  <nav class="bg-white border-gray-200 lg:px-24 md:px-24 sm:px-0">
-    <div class="max-w-screen-xl flex flex-wrap items-center mx-auto p-4">
+  <nav class="bg-white border-gray-200">
+    <div class="max-w-screen-xl flex flex-wrap items-center p-4">
       <a class="flex mr-2" href="/">
         <img class="h-9 pr-4" src="../static/img/star.svg" alt="ACMAS star logo">
       </a>
@@ -141,7 +141,7 @@
           {% if user.is_authenticated %}
             {% block user %}
               <!-- Profile -->
-              <li class="absolute right-32 hidden md:block">{% component "dropdown_profile" %}</li>
+              <li class="absolute right-8 hidden md:block bg-red-300">{% component "dropdown_profile" %}</li>
               <li class="pt-2 block md:hidden">
                 <button id="profileDropdownNavbarLink" data-dropdown-toggle="profileDropdownNavbar" class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">User Menu<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
                   <!-- Dropdown menu -->
