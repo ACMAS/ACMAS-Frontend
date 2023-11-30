@@ -2,7 +2,7 @@
 {% load static %}
 {% load component_tags %}
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en">
 
 {% block head %}
 
@@ -152,7 +152,7 @@
             <li><a class="block py-2 pl-3 pr-4 text-gray-900 rounded md:hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-gray-500" href="/login">Login</a></li>
             {% endblock %}
           {% endif %}
-        <li><a class="block py-2 pl-3 pr-4 text-gray-900 rounded md:hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-gray-500" id="dark-mode">Change theme (currently {{ mode }})</a></li>
+        <li><button class="block py-2 pl-3 pr-4 text-gray-900 rounded md:hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-gray-500" id="dark-mode">Change theme</button></li>
         </ul>
       </div>
     </div>
@@ -163,12 +163,14 @@
   </div>
 <script>
     const darkModeToggle = document.getElementById("dark-mode");
-    let htmlElement = document.getElementsByName("html");
+    let htmlElement = document.documentElement;
     function toggleDarkMode() {
-        if(htmlElement.class==="dark"){
-            htmlElement.class = "light";
+        if(htmlElement.classList.contains("dark")){
+            console.log("removed dark mode")
+            htmlElement.classList.remove("dark");
         }else{
-            htmlElement.class = "dark";
+            console.log("added dark mode")
+            htmlElement.classList.add("dark");
         }
     }
     darkModeToggle.addEventListener("click",toggleDarkMode);
