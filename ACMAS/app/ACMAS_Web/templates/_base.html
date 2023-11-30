@@ -2,7 +2,7 @@
 {% load static %}
 {% load component_tags %}
 <!DOCTYPE html>
-<html lang="en" class={{mode}}>
+<html lang="en" class="light">
 
 {% block head %}
 
@@ -152,7 +152,7 @@
             <li><a class="block py-2 pl-3 pr-4 text-gray-900 rounded md:hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-gray-500" href="/login">Login</a></li>
             {% endblock %}
           {% endif %}
-        <li><a class="block py-2 pl-3 pr-4 text-gray-900 rounded md:hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-gray-500" href="/dark-mode">Change theme (currently {{ mode }})</a></li>
+        <li><a class="block py-2 pl-3 pr-4 text-gray-900 rounded md:hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-gray-500" id="dark-mode">Change theme (currently {{ mode }})</a></li>
         </ul>
       </div>
     </div>
@@ -161,6 +161,18 @@
     {% block content %}
     {% endblock content %}
   </div>
+<script>
+    const darkModeToggle = document.getElementById("dark-mode");
+    let htmlElement = document.getElementsByName("html");
+    function toggleDarkMode() {
+        if(htmlElement.class==="dark"){
+            htmlElement.class = "light";
+        }else{
+            htmlElement.class = "dark";
+        }
+    }
+    darkModeToggle.addEventListener("click",toggleDarkMode);
+</script>
 </body>
 
 <footer class="fixed bottom-0 left-0 z-20 w-full p-4 bg-white md:flex md:items-center md:justify-between md:p-6">
