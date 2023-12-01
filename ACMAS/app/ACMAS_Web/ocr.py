@@ -1,9 +1,10 @@
-import fitz, os  # PyMuPDF
-from .models import UploadedFile, Course
+import fitz  # PyMuPDF
+import os
 from datetime import date
 from django.conf import settings
-
 from django.core.files.storage import FileSystemStorage
+from .models import Course, UploadedFile
+
 
 """
 OCR File Creation Pipeline:
@@ -12,7 +13,7 @@ OCR File Creation Pipeline:
     - Store text file on filesystem and database
 """
 class OCR:
-    def extract_text_from_pdf(fType, course, fileName, fileUrl):
+    def extract_text_from_pdf(self, fType, course, fileName, fileUrl):
         # Adding file to filesystem
         fs = FileSystemStorage()
         removeExt = os.path.splitext(fileName)[0]
