@@ -5,6 +5,7 @@ from django.core.files.base import ContentFile
 from django.core.files.storage import FileSystemStorage
 
 from .models import Course, Question, University, UploadedFile
+from .ocr import OCR
 
 
 # Facade for uploading text questions/answers or a file
@@ -58,6 +59,8 @@ class fileEditHandler:
         savedFile = fs.save(fileName, file)  # Retrieve the filename
         file_url = fs.url(savedFile)  # Retrieve the file path
         print(f'FILE "{savedFile}" uploaded to "{file_url}"\n')
+
+        OCR.extract_text_from_pdf(fType, course, fileName, file_url)
 
         # Adding file to database
         db_file = UploadedFile(
