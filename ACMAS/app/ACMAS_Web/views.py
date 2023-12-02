@@ -2,14 +2,12 @@ import os
 
 from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
-from django.http import FileResponse
 from django.shortcuts import redirect, render
 
 from .forms import RegisterForm
 from .models import UploadedFile
 from .search import searchFacade
 from .upload import createFacade
-from django.shortcuts import get_object_or_404
 
 
 def generateContext(request):
@@ -170,7 +168,6 @@ def pdfReader(request):
 @login_required(login_url="/login")
 def uploadFile(request):
     context = generateContext(request)
-    
     school = request.POST.get("school")  # Check to see if a school was entered
     course = request.POST.get(
         "course"
@@ -246,9 +243,3 @@ def register(request):
 def profile(request):
     context = generateContext(request)
     return render(request, "profile.html", context)
-
-
-def download_file(request, pk):
-    file = get_object_or_404(UploadedFile, pk=pk)
-    response = FileResponse(open(file.file_dir, 'rb'))
-    return response

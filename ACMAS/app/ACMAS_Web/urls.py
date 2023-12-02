@@ -19,7 +19,6 @@ from django.contrib.auth import views as auth_views
 from django.urls import include, path
 
 from . import views
-from .views import download_file
 
 urlpatterns = (
     [
@@ -39,7 +38,6 @@ urlpatterns = (
         path("profile", views.profile, name="profile"),
         path("password/", auth_views.PasswordChangeView.as_view()),
         path("password/done/", auth_views.PasswordChangeDoneView.as_view()),
-        path('download_file/<int:pk>/', download_file, name='download_file'),
     ]
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
