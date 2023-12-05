@@ -1,25 +1,11 @@
-'''
-import os
-from pdf2image import convert_from_path
-import pytesseract
-
-def ocr_driver(pdf_name):
-    if ending_type(pdf_name) == 'pdf':
-        images = 'Hi'
-    else:
-        images = pdf_name
-    ocr_output = images
-    return pdf_name
-'''
-
 import os
 from pdf2image import convert_from_path
 import pytesseract
 
 
-#absolute_path = os.path.dirname(__file__)
-#relative_path = "../ocr_files/"
-#full_path = os.path.join(absolute_path, relative_path)
+absolute_path = os.path.dirname(__file__)
+relative_path = "../ocr_files"
+full_path = os.path.join(absolute_path, relative_path)
 
 
 # Gets the ending types of files
@@ -37,16 +23,16 @@ def png_conversion(pdf_name):
 
     print("CONVERTING PNG")
 
-    if not os.path.isdir('mediafiles/ocr_images'):
-        os.system("mkdir mediafiles/ocr_images")
+    if not os.path.isdir('acmas_media_files/ocr_images'):
+        os.system("mkdir acmas_media_files/ocr_images")
 
 
     image_names = []
     images_from_path = convert_from_path(pdf_name, 600)
     for i in range(len(images_from_path)):
         # Save pages as images in the pdf
-        images_from_path[i].save('mediafiles/ocr_images/' + 'page' + str(i) + '.jpg', 'JPEG')
-        image_names.append('mediafiles/ocr_images/' + 'page' + str(i) + '.jpg')
+        images_from_path[i].save('acmas_media_files/ocr_images/' + 'page' + str(i) + '.jpg', 'JPEG')
+        image_names.append('acmas_media_files/ocr_images/' + 'page' + str(i) + '.jpg')
     return image_names
 
 
@@ -57,6 +43,7 @@ def run_ocr(image_name):
         return
     ocr_results = pytesseract.image_to_string('{}'.format(image_name), lang='eng')
     return ocr_results
+
 
 
 
