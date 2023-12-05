@@ -1,0 +1,3 @@
+Implemented working OCR which works locally and relevant code to work with upload.py, but struggling with integrating it into Docker container. Currently stuck on Docker not being able find uploaded file to start extracting text through OCR. File can be found in acmas_media_files, but path to file in ocr.py may be incorrect (trying to figure out how to fix this). 
+
+Currently, this is meant to automatically create an empty .txt file with the same name as the uploaded file when it is uploaded. The ocr_driver(pdf_name) function is called in upload.py and would use OCR to extract text from the uploaded file into the associated .txt file. 
