@@ -1,0 +1,10 @@
+Overview:
+OCR is implemented with the usage of a python module PyMuPDF, which parses a pdf upload and extracts text from it with very high accuracy. 
+OCR should be called during each non-text file uploads. Along with the original uploaded file, upload a text file with the same pre-extension name that has the extracted text in it.
+Currently the OCR functionality is incomplete.
+
+Issues:
+Had some troubles installing and testing PyMuPDF with the python alpine version used.
+
+Solution:
+Installed the module from source with custom made wheels to import the package
