@@ -7,7 +7,6 @@ from django.core.files.storage import FileSystemStorage
 
 from .models import Course, UploadedFile
 
-
 """
 OCR File Creation Pipeline:
     - When a file is uploaded to the filesystem, conduct OCR to extract and create text file
@@ -42,6 +41,6 @@ class OCR:
             file_dir=txt_file_path,
             course=Course.objects.get(name=course),
             date_uploaded=date.today,
-            flag=fType
+            flag=fType,
         )
         uploaded_file.save()
