@@ -60,8 +60,7 @@ class fileEditHandler:
         file_url = fs.url(savedFile)  # Retrieve the file path
         print(f'FILE "{savedFile}" uploaded to "{file_url}"\n')
 
-        ocrObject = OCR
-        ocrObject.extract_text_from_pdf(fType, course, fileName, file_url)
+        OCR().extract_text_from_pdf(fType, course, fileName, file_url)
 
         # Adding file to database
         db_file = UploadedFile(

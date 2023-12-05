@@ -11,6 +11,10 @@ OCR File Creation Pipeline:
     - When a file is uploaded to the filesystem, conduct OCR to extract and create text file
     - Check for name availability with created text file
     - Store text file on filesystem and database
+
+Overview:
+    - Issues: Had trouble installing PyMuPDF with python alpine in docker containers
+    - Solution: Installed from source and made custom wheel for module package
 """
 class OCR:
     def extract_text_from_pdf(self, fType, course, fileName, fileUrl):
@@ -19,7 +23,7 @@ class OCR:
         removeExt = os.path.splitext(fileName)[0]
         txt_file_name = removeExt + ".txt"
         txt_file_path = os.path.join(settings.MEDIA_ROOT, txt_file_name)
-        text = ''
+        text = ""
         pdf_document = fitz.open(fileUrl)
         for page_num in range(pdf_document.page_count):
             page = pdf_document[page_num]
