@@ -1,8 +1,10 @@
-import fitz  # PyMuPDF
 import os
 from datetime import date
+
+import fitz  # PyMuPDF
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
+
 from .models import Course, UploadedFile
 
 
@@ -16,6 +18,8 @@ Overview:
     - Issues: Had trouble installing PyMuPDF with python alpine in docker containers
     - Solution: Installed from source and made custom wheel for module package
 """
+
+
 class OCR:
     def extract_text_from_pdf(self, fType, course, fileName, fileUrl):
         # Adding file to filesystem
@@ -38,6 +42,6 @@ class OCR:
             file_dir=txt_file_path,
             course=Course.objects.get(name=course),
             date_uploaded=date.today,
-            flag=fType,  
+            flag=fType
         )
         uploaded_file.save()
