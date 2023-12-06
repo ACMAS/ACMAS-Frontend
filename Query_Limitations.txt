@@ -1,0 +1,29 @@
+Query_Limitations:
+
+	- Contextual Ambiguity: Keywords extracted from queries may have multiple meanings or contexts,
+	making it challenging for the search engine to determine the user's intent accurately.
+
+	- Synonyms and Variations: The search engine may not recognize synonyms or different word forms (like plurals, verb tenses) 
+	as related to the primary keyword, leading to missed relevant results.
+
+	- Misspellings and Typos: Keyword extraction methods might struggle with handling misspellings or typographical errors in queries, which can lead to 
+	inaccurate or irrelevant search results.
+
+	- Lack of Semantic Understanding: Simple keyword extraction often lacks semantic understanding, so 
+	it may not grasp the overall meaning or nuances of the query.
+
+
+	- Polysemy: Words with multiple meanings (polysemy) can lead to irrelevant results if the 
+	search engine fails to contextualize the keyword within the query.
+
+	- Stop Words and Filter Words: Determining which words to ignore (like common stop words, like a period) can be challenging, 
+	and inappropriate filtering can omit crucial aspects of a query.
+
+	- Phrase and Concept Recognition: Simple keyword extraction might not effectively recognize phrases or concepts that should 
+	be treated as a single unit, reducing the relevance of search results.
+
+	- Scalability and Performance: As the volume of data and the number of queries increase, 
+	maintaining efficient and accurate keyword extraction can be challenging.
+
+	- Query Length Limitations: may have limitations on the length of the query it can process effectively, 
+	leading to truncated or oversimplified keyword extraction.

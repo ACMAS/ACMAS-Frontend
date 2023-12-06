@@ -1,0 +1,32 @@
+Database_Scaling_Considerations:
+
+	Performance and Efficiency:
+
+		- Search_by_keyword must ensure quick retrieval of results, especially as the database scales. As the volume of data grows, 
+		the algorithm's ability to rapidly locate and return relevant data becomes critical.
+		
+		- If inefficiently used, it can become a bottleneck in a scaled database environment, leading to slow response times and increased server load.
+	
+	Load Balancing and Distribution:
+
+		- In a horizontally scaled database (I believe we'll end up using one assuming it's vertical now), any keyword search algorithm must be work 
+		across multiple servers and data partitions.
+		
+		- The algorithm must (ultimately) efficiently distribute the query load and aggregate results from multiple sources, which can be challenging in
+		distributed database systems.
+	
+	Data Consistency and Synchronization:
+
+		- Ensuring data consistency across multiple nodes (in horizontal scaling) is crucial for the accuracy of keyword search results.
+		
+	Scalability of the Search Algorithm:
+
+		- Ideally, search_by_keyword itself will need to scale. It should handle increased volumes of queries and data without a 
+		significant drop in performance.
+		
+		- Scalability challenges include managing caching mechanisms and query optimization techniques as mentioned in "General_System_Stressing.txt".
+	
+	Dynamic Adaptation:
+
+		search_by_keyword should adapt to a changing database environment, such as data distribution changes, node additions, or schema modifications.
+		Flexibility and adaptability would be key to maintaining search efficiency in a dynamically scaling database (should ACMAS ever need to reorg).

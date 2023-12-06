@@ -1,0 +1,19 @@
+Caching Dilemma:
+
+	- There are a handful of factors to consider when it comes to the notion of caching.
+	
+	- In the context of ACMAS this would apply to how different words would end up being added to some form of "pseudo-database" to allow
+	  for speedier similar queries/searches down the line
+	  
+		- To clarify: Just like the standard search by question algorithm(which can cache a previous search(es));
+					  search by keyword, after returning results, would in theory assign extracted keywords of a query
+					  to every filename related to them, sorted left->right in order of relevance 
+	- With a cache of this nature, you introduce the following problems and considerations:
+	
+		- Regulating cache allowances (what constitutes relevance, and when does it become necessary to partition filename contents)
+		
+		- How do you "best" handle a situation where multiple keywords point/adhere to the same file?
+		
+		- etc.
+	
+	  

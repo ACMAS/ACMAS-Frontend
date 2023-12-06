@@ -1,0 +1,43 @@
+General_System_Stressing:
+
+	Client-Side possiblities:
+		User Experience and Interface Responsiveness:
+		
+			- brief, non-discriminate keyword extraction will enable faster and more accurate queries, improving usability.
+			
+			- A sophisticated extraction (i.e. a more restrictive YAKE call) could lead to a slow or unresponsive ACMAS interface, 
+			  which would frustrate users in the long run (though the search results would likely be accurate).
+			
+		Query Understanding and Relevance:
+		
+			- Reasonable (evenly distributed across the query) keyword extraction would help in understanding user intent 
+			(i.e. preserving query context), providing more relevant search suggestions and results.
+			
+			- Not doing so could lead to irrelevant or off-topic search results, diminishing user trust in ACMAS.
+		
+		Resource Utilization:
+
+			- A lightweight (non-comprehensive in the hopes of requiring less computation) keyword extraction could ensure minimal resource usage 
+			on the client side, maintaining device performance, should the client-side be made the main entity for backend processes.
+			
+			- A resource-intensive extraction process (i.e. mutiple hits in the ACMAS database with no buffer/constraints)
+			could slow down the client device, especially if part of the processing is offloaded to the client.
+			
+	Server Side Effects
+		
+		Search Efficiency and Performance:
+
+			- Cache-centric extraction would enhance search efficiency, reducing server load and speeding up result retrieval.
+			
+			- Standard extraction would increase server workload leading to slower response times and higher operational (data) costs in the long-run.
+			
+		Data Processing and Scalability:
+
+			- A robust (in that it would be uninfluenced by query size) algorithm could hypothetically ensurescalability of the ACMAS as the database
+			is further added to.
+		
+		Handling of Complex Queries:
+
+			- Limited keyword (improper constraints to the amount of) extraction may fail to properly interpret complex queries, leading to 
+			sub-optimal search results.
+		
