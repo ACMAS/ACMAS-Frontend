@@ -1,0 +1,34 @@
+Example:
+===============================================================================
+language = "en"
+max_ngram_size = 1
+deduplication_threshold = 0.9
+numOfKeywords = 10
+
+custom_kw_extractor = yake.KeywordExtractor(lan=language, n=max_ngram_size, 
+            dedupLim=deduplication_threshold, top=numOfKeywords, features=None)
+
+question = "What is 1 plus 1?"
+
+keywords = custom_kw_extractor.extract_keywords(question)
+===============================================================================
+
+
+Keywords would contain the most relevant keywords to the question. For example, the question "How do find the integral of a function" would extract to :
+
+(Integral,0.013)
+(function,0.016)
+(how,0.03)
+(find,0.4)
+
+Where the numbers within the tuples correspond to the relevence factor of that word.
+
+The parameters of the Yake program can be tweaked to obtain different keywords.
+
+lan ------- used to set the language of the extractor
+n --------- used to extract words that are within the max_ngram_size
+dedupLim -- the similarity parameter that only accepts words that fall within that threshold. 
+top ------- used to obtain the top x keywords
+features -- a parameter to fine tune the Yake model, it is used to define the way to extract keywords with a specific algorithm eg. KPF or Keyword Performance Factor 
+
+Additional help can be found on the Yake github : https://github.com/LIAAD/yake/tree/master/yake
