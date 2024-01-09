@@ -5,3 +5,4 @@ ACMAS/package-lock.json
 ACMAS/package.json
 ACMAS/app/db.sqlite3
 ACMAS/node_modules
+**/.DS_Store
