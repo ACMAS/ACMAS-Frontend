@@ -3,4 +3,4 @@ django-dbbackup==4.0.2
 django_components==0.29
 
 psycopg2-binary==2.9.9
-gunicorn==21.2.0
+gunicorn==22.0.0
