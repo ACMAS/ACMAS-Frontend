@@ -2,11 +2,11 @@ from django.db import models
 
 
 class Question(models.Model):
-    filename = models.TextField()
+    filename = models.TextField(db_index=True)
     question = models.TextField()
     Answers = models.TextField()
     flag = models.TextField(default="()")
-    Hash = models.TextField()
+    Hash = models.TextField(db_index=True)
 
     def __str__(self):
         return self.question
@@ -23,9 +23,9 @@ class University(models.Model):
 
 
 class Course(models.Model):
-    name = models.TextField()
+    name = models.TextField(db_index=True)
     code = models.CharField(max_length=20)
-    university = models.TextField()
+    university = models.TextField(db_index=True)
     semster = models.CharField(max_length=30)
     years = models.TextField()
     test_type = models.CharField(max_length=20)
@@ -35,7 +35,7 @@ class Course(models.Model):
 
 
 class UploadedFile(models.Model):
-    filename = models.CharField(max_length=60)
+    filename = models.CharField(max_length=60, db_index=True)
     file_dir = models.TextField()
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     date_uploaded = models.CharField(max_length=50)
